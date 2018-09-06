@@ -7,19 +7,13 @@ import com.jalasoft.sfdc.ui.pages.product.AllAppsPageLight;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopMenuLight extends TopMenu {
 
-    @FindBy(xpath = ".//*[@id='oneHeader']/div[3]/div/div[1]/div[1]/nav/button")
-    //@FindBy(xpath = ".//*[@id='oneHeader']/div[3]/one-appnav/div/div/div/nav/one-app-launcher-header/button")
-    private WebElement sliderBtn;
-
     public TopMenuLight() {
 
-       //sliderBtnBy = By.xpath("//button[@class =\"bare slds-icon-waffle_container slds-context-bar__button slds-button uiButton forceHeaderButton salesforceIdentityAppLauncherHeader\"]");
-       // sliderBtnBy = By.xpath(".//*[@id='oneHeader']/div[3]/div/div[1]/div[1]/nav/button");
-       // sliderBtnBy = By.xpath(".//*[@id='AllTab_Tab']/a/img");
-
+        sliderBtnBy = By.xpath("//nav[@class='appLauncher slds-context-bar__icon-action']//button[@type='button']");
     }
 
     @Override
@@ -36,9 +30,9 @@ public class TopMenuLight extends TopMenu {
     public HomePage goToHomePage() {
         return new HomePageLight();
     }
-    public AllAppsPage goToAllAppsPage() {
 
-        driverTools.clickElement(sliderBtn);
+    public AllAppsPage goToAllAppsPage() {
+        driverTools.clickElement(sliderBtnBy);
         return new AllAppsPageLight();
     }
 

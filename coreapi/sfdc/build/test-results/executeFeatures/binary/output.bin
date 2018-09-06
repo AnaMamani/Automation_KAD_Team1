@@ -1,12 +1,15 @@
-Feature: Create "Contact"
+Feature: Add a new product
 !Initialize the page transporter
 B////////kljdag//////////////////////////////////////////////////
-hola mundo ******* local user
+$hola mundo ******* other role user
 
-N  Scenario:                            [90m# features/contacts.feature:3[0m
-y    [32mGiven [0m[32mI login as "[0m[32m[1mlocal user[0m[32m" User[0m [90m# LoginSteps.loginAsUser(String)[0m
-g    [33mWhen [0m[33mI go to the Contact page[0m      [90m# ContactSteps.iGoToTheContactPage()[0m
+R  Background:                               [90m# features/product.feature:3[0m
+~    [32mGiven [0m[32mI login as "[0m[32m[1mother role user[0m[32m" User[0m [90m# LoginSteps.loginAsUser(String)[0m
+
+\  Scenario: Verify that is possible add a new product [90m# features/product.feature:6[0m
+u    [33mWhen [0m[33mI go to the Product page[0m                     [90m# productSteps.iGoToTheSliderIcon()[0m
 >      [31mcucumber.api.PendingException: TODO: implement me
-Z      	at com.jalasoft.sfdc.steps.ContactSteps.iGoToTheContactPage(ContactSteps.java:22)
-H      	at ?.When I go to the Contact page(features/contacts.feature:5)
+Y      	at com.jalasoft.sfdc.steps.productSteps.iGoToTheSliderIcon(productSteps.java:20)
+G      	at ?.When I go to the Product page(features/product.feature:7)
       [0m
+t    [36mWhen [0m[36mI add the new product[0m                        [90m# productSteps.iAddTheNewProduct()[0m

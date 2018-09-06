@@ -6,11 +6,38 @@
         "line": 3,
         "name": "",
         "description": "",
-        "id": "create-\"contact\";",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 10996562500,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I login as \"other role user\" User",
+            "match": {
+              "arguments": [
+                {
+                  "val": "other role user",
+                  "offset": 12
+                }
+              ],
+              "location": "LoginSteps.loginAsUser(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 6,
+        "name": "Verify that is possible add a new product",
+        "description": "",
+        "id": "add-a-new-product;verify-that-is-possible-add-a-new-product",
         "after": [
           {
             "result": {
-              "duration": 256600,
+              "duration": 1459200,
               "status": "passed"
             },
             "match": {
@@ -19,7 +46,7 @@
           },
           {
             "result": {
-              "duration": 26400,
+              "duration": 38200,
               "status": "passed"
             },
             "match": {
@@ -32,42 +59,35 @@
         "steps": [
           {
             "result": {
-              "duration": 17813708800,
-              "status": "passed"
+              "duration": 17332630900,
+              "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat com.jalasoft.sfdc.steps.productSteps.iGoToTheSliderIcon(productSteps.java:20)\r\n\tat ✽.When I go to the Product page(features/product.feature:7)\r\n",
+              "status": "pending"
             },
-            "line": 4,
-            "name": "I login as \"local user\" User",
+            "line": 7,
+            "name": "I go to the Product page",
             "match": {
-              "arguments": [
-                {
-                  "val": "local user",
-                  "offset": 12
-                }
-              ],
-              "location": "LoginSteps.loginAsUser(String)"
+              "location": "productSteps.iGoToTheSliderIcon()"
             },
-            "keyword": "Given "
+            "keyword": "When "
           },
           {
             "result": {
-              "duration": 28399448000,
-              "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat com.jalasoft.sfdc.steps.ContactSteps.iGoToTheContactPage(ContactSteps.java:22)\r\n\tat ✽.When I go to the Contact page(features/contacts.feature:5)\r\n",
-              "status": "pending"
+              "status": "skipped"
             },
-            "line": 5,
-            "name": "I go to the Contact page",
+            "line": 8,
+            "name": "I add the new product",
             "match": {
-              "location": "ContactSteps.iGoToTheContactPage()"
+              "location": "productSteps.iAddTheNewProduct()"
             },
             "keyword": "When "
           }
         ]
       }
     ],
-    "name": "Create \"Contact\"",
+    "name": "Add a new product",
     "description": "",
-    "id": "create-\"contact\"",
+    "id": "add-a-new-product",
     "keyword": "Feature",
-    "uri": "features/contacts.feature"
+    "uri": "features/product.feature"
   }
 ]

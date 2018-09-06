@@ -17,23 +17,24 @@ import org.openqa.selenium.By;
  */
 public abstract class TopMenu extends BasePage {
 
-   // By sliderBtnBy;
+    protected By sliderBtnBy;
 
     public abstract void swithSkin();
 
-    public LoginPage logout(){
+    public LoginPage logout() {
         return new LoginPage();
     }
 
-    public abstract HomePage goToHomePage ();
+    public abstract HomePage goToHomePage();
 
-    public ProfilePage goToProfilePage(){
+    public ProfilePage goToProfilePage() {
         return new ProfilePage();
     }
+
     public AllAppsPage goToAllAppsPage() {
-       // driverTools.clickElement(sliderBtnBy);
         return PageFactory.getAllAppsPage();
     }
+
     public abstract String getCurrentUser();
 }
 

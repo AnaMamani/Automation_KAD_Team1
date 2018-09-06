@@ -11,12 +11,10 @@ import org.openqa.selenium.support.FindBy;
 
 public class TopMenuClassic extends TopMenu {
 
-    @FindBy(xpath = ".//*[@id='AllTab_Tab']/a/img")
-    private WebElement sliderBtnLit;
     public TopMenuClassic() {
-
-        //sliderBtnBy = By.xpath(".//*[@id='AllTab_Tab']/a/img");
+        sliderBtnBy = By.xpath("//li[@id=\"AllTab_Tab\"]");
     }
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
@@ -33,7 +31,7 @@ public class TopMenuClassic extends TopMenu {
     }
 
     public AllAppsPage goToAllAppsPage() {
-        driverTools.clickElement(sliderBtnLit);
+        driverTools.clickElement(sliderBtnBy);
         return new AllAppsClassic();
     }
 
