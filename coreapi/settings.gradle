@@ -1,0 +1,4 @@
+rootProject.name = 'sfdcautomation'
+include 'coreui'
+include 'coreapi'
+include 'sfdc'

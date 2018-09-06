@@ -1,0 +1,11 @@
+2018-09-05 17:23:23 INFO  WebDriverConfigReader:45 - WebDriverConfigReader initialize: Read the driver configuration settings
+2018-09-05 17:23:23 INFO  WebDriverConfigReader:49 - Browser name --> Chrome
+2018-09-05 17:23:23 INFO  UsersConfigReader:52 - UsersConfigReader initialize: Read the users settings from C:\Users\Admin\Desktop\Behat-3.5.0\coreapi\sfdc\config\SFDCUsers.json
+2018-09-05 17:23:23 INFO  ServersConfigReader:43 - ServersConfigReader initialize: Read the sever settings from C:\Users\Admin\Desktop\Behat-3.5.0\coreapi\sfdc\config\SFDCServers.json
+2018-09-05 17:23:23 INFO  ServersConfigReader:49 - Server Alias --> DevOrg01
+2018-09-05 17:23:23 INFO  ServersConfigReader:52 - Skin --> CLASSIC
+2018-09-05 17:23:23 INFO  ServersConfigReader:55 - Base URL --> https://login.salesforce.com/
+2018-09-05 17:23:23 INFO  AutomationSFDC:56 - -----Start Automation execution-----
+2018-09-05 17:23:23 INFO  WebDriverManager:38 - WebDriverManager initialize: Initializing the web driver
+2018-09-05 17:23:30 INFO  PageTransporter:48 - Initialize the page transporter
+2018-09-05 17:24:16 INFO  WebDriverManager:68 - Quit driver

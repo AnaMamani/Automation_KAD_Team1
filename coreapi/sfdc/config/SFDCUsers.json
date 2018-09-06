@@ -1,0 +1,24 @@
+{
+  "admin user": {
+    "user name":"denis@deniscompany.com",
+    "user password":"QWqw12/*",
+    "first name": "Denis",
+    "Last name": "Camacho"
+
+    },
+  "local user": {
+    "user name":"fuego@lluviacompany.com",
+    "user password":"asdfghjkl1",
+
+  "first name": "Ketty",
+  "Last name": "Camacho"
+
+},
+  "other role user": {
+
+    "user name":"72768163ketty@gmail.com",
+    "user password":"K0102018c",
+    "first name": "Ana",
+    "Last name": "Camacho"
+  }
+}

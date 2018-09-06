@@ -1,0 +1,12 @@
+{
+  "DevOrg01": {
+    "url": "https://login.salesforce.com/",
+    "token base uri": "https://na73.salesforce.com/services/oauth2/token",
+    "service base uri": "https://na73.salesforce.com/services/data/v20.0"
+  },
+  "DevOrg02": {
+    "url": "https://login.salesforce.com/",
+    "token base uri": "https://na73.salesforce.com/services/oauth2/token",
+    "service base uri": "https://na73.salesforce.com/services/data/v20.0"
+  }
+}
