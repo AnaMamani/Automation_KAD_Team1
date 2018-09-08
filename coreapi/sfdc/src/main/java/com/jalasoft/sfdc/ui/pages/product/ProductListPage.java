@@ -1,6 +1,9 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
-public abstract class ProductListPage {
+import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import com.jalasoft.sfdc.ui.pages.productFormPage.ProductFormPage;
 
-    public abstract void clickNewProduct();
+public abstract class ProductListPage extends HomePage {
+
+    public abstract ProductFormPage clickNewProduct();
 }

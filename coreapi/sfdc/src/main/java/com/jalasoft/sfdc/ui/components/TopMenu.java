@@ -4,7 +4,7 @@ import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
 import org.openqa.selenium.By;
 
@@ -21,9 +21,7 @@ public abstract class TopMenu extends BasePage {
 
     public abstract void swithSkin();
 
-    public LoginPage logout() {
-        return new LoginPage();
-    }
+    public abstract LoginPage logout();
 
     public abstract HomePage goToHomePage();
 

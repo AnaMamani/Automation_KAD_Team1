@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 
 import java.net.MalformedURLException;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -44,6 +45,7 @@ public class LoginSteps {
     //****************************************************************
     //Login Step Definitions
     //****************************************************************
+
     /**
      * Verifies if the desired user is logged.
      *
@@ -58,14 +60,14 @@ public class LoginSteps {
 
             // ToDo Evaluates if the proper user is logged
             //if (homePage.getTopBar().getCurrentUser().equals(user.getUserName())) {
-                if (homePage.topMenu.getCurrentUser().equals(user.getUserName())) {
-                    System.out.print(user.getUserName());
+            if (homePage.topMenu.getCurrentUser().equals(user.getUserName())) {
+                System.out.print(user.getUserName());
                 isUserLogged = true;
             } else {
-           //     System.out.print("ana");
-               //homePage.getTopBar().logout();
-                    homePage.topMenu.logout();
-           }
+                //     System.out.print("ana");
+                //homePage.getTopBar().logout();
+                homePage.topMenu.logout();
+            }
 
         } else {
             navigateToLoginPage();
@@ -113,11 +115,9 @@ public class LoginSteps {
      * @param userAlias - Alias of the user.
      * @throws MalformedURLException Exception.
      */
-   @Given("^I (?:am logged in|login) as \"(.*?)\" User$")
+    @Given("^I (?:am logged in|login) as \"(.*?)\" User$")
     public void loginAsUser(final String userAlias) throws MalformedURLException {
-       System.out.println("////////kljdag//////////////////////////////////////////////////");
-       user = UsersConfigReader.getInstance().getUserByAlias(userAlias);
-       //navigateToLoginPage();
+        user = UsersConfigReader.getInstance().getUserByAlias(userAlias);
         if (!isUserLogged(user)) {
             login(user.getUserName(), user.getPassword());
         }
@@ -130,7 +130,7 @@ public class LoginSteps {
     public void afterLoginScenario() {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();
-        if (skin == Skin.LIGHT){
+        if (skin == Skin.LIGHT) {
             homePage.topMenu.logout();
         }
     }
@@ -143,7 +143,7 @@ public class LoginSteps {
 
     @Then("^I should'nt login and show the \"([^\"]*)\"$")
     public void iShouldNtLoginAndShowThe(String errorMessage) throws Throwable {
-       assertTrue(loginPage.unSuccefullLogin(errorMessage));
+        assertEquals(loginPage.unSuccefullLogin(), errorMessage);
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }

@@ -76,8 +76,7 @@ public class LoginPage extends BasePage {
         return clickLoginButton();
     }
 
-    public boolean unSuccefullLogin(String errorMessage){
-        System.out.println(error.getText()+"++++++++++++++++++++++++++++++++++++++++");
-        return error.getText().equals(errorMessage);
+    public String unSuccefullLogin(){
+        return error.getText();
     }
 }
