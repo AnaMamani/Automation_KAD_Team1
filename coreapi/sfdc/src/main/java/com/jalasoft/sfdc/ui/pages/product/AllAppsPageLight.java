@@ -2,8 +2,13 @@ package com.jalasoft.sfdc.ui.pages.product;
 
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
+import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBooksPage;
+import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBooksPageLight;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
+import java.util.concurrent.TimeUnit;
 
 public class AllAppsPageLight extends AllAppsPage {
 
@@ -12,6 +17,9 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @FindBy(xpath = "html/body/div[5]/div[2]/div[2]/div[2]/div/div[2]/div/div[3]/div/div[2]/ul/li[9]/a/span/span")
     WebElement contactsLink;
+
+    @FindBy(xpath = "//span[@class='label slds-truncate slds-text-link'][contains(text(),'Price Books')]")
+    WebElement priceBooksLinks;
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
@@ -26,8 +34,16 @@ public class AllAppsPageLight extends AllAppsPage {
     }
     @Override
     public ContactListPage clickContactLink() {
+        //para by
+        //wait.until(ExpectedConditions.invisibilityOfElementLocated(contactsLink));
         driverTools.scrollDown(5);
         driverTools.clickElement(contactsLink);
         return new ContactListPageLight();
+    }
+
+    @Override
+    public PriceBooksPage clickPriceBooksLink() {
+        driverTools.clickElement(priceBooksLinks);
+        return new PriceBooksPageLight();
     }
 }
