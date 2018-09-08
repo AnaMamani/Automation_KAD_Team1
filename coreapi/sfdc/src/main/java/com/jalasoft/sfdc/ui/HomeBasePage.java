@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui;
 
 import com.jalasoft.sfdc.ui.components.TopMenu;
+import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -28,6 +29,11 @@ public abstract class HomeBasePage extends BasePage {
 
     protected void clickNewBtn() {
         driverTools.clickElement(newBtn);
+    }
+
+    public AllAppsPage goToAllAppsPage(){
+        // driverTools.clickElement(sliderBtnBy);
+        return PageFactory.getAllAppsPage();
     }
 
 }

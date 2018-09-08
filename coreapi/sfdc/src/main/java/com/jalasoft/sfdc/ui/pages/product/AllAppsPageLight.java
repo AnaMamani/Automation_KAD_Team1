@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
+import com.jalasoft.sfdc.ui.pages.PriceBookPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
 import org.openqa.selenium.WebElement;
@@ -29,5 +30,10 @@ public class AllAppsPageLight extends AllAppsPage {
         driverTools.scrollDown(5);
         driverTools.clickElement(contactsLink);
         return new ContactListPageLight();
+    }
+
+    @Override
+    public PriceBookPage clickBookLink() {
+        return null;
     }
 }
