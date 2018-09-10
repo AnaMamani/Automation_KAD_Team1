@@ -2,16 +2,15 @@ package com.jalasoft.sfdc.ui.components;
 
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPageLight;
-import org.openqa.selenium.By;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPageLight;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class TopMenuLight extends TopMenu {
 
     @FindBy(xpath = ".//*[@id='oneHeader']/div[3]/div/div[1]/div[1]/nav/button")
-    //@FindBy(xpath = ".//*[@id='oneHeader']/div[3]/one-appnav/div/div/div/nav/one-app-launcher-header/button")
+
     private WebElement sliderBtn;
 
     public TopMenuLight() {

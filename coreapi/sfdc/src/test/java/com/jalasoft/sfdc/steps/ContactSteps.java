@@ -1,10 +1,8 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.ui.PageFactory;
-import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
-import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.When;
 

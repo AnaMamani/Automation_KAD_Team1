@@ -2,6 +2,16 @@
 /.idea/
 /build/
 /out/
+*/build/
+/target/
+/logs/
+/.allure/
+*.bin
+*.idx
+*.DS_Store
+*.class
+*.js
+*.css
 *.iml
 *.xml
 *.html

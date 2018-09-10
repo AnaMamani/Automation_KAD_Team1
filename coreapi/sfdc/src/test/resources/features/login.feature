@@ -10,7 +10,7 @@ Feature: Login
 
     Examples: Short pass
       | User Name                | Password    |
-      | fuego@lluviacompany.com  | asdfghjkl1  |
+      | 72768163ketty@gmail.com  | K0102018c  |
 
   Scenario Outline:
     Given I navigate to Login page
@@ -19,5 +19,5 @@ Feature: Login
 
   Examples: Short pass
   | User Name                 | Password    | Error Message |
-  | fuego@lluviacompany.comb  | asdfghjkl1 | Compruebe su nombre de usuario y contraseña. Si sigue sin poder iniciar sesión, póngase en contacto con su administrador de Salesforce. |
-  | fuego@lluviacompan.comb   |            | Introduzca su contraseña. |
+  | 72768163ketty@gmail.comb  | K0102018c | Compruebe su nombre de usuario y contraseña. Si sigue sin poder iniciar sesión, póngase en contacto con su administrador de Salesforce. |
+  | 72768163ketty@gmail.comb   |            | Introduzca su contraseña. |
