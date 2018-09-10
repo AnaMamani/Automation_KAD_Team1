@@ -4,9 +4,8 @@ import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
-import org.openqa.selenium.By;
 
 /**
  * Top bar that contains the user name information, settings and logout options.
@@ -30,10 +29,11 @@ public abstract class TopMenu extends BasePage {
     public ProfilePage goToProfilePage(){
         return new ProfilePage();
     }
+
+    public abstract String getCurrentUser();
+
     public AllAppsPage goToAllAppsPage() {
-       // driverTools.clickElement(sliderBtnBy);
         return PageFactory.getAllAppsPage();
     }
-    public abstract String getCurrentUser();
 }
 
