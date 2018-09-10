@@ -1,8 +1,10 @@
-package com.jalasoft.sfdc.ui.pages.contactDetailPage;
+package com.jalasoft.sfdc.ui.pages.contact;
+
+import com.jalasoft.sfdc.entities.Contact;
 
 public class ContactDetailPageClassic extends ContactDetailPage {
     @Override
-    public ContactDetailPage insertContact(String viewName, String viewUniqueName) {
+    public ContactDetailPage insertContact(Contact contact) {
         return null;
     }
 

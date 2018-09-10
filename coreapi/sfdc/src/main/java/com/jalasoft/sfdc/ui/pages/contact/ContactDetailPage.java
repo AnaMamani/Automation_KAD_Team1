@@ -1,5 +1,6 @@
-package com.jalasoft.sfdc.ui.pages.contactDetailPage;
+package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.BasePage;
 
 public abstract class ContactDetailPage extends BasePage {
@@ -8,7 +9,7 @@ public abstract class ContactDetailPage extends BasePage {
 
     }
 
-    public abstract ContactDetailPage insertContact(final String viewName, final String viewUniqueName);
+    public abstract ContactDetailPage insertContact(Contact contact);
     public abstract  ContactDetailPage clickBtnSave();
 
 

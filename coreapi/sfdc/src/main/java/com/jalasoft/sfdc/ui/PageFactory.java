@@ -11,9 +11,9 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsClassic;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPageLight;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsClassic;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPageLight;
 
 public class PageFactory {
     private static Skin skin = ServersConfigReader.getInstance().getSkin();

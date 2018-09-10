@@ -5,8 +5,7 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBooksPage;
 import com.jalasoft.sfdc.ui.pages.priceBooksDetailPage.PriceBooksDetailPage;
 import com.jalasoft.sfdc.ui.pages.priceBooksFormPage.PriceBooksFormPage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
-import cucumber.api.PendingException;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.When;
 

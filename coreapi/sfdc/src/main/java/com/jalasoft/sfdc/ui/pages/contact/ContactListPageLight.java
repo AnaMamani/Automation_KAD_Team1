@@ -1,18 +1,16 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
-import com.jalasoft.sfdc.ui.pages.ContactsFormPage.ContactsFormPage;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class ContactListPageLight extends ContactListPage {
-    @Override
-    public ContactListPage clickContactLink() {
-        return new ContactListPageLight();
-    }
-
+    @FindBy(xpath = "//a[@title='New']")
+    WebElement contactsBtnNew;
     @Override
     public ContactsFormPage clickLoginButtonNew() {
-        return null;
+        driverTools.clickElement(contactsBtnNew);
+        return new ContactsFormPageLight();
     }
-
     @Override
     public void waitUntilPageObjectIsLoaded() {
 

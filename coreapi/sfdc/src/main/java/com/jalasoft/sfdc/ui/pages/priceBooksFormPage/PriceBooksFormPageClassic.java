@@ -1,6 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.priceBooksFormPage;
 
-import com.jalasoft.sfdc.ui.pages.contactDetailPage.ContactDetailPageClassic;
 import com.jalasoft.sfdc.ui.pages.priceBooksDetailPage.PriceBooksDetailPage;
 import com.jalasoft.sfdc.ui.pages.priceBooksDetailPage.PriceBooksDetailPageClassic;
 import org.openqa.selenium.WebElement;

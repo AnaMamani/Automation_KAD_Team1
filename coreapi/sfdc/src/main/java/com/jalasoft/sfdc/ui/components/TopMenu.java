@@ -1,10 +1,9 @@
 package com.jalasoft.sfdc.ui.components;
 
 import com.jalasoft.sfdc.ui.BasePage;
-import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.product.AllAppsPage;
+import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
 import org.openqa.selenium.By;
 
@@ -17,7 +16,10 @@ import org.openqa.selenium.By;
  */
 public abstract class TopMenu extends BasePage {
 
-    // By sliderBtnBy;
+    /**
+     * declared variable All App Page
+     */
+    By allAppBtnBy;
 
     public abstract void swithSkin();
 
@@ -29,6 +31,10 @@ public abstract class TopMenu extends BasePage {
 
     public abstract ProfilePage goToProfilePage();
 
+    /**
+     * Method for go to All App Page page
+     * @return AllAppPage
+     */
     public abstract AllAppsPage goToAllAppsPage();
 
     public abstract String getCurrentUser();
