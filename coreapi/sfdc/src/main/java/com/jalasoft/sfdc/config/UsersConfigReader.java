@@ -59,14 +59,12 @@ public final class UsersConfigReader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        JsonElement datos = parser.parse(fr);
+        JsonElement dataUsers = parser.parse(fr);
 
-        String[] data = datos.toString().replace("{", "").
+        String[] data = dataUsers.toString().replace("{", "").
                 replace("}", "").split(",");
         users = new HashMap<>();
-        System.out.println("**************** estoy ********************");
         for (String key : data) {
-            System.out.println(key);
             if (key.contains(USER_NAME)) {
                 String[] alias = key.split(":");
                 user = new User();
@@ -74,8 +72,6 @@ public final class UsersConfigReader {
                 user.setPassword(usersReader.getKeyValue(alias[0].substring(1,alias[0].length()-1), USER_PASSWORD));
                 //user.setPassword(usersReader.getKeyValue(alias[0].substring(1,alias[0].length()-1), FIRST_NAME));
               //  user.setPassword(usersReader.getKeyValue(alias[0].substring(1,alias[0].length()-1), LAST_NAME));
-
-                System.out.println(alias[0].substring(1,alias[0].length()-1));
 
                 users.put(alias[0].substring(1,alias[0].length()-1),user);
             }
@@ -87,32 +83,7 @@ public final class UsersConfigReader {
         /* review how to read the all the users from the SFDCUsers.json, and manage in a List or a Map or whenever
         you want to be able later to get the user according the alias
          */
-/*
-        String[] data = usersReader.toString().split(",");
-        ArrayList<String> datas = new ArrayList<>();
-        for (String key : data) {
-            System.out.println(key);
-            if (key.contains(USER_NAME) || key.contains(USER_PASSWORD) ||
-                    key.contains(FIRST_NAME) || key.contains(LAST_NAME)) {
-            } else {
-                datas.add(key);
-            }
-
-        }
-
-        Map<User, String> users = new HashMap<>();
-        for (String alias : datas) {
-            user = new User();
-            user.setUserName(usersReader.getKeyValue(alias, USER_NAME));
-            user.setPassword(usersReader.getKeyValue(alias, USER_PASSWORD));
-
-            users.put(user,alias);
-        }
-       */
-         user.setUserName(usersReader.getKeyValue(ADMIN_USER.toString(), USER_NAME));
-         user.setPassword(usersReader.getKeyValue(ADMIN_USER.toString(), USER_PASSWORD));
     }
-
 
     /**
      * Gets the user given the alias.
@@ -121,7 +92,6 @@ public final class UsersConfigReader {
      * @return User.
      */
     public User getUserByAlias(String userAlias) {
-        System.out.println("hola mundo ******* "+ userAlias);
         user = users.get(userAlias);
         return user;
     }

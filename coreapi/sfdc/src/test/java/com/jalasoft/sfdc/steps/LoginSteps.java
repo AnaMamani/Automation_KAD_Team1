@@ -7,7 +7,6 @@ import com.jalasoft.sfdc.entities.User;
 import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -33,7 +32,6 @@ public class LoginSteps {
     //Pages
     private LoginPage loginPage;
     private HomePage homePage;
-    private ProfilePage profilePage;
 
     // Entities
     private User user;
@@ -45,6 +43,7 @@ public class LoginSteps {
     //****************************************************************
     //Login Step Definitions
     //****************************************************************
+
     /**
      * Verifies if the desired user is logged.
      *
@@ -59,14 +58,14 @@ public class LoginSteps {
 
             // ToDo Evaluates if the proper user is logged
             //if (homePage.getTopBar().getCurrentUser().equals(user.getUserName())) {
-                if (homePage.topMenu.getCurrentUser().equals(user.getUserName())) {
-                    System.out.print(user.getUserName());
+            if (homePage.topMenu.getCurrentUser().equals(user.getUserName())) {
+                System.out.print(user.getUserName());
                 isUserLogged = true;
             } else {
-           //     System.out.print("ana");
-               //homePage.getTopBar().logout();
-                    homePage.topMenu.logout();
-           }
+                //     System.out.print("ana");
+                //homePage.getTopBar().logout();
+                homePage.topMenu.logout();
+            }
 
         } else {
             navigateToLoginPage();
@@ -100,10 +99,9 @@ public class LoginSteps {
         homePage = loginPage.login(username, password);
     }
 
-    @Then("^I should login successfully \"(.*?)\"$")
+    @Then("^I should login successfully with a \"(.*?)\"$")
     public void verifyMainPageIsDisplayed(String fullName) {
-        profilePage = homePage.topMenu.goToProfilePage();
-        assertEquals(profilePage.getUserNameDisplayed(), fullName,"User full name displayed");
+        assertEquals(homePage.topMenu.getProfileName(), fullName,"full name the user is showed");
         //assertTrue(true, "User email displayed in Web");
     }
 
@@ -114,11 +112,9 @@ public class LoginSteps {
      * @param userAlias - Alias of the user.
      * @throws MalformedURLException Exception.
      */
-   @Given("^I (?:am logged in|login) as \"(.*?)\" User$")
+    @Given("^I (?:am logged in|login) as \"(.*?)\" User$")
     public void loginAsUser(final String userAlias) throws MalformedURLException {
-       System.out.println("////////kljdag//////////////////////////////////////////////////");
-       user = UsersConfigReader.getInstance().getUserByAlias(userAlias);
-       //navigateToLoginPage();
+        user = UsersConfigReader.getInstance().getUserByAlias(userAlias);
         if (!isUserLogged(user)) {
             login(user.getUserName(), user.getPassword());
         }
@@ -131,21 +127,21 @@ public class LoginSteps {
     public void afterLoginScenario() {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();
-        if (skin == Skin.LIGHT){
+        if (skin == Skin.LIGHT) {
             homePage.topMenu.logout();
         }
     }
 
     @Given("^I am logged on Salesforce with valid usr$")
-    public void iAmLoggedOnSalesforceWithValidUsr()  {
+    public void iAmLoggedOnSalesforceWithValidUser() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
-    @Then("^I should not login and the \"([^\"]*)\" message should be displayed$")
-    public void iShouldNtLoginAndShowThe(String errorMessage) {
-       assertTrue(loginPage.unSuccefullLogin(errorMessage));
+    @Then("^I should'nt login and show the \"([^\"]*)\"$")
+    public void iShouldNtLoginAndShowThe(String errorMessage) throws Throwable {
+        assertEquals(loginPage.unSuccefullLogin(), errorMessage);
         // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
-
-
 }

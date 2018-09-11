@@ -1,62 +1,59 @@
-package com.jalasoft.sfdc.ui.pages.AllAppsPage;
+package com.jalasoft.sfdc.ui.pages.allAppsPage;
 
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
-import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBooksPage;
-import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBooksPageLight;
+import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
+import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPageLigth;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPageLight;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.concurrent.TimeUnit;
 
 public class AllAppsPageLight extends AllAppsPage {
-    /**
-     * declared variable Contacts
-     */
-    @FindBy
-    WebElement productLink;
-    WebDriverWait wait = new WebDriverWait(driver,60);
+    //PageFactory of selenium.
+    @FindBy(xpath = "html/body/div[5]/div[2]/div[2]/div[2]/div/div[2]/div/div[3]/div/div[2]/ul/li[9]/a/span/span")
+    WebElement contactsLink;
 
-    public AllAppsPageLight(){
-       // contactsLink= By.cssSelector("a[href*='Contact']");
-        //div[@title='Service']
-        contactsLink= By.xpath("//span[contains(text(),'Contacts')]");
-        priceBooksLinks= By.xpath("//span[contains(text(),'Price Books')]");
-    }
+    @FindBy(xpath = "//span[text()='Products' and @class]")
+    WebElement productLink;
+
+    @FindBy(xpath = "//span[@class='label slds-truncate slds-text-link'][contains(text(),'Price Books')]")
+    WebElement priceBookLink;
+    //this find element is to auxiliary for verify the menu the features.
+    @FindBy(xpath = "//div[@title='Service']")
+    WebElement serviceLink;
+
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-///  tiempo de espera cuando la pagina se debe esperar para validar.
-      //  wait.until(ExpectedConditions.visibilityOf(priceBooksLinks));
-      //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[contains(text(),'Contracts')]")));
+        wait.until(ExpectedConditions.visibilityOf(serviceLink));
     }
 
+    /**
+     * @return
+     */
     @Override
     public ProductListPage clickProductLink() {
-        driverTools.scrollDown(8);
+        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(productLink);
         return new ProductListPageLight();
     }
-    /**
-     * Method for go to contacts page
-     * @return ContactsListPageLight
-     */
+
     @Override
     public ContactListPage clickContactLink() {
-        wait.until(ExpectedConditions.elementToBeClickable(contactsLink));
+        driverTools.scrollDown(5);
         driverTools.clickElement(contactsLink);
         return new ContactListPageLight();
     }
 
     @Override
-    public PriceBooksPage clickPriceBooksLink() {
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-        driverTools.scrollDown(10);
-        driverTools.clickElement(priceBooksLinks);
-        return new PriceBooksPageLight();
+    public PriceBookListPage clickPriceBookLink() {
+        driverTools.scrollToBottomOfPage();
+        driverTools.clickElement(priceBookLink);
+        return new PriceBookListPageLigth();
     }
 }
