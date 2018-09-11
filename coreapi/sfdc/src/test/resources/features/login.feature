@@ -8,11 +8,11 @@ Feature: Login
   @SmokeTest @Logout
   Scenario Outline: Users should be able to login using valid credentials
     When I login as "<User Name>" with password "<Password>"
-    Then I should login successfully
+    Then I should login successfully with a "<Full Name>"
 
     Examples: Short pass
-      | User Name               | Password   |
-      | fuego@lluviacompany.com | asdfghjkl1 |
+      | User Name               | Password   | Full Name   |
+      | fuego@lluviacompany.com | asdfghjkl1 | Ana Zenteno |
 
   Scenario Outline:
     When I login as "<User Name>" with password "<Password>"

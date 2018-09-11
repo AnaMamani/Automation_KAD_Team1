@@ -1,7 +1,7 @@
 Feature: Add a new product
 
   Background:
-    Given I login as "other role user" User
+    Given I login as "admin user" User
 
   Scenario Outline: Verify that is possible add a new product
     When  I go to the Product page

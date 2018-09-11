@@ -1,28 +1,29 @@
 package com.jalasoft.sfdc.ui.pages.priceBooks;
 
-import com.jalasoft.sfdc.ui.pages.priceBooksFormPage.PriceFormPage;
-import com.jalasoft.sfdc.ui.pages.priceBooksFormPage.PriceFormPageClassic;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class PriceBooksListPageClassic extends PriceBooksListPage {
-
+public class PriceBookListPageClassic extends PriceBookListPage {
+    //PageFactory of selenium.
     @FindBy(xpath = "//input[@title='New']")
-    WebElement priceBooksNewLink;
-
+    WebElement priceBookNewLink;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(priceBooksNewLink));
+        wait.until(ExpectedConditions.visibilityOf(priceBookNewLink));
     }
 
+    /**
+     * This method perform an action and create a new PriceFormPage.
+     * @return a new PriceFormPage.
+     */
     @Override
-    public PriceFormPage clickNewPriceBooks() {
-        driverTools.clickElement(priceBooksNewLink);
+    public PriceFormPage clickNewPriceBook() {
+        driverTools.clickElement(priceBookNewLink);
         return new PriceFormPageClassic();
     }
 }

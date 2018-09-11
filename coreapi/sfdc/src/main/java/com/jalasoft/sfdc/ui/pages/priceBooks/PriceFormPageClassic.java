@@ -1,26 +1,32 @@
-package com.jalasoft.sfdc.ui.pages.priceBooksFormPage;
-
+package com.jalasoft.sfdc.ui.pages.priceBooks;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class PriceFormPageLigth extends PriceFormPage {
-    @FindBy(xpath = "//input[@id='7:1554;a']")
+public class PriceFormPageClassic extends PriceFormPage {
+    //PageFactory of selenium.
+    @FindBy(xpath = "//input[@id='Name']")
     WebElement priceBooksNameText;
 
-    @FindBy(xpath = "//input[@id='43:1519;a']")
+    @FindBy(xpath = "//input[@id='Description']")
     WebElement priceBooksDescritionText;
 
-    @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")
+    @FindBy(xpath = "//td[@id='bottomButtonRow']//input[@title='Save']")
     WebElement clickSave;
 
+    /**
+     * This method perform an action of setting and create a new PriceBookDetails.
+     * @param priceBookName name.
+     * @param description text.
+     * @return a new PriceBookDetails.
+     */
     @Override
-    public PriceBooksDetails goToFillPriceBooks(String priceBookName, String description) {
+    public PriceBookDetails goToFillPriceBook(String priceBookName, String description) {
         driverTools.setInputField(priceBooksNameText, priceBookName);
         driverTools.setInputField(priceBooksDescritionText, description);
         driverTools.clickElement(clickSave);
-        return new PriceBooksDetailsLigth();
+        return new PriceBookDetailsClassic();
     }
 
     /**

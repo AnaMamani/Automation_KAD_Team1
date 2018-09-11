@@ -6,14 +6,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 
-public abstract class HomeBasePage extends BasePage {
+public abstract class ListBasePage extends BasePage {
     public TopMenu topMenu;
 
     @FindBy(id = "new")
     @CacheLookup
     WebElement newBtn;
 
-    public HomeBasePage() {
+    public ListBasePage() {
         this.topMenu = PageFactory.getTopMenu();
         waitUntilPageObjectIsLoaded();
     }

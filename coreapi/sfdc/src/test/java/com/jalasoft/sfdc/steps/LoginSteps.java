@@ -7,7 +7,6 @@ import com.jalasoft.sfdc.entities.User;
 import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
@@ -33,7 +32,6 @@ public class LoginSteps {
     //Pages
     private LoginPage loginPage;
     private HomePage homePage;
-    private ProfilePage profilePage;
 
     // Entities
     private User user;
@@ -101,10 +99,9 @@ public class LoginSteps {
         homePage = loginPage.login(username, password);
     }
 
-    @Then("^I should login successfully$")
-    public void verifyMainPageIsDisplayed() {
-        profilePage = homePage.topMenu.goToProfilePage();
-        assertTrue(profilePage.isUserNameDisplayed(), "User email displayed in Web");
+    @Then("^I should login successfully with a \"(.*?)\"$")
+    public void verifyMainPageIsDisplayed(String fullName) {
+        assertEquals(homePage.topMenu.getProfileName(), fullName,"full name the user is showed");
         //assertTrue(true, "User email displayed in Web");
     }
 
@@ -136,7 +133,7 @@ public class LoginSteps {
     }
 
     @Given("^I am logged on Salesforce with valid usr$")
-    public void iAmLoggedOnSalesforceWithValidUsr() throws Throwable {
+    public void iAmLoggedOnSalesforceWithValidUser() throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }

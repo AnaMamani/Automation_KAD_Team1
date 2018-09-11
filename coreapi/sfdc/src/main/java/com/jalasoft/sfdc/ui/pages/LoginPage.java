@@ -76,7 +76,11 @@ public class LoginPage extends BasePage {
         return clickLoginButton();
     }
 
+    /**
+     *  get the message error.
+     * @return messageError.
+     */
     public String unSuccefullLogin(){
-        return error.getText();
+        return error.getText().trim();
     }
 }

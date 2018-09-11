@@ -5,24 +5,30 @@ import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsClassic;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopMenuClassic extends TopMenu {
+    //PageFactory of selenium.
+    @FindBy(xpath = "//li[@id=\"AllTab_Tab\"]")
+    WebElement sliderBtn;
+
     @FindBy(xpath = "//span[@id='userNavLabel']")
     WebElement profileLink;
+
     @FindBy(xpath = "//a[@title='Logout']")
     WebElement logOutLink;
 
-    public TopMenuClassic() {
-        sliderBtnBy = By.xpath("//li[@id=\"AllTab_Tab\"]");
-    }
+    @FindBy(id = "userNavButton")
+    WebElement profileOption;
 
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(profileLink));
     }
 
     @Override
@@ -30,11 +36,13 @@ public class TopMenuClassic extends TopMenu {
 
     }
 
+    /**
+     * This method get the profile name the current user.
+     * @return  a new LoginPage.
+     */
     @Override
     public LoginPage logout() {
-        wait.until(ExpectedConditions.visibilityOf(profileLink));
         driverTools.clickElement(profileLink);
-        wait.until(ExpectedConditions.visibilityOf(logOutLink));
         driverTools.clickElement(logOutLink);
         return new LoginPage();
     }
@@ -44,8 +52,23 @@ public class TopMenuClassic extends TopMenu {
         return new HomePageClassic();
     }
 
+    /**
+     * This method get the profile name the current user.
+     *
+     * @return the profile name.
+     */
+    @Override
+    public String getProfileName() {
+        return profileOption.getText().trim();
+    }
+
+    /**
+     * This method do click and create the new page.
+     * @return a new AllAppsPage.
+     */
+    @Override
     public AllAppsPage goToAllAppsPage() {
-        driverTools.clickElement(sliderBtnBy);
+        driverTools.clickElement(sliderBtn);
         return new AllAppsClassic();
     }
 

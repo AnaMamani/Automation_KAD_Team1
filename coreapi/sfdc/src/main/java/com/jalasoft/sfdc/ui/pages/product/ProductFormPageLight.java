@@ -1,4 +1,4 @@
-package com.jalasoft.sfdc.ui.pages.productFormPage;
+package com.jalasoft.sfdc.ui.pages.product;
 
 public class ProductFormPageLight extends ProductFormPage {
 

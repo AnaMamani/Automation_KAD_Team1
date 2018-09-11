@@ -1,6 +1,6 @@
-package com.jalasoft.sfdc.ui.pages.priceBooksFormPage;
+package com.jalasoft.sfdc.ui.pages.priceBooks;
 
-public class PriceBooksDetailsLigth extends PriceBooksDetails {
+public class PriceBookDetailsClassic extends PriceBookDetails {
     /**
      * Waits until page object is loaded.
      */
