@@ -1,28 +1,34 @@
 package com.jalasoft.sfdc.ui.components;
 
+import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
-import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsClassic;
-import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
-import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
-import org.openqa.selenium.By;
+import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsClassic;
+import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopMenuClassic extends TopMenu {
+    //PageFactory of selenium.
+    @FindBy(xpath = "//li[@id=\"AllTab_Tab\"]")
+    WebElement sliderBtn;
 
+    @FindBy(xpath = "//span[@id='userNavLabel']")
+    WebElement profileLink;
 
+    @FindBy(xpath = "//a[@title='Logout']")
+    WebElement logOutLink;
 
-    public TopMenuClassic() {
+    @FindBy(id = "userNavButton")
+    WebElement profileOption;
 
-        allAppBtnBy = By.xpath("//img[contains(@title,'All Tabs')]");
-    }
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
-        //wait.until(ExpectedConditions.visibilityOf(sliderBtnClassic));
+        wait.until(ExpectedConditions.visibilityOf(profileLink));
     }
 
     @Override
@@ -30,24 +36,39 @@ public class TopMenuClassic extends TopMenu {
 
     }
 
+    /**
+     * This method get the profile name the current user.
+     * @return  a new LoginPage.
+     */
+    @Override
+    public LoginPage logout() {
+        driverTools.clickElement(profileLink);
+        driverTools.clickElement(logOutLink);
+        return new LoginPage();
+    }
+
     @Override
     public HomePage goToHomePage() {
         return new HomePageClassic();
     }
 
-    @Override
-    public ProfilePage goToProfilePage() {
-        driver.findElement(By.id("userNavButton")).click();
-        driver.findElement(By.linkText("My Profile")).click();
-        return new ProfilePageClassic();
-    }
     /**
-     * Method for go to All Apps age
-     * @return AllAppsPage
+     * This method get the profile name the current user.
+     *
+     * @return the profile name.
+     */
+    @Override
+    public String getProfileName() {
+        return profileOption.getText().trim();
+    }
+
+    /**
+     * This method do click and create the new page.
+     * @return a new AllAppsPage.
      */
     @Override
     public AllAppsPage goToAllAppsPage() {
-        driverTools.clickElement(allAppBtnBy);
+        driverTools.clickElement(sliderBtn);
         return new AllAppsClassic();
     }
 

@@ -4,9 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class ProductListPageLight extends ProductListPage {
+
+public class ProductListPageClassic extends ProductListPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//a[@title='New']")
+    @FindBy(xpath = "//input[@title=\"New\"]")
     WebElement productNewLink;
 
     /**
@@ -24,6 +25,7 @@ public class ProductListPageLight extends ProductListPage {
     @Override
     public ProductFormPage clickNewProduct() {
         driverTools.clickElement(productNewLink);
-        return new ProductFormPageLight();
+        return new ProductFormPageClassic();
     }
+
 }

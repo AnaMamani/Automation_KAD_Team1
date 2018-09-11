@@ -3,9 +3,7 @@ package com.jalasoft.sfdc.ui.components;
 import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import com.jalasoft.sfdc.ui.pages.AllAppsPage.AllAppsPage;
-import com.jalasoft.sfdc.ui.pages.profile.ProfilePage;
-import org.openqa.selenium.By;
+import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 
 /**
  * Top bar that contains the user name information, settings and logout options.
@@ -16,24 +14,25 @@ import org.openqa.selenium.By;
  */
 public abstract class TopMenu extends BasePage {
 
-    /**
-     * declared variable All App Page
-     */
-    By allAppBtnBy;
-
     public abstract void swithSkin();
 
-    public LoginPage logout() {
-        return new LoginPage();
-    }
+    /**
+     * This method get the profile name the current user.
+     * @return  a new LoginPage.
+     */
+    public abstract LoginPage logout();
 
     public abstract HomePage goToHomePage();
 
-    public abstract ProfilePage goToProfilePage();
+    /**
+     * This method get the profile name the current user.
+     * @return the profile name.
+     */
+    public abstract String getProfileName();
 
     /**
-     * Method for go to All App Page page
-     * @return AllAppPage
+     * This method do click and create the new page.
+     * @return a new AllAppsPage.
      */
     public abstract AllAppsPage goToAllAppsPage();
 
