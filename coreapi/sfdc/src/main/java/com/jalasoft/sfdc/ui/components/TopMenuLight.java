@@ -56,7 +56,7 @@ public class TopMenuLight extends TopMenu {
 
     /**
      * This method do click and create the new page.
-     * @return a new AllAppsPage.
+     * @return a new allAppsPage.
      */
     @Override
     public AllAppsPage goToAllAppsPage() {

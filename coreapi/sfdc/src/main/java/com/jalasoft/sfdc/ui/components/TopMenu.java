@@ -32,7 +32,7 @@ public abstract class TopMenu extends BasePage {
 
     /**
      * This method do click and create the new page.
-     * @return a new AllAppsPage.
+     * @return a new allAppsPage.
      */
     public abstract AllAppsPage goToAllAppsPage();
 
