@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 
 import java.net.MalformedURLException;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 /**
@@ -99,10 +100,10 @@ public class LoginSteps {
         homePage = loginPage.login(username, password);
     }
 
-    @Then("^I should login successfully$")
-    public void verifyMainPageIsDisplayed() {
+    @Then("^I should login successfully \"(.*?)\"$")
+    public void verifyMainPageIsDisplayed(String fullName) {
         profilePage = homePage.topMenu.goToProfilePage();
-        assertTrue(profilePage.isUserNameDisplayed(), "User email displayed in Web");
+        assertEquals(profilePage.getUserNameDisplayed(), fullName,"User full name displayed");
         //assertTrue(true, "User email displayed in Web");
     }
 
@@ -136,15 +137,15 @@ public class LoginSteps {
     }
 
     @Given("^I am logged on Salesforce with valid usr$")
-    public void iAmLoggedOnSalesforceWithValidUsr() throws Throwable {
+    public void iAmLoggedOnSalesforceWithValidUsr()  {
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
     }
 
-    @Then("^I should'nt login and show the \"([^\"]*)\"$")
-    public void iShouldNtLoginAndShowThe(String errorMessage) throws Throwable {
+    @Then("^I should not login and the \"([^\"]*)\" message should be displayed$")
+    public void iShouldNtLoginAndShowThe(String errorMessage) {
        assertTrue(loginPage.unSuccefullLogin(errorMessage));
         // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
     }
+
+
 }
