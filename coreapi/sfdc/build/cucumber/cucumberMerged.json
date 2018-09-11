@@ -1,0 +1,102 @@
+[
+  {
+    "line": 1,
+    "elements": [
+      {
+        "line": 3,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "result": {
+              "duration": 17165623800,
+              "status": "passed"
+            },
+            "line": 4,
+            "name": "I login as \"other role user\" User",
+            "match": {
+              "arguments": [
+                {
+                  "val": "other role user",
+                  "offset": 12
+                }
+              ],
+              "location": "LoginSteps.loginAsUser(String)"
+            },
+            "keyword": "Given "
+          }
+        ]
+      },
+      {
+        "line": 12,
+        "name": "Verify that is possible add a new product",
+        "description": "",
+        "id": "add-a-new-product;verify-that-is-possible-add-a-new-product;data-of-the-product;2",
+        "after": [
+          {
+            "result": {
+              "duration": 389200,
+              "status": "passed"
+            },
+            "match": {
+              "location": "ScenarioHooks.afterScenarioFailsTakeScreenshot(Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 22700,
+              "status": "passed"
+            },
+            "match": {
+              "location": "ScenarioHooks.afterScenarioFailsCloseDriver(Scenario)"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "result": {
+              "duration": 15423519000,
+              "status": "passed"
+            },
+            "line": 7,
+            "name": "I go to the Product page",
+            "match": {
+              "location": "productSteps.iGoToTheSliderIcon()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 2223797700,
+              "status": "passed"
+            },
+            "line": 8,
+            "name": "I add the new product \"Computers\"",
+            "match": {
+              "arguments": [
+                {
+                  "val": "Computers",
+                  "offset": 23
+                }
+              ],
+              "location": "productSteps.iAddTheNewProduct(String)"
+            },
+            "matchedColumns": [
+              0
+            ],
+            "keyword": "When "
+          }
+        ]
+      }
+    ],
+    "name": "Add a new product",
+    "description": "",
+    "id": "add-a-new-product",
+    "keyword": "Feature",
+    "uri": "features/product.feature"
+  }
+]

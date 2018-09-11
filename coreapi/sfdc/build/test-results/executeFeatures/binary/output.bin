@@ -1,0 +1,15 @@
+Feature: Add a new product
+
+d  Scenario Outline: Verify that is possible add a new product [90m# features/product.feature:6[0m
+4    [36mWhen [0m[36mI go to the Product page[0m
+B    [36mWhen [0m[36mI add the new product "<Product Name>"[0m
+
+"    Examples: data of the product
+!Initialize the page transporter
+
+R  Background:                               [90m# features/product.feature:3[0m
+~    [32mGiven [0m[32mI login as "[0m[32m[1mother role user[0m[32m" User[0m [90m# LoginSteps.loginAsUser(String)[0m
+
+e  Scenario Outline: Verify that is possible add a new product [90m# features/product.feature:12[0m
+}    [32mWhen [0m[32mI go to the Product page[0m                             [90m# productSteps.iGoToTheSliderIcon()[0m
+˜    [32mWhen [0m[32mI add the new product "[0m[32m[1mComputers[0m[32m"[0m                    [90m# productSteps.iAddTheNewProduct(String)[0m
