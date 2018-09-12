@@ -12,26 +12,26 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class TopMenuLight extends TopMenu {
     //PageFactory of selenium.
     @FindBy(xpath = "//img[@class=\"icon noicon\"]")
-    WebElement profileOption;
+    private WebElement profileOption;
 
     @FindBy(xpath = "//a[@class=\"profile-link-label\"]//parent::h1")
-    WebElement profileSelect;
+    private WebElement profileSelect;
 
     @FindBy(className = "slds-icon-waffle")
-    WebElement sliderBtn;
+    private WebElement allAppBtn;
 
     @FindBy(xpath = "//span[@class=\"uiImage\" and @xpath=\"1\"]")
-    WebElement profileLink;
+    private WebElement profileLink;
 
     @FindBy(xpath = "//a[@class='profile-link-label logout uiOutputURL']")
-    WebElement logOutLink;
+    private WebElement logOutLink;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(sliderBtn));
+        wait.until(ExpectedConditions.visibilityOf(allAppBtn));
     }
 
     @Override
@@ -60,7 +60,7 @@ public class TopMenuLight extends TopMenu {
      */
     @Override
     public AllAppsPage goToAllAppsPage() {
-        driverTools.clickElement(sliderBtn);
+        driverTools.clickElement(allAppBtn);
         driverTools.sleepMilliSeconds(1000);
         return new AllAppsPageLight();
     }

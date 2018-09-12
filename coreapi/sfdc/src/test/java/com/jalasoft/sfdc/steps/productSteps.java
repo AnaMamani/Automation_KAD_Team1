@@ -33,7 +33,7 @@ public class productSteps {
         productListPage = allAppsPage.clickProductLink();
     }
 
-    @And("^I create a Product with the following information:$")
+    @And("^I create a Product with the following information$")
     public void iCreateAProductWithTheFollowingInformation(List<Product> products) {
         this.product=products.get(0);
         productFormPage=productListPage.clickNewProduct();

@@ -15,22 +15,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AllAppsPageLight extends AllAppsPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "html/body/div[5]/div[2]/div[2]/div[2]/div/div[2]/div/div[3]/div/div[2]/ul/li[9]/a/span/span")
-    WebElement contactsLink;
+    @FindBy(xpath = "//span[contains(text(),'Contacts')]")
+    private WebElement contactsLink;
 
-    @FindBy(xpath = "//span[text()='Products' and @class]")
-    WebElement productLink;
+    @FindBy(xpath = "//span[contains(text(),'Products')]")
+    private WebElement productLink;
 
-    @FindBy(xpath = "//span[@class='label slds-truncate slds-text-link'][contains(text(),'Price Books')]")
-    WebElement priceBookLink;
+    @FindBy(xpath = "//span[contains(text(),'Price Books')]")
+    private WebElement priceBookLink;
     //this find element is to auxiliary for verify the menu the features.
     @FindBy(xpath = "//div[@title='Service']")
-    WebElement serviceLink;
+    private WebElement serviceLink;
 
-    @FindBy(xpath = "//span[@class='label slds-truncate slds-text-link'][contains(.,'Accounts')]" )
-            //".//span[contains(@class,'label slds-truncate slds-text-link')]" )
-            WebElement accountLink;
-
+    @FindBy(xpath = "//*[@class='label slds-truncate slds-text-link'][contains(text(),'Accounts')]" )
+    private WebElement accountLink;
 
     /**
      * Waits until page object is loaded.
@@ -38,12 +36,13 @@ public class AllAppsPageLight extends AllAppsPage {
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(serviceLink));
-        wait.until(ExpectedConditions.visibilityOf(accountLink));
-
     }
 
+
     /**
-     * @return
+     * Click ProductList Link.
+     *
+     * @return ProductListPage.
      */
     @Override
     public ProductListPage clickProductLink() {
@@ -52,13 +51,23 @@ public class AllAppsPageLight extends AllAppsPage {
         return new ProductListPageLight();
     }
 
+    /**
+     * Click ContactList Link.
+     *
+     * @return ContactListPage.
+     */
     @Override
     public ContactListPage clickContactLink() {
-        driverTools.scrollDown(5);
+        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(contactsLink);
         return new ContactListPageLight();
     }
 
+    /**
+     * Click Price Books Link.
+     *
+     * @return PriceBookListPage.
+     */
     @Override
     public PriceBookListPage clickPriceBookLink() {
         driverTools.scrollToBottomOfPage();
@@ -66,10 +75,14 @@ public class AllAppsPageLight extends AllAppsPage {
         return new PriceBookListPageLigth();
     }
 
-
+    /**
+     * click Account List PAge.
+     *
+     * @return AccountListPage.
+     */
     @Override
     public AccountListPage clickAccountsLink() {
-        driverTools.scrollDown(6);
+        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(accountLink);
         return  new AccountListPageLight();
     }
