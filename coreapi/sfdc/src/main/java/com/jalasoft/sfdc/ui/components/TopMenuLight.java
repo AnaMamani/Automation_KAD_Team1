@@ -11,16 +11,16 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopMenuLight extends TopMenu {
     //PageFactory of selenium.
-    @FindBy(xpath = "//img[@class=\"icon noicon\"]")
+    @FindBy(xpath = "//img[@class='icon noicon']")
     private WebElement profileOption;
 
-    @FindBy(xpath = "//a[@class=\"profile-link-label\"]//parent::h1")
+    @FindBy(xpath = "//a[@class='profile-link-label']//parent::h1")
     private WebElement profileSelect;
 
     @FindBy(className = "slds-icon-waffle")
     private WebElement allAppBtn;
 
-    @FindBy(xpath = "//span[@class=\"uiImage\" and @xpath=\"1\"]")
+    @FindBy(xpath = "//span[@class='uiImage' and @xpath='1']")
     private WebElement profileLink;
 
     @FindBy(xpath = "//a[@class='profile-link-label logout uiOutputURL']")
@@ -41,6 +41,7 @@ public class TopMenuLight extends TopMenu {
 
     @Override
     public HomePage goToHomePage() {
+        log.info("goToHomePage -----> return the new HomePageLight");
         return new HomePageLight();
     }
 
@@ -50,6 +51,7 @@ public class TopMenuLight extends TopMenu {
      */
     @Override
     public String getProfileName() {
+        log.info("getProfileName ----->"+profileSelect.getText().trim());
         driverTools.clickElement(profileOption);
         return profileSelect.getText().trim();
     }
@@ -60,6 +62,7 @@ public class TopMenuLight extends TopMenu {
      */
     @Override
     public AllAppsPage goToAllAppsPage() {
+        log.info("goToAllAppsPage ---> return new AllAppsPageLight");
         driverTools.clickElement(allAppBtn);
         driverTools.sleepMilliSeconds(1000);
         return new AllAppsPageLight();

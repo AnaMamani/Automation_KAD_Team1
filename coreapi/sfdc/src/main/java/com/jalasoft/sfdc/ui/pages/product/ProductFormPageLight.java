@@ -7,25 +7,25 @@ import org.openqa.selenium.support.FindBy;
 public class ProductFormPageLight extends ProductFormPage {
     //PageFactory of selenium.
     @FindBy(id = "7:3867;a")
-    WebElement productNameTxt;
+    private WebElement productNameTxt;
 
     @FindBy(id = "43:3867;a")
-    WebElement productCodeTxt;
+    private WebElement productCodeTxt;
 
     @FindBy(id = "109:3867;a")
-    WebElement productDescriptionTxt;
+    private WebElement productDescriptionTxt;
 
     @FindBy(id = "23:3867;a")
-    WebElement productActive;
+    private WebElement productActive;
 
     @FindBy(xpath = "//td[@id='bottomButtonRow']//input[@title='Save']")
-    WebElement clickBtnSave;
+    private WebElement clickBtnSave;
 
     @FindBy(xpath = "//span[contains(text(),'Save & New')]")
-    WebElement clickBtnSaveAndNew;
+    private WebElement clickBtnSaveAndNew;
 
     @FindBy(xpath = "//button[@title='Cancel']//span[contains(@class,'label bBody')][contains(text(),'Cancel')]")
-    WebElement clickBtnCancel;
+    private WebElement clickBtnCancel;
 
     /**
      * Waits until page object is loaded.
