@@ -1,6 +1,6 @@
 Feature: Create "Contact"
   Background:
-    Given I login as "admin user" User
+    Given I login as "other role user" User
 
   @createContact
   Scenario: Verify that is possible create a new contact

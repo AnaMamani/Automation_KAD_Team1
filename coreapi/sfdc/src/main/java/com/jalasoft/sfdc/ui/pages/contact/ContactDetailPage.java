@@ -15,6 +15,7 @@ public abstract class ContactDetailPage extends BasePage {
     }
 
     public abstract ContactDetailPage insertContact(Contact contact);
+
     public abstract  ContactDetailPage clickBtnSave();
 
 
