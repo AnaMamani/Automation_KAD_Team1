@@ -10,6 +10,8 @@ Scenario:
   |Account Name                 |Account Number  |Phone  |
   |ketty                        |123             |1234567|
 
+  Then validate the new Account created is displayed
+
 
 
 

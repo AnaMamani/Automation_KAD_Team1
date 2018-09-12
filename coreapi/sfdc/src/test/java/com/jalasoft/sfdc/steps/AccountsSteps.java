@@ -9,9 +9,12 @@ import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
 
 public class AccountsSteps {
     private HomePage homePage;
@@ -42,6 +45,10 @@ public class AccountsSteps {
         this.account = accounts.get(0);
         accountDetailPage= AccountFormPage.createAccount(account);
         //accountDetail=formAccount.clickSave();
-        throw new PendingException();
+    }
+
+    @Then("^validate the new Account created is displayed$")
+    public void validateTheNewAccountCreatedIsDisplayed() throws Throwable {
+        assertEquals(accountDetailPage.validateAccountNew(),account.getAccountName(),"Correcto");
     }
 }
