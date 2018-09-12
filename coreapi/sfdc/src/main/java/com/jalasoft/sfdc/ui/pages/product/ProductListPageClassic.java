@@ -1,14 +1,9 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class ProductListPageClassic extends ProductListPage {
-    //PageFactory of selenium.
-//    @FindBy(xpath = "//input[@title=\"New\"]")
-//    WebElement productNewLink;
 
     /**
      * Waits until page object is loaded.
@@ -24,6 +19,7 @@ public class ProductListPageClassic extends ProductListPage {
      */
     @Override
     public ProductFormPage clickNewProduct() {
+        log.info("clickNewProduct: ----> action");
         driverTools.clickElement(newBtn);
         return new ProductFormPageClassic();
     }

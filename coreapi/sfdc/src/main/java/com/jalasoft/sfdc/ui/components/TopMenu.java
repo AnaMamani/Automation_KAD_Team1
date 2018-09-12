@@ -4,6 +4,7 @@ import com.jalasoft.sfdc.ui.BasePage;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
+import org.apache.log4j.Logger;
 
 /**
  * Top bar that contains the user name information, settings and logout options.
@@ -13,6 +14,7 @@ import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
  * @since 7/3/2018.
  */
 public abstract class TopMenu extends BasePage {
+    protected Logger log = Logger.getLogger(getClass());
 
     public abstract void swithSkin();
 

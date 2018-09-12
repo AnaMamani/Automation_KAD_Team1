@@ -9,22 +9,25 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ProductFormPageClassic extends ProductFormPage {
     //PageFactory of selenium.
     @FindBy(id = "Name")
-    WebElement productNameTxt;
+    private WebElement productNameTxt;
 
-    @FindBy(id = "43:3867;a")
-    WebElement productCodeTxt;
+    @FindBy(id = "ProductCode")
+    private WebElement productCodeTxt;
 
-    @FindBy(id = "109:3867;a")
-    WebElement productDescriptionTxt;
+    @FindBy(id = "Description")
+    private WebElement productDescriptionTxt;
 
-    @FindBy(id = "bottomButtonRow")
-    WebElement clickBtnSave;
+    @FindBy(id = "IsActive")
+    private WebElement productChkActive;
 
-    @FindBy(xpath = "//span[contains(text(),'Save & New')]")
-    WebElement clickBtnSaveAndNew;
+    @FindBy(xpath = "//input[@name = \"save\"]")
+    private WebElement clickBtnSave;
 
-    @FindBy(xpath = "//button[@title='Cancel']//span[contains(@class,'label bBody')][contains(text(),'Cancel')]")
-    WebElement clickBtnCancel;
+    @FindBy(xpath = "//input[@title='Save & Add Price']")
+    private WebElement clickBtnSaveAndNew;
+
+    @FindBy(xpath = "//input[@title='Cancel']")
+    private WebElement clickBtnCancel;
 
     /**
      * Waits until page object is loaded.
@@ -41,10 +44,25 @@ public class ProductFormPageClassic extends ProductFormPage {
      */
     @Override
     public ProductDetailPage createProduct(Product product) {
+        log.info("createProduct : Enter");
         driverTools.setInputField(productNameTxt, product.getProductName());
         driverTools.setInputField(productCodeTxt, product.getProductCode());
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
+        checkProduct(productChkActive,product.getActive());
         driverTools.clickElement(clickBtnSave);
         return new ProductDetailPageClassic();
+    }
+
+    /**
+     * setting the field checkbox product.
+     * @param webElement is.
+     * @param active state of checkbox.
+     */
+    private void checkProduct(WebElement webElement, String active){
+        log.info("checkProduct : Enter   ---> "+active);
+        if (active.equalsIgnoreCase("True")){
+            log.debug("checkProduct :"+active);
+            driverTools.clickElement(webElement);
+        }
     }
 }

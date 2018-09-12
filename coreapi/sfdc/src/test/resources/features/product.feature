@@ -2,7 +2,7 @@ Feature: Create a "Product"
 
   Background:
     Given I navigate to Login page
-      And I login as "other role user" User
+      And I login as "admin user" User
 
   Scenario: Verify that is possible create a new Product
     When I go to the Product page

@@ -10,7 +10,7 @@ public class Product {
     private String productName;
     private String productCode;
     private String productDescription;
-    private boolean active;
+    private String active;
 
     /**
      * Gets the product name.
@@ -64,7 +64,7 @@ public class Product {
      * Gets the product is active.
      * @return if product is active.
      */
-    public boolean isActive() {
+    public String getActive() {
         return active;
     }
 
@@ -72,7 +72,7 @@ public class Product {
      * Sets the state product.
      * @param active or no active product.
      */
-    public void setActive(boolean active) {
+    public void setActive(String  active) {
         this.active = active;
     }
 }
