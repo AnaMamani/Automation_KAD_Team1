@@ -19,7 +19,7 @@ public class ProductDetailPageLight extends ProductDetailPage {
     @FindBy(id = "IsActive_chkbox")
     private WebElement productChkActive;
 
-    @FindBy(className = "pageDescription")
+    @FindBy(xpath = "//span[@class='uiOutputText']//parent::h1")
     private WebElement productNameCreatedTxt;
 
     /**

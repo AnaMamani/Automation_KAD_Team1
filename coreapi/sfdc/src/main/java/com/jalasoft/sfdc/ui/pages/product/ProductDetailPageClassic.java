@@ -1,7 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
 import com.jalasoft.sfdc.entities.Product;
-import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -62,6 +61,5 @@ public class ProductDetailPageClassic extends ProductDetailPage {
     private boolean checkBoxProduct(String chk) {
         log.info("checkBoxProduct: " + chk);
         return chk.equalsIgnoreCase("True");
-
     }
 }

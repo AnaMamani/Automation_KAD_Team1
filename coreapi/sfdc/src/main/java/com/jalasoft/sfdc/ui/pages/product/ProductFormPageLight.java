@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductFormPageLight extends ProductFormPage {
     //PageFactory of selenium.
-    @FindBy(id = "7:3867;a")
+    @FindBy(xpath = "//input[@aria-required='true']")
     private WebElement productNameTxt;
 
     @FindBy(id = "43:3867;a")
@@ -43,10 +43,24 @@ public class ProductFormPageLight extends ProductFormPage {
      */
     @Override
     public ProductDetailPage createProduct(Product product) {
+        log.info("createProduct : Enter");
         driverTools.setInputField(productNameTxt, product.getProductName());
         driverTools.setInputField(productCodeTxt, product.getProductCode());
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
+        checkProduct(productActive,product.getActive());
         driverTools.clickElement(clickBtnSave);
         return new ProductDetailPageLight();
+    }
+    /**
+     * setting the field checkbox product.
+     * @param webElement is.
+     * @param active state of checkbox.
+     */
+    private void checkProduct(WebElement webElement, String active){
+        log.info("checkProduct : Enter   ---> "+active);
+        if (active.equalsIgnoreCase("True")){
+            log.debug("checkProduct :"+active);
+            driverTools.clickElement(webElement);
+        }
     }
 }

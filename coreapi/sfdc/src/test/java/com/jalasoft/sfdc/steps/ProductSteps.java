@@ -21,7 +21,7 @@ import java.util.List;
 import static junit.framework.TestCase.assertTrue;
 import static org.testng.AssertJUnit.assertEquals;
 
-public class productSteps {
+public class ProductSteps {
 
     private HomePage homePage;
     private AllAppsPage allAppsPage;
