@@ -1,35 +1,50 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
 
+import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductFormPageClassic extends ProductFormPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//input[@id='Name']")
-    WebElement productNameText;
+    @FindBy(id = "Name")
+    WebElement productNameTxt;
 
-    @FindBy(xpath = "//td[@id='bottomButtonRow']//input[@title='Save']")
-    WebElement clickSave;
+    @FindBy(id = "43:3867;a")
+    WebElement productCodeTxt;
+
+    @FindBy(id = "109:3867;a")
+    WebElement productDescriptionTxt;
+
+    @FindBy(id = "bottomButtonRow")
+    WebElement clickBtnSave;
+
+    @FindBy(xpath = "//span[contains(text(),'Save & New')]")
+    WebElement clickBtnSaveAndNew;
+
+    @FindBy(xpath = "//button[@title='Cancel']//span[contains(@class,'label bBody')][contains(text(),'Cancel')]")
+    WebElement clickBtnCancel;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(productNameText));
+        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
     }
 
     /**
-     * This method perform an action of setting and create a new ProductDetailPage.
-     * @param productName
+     * setting and create a new ProductDetailPage.
+     * @param product all information.
      * @return a new ProductDetailPage.
      */
     @Override
-    public ProductDetailPage goToFillProduct(String productName) {
-        driverTools.setInputField(productNameText, productName);
-        driverTools.clickElement(clickSave);
+    public ProductDetailPage createProduct(Product product) {
+        driverTools.setInputField(productNameTxt, product.getProductName());
+        driverTools.setInputField(productCodeTxt, product.getProductCode());
+        driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
+        driverTools.clickElement(clickBtnSave);
         return new ProductDetailPageClassic();
     }
 }

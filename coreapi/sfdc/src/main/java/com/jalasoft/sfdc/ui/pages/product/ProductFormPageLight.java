@@ -1,12 +1,31 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
+import com.jalasoft.sfdc.entities.Product;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 public class ProductFormPageLight extends ProductFormPage {
+    //PageFactory of selenium.
+    @FindBy(id = "7:3867;a")
+    WebElement productNameTxt;
 
+    @FindBy(id = "43:3867;a")
+    WebElement productCodeTxt;
 
-    @Override
-    public ProductDetailPage goToFillProduct(String productName) {
-        return null;
-    }
+    @FindBy(id = "109:3867;a")
+    WebElement productDescriptionTxt;
+
+    @FindBy(id = "23:3867;a")
+    WebElement productActive;
+
+    @FindBy(xpath = "//td[@id='bottomButtonRow']//input[@title='Save']")
+    WebElement clickBtnSave;
+
+    @FindBy(xpath = "//span[contains(text(),'Save & New')]")
+    WebElement clickBtnSaveAndNew;
+
+    @FindBy(xpath = "//button[@title='Cancel']//span[contains(@class,'label bBody')][contains(text(),'Cancel')]")
+    WebElement clickBtnCancel;
 
     /**
      * Waits until page object is loaded.
@@ -14,5 +33,20 @@ public class ProductFormPageLight extends ProductFormPage {
     @Override
     public void waitUntilPageObjectIsLoaded() {
 
+    }
+
+    /**
+     * setting and create a new ProductDetailPage.
+     *
+     * @param product all information.
+     * @return a new ProductDetailPage.
+     */
+    @Override
+    public ProductDetailPage createProduct(Product product) {
+        driverTools.setInputField(productNameTxt, product.getProductName());
+        driverTools.setInputField(productCodeTxt, product.getProductCode());
+        driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
+        driverTools.clickElement(clickBtnSave);
+        return new ProductDetailPageLight();
     }
 }
