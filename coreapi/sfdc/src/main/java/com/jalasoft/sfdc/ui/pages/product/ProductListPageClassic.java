@@ -7,15 +7,15 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductListPageClassic extends ProductListPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//input[@title=\"New\"]")
-    WebElement productNewLink;
+//    @FindBy(xpath = "//input[@title=\"New\"]")
+//    WebElement productNewLink;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(productNewLink));
+        wait.until(ExpectedConditions.visibilityOf(newBtn));
     }
 
     /**
@@ -24,7 +24,7 @@ public class ProductListPageClassic extends ProductListPage {
      */
     @Override
     public ProductFormPage clickNewProduct() {
-        driverTools.clickElement(productNewLink);
+        driverTools.clickElement(newBtn);
         return new ProductFormPageClassic();
     }
 

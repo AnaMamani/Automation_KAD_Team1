@@ -11,14 +11,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class TopMenuClassic extends TopMenu {
     //PageFactory of selenium.
-    @FindBy(xpath = "//li[@id=\"AllTab_Tab\"]")
-    WebElement sliderBtn;
+    @FindBy(id = "AllTab_Tab")
+    private WebElement allAppBtn;
 
-    @FindBy(xpath = "//span[@id='userNavLabel']")
-    WebElement profileLink;
+    @FindBy(id = "userNavLabel")
+    private WebElement profileLink;
 
     @FindBy(xpath = "//a[@title='Logout']")
-    WebElement logOutLink;
+    private WebElement logOutLink;
 
     @FindBy(id = "userNavButton")
     WebElement profileOption;
@@ -68,7 +68,7 @@ public class TopMenuClassic extends TopMenu {
      */
     @Override
     public AllAppsPage goToAllAppsPage() {
-        driverTools.clickElement(sliderBtn);
+        driverTools.clickElement(allAppBtn);
         return new AllAppsClassic();
     }
 

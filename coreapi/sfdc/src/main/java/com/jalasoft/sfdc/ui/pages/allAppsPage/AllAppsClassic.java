@@ -14,20 +14,20 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AllAppsClassic extends AllAppsPage {
     //PageFactory of selenium.
-    @FindBy(xpath = ".//*[@id='bodyCell']/div[3]/div[2]/table/tbody/tr[9]/td[1]/a/img")
-    WebElement contactsLink;
+    @FindBy(xpath = "//img[@title='Contacts']")
+    private WebElement contactsLink;
 
-    @FindBy(xpath = "//a[@class=\"listRelatedObject productBlock title\"]")
-    WebElement productLink;
+    @FindBy(xpath = "//img[@title='Products']")
+    private WebElement productLink;
 
     @FindBy(id = "tryLexDialogX")
-    WebElement dialogClose;
-    //
-    @FindBy(xpath = "//a[@class='listRelatedObject pricebook2Block title']")
-    WebElement priceBooksLink;
+    private WebElement dialogClose;
 
-    @FindBy (xpath = "//a[contains(@class,'listRelatedObject accountBlock title')]" )
-    WebElement accountLink;
+    @FindBy(xpath = "//img[@title='Price Books']")
+    private WebElement priceBooksLink;
+
+    @FindBy (xpath = "//img[@title='Accounts']" )
+    private WebElement accountLink;
 
 
     /**
@@ -38,6 +38,12 @@ public class AllAppsClassic extends AllAppsPage {
         wait.until(ExpectedConditions.visibilityOf(productLink));
     }
 
+
+    /**
+     * Click ProductList Link.
+     *
+     * @return ProductListPage.
+     */
     @Override
     public ProductListPage clickProductLink() {
         driverTools.clickElement(productLink);
@@ -45,14 +51,23 @@ public class AllAppsClassic extends AllAppsPage {
         return new ProductListPageClassic();
     }
 
+    /**
+     * Click ContactList Link.
+     *
+     * @return ContactListPage.
+     */
     @Override
     public ContactListPage clickContactLink() {
-
         driverTools.clickElement(contactsLink);
         driverTools.clickElement(dialogClose);// for the close the window popup.
         return new ContactListPageClassic();
     }
 
+    /**
+     * Click Price Books Link.
+     *
+     * @return PriceBookListPage.
+     */
     @Override
     public PriceBookListPage clickPriceBookLink() {
         driverTools.clickElement(priceBooksLink);
@@ -60,6 +75,11 @@ public class AllAppsClassic extends AllAppsPage {
         return new PriceBookListPageClassic();
     }
 
+    /**
+     * click Account List PAge.
+     *
+     * @return AccountListPage.
+     */
     @Override
     public AccountListPage clickAccountsLink() {
         driverTools.clickElement(accountLink);
