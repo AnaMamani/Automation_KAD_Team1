@@ -9,9 +9,9 @@ import org.openqa.selenium.support.FindBy;
 public abstract class ListBasePage extends BasePage {
     public TopMenu topMenu;
 
-    @FindBy(id = "new")
+    @FindBy(xpath = " //*[@title='New']")
     @CacheLookup
-    WebElement newBtn;
+    protected WebElement newBtn;
 
     public ListBasePage() {
         this.topMenu = PageFactory.getTopMenu();

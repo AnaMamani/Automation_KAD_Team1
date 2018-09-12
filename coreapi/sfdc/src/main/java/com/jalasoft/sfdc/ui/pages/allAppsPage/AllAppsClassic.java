@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.allAppsPage;
 
+import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
@@ -23,6 +25,13 @@ public class AllAppsClassic extends AllAppsPage {
     //
     @FindBy(xpath = "//a[@class='listRelatedObject pricebook2Block title']")
     WebElement priceBooksLink;
+
+    @FindBy (xpath = "//a[contains(@class,'listRelatedObject accountBlock title')]" )
+    //".//*[@id='bodyCell']/div[3]/div[2]/table/tbody/tr[1]/td[1]/a")
+            WebElement accountClick;
+
+    @FindBy (xpath = "//*[@id='tryLexDialogX']")
+    WebElement closePublicity;
 
     /**
      * Waits until page object is loaded.
@@ -50,5 +59,12 @@ public class AllAppsClassic extends AllAppsPage {
         driverTools.clickElement(priceBooksLink);
         driverTools.clickElement(closeLink);// for the close the window popup.
         return new PriceBookListPageClassic();
+    }
+
+    @Override
+    public AccountListPage clickAccountsLink() {
+        driverTools.clickElement(accountClick);
+        driverTools.clickElement(closePublicity);
+        return new AccountListPageClassic();
     }
 }
