@@ -9,8 +9,8 @@ import org.openqa.selenium.support.FindBy;
 public abstract class ListBasePage extends BasePage {
     public TopMenu topMenu;
 
-    @FindBy(xpath = " //*[@title='New']")
-    @CacheLookup
+    @FindBy(xpath = "//*[@title='New']")
+
     protected WebElement newBtn;
 
     public ListBasePage() {

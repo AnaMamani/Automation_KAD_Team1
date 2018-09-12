@@ -20,8 +20,8 @@ public class AllAppsClassic extends AllAppsPage {
     @FindBy(xpath = "//a[@class=\"listRelatedObject productBlock title\"]")
     WebElement productLink;
 
-    @FindBy(xpath = "//*[@id=\"tryLexDialogX\"]")
-    WebElement closeLink;
+    @FindBy(id = "tryLexDialogX")
+    WebElement dialogClose;
     //
     @FindBy(xpath = "//a[@class='listRelatedObject pricebook2Block title']")
     WebElement priceBooksLink;
@@ -29,9 +29,6 @@ public class AllAppsClassic extends AllAppsPage {
     @FindBy (xpath = "//a[contains(@class,'listRelatedObject accountBlock title')]" )
     //".//*[@id='bodyCell']/div[3]/div[2]/table/tbody/tr[1]/td[1]/a")
             WebElement accountClick;
-
-    @FindBy (xpath = "//*[@id='tryLexDialogX']")
-    WebElement closePublicity;
 
     /**
      * Waits until page object is loaded.
@@ -44,20 +41,22 @@ public class AllAppsClassic extends AllAppsPage {
     @Override
     public ProductListPage clickProductLink() {
         driverTools.clickElement(productLink);
-        driverTools.clickElement(closeLink);// for the close the window popup.
+        driverTools.clickElement(dialogClose);// for the close the window popup.
         return new ProductListPageClassic();
     }
 
     @Override
     public ContactListPage clickContactLink() {
+
         driverTools.clickElement(contactsLink);
+        driverTools.clickElement(dialogClose);// for the close the window popup.
         return new ContactListPageClassic();
     }
 
     @Override
     public PriceBookListPage clickPriceBookLink() {
         driverTools.clickElement(priceBooksLink);
-        driverTools.clickElement(closeLink);// for the close the window popup.
+        driverTools.clickElement(dialogClose);// for the close the window popup.
         return new PriceBookListPageClassic();
     }
 
