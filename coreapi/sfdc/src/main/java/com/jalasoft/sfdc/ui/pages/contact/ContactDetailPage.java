@@ -14,9 +14,10 @@ public abstract class ContactDetailPage extends BasePage {
 
     }
 
-    public abstract ContactDetailPage insertContact(Contact contact);
 
-    public abstract  ContactDetailPage clickBtnSave();
-
-
+    /**
+     * For show create contact in ContactDetail.
+     * @return String.
+     */
+    public abstract String isSuccessDisplayedContactDetail();
 }

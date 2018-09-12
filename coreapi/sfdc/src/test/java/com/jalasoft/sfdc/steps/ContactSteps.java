@@ -6,10 +6,16 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactFormPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
+
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 /**
  * Contact steps class.
  *
@@ -50,4 +56,14 @@ public class ContactSteps {
         contactDetailPage = contactFormPage.createContact(contact);
     }
 
+    /**
+     * Verify crate data in Detail Contact.
+     */
+    @Then("^Contact was created should be displayed in ContactDetailPage$")
+    public void contactWasCreatedShouldBeDisplayedInContactDetailPage()  {
+        System.out.println(contact.getFirstName().concat(" ").concat(contact.getLastName())+ "***********************************");
+        assertEquals(contactDetailPage.isSuccessDisplayedContactDetail(),contact.getFirstName().concat(" ").concat(contact.getLastName()));
+
+
+    }
 }
