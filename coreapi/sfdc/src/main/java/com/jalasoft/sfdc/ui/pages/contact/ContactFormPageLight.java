@@ -52,7 +52,6 @@ public class ContactFormPageLight extends ContactFormPage {
         driverTools.setInputField(firtsNameTxt, contact.getFirstName());
         driverTools.setInputField(lastNameTxt, contact.getLastName());
         driverTools.setInputField(phoneTxt, contact.getPhone());
-        driverTools.scrollDown(5);
         driverTools.setInputField(titleTxt, contact.getTitle());
         driverTools.setInputField(emailTxt, contact.getEmail());
         driverTools.setInputField(streetTxt, contact.getStreet());
