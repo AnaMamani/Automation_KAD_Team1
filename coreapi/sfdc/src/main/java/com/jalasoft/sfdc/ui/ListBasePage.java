@@ -10,7 +10,7 @@ public abstract class ListBasePage extends BasePage {
     public TopMenu topMenu;
 
     @FindBy(xpath = "//*[@title='New']")
-    @CacheLookup
+
     protected WebElement newBtn;
 
     public ListBasePage() {

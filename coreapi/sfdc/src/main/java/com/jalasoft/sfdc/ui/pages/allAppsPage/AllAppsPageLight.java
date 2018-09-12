@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.allAppsPage;
 
+import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
@@ -24,7 +26,9 @@ public class AllAppsPageLight extends AllAppsPage {
     //this find element is to auxiliary for verify the menu the features.
     @FindBy(xpath = "//div[@title='Service']")
     WebElement serviceLink;
-
+    @FindBy(xpath = ".//span[contains(@class,'label slds-truncate slds-text-link')]" )
+    //*[@id='brandBand_1']/div/div[1]/div/div/div/div[1]/div[1]/div[2]/ul/li[1]/a/div")
+            WebElement accountLick;
     /**
      * Waits until page object is loaded.
      */
@@ -55,5 +59,12 @@ public class AllAppsPageLight extends AllAppsPage {
         driverTools.scrollToBottomOfPage();
         driverTools.clickElement(priceBookLink);
         return new PriceBookListPageLigth();
+    }
+
+    @Override
+    public AccountListPage clickAccountsLink() {
+        driverTools.scrollDown(10);
+        driverTools.clickElement(accountLick);
+        return  new AccountListPageLight();
     }
 }
