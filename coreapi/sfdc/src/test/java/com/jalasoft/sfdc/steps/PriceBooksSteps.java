@@ -7,7 +7,7 @@ import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceFormPage;
 import cucumber.api.java.en.When;
 
-public class priceBooksSteps {
+public class PriceBooksSteps {
     private HomePage homePage;
     private AllAppsPage allAppsPage;
     private PriceBookListPage priceBookListPage;

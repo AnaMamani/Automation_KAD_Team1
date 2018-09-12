@@ -18,7 +18,7 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//span[contains(text(),'Contacts')]")
     private WebElement contactsLink;
 
-    @FindBy(xpath = "//span[contains(text(),'Products')]")
+    @FindBy(xpath = "//a[@title='Products']")
     private WebElement productLink;
 
     @FindBy(xpath = "//span[contains(text(),'Price Books')]")
