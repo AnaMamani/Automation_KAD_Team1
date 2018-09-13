@@ -20,4 +20,10 @@ public abstract class ContactDetailPage extends BasePage {
      * @return String.
      */
     public abstract String isSuccessDisplayedContactDetail();
+
+    /**
+     * For show create contact in ContactFormPage.
+     * @return ContactFormPage.
+     */
+    public abstract ContactFormPage clickBtnEditContact();
 }

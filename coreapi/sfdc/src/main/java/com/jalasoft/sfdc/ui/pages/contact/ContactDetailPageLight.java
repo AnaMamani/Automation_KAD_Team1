@@ -25,4 +25,14 @@ public class ContactDetailPageLight extends ContactDetailPage {
         System.out.print(contactCreated.getText()+ "#####################################################");
         return contactCreated.getText().trim();
     }
+
+    /**
+     * For show create contact in ContactFormPage.
+     *
+     * @return ContactFormPage.
+     */
+    @Override
+    public ContactFormPage clickBtnEditContact() {
+        return null;
+    }
 }

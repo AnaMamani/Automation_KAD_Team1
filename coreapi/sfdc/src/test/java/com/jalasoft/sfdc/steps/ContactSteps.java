@@ -8,6 +8,7 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -64,6 +65,14 @@ public class ContactSteps {
         System.out.println(contact.getFirstName().concat(" ").concat(contact.getLastName())+ "***********************************");
         assertEquals(contactDetailPage.isSuccessDisplayedContactDetail(),contact.getFirstName().concat(" ").concat(contact.getLastName()));
 
+
+    }
+
+    @Given("^I have an Contat with the following information$")
+    public void iHaveAnContatEditFollowingInformation(List<Contact> contactList)   {
+        this.contact = contactList.get(0);
+        contactFormPage =contactDetailPage.clickBtnEditContact();
+        contactFormPage.editContac(this.contact);
 
     }
 }

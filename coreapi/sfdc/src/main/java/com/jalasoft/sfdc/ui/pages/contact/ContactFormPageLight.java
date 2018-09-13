@@ -60,6 +60,13 @@ public class ContactFormPageLight extends ContactFormPage {
         driverTools.setInputField(countryTxt, contact.getCountry());
         return clickContactBtnSave();
     }
+
+    @Override
+    public ContactDetailPage editContac(Contact contact) {
+        return null;
+    }
+
+
     /**
      * Method for save the information.
      * @return ContactDetailPageLight.

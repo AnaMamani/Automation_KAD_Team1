@@ -17,6 +17,9 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     @FindBy(xpath = "//*[@class='topName']")
     private WebElement contactCreated;
 
+    @FindBy(xpath = "//*[@title='Edit']")
+    private WebElement clickBtnEdit;
+
     /**
      * For show create contact in ContactDetail.
      *
@@ -26,5 +29,17 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     public String isSuccessDisplayedContactDetail() {
         System.out.print(contactCreated.getText()+ "#####################################################");
         return contactCreated.getText().trim();
+    }
+
+    /**
+     * For show create contact in ContactFormPage.
+     *
+     * @return ContactFormPage.
+     */
+    @Override
+    public ContactFormPage clickBtnEditContact() {
+        driverTools.clickElement(clickBtnEdit);
+        System.out.print("munos***************************************************");
+        return new ContactFormPageClassic();
     }
 }

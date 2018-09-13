@@ -19,5 +19,5 @@ public abstract class ContactFormPage extends BasePage {
      * @return ContactDetailPage.
      */
     public abstract ContactDetailPage createContact(Contact contact);
-
+    public abstract ContactDetailPage editContac(Contact contact);
 }

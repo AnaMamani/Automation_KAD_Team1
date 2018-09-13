@@ -45,6 +45,9 @@ public class ContactFormPageClassic extends ContactFormPage {
     @FindBy(name = "save")
     private WebElement clickBtnSave;
 
+    @FindBy(name = "//td[@id='topButtonRow']//input[contains(@title,'Edit')]")
+    private WebElement clickBtnEdit;
+
     /**
      * Create contact.
      * @param contact of into.
@@ -63,6 +66,12 @@ public class ContactFormPageClassic extends ContactFormPage {
         driverTools.setInputField(countryTxt, contact.getCountry());
         return  clickContactBtnSave();
     }
+
+    @Override
+    public ContactDetailPage editContac(Contact contact) {
+        return createContact(contact);
+    }
+
 
     /**
      * Save the information.
