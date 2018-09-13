@@ -12,34 +12,34 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ContactFormPageLight extends ContactFormPage {
     @FindBy(xpath = "//span[text()='First Name']/parent::label/following-sibling::input")
-    WebElement firtsNameTxt;
+    private WebElement firtsNameTxt;
 
     @FindBy(xpath = "//span[text()='Last Name']/parent::label/following-sibling::input")
-    WebElement lastNameTxt;
+    private WebElement lastNameTxt;
 
-    @FindBy(xpath = "//span[text()=\"Title\"]/parent::label/following-sibling::input")
-    WebElement titleTxt;
+    @FindBy(xpath = "//span[text()='Title']/parent::label/following-sibling::input")
+    private WebElement titleTxt;
 
-    @FindBy(xpath = "//span[text()=\"Email\"]/parent::label/following-sibling::input")
-    WebElement emailTxt;
+    @FindBy(xpath = "//span[text()='Email']/parent::label/following-sibling::input")
+    private WebElement emailTxt;
 
-    @FindBy(xpath = "//span[text()=\"Phone\"]/parent::label/following-sibling::input")
-    WebElement phoneTxt;
+    @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
+    private WebElement phoneTxt;
 
-    @FindBy(xpath = "//span[text()=\"Other Street\"]/parent::label/following-sibling::TextArea")
-    WebElement streetTxt;
+    @FindBy(xpath = "//span[text()='Other Street']/parent::label/following-sibling::TextArea")
+    private WebElement streetTxt;
 
-    @FindBy(xpath = "//span[text()=\"Other City\"]/parent::label/following-sibling::input")
-    WebElement cityTxt;
+    @FindBy(xpath = "//span[text()='Other City']/parent::label/following-sibling::input")
+    private WebElement cityTxt;
 
-    @FindBy(xpath = "//span[text()=\"Other State/Province\"]/parent::label/following-sibling::input")
-    WebElement stateTxt;
+    @FindBy(xpath = "//span[text()='Other State/Province']/parent::label/following-sibling::input")
+    private WebElement stateTxt;
 
-    @FindBy(xpath = "//span[text()=\"Other Country\"]/parent::label/following-sibling::input")
-    WebElement countryTxt;
+    @FindBy(xpath = "//span[text()='Other Country']/parent::label/following-sibling::input")
+    private WebElement countryTxt;
 
     @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")
-    WebElement clickBtnSave;
+    private WebElement clickBtnSave;
 
 
     /**
