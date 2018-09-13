@@ -46,6 +46,7 @@ public class AllAppsClassic extends AllAppsPage {
      */
     @Override
     public ProductListPage clickProductLink() {
+        log.info("clickProductLink ----> return the new ProductListPageClassic");
         driverTools.clickElement(productLink);
         driverTools.clickElement(dialogClose);// for the close the window popup.
         return new ProductListPageClassic();

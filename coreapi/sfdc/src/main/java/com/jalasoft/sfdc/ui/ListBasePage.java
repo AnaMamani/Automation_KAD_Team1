@@ -14,6 +14,7 @@ public abstract class ListBasePage extends BasePage {
     protected WebElement newBtn;
 
     public ListBasePage() {
+        log.info("topMenu is create -------->");
         this.topMenu = PageFactory.getTopMenu();
         waitUntilPageObjectIsLoaded();
     }

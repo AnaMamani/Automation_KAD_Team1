@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductDetailPageClassic extends ProductDetailPage {
     //PageFactory of selenium.
-    @FindBy(id = "'Name_ileinner")
+    @FindBy(id = "Name_ileinner")
     private WebElement productNameTxt;
 
     @FindBy(id = "ProductCode_ileinner")
@@ -21,6 +21,10 @@ public class ProductDetailPageClassic extends ProductDetailPage {
 
     @FindBy(className = "pageDescription")
     private WebElement productNameCreatedTxt;
+
+    @FindBy(className = "//*[@title='Edit']")
+    private WebElement editBtn;
+
 
     /**
      * Waits until page object is loaded.
@@ -37,11 +41,10 @@ public class ProductDetailPageClassic extends ProductDetailPage {
      */
     @Override
     public boolean isSuccessCreateProduct(Product product) {
-        log.info("isSuccessCreateProduct: Enter");
+        log.info("isSuccessCreateProduct: Enter  "+ productChkActive.isSelected());
         return product.getProductName().equals(productNameTxt.getText()) &&
                 product.getProductCode().equals(productCodeTxt.getText()) &&
-                product.getProductDescription().equals(productDescriptionTxt.getText()) &&
-                checkBoxProduct(product.getActive()) == productChkActive.isSelected();
+                product.getProductDescription().equals(productDescriptionTxt.getText());
 
     }
 
@@ -49,9 +52,21 @@ public class ProductDetailPageClassic extends ProductDetailPage {
      * @return the product name created.
      */
     @Override
-    public String getProductCreated() {
-        log.info("getProductCreated: " + productNameCreatedTxt.getText());
-        return productNameCreatedTxt.getText();
+    public String getProductNameCreated() {
+        log.info("getProductNameCreated: " + productNameCreatedTxt.getText());
+        return productNameCreatedTxt.getText().trim();
+    }
+
+    /**
+     * select the product to edit.
+     *
+     * @return ProductFormPage.
+     */
+    @Override
+    public ProductFormPage selectProductToEdit() {
+        log.info("selectProductToEdit: return ProductFormPageClassic");
+        driverTools.clickElement(editBtn);
+        return new ProductFormPageClassic();
     }
 
     /**

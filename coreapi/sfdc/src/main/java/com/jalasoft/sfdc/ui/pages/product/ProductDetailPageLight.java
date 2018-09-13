@@ -19,15 +19,18 @@ public class ProductDetailPageLight extends ProductDetailPage {
     @FindBy(id = "IsActive_chkbox")
     private WebElement productChkActive;
 
-    @FindBy(xpath = "//span[@data-aura-rendered-by=\"2358:0\"]")
+    @FindBy(xpath = "//div[@class='slds-media__body' ]//parent::span")
     private WebElement productNameCreatedTxt;
+
+    @FindBy(className = "//*[@title='Edit']")
+    private WebElement editBtn;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
+        wait.until(ExpectedConditions.visibilityOf(productNameCreatedTxt));
     }
 
     /**
@@ -49,11 +52,21 @@ public class ProductDetailPageLight extends ProductDetailPage {
      * @return the product name created.
      */
     @Override
-    public String getProductCreated() {
-        log.info("getProductCreated ---> the product name is :"+productNameCreatedTxt.getText());
-        return productNameCreatedTxt.getText();
+    public String getProductNameCreated() {
+        log.info("getProductNameCreated ---> the product name is :"+productNameCreatedTxt.getText());
+        return productNameCreatedTxt.getText().trim();
     }
-
+    /**
+     * select the product to edit.
+     *
+     * @return ProductFormPage.
+     */
+    @Override
+    public ProductFormPage selectProductToEdit() {
+        log.info("selectProductToEdit: return ProductFormPageLight");
+        driverTools.clickElement(editBtn);
+        return new ProductFormPageLight();
+    }
     /**
      * @param chk
      * @return

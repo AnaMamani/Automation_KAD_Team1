@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AllAppsPage extends BasePage {
 

@@ -11,6 +11,7 @@ import com.jalasoft.sfdc.ui.pages.product.ProductListPageLight;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class AllAppsPageLight extends AllAppsPage {
@@ -34,11 +35,13 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//*[@class=\"slds-input input\"]")
     private WebElement productSearchTxt;
 
+
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+        log.info("waitUntilPageObjectIsLoaded ----> wait for productSearchTxt");
         wait.until(ExpectedConditions.visibilityOf(productSearchTxt));
     }
 
@@ -50,6 +53,7 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ProductListPage clickProductLink() {
+        log.info("clickProductLink ----> return the new ProductListPageLight");
         driverTools.clickElement(productLink);
         return new ProductListPageLight();
     }
