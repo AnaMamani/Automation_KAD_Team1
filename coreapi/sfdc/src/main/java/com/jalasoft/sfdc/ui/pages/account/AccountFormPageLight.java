@@ -21,8 +21,30 @@ public class AccountFormPageLight extends AccountFormPage {
    private WebElement parentL;
     @FindBy(xpath = "//input[contains(@data-interactive-lib-uid,'10')]" )
     WebElement accountNumberTxt;
-   private  @FindBy(xpath = "//input[@data-interactive-lib-uid='7']" )
+   private  @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input" )
     WebElement phoneTxt;
+
+    @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
+    WebElement faxTxt;
+
+//    @FindBy(id="acc6")
+//    WebElement typeTxt;
+
+    @FindBy (xpath="//span[text()='Billing City']/parent::label/following-sibling::input")
+    WebElement billingCityTxt;
+
+    @FindBy(xpath="//span[text()='Billing State/Province']/parent::label/following-sibling::input")
+    WebElement billingStateTxt;
+
+    @FindBy(xpath="//span[text()='Billing Country']/parent::label/following-sibling::input")
+    WebElement billingCountryTxt;
+
+//    @FindBy(xpath="00N0b000007FED5")
+//    private  WebElement customerPriorityTxt;
+
+    @FindBy(xpath="//span[text()='Number of Locations']/parent::label/following-sibling::input")
+    private  WebElement numberLocationTxt;
+
     @FindBy (xpath = "//button[@class='slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton']")
     private WebElement clickBtnSave;
 
@@ -31,11 +53,14 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.setInputField(accountNameTxt,account.getAccountName());
         driverTools.setInputField(accountNumberTxt,account.getAccountNumber());
         driverTools.setInputField(phoneTxt,account.getPhone());
+        driverTools.setInputField(faxTxt,account.getFax());
+        // driverTools.selectListBoxByValue(typeTxt,account.getType());
+        driverTools.setInputField(billingCityTxt,account.getBillingCity());
+        driverTools.setInputField(billingStateTxt,account.getBillingState());
+        driverTools.setInputField(billingCountryTxt,account.getBillingCountry());
+        //driverTools.selectListBoxByValue(customerPriorityTxt,account.getCustomerPriority());
+        driverTools.setInputField(numberLocationTxt,account.getNumberOfLocation());
 
-//            String accountName, String accountNumber, String phone) {
-//        setAccountName(accountName);
-//        setAccountNumber(accountNumber);
-//        setPhone(phone);
         return clickNewButtonLight();
 
     }
