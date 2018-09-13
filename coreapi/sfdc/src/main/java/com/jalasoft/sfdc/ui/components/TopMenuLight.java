@@ -64,7 +64,6 @@ public class TopMenuLight extends TopMenu {
     public AllAppsPage goToAllAppsPage() {
         log.info("goToAllAppsPage ---> return new AllAppsPageLight");
         driverTools.clickElement(allAppBtn);
-        driverTools.sleepMilliSeconds(1000);
         return new AllAppsPageLight();
     }
 
