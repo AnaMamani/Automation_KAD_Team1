@@ -18,24 +18,28 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//span[contains(text(),'Contacts')]")
     private WebElement contactsLink;
 
-    @FindBy(xpath = "//a[@title='Products']")
+    @FindBy(xpath = "//span[text()='Products' and @class]")
     private WebElement productLink;
+
+    @FindBy(xpath = "//*[contains(text(),'Contacts')]")
+    private WebElement selectProductLink;
 
     @FindBy(xpath = "//span[contains(text(),'Price Books')]")
     private WebElement priceBookLink;
-    //this find element is to auxiliary for verify the menu the features.
-    @FindBy(xpath = "//div[@title='Service']")
-    private WebElement serviceLink;
 
     @FindBy(xpath = "//*[@class='label slds-truncate slds-text-link'][contains(text(),'Accounts')]" )
     private WebElement accountLink;
+
+    //this find element is to auxiliary for verify the menu the features.
+    @FindBy(xpath = "//*[@class=\"slds-input input\"]")
+    private WebElement productSearchTxt;
 
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(serviceLink));
+        wait.until(ExpectedConditions.visibilityOf(productSearchTxt));
     }
 
 
@@ -46,7 +50,6 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ProductListPage clickProductLink() {
-        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(productLink);
         return new ProductListPageLight();
     }
@@ -58,7 +61,6 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ContactListPage clickContactLink() {
-        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(contactsLink);
         return new ContactListPageLight();
     }
@@ -70,7 +72,6 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public PriceBookListPage clickPriceBookLink() {
-        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(priceBookLink);
         return new PriceBookListPageLigth();
     }
@@ -82,7 +83,6 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public AccountListPage clickAccountsLink() {
-        driverTools.scrollToBottomOfPage();
         driverTools.clickElement(accountLink);
         return  new AccountListPageLight();
     }

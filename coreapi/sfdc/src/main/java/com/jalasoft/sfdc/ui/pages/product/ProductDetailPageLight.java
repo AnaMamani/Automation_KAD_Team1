@@ -19,7 +19,7 @@ public class ProductDetailPageLight extends ProductDetailPage {
     @FindBy(id = "IsActive_chkbox")
     private WebElement productChkActive;
 
-    @FindBy(xpath = "//span[@class='uiOutputText']//parent::h1")
+    @FindBy(xpath = "//span[@data-aura-rendered-by=\"2358:0\"]")
     private WebElement productNameCreatedTxt;
 
     /**
@@ -37,10 +37,12 @@ public class ProductDetailPageLight extends ProductDetailPage {
      */
     @Override
     public boolean isSuccessCreateProduct(Product product) {
+        log.info("isSuccessCreateProduct ---> the product name is :"+product.getProductName());
         return product.getProductName().equals(productNameTxt.getText()) &&
                 product.getProductCode().equals(productCodeTxt.getText()) &&
                 product.getProductDescription().equals(productDescriptionTxt.getText()) &&
                 checkBoxProduct(product.getActive()) == productChkActive.isSelected();
+
     }
 
     /**
@@ -48,6 +50,7 @@ public class ProductDetailPageLight extends ProductDetailPage {
      */
     @Override
     public String getProductCreated() {
+        log.info("getProductCreated ---> the product name is :"+productNameCreatedTxt.getText());
         return productNameCreatedTxt.getText();
     }
 

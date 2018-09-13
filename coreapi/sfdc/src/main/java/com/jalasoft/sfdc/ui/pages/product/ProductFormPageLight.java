@@ -6,19 +6,19 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductFormPageLight extends ProductFormPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//input[@aria-required='true']")
+    @FindBy(xpath = "//*[@data-interactive-lib-uid='5']")
     private WebElement productNameTxt;
 
-    @FindBy(id = "43:3867;a")
+    @FindBy(xpath = "//*[@data-interactive-lib-uid='7']")
     private WebElement productCodeTxt;
 
-    @FindBy(id = "109:3867;a")
+    @FindBy(xpath = "//*[@data-interactive-lib-uid='9']")
     private WebElement productDescriptionTxt;
 
-    @FindBy(id = "23:3867;a")
+    @FindBy(xpath = "//*[@data-interactive-lib-uid='6']")
     private WebElement productActive;
 
-    @FindBy(xpath = "//td[@id='bottomButtonRow']//input[@title='Save']")
+    @FindBy(xpath = "//*[@title= 'Save']")
     private WebElement clickBtnSave;
 
     @FindBy(xpath = "//span[contains(text(),'Save & New')]")
