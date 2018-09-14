@@ -19,7 +19,6 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static junit.framework.TestCase.assertTrue;
-import static org.testng.AssertJUnit.assertEquals;
 
 public class ProductSteps {
 
@@ -46,7 +45,8 @@ public class ProductSteps {
 
     @Then("^Product Details Page should be display with the information of the product created$")
     public void productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated() {
-        assertEquals(product.getProductName(),productDetailPage.getProductCreated(),"should be show the product name created");
-        //assertTrue(productDetailPage.isSuccessCreateProduct(product));
+        final String data=productDetailPage.getProductCreated();
+        assertTrue(data.equals(product.getProductName()));
+        assertTrue(productDetailPage.isSuccessCreateProduct(product));
     }
 }

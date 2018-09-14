@@ -51,6 +51,32 @@ public class ProductFormPageLight extends ProductFormPage {
         driverTools.clickElement(clickBtnSave);
         return new ProductDetailPageLight();
     }
+
+    /**
+     * setting and a new ProductDetailPage.
+     *
+     * @param productAux all information.
+     * @return a new ProductDetailPage.
+     */
+    @Override
+    public ProductDetailPage setTheFields(Product productAux) {
+        log.info("setTheFields : setting the fields and return a new ProductDetailPageLight");
+        if (productAux.getProductName()!=null){
+            driverTools.setInputField(productNameTxt, productAux.getProductName());
+        }
+        if (productAux.getProductCode()!=null){
+            driverTools.setInputField(productCodeTxt, productAux.getProductName());
+        }
+        if (productAux.getProductDescription()!=null){
+            driverTools.setInputField(productDescriptionTxt, productAux.getProductName());
+        }
+        if (productAux.getActive()!=null){
+            checkProduct(productActive,productAux.getActive());
+            driverTools.clickElement(clickBtnSave);
+        }
+        return new ProductDetailPageLight();
+    }
+
     /**
      * setting the field checkbox product.
      * @param webElement is.

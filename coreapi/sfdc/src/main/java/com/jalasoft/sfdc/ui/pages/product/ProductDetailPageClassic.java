@@ -5,9 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.junit.Assert.assertTrue;
+
 public class ProductDetailPageClassic extends ProductDetailPage {
     //PageFactory of selenium.
-    @FindBy(id = "'Name_ileinner")
+    @FindBy(id = "Name_ileinner")
     private WebElement productNameTxt;
 
     @FindBy(id = "ProductCode_ileinner")
@@ -21,6 +23,9 @@ public class ProductDetailPageClassic extends ProductDetailPage {
 
     @FindBy(className = "pageDescription")
     private WebElement productNameCreatedTxt;
+
+    @FindBy(xpath = "//*[@title='Edit']")
+    private WebElement editBtn;
 
     /**
      * Waits until page object is loaded.
@@ -38,10 +43,10 @@ public class ProductDetailPageClassic extends ProductDetailPage {
     @Override
     public boolean isSuccessCreateProduct(Product product) {
         log.info("isSuccessCreateProduct: Enter");
+        //checkBoxProduct(product.getActive()) == productChkActive.isSelected()
         return product.getProductName().equals(productNameTxt.getText()) &&
                 product.getProductCode().equals(productCodeTxt.getText()) &&
-                product.getProductDescription().equals(productDescriptionTxt.getText()) &&
-                checkBoxProduct(product.getActive()) == productChkActive.isSelected();
+                product.getProductDescription().equals(productDescriptionTxt.getText());
 
     }
 
@@ -50,8 +55,43 @@ public class ProductDetailPageClassic extends ProductDetailPage {
      */
     @Override
     public String getProductCreated() {
-        log.info("getProductCreated: " + productNameCreatedTxt.getText());
-        return productNameCreatedTxt.getText();
+        log.info("getProductCreated =====>"+productNameCreatedTxt.getText());
+        return productNameCreatedTxt.getText().trim();
+    }
+
+    /**
+     * @return the new ProductFormPage.
+     */
+    @Override
+    public ProductFormPage clickEditProduct() {
+        log.info("clickEditProduct: return new ProductFormPageClassic");
+        driverTools.clickElement(editBtn);
+        return new ProductFormPageClassic();
+    }
+
+    /**
+     * verify that a product is edit.
+     *
+     * @param editProduct information the current user.
+     * @return is successfully or not successfully.
+     */
+    @Override
+    public void isSuccessEditProduct(Product editProduct) {
+        log.info("isSuccessEditProduct =====>"+editProduct.getProductName()+"-- "+productNameTxt.getText().trim());
+        if (editProduct.getProductName()!=null){
+            log.debug("isSuccessEditProduct =====>"+productNameTxt.getText().trim());
+            assertTrue(editProduct.getProductName().equals(productNameTxt.getText().trim()));
+
+        }
+        if (editProduct.getProductCode()!=null){
+            log.debug("isSuccessEditProduct =====>"+productCodeTxt.getText().trim());
+            assertTrue(editProduct.getProductCode().equals(productCodeTxt.getText().trim()));
+        }
+        if (editProduct.getProductDescription()!=null){
+            log.debug("isSuccessEditProduct =====>"+productDescriptionTxt.getText().trim());
+            assertTrue(editProduct.getProductDescription().equals(productDescriptionTxt.getText().trim()));
+        }
+
     }
 
     /**

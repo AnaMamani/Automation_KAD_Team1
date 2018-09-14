@@ -14,4 +14,10 @@ public abstract class ProductFormPage extends BasePage {
      */
     public abstract ProductDetailPage createProduct(Product product);
 
+    /**
+     * setting and a new ProductDetailPage.
+     * @param productAux all information.
+     * @return a new ProductDetailPage.
+     */
+    public abstract ProductDetailPage setTheFields(Product productAux);
 }
