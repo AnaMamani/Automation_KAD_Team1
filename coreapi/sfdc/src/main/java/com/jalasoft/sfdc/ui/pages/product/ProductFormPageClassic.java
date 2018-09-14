@@ -54,6 +54,32 @@ public class ProductFormPageClassic extends ProductFormPage {
     }
 
     /**
+     * setting and a new ProductDetailPage.
+     *
+     * @param productAux all information.
+     * @return a new ProductDetailPage.
+     */
+    @Override
+    public ProductDetailPage setTheFields(Product productAux) {
+        log.info("setTheFields : setting the fields and return a new ProductDetailPageClassic");
+        if (productAux.getProductName()!=null){
+            driverTools.setInputField(productNameTxt, productAux.getProductName());
+        }
+        if (productAux.getProductCode()!=null){
+            driverTools.setInputField(productCodeTxt, productAux.getProductCode());
+        }
+        if (productAux.getProductDescription()!=null){
+            driverTools.setInputField(productDescriptionTxt, productAux.getProductDescription());
+        }
+        if (productAux.getActive()!=null){
+            checkProduct(productChkActive,productAux.getActive());
+            driverTools.clickElement(clickBtnSave);
+        }
+        driverTools.clickElement(clickBtnSave);
+        return new ProductDetailPageClassic();
+    }
+
+    /**
      * setting the field checkbox product.
      * @param webElement is.
      * @param active state of checkbox.

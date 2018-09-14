@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.junit.Assert.assertTrue;
+
 public class ProductDetailPageLight extends ProductDetailPage {
     //PageFactory of selenium.
     @FindBy(id = "'Name_ileinner")
@@ -21,6 +23,9 @@ public class ProductDetailPageLight extends ProductDetailPage {
 
     @FindBy(xpath = "//span[@data-aura-rendered-by=\"2358:0\"]")
     private WebElement productNameCreatedTxt;
+
+    @FindBy(xpath = "//*[@title='Edit']")
+    private WebElement editBtn;
 
     /**
      * Waits until page object is loaded.
@@ -52,6 +57,40 @@ public class ProductDetailPageLight extends ProductDetailPage {
     public String getProductCreated() {
         log.info("getProductCreated ---> the product name is :"+productNameCreatedTxt.getText());
         return productNameCreatedTxt.getText();
+    }
+
+    /**
+     * @return the new ProductFormPage.
+     */
+    @Override
+    public ProductFormPage clickEditProduct() {
+        log.info("clickEditProduct: return new ProductFormPageLight");
+        driverTools.clickElement(editBtn);
+        return new ProductFormPageLight();
+    }
+
+    /**
+     * verify that a product is edit.
+     *
+     * @param editProduct information the current user.
+     * @return is successfully or not successfully.
+     */
+    @Override
+    public void isSuccessEditProduct(Product editProduct) {
+        log.info("isSuccessEditProduct =====>"+editProduct.getProductName()+"-- "+productNameTxt.getText().trim());
+        if (editProduct.getProductName()!=null){
+            log.debug("isSuccessEditProduct =====>"+productNameTxt.getText().trim());
+            assertTrue(editProduct.getProductName().equals(productNameTxt.getText().trim()));
+
+        }
+        if (editProduct.getProductCode()!=null){
+            log.debug("isSuccessEditProduct =====>"+productCodeTxt.getText().trim());
+            assertTrue(editProduct.getProductCode().equals(productCodeTxt.getText().trim()));
+        }
+        if (editProduct.getProductDescription()!=null){
+            log.debug("isSuccessEditProduct =====>"+productDescriptionTxt.getText().trim());
+            assertTrue(editProduct.getProductDescription().equals(productDescriptionTxt.getText().trim()));
+        }
     }
 
     /**

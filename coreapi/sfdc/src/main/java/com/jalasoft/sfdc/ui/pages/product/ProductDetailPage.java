@@ -17,4 +17,14 @@ public abstract class ProductDetailPage extends BasePage {
      * @return the product name created.
      */
     public abstract String getProductCreated();
+    /**
+     * @return the new ProductFormPage.
+     */
+    public abstract ProductFormPage clickEditProduct();
+    /**
+     * verify that a product is edit.
+     * @param editProduct information the current user.
+     * @return is successfully or not successfully.
+     */
+    public abstract void isSuccessEditProduct(Product editProduct);
 }

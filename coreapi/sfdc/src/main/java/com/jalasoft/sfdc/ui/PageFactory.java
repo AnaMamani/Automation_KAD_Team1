@@ -14,6 +14,9 @@ import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsClassic;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPageLight;
+import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
+import com.jalasoft.sfdc.ui.pages.product.ProductDetailPageClassic;
+import com.jalasoft.sfdc.ui.pages.product.ProductDetailPageLight;
 
 public class PageFactory {
     private static Skin skin = ServersConfigReader.getInstance().getSkin();
@@ -59,6 +62,14 @@ public class PageFactory {
                 return new ContactListPageClassic();
             default:
                 return new ContactListPageLight();
+        }
+    }
+    public static ProductDetailPage getProductDetailPage() {
+        switch (skin) {
+            case CLASSIC:
+                return new ProductDetailPageClassic();
+            default:
+                return new ProductDetailPageLight();
         }
     }
 }
