@@ -24,6 +24,13 @@ public class AccountDetailPageLight extends AccountDetailPage {
 
     }
 
+
+    @Override
+    public AccountFormPage clickEditAcoount() {
+        return null;
+    }
+
+
     @Override
     public void waitUntilPageObjectIsLoaded() {
 

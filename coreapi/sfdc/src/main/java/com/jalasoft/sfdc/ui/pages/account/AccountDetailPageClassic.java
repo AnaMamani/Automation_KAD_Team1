@@ -14,11 +14,22 @@ public class AccountDetailPageClassic extends AccountDetailPage {
 
     @FindBy(xpath = "//h2[contains(@class,'topName')]")
     WebElement validateAccount;
+     @FindBy(xpath = "//*[@id='topButtonRow']/input[3]")
+     WebElement editBtn;
+
 
     @Override
     public String validateAccountNew() {
         return validateAccount.getText().trim();
     }
+
+
+    @Override
+    public AccountFormPage clickEditAcoount() {
+        driverTools.clickElement(editBtn);
+        return new AccountFormPageClassic();
+    }
+
 
     @Override
     public void waitUntilPageObjectIsLoaded() {
