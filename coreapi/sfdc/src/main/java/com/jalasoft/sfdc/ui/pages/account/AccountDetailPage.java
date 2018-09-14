@@ -10,4 +10,6 @@ import com.jalasoft.sfdc.ui.BasePage;
  */
 public abstract class AccountDetailPage extends BasePage {
     public abstract String validateAccountNew();
+
+    public abstract AccountFormPage clickEditAcoount();
 }

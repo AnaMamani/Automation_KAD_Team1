@@ -65,6 +65,11 @@ public class AccountFormPageLight extends AccountFormPage {
 
     }
 
+    @Override
+    public AccountDetailPage editAccount(Account account) {
+        return null;
+    }
+
     /**
      * this is method  to da click button New Light.
      * @return AccountDetailPage Account detail Page Light.
