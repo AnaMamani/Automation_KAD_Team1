@@ -1,16 +1,16 @@
 package com.jalasoft.sfdc.entities;
 
 public class Contact {
-    private String firstName;
-    private String lastName;
-    private String accountName;
-    private String title;
-    private String email;
-    private String phone;
-    private String street;
-    private String city;
-    private String state;
-    private String country;
+    private String firstName =" ";
+    private String lastName =" ";
+    private String accountName =" ";
+    private String title =" ";
+    private String email =" ";
+    private String phone =" ";
+    private String street =" ";
+    private String city =" ";
+    private String state =" ";
+    private String country =" ";
 
 
 

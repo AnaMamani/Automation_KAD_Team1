@@ -57,6 +57,7 @@ public class AllAppsClassic extends AllAppsPage {
         return new ProductListPageClassic();
     }
 
+
     /**
      * Click ContactList Link.
      *
@@ -65,7 +66,11 @@ public class AllAppsClassic extends AllAppsPage {
     @Override
     public ContactListPage clickContactLink() {
         driverTools.clickElement(contactsLink);
-        driverTools.clickElement(dialogClose);// for the close the window popup.
+        try{
+            driverTools.clickElement(dialogClose);// for the close the window popup.
+        }catch (Exception e){
+
+        }
         return new ContactListPageClassic();
     }
 

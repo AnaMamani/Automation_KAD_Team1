@@ -8,6 +8,7 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -44,6 +45,7 @@ public class ContactSteps {
      */
     @And("^I click in New button$")
     public void iClickInNewButton()  {
+
         contactFormPage = contactListPage.clickContactNew();
     }
     /**
@@ -57,13 +59,57 @@ public class ContactSteps {
     }
 
     /**
-     * Verify crate data in Detail Contact.
+     * Verify create data in Detail Contact.
      */
     @Then("^Contact was created should be displayed in ContactDetailPage$")
     public void contactWasCreatedShouldBeDisplayedInContactDetailPage()  {
         System.out.println(contact.getFirstName().concat(" ").concat(contact.getLastName())+ "***********************************");
+       // contactDetailPage.
         assertEquals(contactDetailPage.isSuccessDisplayedContactDetail(),contact.getFirstName().concat(" ").concat(contact.getLastName()));
+    }
 
+    /**
+     * contact that you have.
+     * @param contacts list.
+     */
+    @Given("^I have a Contact with the following information$")
+    public void iHaveAContactFollowingInformation(List<Contact> contacts) {
+        this.contact= contacts.get(0);
+        contactDetailPage=contactFormPage.createContact(contact);
+    }
 
+    /**
+     * contact for edit the data
+     * @param contacts data
+     */
+    @When("^I edit this Contact with the following information$")
+    public void iEditThisContactWithTheFollowingInformation(List<Contact> contacts)  {
+        this.contact = contacts.get(0);
+        contactFormPage = contactDetailPage.clickInEdit();
+        contactDetailPage = contactFormPage.editContact(this.contact);
+    }
+
+    /**
+     * contact that validate new data
+     */
+    @Then("^Contact was saved with the information actual in Contact Detail$")
+    public void contactWasSavedWithTheInformationActualInContactDetail()  {
+        contactWasCreatedShouldBeDisplayedInContactDetailPage();
+    }
+
+    /**
+     * delete contact selection.
+     */
+    @When("^I delete this Contact create$")
+    public void iDeleteThisContactCreate()  {
+        contactListPage= contactDetailPage.deleteContact();
+    }
+
+    /**
+     * verify that the contact is delete
+     */
+    @Then("^I should see the Contact is delete$")
+    public void iShouldSeeTheContactIsDelete()  {
+       assertTrue(contactListPage.contactSearch(contact));
     }
 }
