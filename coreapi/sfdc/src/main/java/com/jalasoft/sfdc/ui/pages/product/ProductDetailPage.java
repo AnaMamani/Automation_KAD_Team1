@@ -23,4 +23,10 @@ public abstract class ProductDetailPage extends BasePage {
      * @return ProductFormPage.
      */
     public abstract ProductFormPage selectProductToEdit();
+
+    /**
+     * select the product to delete.
+     * @return ProductListPage.
+     */
+    public abstract ProductListPage deleteProduct(Product product);
 }

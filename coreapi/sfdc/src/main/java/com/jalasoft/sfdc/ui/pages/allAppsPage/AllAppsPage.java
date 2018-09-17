@@ -31,4 +31,5 @@ public abstract class AllAppsPage extends BasePage {
      * @return AccountListPage.
      */
     public abstract AccountListPage clickAccountsLink();
+
 }

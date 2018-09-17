@@ -7,13 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductDetailPageLight extends ProductDetailPage {
     //PageFactory of selenium.
-    @FindBy(id = "'Name_ileinner")
+    @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[1]")
     private WebElement productNameTxt;
 
-    @FindBy(id = "ProductCode_ileinner")
+    @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[3]")
     private WebElement productCodeTxt;
 
-    @FindBy(id = "Description_ileinner")
+    @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[7]")
     private WebElement productDescriptionTxt;
 
     @FindBy(id = "IsActive_chkbox")
@@ -22,8 +22,18 @@ public class ProductDetailPageLight extends ProductDetailPage {
     @FindBy(xpath = "//div[@class='slds-media__body' ]//parent::span")
     private WebElement productNameCreatedTxt;
 
-    @FindBy(className = "//*[@title='Edit']")
-    private WebElement editBtn;
+    @FindBy(xpath = "//a[@title='Show 4 more actions']")
+    private WebElement showMoreAction;
+
+    @FindBy(xpath = "//a[@title='Edit']")
+    private WebElement selectEdit;
+
+    @FindBy(xpath = "//a[@title='Delete']")
+    private WebElement selectDelete;
+
+    @FindBy(xpath = "//button[@title='Delete']")
+    private WebElement actionDelete;
+
 
     /**
      * Waits until page object is loaded.
@@ -43,8 +53,7 @@ public class ProductDetailPageLight extends ProductDetailPage {
         log.info("isSuccessCreateProduct ---> the product name is :"+product.getProductName());
         return product.getProductName().equals(productNameTxt.getText()) &&
                 product.getProductCode().equals(productCodeTxt.getText()) &&
-                product.getProductDescription().equals(productDescriptionTxt.getText()) &&
-                checkBoxProduct(product.getActive()) == productChkActive.isSelected();
+                product.getProductDescription().equals(productDescriptionTxt.getText());
 
     }
 
@@ -64,9 +73,26 @@ public class ProductDetailPageLight extends ProductDetailPage {
     @Override
     public ProductFormPage selectProductToEdit() {
         log.info("selectProductToEdit: return ProductFormPageLight");
-        driverTools.clickElement(editBtn);
+        driverTools.clickElement(showMoreAction);
+        driverTools.clickElement(selectEdit);
         return new ProductFormPageLight();
     }
+
+    /**
+     * select the product to delete.
+     *
+     * @param product
+     * @return ProductListPage.
+     */
+    @Override
+    public ProductListPage deleteProduct(Product product) {
+        log.info("selectProductToEdit: return ProductListPageLight");
+        driverTools.clickElement(showMoreAction);
+        driverTools.clickElement(selectDelete);
+        acceptAlertDialog();
+        return new ProductListPageLight();
+    }
+
     /**
      * @param chk
      * @return

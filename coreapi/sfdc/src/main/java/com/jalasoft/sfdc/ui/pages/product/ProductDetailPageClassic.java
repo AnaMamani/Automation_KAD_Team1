@@ -22,9 +22,11 @@ public class ProductDetailPageClassic extends ProductDetailPage {
     @FindBy(className = "pageDescription")
     private WebElement productNameCreatedTxt;
 
-    @FindBy(className = "//*[@title='Edit']")
+    @FindBy(xpath = "//*[@title='Edit']")
     private WebElement editBtn;
 
+    @FindBy(xpath = "//*[@title='Delete']")
+    private WebElement deleteBtn;
 
     /**
      * Waits until page object is loaded.
@@ -36,12 +38,13 @@ public class ProductDetailPageClassic extends ProductDetailPage {
 
     /**
      * verify that a product is create.
+     *
      * @param product information the current user.
      * @return is successfully or not successfully.
      */
     @Override
     public boolean isSuccessCreateProduct(Product product) {
-        log.info("isSuccessCreateProduct: Enter  "+ productChkActive.isSelected());
+        log.info("isSuccessCreateProduct: Enter  " + productChkActive.isSelected());
         return product.getProductName().equals(productNameTxt.getText()) &&
                 product.getProductCode().equals(productCodeTxt.getText()) &&
                 product.getProductDescription().equals(productDescriptionTxt.getText());
@@ -67,6 +70,20 @@ public class ProductDetailPageClassic extends ProductDetailPage {
         log.info("selectProductToEdit: return ProductFormPageClassic");
         driverTools.clickElement(editBtn);
         return new ProductFormPageClassic();
+    }
+
+    /**
+     * select the product to delete.
+     *
+     * @param product
+     * @return ProductListPage.
+     */
+    @Override
+    public ProductListPage deleteProduct(Product product) {
+        log.info("selectProductToEdit: return ProductListPageClassic");
+        driverTools.clickElement(deleteBtn);
+        acceptAlertDialog();
+        return new ProductListPageClassic();
     }
 
     /**
