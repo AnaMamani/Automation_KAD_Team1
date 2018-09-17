@@ -15,14 +15,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class AllAppsPageLight extends AllAppsPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//span[contains(text(),'Contacts')]")
-    private WebElement contactsLink;
 
     @FindBy(xpath = "//span[text()='Products' and @class]")
     private WebElement productLink;
 
-    @FindBy(xpath = "//*[contains(text(),'Contacts')]")
-    private WebElement selectProductLink;
 
     @FindBy(xpath = "//span[contains(text(),'Price Books')]")
     private WebElement priceBookLink;
@@ -34,11 +30,18 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//*[@class=\"slds-input input\"]")
     private WebElement productSearchTxt;
 
+    @FindBy(css = ".uiInputText .slds-input.input")
+    private WebElement searchText;
+
+    @FindBy(css = "a[title|='Contacts']")
+    private WebElement contactLink;
+
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+
         wait.until(ExpectedConditions.visibilityOf(productSearchTxt));
     }
 
@@ -61,7 +64,9 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ContactListPage clickContactLink() {
-        driverTools.clickElement(contactsLink);
+        driverTools.setInputField(searchText,"contacts");
+        wait.until(ExpectedConditions.visibilityOf(contactLink));
+        driverTools.clickElement(contactLink);
         return new ContactListPageLight();
     }
 

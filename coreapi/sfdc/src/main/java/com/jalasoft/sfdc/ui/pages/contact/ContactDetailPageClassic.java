@@ -19,7 +19,7 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     private WebElement contactCreated;
     @FindBy(xpath = "//*[@title='Edit']")
     private WebElement clickBtnEdit;
-    @FindBy(xpath = "div[title='Delete']")
+    @FindBy(xpath = "(//*[@title='Delete'])[1]")
     private WebElement clickBtnDelete;
 
     /**
@@ -44,7 +44,6 @@ public class ContactDetailPageClassic extends ContactDetailPage {
         return new ContactFormPageClassic();
     }
 
-
     /**
      * Delete Contact of contact detail.
      *
@@ -53,13 +52,8 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     @Override
     public ContactListPage deleteContact() {
         driverTools.clickElement(clickBtnDelete);
-        clickConfirmDeleteButton();
+        acceptAlertDialog();
         return new ContactListPageClassic();
-    }
-
-    public void clickConfirmDeleteButton() {
-        Alert alert = driver.switchTo().alert();
-        alert.accept();
     }
 
 }

@@ -16,11 +16,16 @@ public class ContactDetailPageLight extends ContactDetailPage {
     @FindBy(xpath = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon' ]//parent::span)[1]")
     private WebElement contactCreated;
 
-    @FindBy(xpath = "//a[@title='Show 5 more actions']//lightning-primitive-icon")
-    private WebElement clickAction;
+    @FindBy(xpath = "//a[contains(@title,'Show 5 more actions')]")
+    private WebElement clickCmbBox;
+    @FindBy(xpath = "//a[@title='Edit']")
+    private WebElement clickOptionEdit;
+    @FindBy(xpath = "//a[@title='Delete']")
+    private WebElement clickOptionDelete;
+    @FindBy(xpath = "//span[contains(text(),'Delete')]")
+    private WebElement messageVerifyDelete;
 
-    //@FindBy(xpath = "div[title='Delete']")
-    //private WebElement clickBtnDelete;
+
     /**
      * For show create contact in ContactDetail.
      *
@@ -28,7 +33,7 @@ public class ContactDetailPageLight extends ContactDetailPage {
      */
     @Override
     public String isSuccessDisplayedContactDetail() {
-        System.out.print(contactCreated.getText()+ "#####################################################");
+        System.out.print(contactCreated.getText() + "#####################################################");
         return contactCreated.getText().trim();
     }
 
@@ -39,7 +44,9 @@ public class ContactDetailPageLight extends ContactDetailPage {
      */
     @Override
     public ContactFormPage clickInEdit() {
-        return null;
+        driverTools.clickElement(clickCmbBox);
+        driverTools.clickElement(clickOptionEdit);
+        return new ContactFormPageLight();
     }
 
 
@@ -50,12 +57,10 @@ public class ContactDetailPageLight extends ContactDetailPage {
      */
     @Override
     public ContactListPage deleteContact() {
-        driverTools.clickElement(clickAction);
-        //driverTools.clickElement(clickBtnDelete);
-        //driverTools.clickElement(optionTypeCmbBox);
-        driverTools.clickElement(By.xpath(("//*[@title='Delete']/parent::a)[1]")));
+        driverTools.clickElement(clickCmbBox);
+        driverTools.clickElement(clickOptionDelete);
+        driverTools.clickElement(messageVerifyDelete);
         return new ContactListPageLight();
     }
-
 
 }

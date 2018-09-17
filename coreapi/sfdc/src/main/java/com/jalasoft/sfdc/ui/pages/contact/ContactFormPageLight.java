@@ -61,10 +61,17 @@ public class ContactFormPageLight extends ContactFormPage {
         return clickContactBtnSave();
     }
 
+    /**
+     * For edit contact.
+     *
+     * @param contact review
+     * @return ContactDetailPage
+     */
     @Override
     public ContactDetailPage editContact(Contact contact) {
-        return null;
+        return createContact(contact);
     }
+
 
     /**
      * Method for save the information.

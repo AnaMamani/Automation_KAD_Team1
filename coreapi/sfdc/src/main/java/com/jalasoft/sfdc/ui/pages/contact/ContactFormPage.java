@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.ui.BasePage;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.util.List;
+
 /**
  * ContactFormPage class.
  *
@@ -15,10 +16,17 @@ public abstract class ContactFormPage extends BasePage {
 
     /**
      * Create contacts.
+     *
      * @param contact of into.
      * @return ContactDetailPage.
      */
     public abstract ContactDetailPage createContact(Contact contact);
 
+    /**
+     * For edit contact.
+     *
+     * @param contact review
+     * @return ContactDetailPage
+     */
     public abstract ContactDetailPage editContact(Contact contact);
 }
