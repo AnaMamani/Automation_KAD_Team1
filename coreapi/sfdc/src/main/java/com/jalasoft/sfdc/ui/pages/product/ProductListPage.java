@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.ListBasePage;
 import org.apache.log4j.Logger;
 
@@ -11,4 +12,11 @@ public abstract class ProductListPage extends ListBasePage {
      * @return a new ProductFormPage.
      */
     public abstract ProductFormPage clickNewProduct();
+    /**
+     * verify that a product is delete.
+     *
+     * @param product information the current user.
+     * @return is successfully or not successfully.
+     */
+    public abstract boolean isSuccessDeleteProduct(Product product);
 }
