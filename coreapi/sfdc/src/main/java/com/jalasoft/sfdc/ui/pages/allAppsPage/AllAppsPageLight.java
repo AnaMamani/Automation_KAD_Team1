@@ -30,6 +30,7 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//*[@class=\"slds-input input\"]")
     private WebElement productSearchTxt;
 
+
     @FindBy(css = ".uiInputText .slds-input.input")
     private WebElement searchText;
 
@@ -41,7 +42,7 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        log.info("waitUntilPageObjectIsLoaded ----> wait for productSearchTxt");
         wait.until(ExpectedConditions.visibilityOf(productSearchTxt));
     }
 
@@ -53,6 +54,7 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ProductListPage clickProductLink() {
+        log.info("clickProductLink ----> return the new ProductListPageLight");
         driverTools.clickElement(productLink);
         return new ProductListPageLight();
     }

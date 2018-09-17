@@ -5,6 +5,7 @@ import com.jalasoft.sfdc.ui.pages.LoginPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Top bar that contains the user name information, settings and logout options.
@@ -24,7 +25,7 @@ public abstract class TopMenu extends BasePage {
      */
     public abstract LoginPage logout();
 
-    public abstract HomePage goToHomePage();
+    //public abstract HomePage goToHomePage();
 
     /**
      * This method get the profile name the current user.

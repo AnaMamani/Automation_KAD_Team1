@@ -47,11 +47,6 @@ public class TopMenuClassic extends TopMenu {
         return new LoginPage();
     }
 
-    @Override
-    public HomePage goToHomePage() {
-        return new HomePageClassic();
-    }
-
     /**
      * This method get the profile name the current user.
      *
