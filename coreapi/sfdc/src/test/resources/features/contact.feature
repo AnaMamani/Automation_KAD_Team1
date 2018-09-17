@@ -2,9 +2,9 @@ Feature: Create "Contact"
 
   Background:
     Given I navigate to Login page
-    And I login as "local user" User
-    And I go to the Contact page
-    And I click in New button
+      And I login as "local user" User
+      And I go to the Contact page
+      And I click in New button
 
   @createContact
   Scenario: Verify that is possible create a new contact
