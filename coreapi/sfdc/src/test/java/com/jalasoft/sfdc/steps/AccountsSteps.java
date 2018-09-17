@@ -7,14 +7,15 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+
 
 public class AccountsSteps {
     private HomePage homePage;
@@ -49,6 +50,19 @@ public class AccountsSteps {
 
     @Then("^validate the new Account created is displayed$")
     public void validateTheNewAccountCreatedIsDisplayed() throws Throwable {
+        accountDetailPage.validatorAccount(account);
+
+
         assertEquals(accountDetailPage.validateAccountNew(),account.getAccountName(),"Correcto");
+       // assertEquals(accountDetailPage.validateAccountNew(),account.getAccountNumber());
     }
+
+
+    @Given("^I have a contact with the following information$")
+    public void iHaveAContactWithTheFollowingInformation(List<Account> accountsN) throws Throwable {
+        this.account = accountsN.get(0);
+        iGoClickAccountNew();
+        accountDetailPage= AccountFormPage.createAccount(account);
+    }
+
 }

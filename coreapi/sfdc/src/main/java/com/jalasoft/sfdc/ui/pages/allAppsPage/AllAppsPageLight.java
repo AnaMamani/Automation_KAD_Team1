@@ -27,12 +27,20 @@ public class AllAppsPageLight extends AllAppsPage {
     @FindBy(xpath = "//span[contains(text(),'Price Books')]")
     private WebElement priceBookLink;
 
-    @FindBy(xpath = "//*[@class='label slds-truncate slds-text-link'][contains(text(),'Accounts')]" )
-    private WebElement accountLink;
+//    @FindBy(xpath = "//*[@class='label slds-truncate slds-text-link'][contains(text(),'Accounts')]" )
+//    private WebElement accountLink;
 
     //this find element is to auxiliary for verify the menu the features.
-    @FindBy(xpath = "//*[@class=\"slds-input input\"]")
+    @FindBy(xpath = "//*[@class='slds-input input']")
     private WebElement productSearchTxt;
+
+    //ketty
+
+    @FindBy(css = "a[title|='Accounts']")
+    private WebElement accountLink;
+
+    @FindBy(css = ".uiInputText .slds-input.input")
+    private WebElement searchAccountText;
 
     /**
      * Waits until page object is loaded.
@@ -83,6 +91,8 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public AccountListPage clickAccountsLink() {
+        driverTools.setInputField(searchAccountText,"accounts");
+        wait.until(ExpectedConditions.visibilityOf(accountLink));
         driverTools.clickElement(accountLink);
         return  new AccountListPageLight();
     }

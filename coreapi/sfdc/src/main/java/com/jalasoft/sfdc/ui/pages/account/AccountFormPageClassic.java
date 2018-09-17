@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
 import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -51,7 +52,9 @@ public class AccountFormPageClassic extends AccountFormPage {
         driverTools.setInputField(accountNumberTxt,account.getAccountNumber());
         driverTools.setInputField(phoneTxt,account.getPhone());
         driverTools.setInputField(faxTxt,account.getFax());
-       // driverTools.selectListBoxByValue(typeTxt,account.getType());
+        driverTools.clickElement(typeTxt);
+        log.info(account.getType());
+        driverTools.clickElement(By.xpath("//select[@id='acc6']/option[contains(text(),'"+account.getType()+"')]"));
         driverTools.setInputField(billingCityTxt,account.getBillingCity());
         driverTools.setInputField(billingStateTxt,account.getBillingState());
         driverTools.setInputField(billingCountryTxt,account.getBillingCountry());

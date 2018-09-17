@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
 import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -27,6 +28,9 @@ public class AccountFormPageLight extends AccountFormPage {
     @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
     WebElement faxTxt;
 
+    @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
+    WebElement typeTxt;
+
 //    @FindBy(id="acc6")
 //    WebElement typeTxt;
 
@@ -44,8 +48,11 @@ public class AccountFormPageLight extends AccountFormPage {
 
     @FindBy(xpath="//span[text()='Number of Locations']/parent::label/following-sibling::input")
     private  WebElement numberLocationTxt;
+    @FindBy(xpath = "//span[text()='Type']/../..//a[contains(@class,'select')]")
+    WebElement typeSelected;
 
-    @FindBy (xpath = "//button[@class='slds-button slds-button--neutral uiButton--default uiButton--brand uiButton forceActionButton']")
+
+    @FindBy (xpath = "//span[text()='Save']/parent::button[@title='Save']")
     private WebElement clickBtnSave;
 
     @Override
@@ -54,7 +61,8 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.setInputField(accountNumberTxt,account.getAccountNumber());
         driverTools.setInputField(phoneTxt,account.getPhone());
         driverTools.setInputField(faxTxt,account.getFax());
-        // driverTools.selectListBoxByValue(typeTxt,account.getType());
+        driverTools.clickElement(typeSelected);
+        driverTools.clickElement(By.xpath("//div[contains(@class,'select-options')] //li[contains(@role,'presentation')]/a[contains(@title,'"+account.getType()+"')]"));
         driverTools.setInputField(billingCityTxt,account.getBillingCity());
         driverTools.setInputField(billingStateTxt,account.getBillingState());
         driverTools.setInputField(billingCountryTxt,account.getBillingCountry());
