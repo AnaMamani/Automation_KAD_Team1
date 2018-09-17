@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
+import com.jalasoft.sfdc.entities.Contact;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -11,8 +12,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ContactListPageLight extends ContactListPage {
 
 
+
     /**
-     * Methos for the button new.
+     * Method for the button new.
      * @return ContactFormPage.
      */
     @Override
@@ -20,6 +22,17 @@ public class ContactListPageLight extends ContactListPage {
         driverTools.clickElement(newBtn);
         return new ContactFormPageLight();
     }
+
+    @Override
+    public ContactDetailPage selectContact(String firstName) {
+        return null;
+    }
+
+    @Override
+    public boolean contactSearch(Contact contact) {
+        return false;
+    }
+
     /**
      *  Waits until page object is loaded.
      * {@inheritDoc}

@@ -63,7 +63,6 @@ public class ContactFormPageClassic extends ContactFormPage {
         driverTools.setInputField(countryTxt, contact.getCountry());
         return  clickContactBtnSave();
     }
-
     /**
      * Save the information.
      * @return ContactDetailPage.
@@ -71,6 +70,11 @@ public class ContactFormPageClassic extends ContactFormPage {
     public ContactDetailPage clickContactBtnSave() {
         driverTools.clickElement(clickBtnSave);
         return new ContactDetailPageClassic();
+    }
+
+    @Override
+    public ContactDetailPage editContact(Contact contact) {
+        return createContact(contact);
     }
 
     /**
