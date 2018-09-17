@@ -7,6 +7,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,13 +16,14 @@ import cucumber.api.java.en.When;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class AccountsSteps {
     private HomePage homePage;
     private AllAppsPage allAppsPage;
     private AccountListPage accountListPage;
-    private AccountFormPage AccountFormPage;
+    private AccountFormPage accountFormPage;
     private Account account;
     private AccountDetailPage accountDetailPage;
 
@@ -36,7 +38,7 @@ public class AccountsSteps {
 
     @And("^I go click account New$")
     public void iGoClickAccountNew()  {
-       AccountFormPage = accountListPage.clickNewAccount();
+       accountFormPage = accountListPage.clickNewAccount();
     }
 
     @When("^I create account fill the following form with the requirement$")
@@ -44,7 +46,7 @@ public class AccountsSteps {
         // Write code here that turns the phrase above into concrete actions
 
         this.account = accounts.get(0);
-        accountDetailPage= AccountFormPage.createAccount(account);
+        accountDetailPage= accountFormPage.createAccount(account);
         //accountDetail=formAccount.clickSave();
     }
 
@@ -59,10 +61,28 @@ public class AccountsSteps {
 
 
     @Given("^I have a contact with the following information$")
-    public void iHaveAContactWithTheFollowingInformation(List<Account> accountsN) throws Throwable {
+    public void iHaveAContactWithTheFollowingInformation(List<Account> accountsN) {
         this.account = accountsN.get(0);
-        iGoClickAccountNew();
-        accountDetailPage= AccountFormPage.createAccount(account);
+       // iGoClickAccountNew();
+        accountDetailPage= accountFormPage.createAccount(account);
     }
 
+    @When("^I  edit this account with the following information$")
+    public void iEditThisAccountWithTheFollowingInformation(List<Account> accounts) throws Throwable {
+        accountFormPage=accountDetailPage.clickEditAccount();
+        this.account = accounts.get(0);
+        accountDetailPage=accountFormPage.editAccount(account);
+
+    }
+
+    @When("^I go delete a Account$")
+    public void iGoDeleteAAccount() throws Throwable {
+        accountDetailPage.deleteAnAccount();
+    }
+
+//    @Then("^I should see the Account is removed from the Accounts page$")
+//    public void iShouldSeeTheAccountIsRemovedFromTheAccountsPage() throws Throwable {
+//        assertTrue();
+//        assertTrue(contactHomePage.containContact(contact));
+//    }
 }

@@ -18,4 +18,6 @@ public class AccountListPageClassic extends AccountListPage {
         driverTools.clickElement(newBtn);
         return new AccountFormPageClassic();
     }
+
+
 }

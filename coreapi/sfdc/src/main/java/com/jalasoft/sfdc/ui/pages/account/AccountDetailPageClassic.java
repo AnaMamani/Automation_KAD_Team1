@@ -7,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Handles Account Detail Page Classic extends of the
@@ -27,6 +28,11 @@ public class AccountDetailPageClassic extends AccountDetailPage {
     WebElement validatorPhone;
     @FindBy(id= "acc11_ileinner")
     WebElement validatorFax;
+    @FindBy(xpath = "//*[@id='topButtonRow']/input[3]")
+    private WebElement editBtn;
+
+    @FindBy(xpath = "//input[contains(@value,'Delete')]")
+    private  WebElement deleteBtn;
 
     @Override
     public String validateAccountNew() {
@@ -42,6 +48,19 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         assertEquals(account.getType(),validatorType.getText().trim());
         assertEquals(account.getPhone(),validatorPhone.getText().trim());
         assertEquals(account.getFax(),validatorFax.getText().trim());
+    }
+
+    @Override
+    public AccountFormPage clickEditAccount() {
+        driverTools.clickElement(editBtn);
+        return new AccountFormPageClassic();
+    }
+
+    @Override
+    public void deleteAnAccount() {
+        driverTools.clickElement(deleteBtn);
+        acceptAlertDialog();
+
     }
 
 

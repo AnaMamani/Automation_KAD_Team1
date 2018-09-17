@@ -16,9 +16,18 @@ import java.util.List;
 public class AccountDetailPageLight extends AccountDetailPage {
 
     @FindBy(xpath = "//span[text()='Details']")
-    WebElement details;
+    private WebElement details;
     @FindBy(xpath = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon' ]//parent::span)[1]")
-    WebElement detailsName;
+    private WebElement detailsName;
+    @FindBy(xpath = "//a[(@title='Edit')]")
+    private WebElement selectOptionEdit;
+    @FindBy(xpath = "//a[(@title='Delete')]")
+    private WebElement selectOptionDelete;
+    @FindBy(xpath = "//span[(text()='Delete')]")
+    private WebElement deleteBtn;
+
+    @FindBy(xpath = "//a[(@title='Show 7 more actions')]")
+    private WebElement selectBtn;
 
     
     @Override
@@ -34,6 +43,20 @@ public class AccountDetailPageLight extends AccountDetailPage {
 
 
 
+    }
+
+    @Override
+    public AccountFormPage clickEditAccount() {
+        driverTools.clickElement(selectBtn);
+        driverTools.clickElement(selectOptionEdit);
+        return new AccountFormPageLight();
+    }
+
+    @Override
+    public void deleteAnAccount() {
+        driverTools.clickElement(selectBtn);
+        driverTools.clickElement(selectOptionDelete);
+        driverTools.clickElement(deleteBtn);
     }
 
 

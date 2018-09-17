@@ -16,4 +16,8 @@ public abstract class AccountDetailPage extends BasePage {
 
 
     public abstract void validatorAccount(Account account);
+
+    public abstract AccountFormPage clickEditAccount();
+
+    public abstract void deleteAnAccount();
 }

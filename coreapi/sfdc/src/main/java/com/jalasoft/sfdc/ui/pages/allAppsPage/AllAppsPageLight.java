@@ -40,7 +40,7 @@ public class AllAppsPageLight extends AllAppsPage {
     private WebElement accountLink;
 
     @FindBy(css = ".uiInputText .slds-input.input")
-    private WebElement searchAccountText;
+    private WebElement searchText;
 
     /**
      * Waits until page object is loaded.
@@ -91,9 +91,11 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public AccountListPage clickAccountsLink() {
-        driverTools.setInputField(searchAccountText,"accounts");
+        driverTools.setInputField(searchText,"accounts");
         wait.until(ExpectedConditions.visibilityOf(accountLink));
         driverTools.clickElement(accountLink);
         return  new AccountListPageLight();
     }
+
+
 }

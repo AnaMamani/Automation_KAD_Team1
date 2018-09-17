@@ -82,8 +82,14 @@ public class AllAppsClassic extends AllAppsPage {
      */
     @Override
     public AccountListPage clickAccountsLink() {
-        driverTools.clickElement(accountLink);
-        driverTools.clickElement(dialogClose);
+          driverTools.clickElement(accountLink);
+          try{
+            driverTools.clickElement(dialogClose);// for the close the window popup.
+        }catch (Exception e){
+
+        }
         return new AccountListPageClassic();
     }
+
+
 }
