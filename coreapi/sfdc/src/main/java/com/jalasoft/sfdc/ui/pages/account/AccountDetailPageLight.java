@@ -1,7 +1,10 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
+import com.jalasoft.sfdc.entities.Account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 /**
  * Handles Account Detail Page Classic extends of the
@@ -12,17 +15,50 @@ import org.openqa.selenium.support.FindBy;
 
 public class AccountDetailPageLight extends AccountDetailPage {
 
-    @FindBy(xpath = "//span[@class='title'][contains(.,'Details')]")
-    WebElement details;
+    @FindBy(xpath = "//span[text()='Details']")
+    private WebElement details;
     @FindBy(xpath = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon' ]//parent::span)[1]")
+    private WebElement detailsName;
+    @FindBy(xpath = "//a[(@title='Edit')]")
+    private WebElement selectOptionEdit;
+    @FindBy(xpath = "//a[(@title='Delete')]")
+    private WebElement selectOptionDelete;
+    @FindBy(xpath = "//span[(text()='Delete')]")
+    private WebElement deleteBtn;
 
-    WebElement detailsName;
+    @FindBy(xpath = "//a[(@title='Show 7 more actions')]")
+    private WebElement selectBtn;
+
+    
     @Override
     public String validateAccountNew() {
         driverTools.clickElement(details);
        return detailsName.getText().trim();
 
     }
+
+    @Override
+    public void validatorAccount(Account account) {
+        driverTools.clickElement(details);
+
+
+
+    }
+
+    @Override
+    public AccountFormPage clickEditAccount() {
+        driverTools.clickElement(selectBtn);
+        driverTools.clickElement(selectOptionEdit);
+        return new AccountFormPageLight();
+    }
+
+    @Override
+    public void deleteAnAccount() {
+        driverTools.clickElement(selectBtn);
+        driverTools.clickElement(selectOptionDelete);
+        driverTools.clickElement(deleteBtn);
+    }
+
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

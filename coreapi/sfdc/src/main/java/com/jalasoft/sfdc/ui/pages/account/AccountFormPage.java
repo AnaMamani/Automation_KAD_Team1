@@ -17,4 +17,6 @@ public abstract class AccountFormPage extends BasePage {
      */
 
     public abstract AccountDetailPage createAccount(Account account);
+
+    public abstract AccountDetailPage editAccount(Account account);
 }

@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.entities;
 
+import java.util.List;
+
 /**
  * User class contains the Account information.
  *
