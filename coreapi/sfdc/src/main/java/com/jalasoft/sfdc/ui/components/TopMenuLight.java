@@ -8,6 +8,8 @@ import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPageLight;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class TopMenuLight extends TopMenu {
     //PageFactory of selenium.
@@ -37,12 +39,6 @@ public class TopMenuLight extends TopMenu {
     @Override
     public void swithSkin() {
 
-    }
-
-    @Override
-    public HomePage goToHomePage() {
-        log.info("goToHomePage -----> return the new HomePageLight");
-        return new HomePageLight();
     }
 
     /**

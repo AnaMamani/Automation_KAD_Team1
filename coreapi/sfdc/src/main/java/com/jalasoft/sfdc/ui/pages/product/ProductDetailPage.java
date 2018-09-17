@@ -16,5 +16,17 @@ public abstract class ProductDetailPage extends BasePage {
     /**
      * @return the product name created.
      */
-    public abstract String getProductCreated();
+    public abstract String getProductNameCreated();
+
+    /**
+     * select the product to edit.
+     * @return ProductFormPage.
+     */
+    public abstract ProductFormPage selectProductToEdit();
+
+    /**
+     * select the product to delete.
+     * @return ProductListPage.
+     */
+    public abstract ProductListPage deleteProduct(Product product);
 }
