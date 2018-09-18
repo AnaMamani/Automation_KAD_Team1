@@ -1,5 +1,7 @@
 package com.jalasoft.sfdc.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -120,7 +122,9 @@ public class Account {
      * @param accountName to set
      */
     public void setAccountName(String accountName) {
-        this.accountName = accountName;
+
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.accountName = accountName.concat(" ").concat(timeStamp);
     }
 
     /**

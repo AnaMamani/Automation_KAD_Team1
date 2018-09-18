@@ -1,13 +1,14 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
 import com.jalasoft.sfdc.entities.Account;
+import com.typesafe.config.ConfigException;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Handles Account Detail Page Classic extends of the
@@ -62,6 +63,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         acceptAlertDialog();
 
     }
+
 
 
     @Override

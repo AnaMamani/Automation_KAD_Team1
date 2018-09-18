@@ -1,4 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.account;
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.ListBasePage;
 
 /**
@@ -26,4 +27,5 @@ public abstract class AccountListPage extends ListBasePage {
     }
 
 
+    public abstract boolean accountSearch(Account account);
 }

@@ -1,6 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
 
+import com.jalasoft.sfdc.entities.Account;
+
 /**
  * Handles the Account List Light Page extends of the
  * {@Link AccountListPage} class.
@@ -19,6 +21,11 @@ public class AccountListPageLight extends AccountListPage {
         driverTools.clickElement(newBtn);
         return new AccountFormPageLight();
 
+    }
+
+    @Override
+    public boolean accountSearch(Account account) {
+        return false;
     }
 
 

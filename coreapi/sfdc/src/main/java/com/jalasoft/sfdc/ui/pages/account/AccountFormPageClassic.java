@@ -14,28 +14,28 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class AccountFormPageClassic extends AccountFormPage {
    //this is locators .
     @FindBy(id="acc2")
-    WebElement accountNameTxt;
+   private WebElement accountNameTxt;
 
     @FindBy(id ="acc5")
-    WebElement accountNumberTxt;
+    private WebElement accountNumberTxt;
 
     @FindBy(id="acc10")
-    WebElement phoneTxt;
+   private WebElement phoneTxt;
 
-    @FindBy(id="acc11")
+   private @FindBy(id="acc11")
     WebElement faxTxt;
 
     @FindBy(id="acc6")
-    WebElement typeTxt;
+   private WebElement typeTxt;
 
     @FindBy (id="acc17city")
-    WebElement billingCityTxt;
+   private WebElement billingCityTxt;
 
     @FindBy(id="acc17state")
-    WebElement billingStateTxt;
+   private WebElement billingStateTxt;
 
     @FindBy(id="acc17country")
-    WebElement billingCountryTxt;
+   private WebElement billingCountryTxt;
 
     @FindBy(id="00N0b000007FED5")
     private  WebElement customerPriorityTxt;
@@ -61,11 +61,8 @@ public class AccountFormPageClassic extends AccountFormPage {
         //driverTools.selectListBoxByValue(customerPriorityTxt,account.getCustomerPriority());
         driverTools.setInputField(numberLocationTxt,account.getNumberOfLocation());
 
-
-
-
-       return clickNewButton();
-
+        driverTools.clickElement(clickBtnSave);
+        return new AccountDetailPageClassic();
     }
 
     @Override
@@ -86,15 +83,6 @@ public class AccountFormPageClassic extends AccountFormPage {
         return new AccountDetailPageClassic();
     }
 
-    /**
-     * this method click new Button.
-     * @return AccountDetailPageClassic.
-     */
-
-    private AccountDetailPage clickNewButton() {
-        driverTools.clickElement(clickBtnSave);
-        return new AccountDetailPageClassic();
-    }
 
     @Override
     public void waitUntilPageObjectIsLoaded() {

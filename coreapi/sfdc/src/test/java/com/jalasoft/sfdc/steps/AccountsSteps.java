@@ -15,11 +15,13 @@ import cucumber.api.java.en.When;
 
 import java.util.List;
 
+import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+
 
 
 public class AccountsSteps {
+    private org.apache.log4j.Logger log=org.apache.log4j.Logger.getLogger(getClass());
     private HomePage homePage;
     private AllAppsPage allAppsPage;
     private AccountListPage accountListPage;
@@ -36,53 +38,56 @@ public class AccountsSteps {
     }
 
 
-    @And("^I go click account New$")
-    public void iGoClickAccountNew()  {
-       accountFormPage = accountListPage.clickNewAccount();
-    }
-
-    @When("^I create account fill the following form with the requirement$")
+    @And("^I create a Account with the following information$")
     public void iCreateAccount(List<Account> accounts) throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
+        log.info("iGoToTheAccountPage -----> Start homePage");
 
         this.account = accounts.get(0);
+        account.setAccountName(accounts.get(0).getAccountName());
+        accountFormPage = accountListPage.clickNewAccount();
         accountDetailPage= accountFormPage.createAccount(account);
-        //accountDetail=formAccount.clickSave();
     }
 
-    @Then("^validate the new Account created is displayed$")
-    public void validateTheNewAccountCreatedIsDisplayed() throws Throwable {
+    @Then("^the Account Details Page should be display with the information of the Account$")
+    public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() throws Throwable {
         accountDetailPage.validatorAccount(account);
-
-
+        System.out.print("*****************************"+account.getAccountName());
         assertEquals(accountDetailPage.validateAccountNew(),account.getAccountName(),"Correcto");
        // assertEquals(accountDetailPage.validateAccountNew(),account.getAccountNumber());
     }
+//*********************************************************************************
+    //                    Edit the Account
+//*********************************************************************************
 
 
-    @Given("^I have a contact with the following information$")
-    public void iHaveAContactWithTheFollowingInformation(List<Account> accountsN) {
-        this.account = accountsN.get(0);
-       // iGoClickAccountNew();
-        accountDetailPage= accountFormPage.createAccount(account);
+    @Given("^I create a new contact with the following information$")
+    public void iHaveAContactWithTheFollowingInformation(List<Account> newAccounts) throws Throwable {
+        log.info("Go the account page ----> Start edit");
+        iCreateAccount(newAccounts);
+        accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated();
     }
 
-    @When("^I  edit this account with the following information$")
-    public void iEditThisAccountWithTheFollowingInformation(List<Account> accounts) throws Throwable {
+    @When("^I Edit the Account information with the following information$")
+    public void iEditThisAccountWithTheFollowingInformation(List<Account> editAccounts) throws Throwable {
+
         accountFormPage=accountDetailPage.clickEditAccount();
-        this.account = accounts.get(0);
+        this.account = editAccounts.get(0);
+        account.setAccountName(editAccounts.get(0).getAccountName());
+
         accountDetailPage=accountFormPage.editAccount(account);
 
     }
-
-    @When("^I go delete a Account$")
+    //*********************************************************************************
+    //                    Delete the Account
+//*********************************************************************************
+    @When("^I delete a Account$")
     public void iGoDeleteAAccount() throws Throwable {
         accountDetailPage.deleteAnAccount();
     }
 
-//    @Then("^I should see the Account is removed from the Accounts page$")
-//    public void iShouldSeeTheAccountIsRemovedFromTheAccountsPage() throws Throwable {
-//        assertTrue();
-//        assertTrue(contactHomePage.containContact(contact));
-//    }
+    @Then("^I should see the Account is delete$")
+    public void iShouldSeeTheAccountIsDelete() throws Throwable {
+        assertFalse(accountListPage.accountSearch(account));
+    }
+
 }

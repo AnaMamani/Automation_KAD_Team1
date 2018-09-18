@@ -20,4 +20,5 @@ public abstract class AccountDetailPage extends BasePage {
     public abstract AccountFormPage clickEditAccount();
 
     public abstract void deleteAnAccount();
+
 }

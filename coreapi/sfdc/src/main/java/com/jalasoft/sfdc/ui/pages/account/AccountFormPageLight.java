@@ -16,13 +16,13 @@ public class AccountFormPageLight extends AccountFormPage {
 
     // it is web element locators.
 
-    @FindBy(xpath = ".//input[@class='input uiInput uiInputText uiInput--default uiInput--input']")
+    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::input")
     private WebElement accountNameTxt;
 
     @FindBy(xpath = ".//input[@title='Search Accounts']")
     private WebElement parentL;
 
-    @FindBy(xpath = "//input[contains(@data-interactive-lib-uid,'10')]")
+    @FindBy(xpath = "//span[text()='Account Number']/parent::label/following-sibling::input")
     WebElement accountNumberTxt;
 
     private @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
