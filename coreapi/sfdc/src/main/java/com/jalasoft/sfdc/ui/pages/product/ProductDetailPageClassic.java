@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import static org.junit.Assert.assertEquals;
+
 public class ProductDetailPageClassic extends ProductDetailPage {
     //PageFactory of selenium.
     @FindBy(id = "Name_ileinner")
@@ -52,6 +54,21 @@ public class ProductDetailPageClassic extends ProductDetailPage {
     }
 
     /**
+     * verify the edit the product.
+     *
+     * @param product information the current user.
+     */
+    @Override
+    public void isSuccessEditProduct(Product product) {
+        if (product.getProductName() != null)
+            assertEquals("result the product name is:", product.getProductName(),productNameTxt.getText().trim());
+        if (product.getProductCode()!=null)
+            assertEquals("result the product code is:",product.getProductCode(),productCodeTxt.getText().trim());
+        if (product.getProductDescription()!=null)
+            assertEquals("result the product description is:",product.getProductDescription(),productDescriptionTxt.getText().trim());
+    }
+
+    /**
      * @return the product name created.
      */
     @Override
@@ -66,8 +83,8 @@ public class ProductDetailPageClassic extends ProductDetailPage {
      * @return ProductFormPage.
      */
     @Override
-    public ProductFormPage selectProductToEdit() {
-        log.info("selectProductToEdit: return ProductFormPageClassic");
+    public ProductFormPage clickEditOption() {
+        log.info("clickEditOption: return ProductFormPageClassic");
         driverTools.clickElement(editBtn);
         return new ProductFormPageClassic();
     }
@@ -80,18 +97,10 @@ public class ProductDetailPageClassic extends ProductDetailPage {
      */
     @Override
     public ProductListPage deleteProduct(Product product) {
-        log.info("selectProductToEdit: return ProductListPageClassic");
+        log.info("clickEditOption: return ProductListPageClassic");
         driverTools.clickElement(deleteBtn);
         acceptAlertDialog();
         return new ProductListPageClassic();
     }
 
-    /**
-     * @param chk
-     * @return
-     */
-    private boolean checkBoxProduct(String chk) {
-        log.info("checkBoxProduct: " + chk);
-        return chk.equalsIgnoreCase("True");
-    }
 }

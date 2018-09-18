@@ -1,21 +1,11 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
 import com.jalasoft.sfdc.entities.Product;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class ProductListPageClassic extends ProductListPage {
-    //PageFactory of selenium.
-    @FindBy(xpath = "//*[@class=' dataCell  '][1]")
-    private WebElement productNameTxt;
-
-    @FindBy(xpath = "//*[@class=' dataCell  '][2]")
-    private WebElement productCodeTxt;
-
-    @FindBy(xpath = "//*[@class=' dataCell  '][3]")
-    private WebElement productDescriptionTxt;
 
     /**
      * Waits until page object is loaded.
@@ -45,11 +35,8 @@ public class ProductListPageClassic extends ProductListPage {
      */
     @Override
     public boolean isSuccessDeleteProduct(Product product) {
-        log.info("isSuccessDeleteProduct: ----> compare  " + productNameTxt.getText().trim()
-                + ": " + productCodeTxt.getText().trim() + " : " + productDescriptionTxt.getText().trim());
-        return product.getProductName().equals(productNameTxt.getText().trim()) &&
-                product.getProductCode().equals(productCodeTxt.getText().trim()) &&
-                product.getProductDescription().equals(productDescriptionTxt.getText().trim());
+        log.info("isSuccessDeleteProduct: ----> compare  ");
+        return driverTools.isElementDisplayed(By.xpath("//a[contains(text(),'"+product.getProductName()+"')]"));
     }
 
 }

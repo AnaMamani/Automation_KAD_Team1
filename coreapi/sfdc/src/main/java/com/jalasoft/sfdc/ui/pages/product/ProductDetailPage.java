@@ -22,11 +22,17 @@ public abstract class ProductDetailPage extends BasePage {
      * select the product to edit.
      * @return ProductFormPage.
      */
-    public abstract ProductFormPage selectProductToEdit();
+    public abstract ProductFormPage clickEditOption();
 
     /**
      * select the product to delete.
      * @return ProductListPage.
      */
     public abstract ProductListPage deleteProduct(Product product);
+
+    /**
+     * verify the edit the product.
+     * @param product information the current user.
+     */
+    public abstract void isSuccessEditProduct(Product product);
 }

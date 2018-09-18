@@ -6,19 +6,19 @@ import org.openqa.selenium.support.FindBy;
 
 public class ProductFormPageLight extends ProductFormPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//*[@data-interactive-lib-uid='5']")
+    @FindBy(xpath = "(//input[contains(@class,' input')])[2]")
     private WebElement productNameTxt;
 
-    @FindBy(xpath = "//*[@data-interactive-lib-uid='7']")
+    @FindBy(xpath = "(//input[contains(@class,' input')])[3]")
     private WebElement productCodeTxt;
 
-    @FindBy(xpath = "//*[@data-interactive-lib-uid='9']")
+    @FindBy(xpath = "//textarea[@class=' textarea']")
     private WebElement productDescriptionTxt;
 
-    @FindBy(xpath = "//*[@data-interactive-lib-uid='6']")
+    @FindBy(xpath = "//*[@type='checkbox']//parent::div")
     private WebElement productActive;
 
-    @FindBy(xpath = "//*[@title= 'Save']")
+    @FindBy(xpath = "//button[@title='Save']")
     private WebElement clickBtnSave;
 
     @FindBy(xpath = "//span[contains(text(),'Save & New')]")
@@ -47,20 +47,29 @@ public class ProductFormPageLight extends ProductFormPage {
         driverTools.setInputField(productNameTxt, product.getProductName());
         driverTools.setInputField(productCodeTxt, product.getProductCode());
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
-        checkProduct(productActive,product.getActive());
+        driverTools.selectChkBox(productActive, product.getActive());
         driverTools.clickElement(clickBtnSave);
         return new ProductDetailPageLight();
     }
+
     /**
-     * setting the field checkbox product.
-     * @param webElement is.
-     * @param active state of checkbox.
+     * fills and edit a  ProductDetailPage.
+     *
+     * @param product all information.
+     * @return a new ProductDetailPage.
      */
-    private void checkProduct(WebElement webElement, String active){
-        log.info("checkProduct : Enter   ---> "+active);
-        if (active.equalsIgnoreCase("True")){
-            log.debug("checkProduct :"+active);
-            driverTools.clickElement(webElement);
-        }
+    @Override
+    public ProductDetailPage editProduct(Product product) {
+        log.info("editProduct : start the edit the Product  and return a new ProductDetailPageLight");
+        if (product.getProductName() != null)
+            driverTools.setInputField(productNameTxt, product.getProductName());
+        if (product.getProductCode() != null)
+            driverTools.setInputField(productCodeTxt, product.getProductCode());
+        if (product.getProductDescription() != null)
+            driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
+
+        driverTools.selectChkBox(productActive, product.getActive());
+        driverTools.clickElement(clickBtnSave);
+        return new ProductDetailPageLight();
     }
 }

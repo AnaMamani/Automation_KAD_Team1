@@ -39,6 +39,7 @@ public class ProductFormPageClassic extends ProductFormPage {
 
     /**
      * setting and create a new ProductDetailPage.
+     *
      * @param product all information.
      * @return a new ProductDetailPage.
      */
@@ -48,21 +49,29 @@ public class ProductFormPageClassic extends ProductFormPage {
         driverTools.setInputField(productNameTxt, product.getProductName());
         driverTools.setInputField(productCodeTxt, product.getProductCode());
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
-        checkProduct(productChkActive,product.getActive());
+        driverTools.selectChkBox(productChkActive, product.getActive());
         driverTools.clickElement(clickBtnSave);
         return new ProductDetailPageClassic();
     }
 
     /**
-     * setting the field checkbox product.
-     * @param webElement is.
-     * @param active state of checkbox.
+     * fills and edit a  ProductDetailPage.
+     *
+     * @param product all information.
+     * @return a new ProductDetailPage.
      */
-    private void checkProduct(WebElement webElement, String active){
-        log.info("checkProduct : Enter   ---> "+active);
-        if (active.equalsIgnoreCase("True")){
-            log.debug("checkProduct :"+active);
-            driverTools.clickElement(webElement);
-        }
+    @Override
+    public ProductDetailPage editProduct(Product product) {
+        log.info("editProduct : start the edit the Product  and return a new ProductDetailPageClassic");
+        if (product.getProductName() != null)
+            driverTools.setInputField(productNameTxt, product.getProductName());
+        if (product.getProductCode() != null)
+            driverTools.setInputField(productCodeTxt, product.getProductCode());
+        if (product.getProductDescription() != null)
+            driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
+
+        driverTools.selectChkBox(productChkActive, product.getActive());
+        driverTools.clickElement(clickBtnSave);
+        return new ProductDetailPageClassic();
     }
 }

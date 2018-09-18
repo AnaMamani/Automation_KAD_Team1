@@ -7,7 +7,6 @@ import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductFormPage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -20,9 +19,9 @@ import cucumber.api.java.en.When;
  */
 import java.util.List;
 
-import static junit.framework.TestCase.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.testng.AssertJUnit.assertEquals;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
 
 public class ProductSteps {
     private org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(getClass());
@@ -41,46 +40,40 @@ public class ProductSteps {
         productListPage = allAppsPage.clickProductLink();
     }
 
-    @And("^I create a Product with the following information$")
+    @Given("^I create a Product with the following information$")
     public void iCreateAProductWithTheFollowingInformation(List<Product> products) {
         log.info("iGoToTheProductPage -----> Start create a Product");
         this.product = products.get(0);
+        product.setProductName(products.get(0).getProductName());
         productFormPage = productListPage.clickNewProduct();
         productDetailPage = productFormPage.createProduct(product);
     }
 
-    @Then("^Product Details Page should be display with the information of the product created$")
+    @Then("^the Product Details Page should be display with the information of the product created$")
     public void productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated() {
-        log.info("ProductCreated -----> Start homePage   " + product.getProductName() + "====>" + productDetailPage.getProductNameCreated());
-        final String data = productDetailPage.getProductNameCreated();
-        assertTrue(data.contains(product.getProductName()));
-        assertTrue(productDetailPage.isSuccessCreateProduct(product));
+        log.info("ProductCreated -----> Start homePage   " + product.getProductName() + "====>"
+                + productDetailPage.getProductNameCreated());
+        assertEquals(product.getProductName(),productDetailPage.getProductNameCreated(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessCreateProduct(product), "should be return :");
     }
 
     //*********************************************************************************************
 //                                     Edit the Product
 // ********************************************************************************************/
-    @When("^I have a New Product with the following information$")
-    public void iHaveANewProductWithTheFollowingInformation(List<Product> newProducts) {
-        log.info("Go to the Product page -----> Start edit");
-        iCreateAProductWithTheFollowingInformation(newProducts);
-        productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated();
-    }
 
-    @When("^I select the Product$")
-    public void iSelectTheProduct() {
-        productFormPage = productDetailPage.selectProductToEdit();
-    }
-
-    @And("^I Edit the Product information with the following information$")
+    @When("^I Edit the Product information with the following information$")
     public void iEditTheProductInformationWithTheFollowingInformation(List<Product> editProduct) {
+        productFormPage = productDetailPage.clickEditOption();
         this.product = editProduct.get(0);
-        productDetailPage = productFormPage.createProduct(product);
+        product.setProductName(editProduct.get(0).getProductName());
+        productDetailPage = productFormPage.editProduct(product);
     }
 
-    @Then("^Product Content Page should be displayed with the information updated$")
-    public void productContentPageShouldBeDisplayedWithTheInformationUpdated() {
-        productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated();
+    @Then("^the Product Details Page should be display with the information of the product updated$")
+    public void theProductDetailsPageShouldBeDisplayWithTheInformationOfTheProductUpdated() {
+        log.info("ProductCreated -----> " + product.getProductName() + "====>"+ productDetailPage.getProductNameCreated());
+        assertEquals(productDetailPage.getProductNameCreated(), product.getProductName(), "should be show the product name:");
+        productDetailPage.isSuccessEditProduct(product);
     }
 
     //*********************************************************************************************
@@ -93,6 +86,7 @@ public class ProductSteps {
 
     @Then("^the Product should be removed from the Product List$")
     public void theProductShouldBeRemovedFromTheProductList() {
-        assertFalse(productListPage.isSuccessDeleteProduct(product));
+        assertFalse(productListPage.isSuccessDeleteProduct(product), "should be return :");
     }
+
 }
