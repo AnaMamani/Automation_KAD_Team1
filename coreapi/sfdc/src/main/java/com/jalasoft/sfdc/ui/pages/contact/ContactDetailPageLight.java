@@ -4,6 +4,7 @@ import com.jalasoft.sfdc.entities.Contact;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * ContactDetailPageLight class.
@@ -15,7 +16,6 @@ public class ContactDetailPageLight extends ContactDetailPage {
 
     @FindBy(xpath = "(//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon' ]//parent::span)[1]")
     private WebElement contactCreated;
-
     @FindBy(xpath = "//a[contains(@title,'Show 5 more actions')]")
     private WebElement clickCmbBox;
     @FindBy(xpath = "//a[@title='Edit']")
@@ -43,7 +43,7 @@ public class ContactDetailPageLight extends ContactDetailPage {
      * @return ContactFormPage.
      */
     @Override
-    public ContactFormPage clickInEdit() {
+    public ContactFormPage clickEditOption() {
         driverTools.clickElement(clickCmbBox);
         driverTools.clickElement(clickOptionEdit);
         return new ContactFormPageLight();
@@ -63,4 +63,22 @@ public class ContactDetailPageLight extends ContactDetailPage {
         return new ContactListPageLight();
     }
 
+    /**
+     * For show update contact in ContactDetail.
+     *
+     * @return String.
+     */
+    @Override
+    public String isSuccessDisplayedContactDetailUpdate() {
+        System.out.print(contactCreated.getText()+ "#####################################################");
+        return contactCreated.getText().trim();
+    }
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(contactCreated));
+    }
 }

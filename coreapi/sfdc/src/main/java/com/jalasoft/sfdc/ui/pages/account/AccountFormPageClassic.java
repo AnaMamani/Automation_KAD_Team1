@@ -60,12 +60,7 @@ public class AccountFormPageClassic extends AccountFormPage {
         driverTools.setInputField(billingCountryTxt,account.getBillingCountry());
         //driverTools.selectListBoxByValue(customerPriorityTxt,account.getCustomerPriority());
         driverTools.setInputField(numberLocationTxt,account.getNumberOfLocation());
-
-
-
-
        return clickNewButton();
-
     }
 
     @Override

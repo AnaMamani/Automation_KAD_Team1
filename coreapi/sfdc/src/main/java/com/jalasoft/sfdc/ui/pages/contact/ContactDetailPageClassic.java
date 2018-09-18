@@ -1,11 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
-import com.jalasoft.sfdc.entities.Contact;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.sql.SQLOutput;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * ContactDetailPageClassic class.
@@ -18,9 +15,9 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     @FindBy(xpath = "//*[@class='topName']")
     private WebElement contactCreated;
     @FindBy(xpath = "//*[@title='Edit']")
-    private WebElement clickBtnEdit;
+    private WebElement clickEditOption;
     @FindBy(xpath = "(//*[@title='Delete'])[1]")
-    private WebElement clickBtnDelete;
+    private WebElement clickDeleteOption;
 
     /**
      * For show create contact in ContactDetail.
@@ -39,8 +36,8 @@ public class ContactDetailPageClassic extends ContactDetailPage {
      * @return ContactFormPage.
      */
     @Override
-    public ContactFormPage clickInEdit() {
-        driverTools.clickElement(clickBtnEdit);
+    public ContactFormPage clickEditOption() {
+        driverTools.clickElement(clickEditOption);
         return new ContactFormPageClassic();
     }
 
@@ -51,9 +48,27 @@ public class ContactDetailPageClassic extends ContactDetailPage {
      */
     @Override
     public ContactListPage deleteContact() {
-        driverTools.clickElement(clickBtnDelete);
+        driverTools.clickElement(clickDeleteOption);
         acceptAlertDialog();
         return new ContactListPageClassic();
     }
 
+    /**
+     * For show update contact in ContactDetail.
+     *
+     * @return String.
+     */
+    @Override
+    public String isSuccessDisplayedContactDetailUpdate() {
+        System.out.print(contactCreated.getText()+ "#####################################################");
+        return contactCreated.getText().trim();
+    }
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(clickDeleteOption));
+    }
 }

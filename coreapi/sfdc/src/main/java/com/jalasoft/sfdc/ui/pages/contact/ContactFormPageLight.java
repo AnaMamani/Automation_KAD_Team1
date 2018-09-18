@@ -58,7 +58,8 @@ public class ContactFormPageLight extends ContactFormPage {
         driverTools.setInputField(cityTxt, contact.getCity());
         driverTools.setInputField(stateTxt, contact.getState());
         driverTools.setInputField(countryTxt, contact.getCountry());
-        return clickContactBtnSave();
+        driverTools.clickElement(clickBtnSave);
+        return new ContactDetailPageLight();
     }
 
     /**
@@ -69,15 +70,24 @@ public class ContactFormPageLight extends ContactFormPage {
      */
     @Override
     public ContactDetailPage editContact(Contact contact) {
-        return createContact(contact);
-    }
-
-
-    /**
-     * Method for save the information.
-     * @return ContactDetailPageLight.
-     */
-    public ContactDetailPage clickContactBtnSave() {
+        if (contact.getFirstName()!=null)
+            driverTools.setInputField(firtsNameTxt,contact.getFirstName());
+        if (contact.getLastName()!=null)
+            driverTools.setInputField(lastNameTxt,contact.getLastName());
+        if (contact.getPhone()!=null)
+            driverTools.setInputField(phoneTxt,contact.getPhone());
+        if (contact.getTitle()!=null)
+            driverTools.setInputField(titleTxt,contact.getTitle());
+        if (contact.getEmail()!=null)
+            driverTools.setInputField(emailTxt,contact.getEmail());
+        if (contact.getStreet()!=null)
+            driverTools.setInputField(streetTxt,contact.getStreet());
+        if (contact.getCity()!=null)
+            driverTools.setInputField(cityTxt,contact.getCity());
+        if (contact.getState()!=null)
+            driverTools.setInputField(stateTxt,contact.getState());
+        if (contact.getCountry()!=null)
+            driverTools.setInputField(countryTxt,contact.getCountry());
         driverTools.clickElement(clickBtnSave);
         return new ContactDetailPageLight();
     }
