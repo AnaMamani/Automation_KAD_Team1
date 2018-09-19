@@ -3,7 +3,14 @@ package com.jalasoft.sfdc.ui.pages.product;
 import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/11/2018
+ */
 public class ProductFormPageLight extends ProductFormPage {
     //PageFactory of selenium.
     @FindBy(xpath = "(//input[contains(@class,' input')])[2]")
@@ -32,7 +39,7 @@ public class ProductFormPageLight extends ProductFormPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(productNameTxt));
     }
 
     /**
@@ -70,6 +77,7 @@ public class ProductFormPageLight extends ProductFormPage {
 
         driverTools.selectChkBox(productActive, product.getActive());
         driverTools.clickElement(clickBtnSave);
+        driverTools.sleepMilliSeconds(5000);
         return new ProductDetailPageLight();
     }
 }

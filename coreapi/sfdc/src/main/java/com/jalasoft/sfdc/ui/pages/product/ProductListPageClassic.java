@@ -4,6 +4,12 @@ import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/11/2018
+ */
 
 public class ProductListPageClassic extends ProductListPage {
 
@@ -36,7 +42,7 @@ public class ProductListPageClassic extends ProductListPage {
     @Override
     public boolean isSuccessDeleteProduct(Product product) {
         log.info("isSuccessDeleteProduct: ----> compare  ");
-        return driverTools.isElementDisplayed(By.xpath("//a[contains(text(),'"+product.getProductName()+"')]"));
+        return driverTools.isElementDisplayed(By.xpath("//a[contains(text(),'" + product.getProductName() + "')]"));
     }
 
 }

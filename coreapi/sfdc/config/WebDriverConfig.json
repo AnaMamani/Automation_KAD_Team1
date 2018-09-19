@@ -1,7 +1,7 @@
 {
   	"web driver": {
-	  "implicit wait time":"45",
-	  "explicit wait time":"45",
+	  "implicit wait time":"15",
+	  "explicit wait time":"15",
 	  "wait sleep time":"500"
 	}
 }

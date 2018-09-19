@@ -6,6 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/11/2018
+ */
 public class ProductFormPageClassic extends ProductFormPage {
     //PageFactory of selenium.
     @FindBy(id = "Name")

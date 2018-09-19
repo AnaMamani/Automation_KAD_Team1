@@ -7,6 +7,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static org.junit.Assert.assertEquals;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/11/2018
+ */
 public class ProductDetailPageClassic extends ProductDetailPage {
     //PageFactory of selenium.
     @FindBy(id = "Name_ileinner")

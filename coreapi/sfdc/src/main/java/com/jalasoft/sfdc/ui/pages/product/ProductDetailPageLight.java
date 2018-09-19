@@ -5,6 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/11/2018
+ */
 import static org.junit.Assert.assertEquals;
 
 public class ProductDetailPageLight extends ProductDetailPage {
@@ -23,6 +29,9 @@ public class ProductDetailPageLight extends ProductDetailPage {
 
     @FindBy(xpath = "//div[@class='slds-media__body']//child::span")
     private WebElement productNameCreatedTxt;
+
+    @FindBy(xpath = "//div[@class='slds-media__body']//child::span")
+    private WebElement productNameEditTxt;
 
     @FindBy(xpath = "//a[@title='Show 4 more actions']")
     private WebElement showMoreAction;
@@ -59,7 +68,6 @@ public class ProductDetailPageLight extends ProductDetailPage {
         return product.getProductName().equals(productNameTxt.getText()) &&
                 product.getProductCode().equals(productCodeTxt.getText()) &&
                 product.getProductDescription().equals(productDescriptionTxt.getText());
-
     }
 
     /**
