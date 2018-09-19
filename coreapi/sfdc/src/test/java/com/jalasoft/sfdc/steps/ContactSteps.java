@@ -16,6 +16,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 /**
@@ -78,9 +79,8 @@ public class ContactSteps {
 
     @Then("^the Contact Details Page should be display with the information of the contact update$")
     public void theDisplayWithTheInformationOfTheContactUpdate() {
-        System.out.println(contact.getFirstName().concat(" ").concat(contact.getLastName()) + "***********************************");
-        assertEquals(contactDetailPage.isSuccessDisplayedContactDetailUpdate(), contact.getFirstName().concat(" ").concat(contact.getLastName()), "full name the Contact is showed");
-
+        contactDetailPage.clickOnDetail();
+        contactDetailPage.validateWithDetail(contact);
     }
     //*********************************************************************************************
 //                                     Delete the Contact

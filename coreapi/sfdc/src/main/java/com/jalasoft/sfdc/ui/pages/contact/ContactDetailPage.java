@@ -32,9 +32,14 @@ public abstract class ContactDetailPage extends BasePage {
      * @return ContactListPage.
      */
     public abstract ContactListPage deleteContact();
+
     /**
-     * For show update contact in ContactDetail.
-     * @return String.
+     * For made click in Detail
      */
-    public abstract String isSuccessDisplayedContactDetailUpdate();
+    public abstract void clickOnDetail();
+
+    /**
+     * Validate with detail.
+     */
+    public abstract void validateWithDetail(Contact contact);
 }

@@ -89,6 +89,7 @@ public class ContactFormPageLight extends ContactFormPage {
         if (contact.getCountry()!=null)
             driverTools.setInputField(countryTxt,contact.getCountry());
         driverTools.clickElement(clickBtnSave);
+        driverTools.sleepMilliSeconds(5000);
         return new ContactDetailPageLight();
     }
     /**
