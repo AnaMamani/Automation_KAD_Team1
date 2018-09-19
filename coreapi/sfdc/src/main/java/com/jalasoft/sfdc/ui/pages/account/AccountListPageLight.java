@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.ui.pages.account;
 
 
 import com.jalasoft.sfdc.entities.Account;
+import org.openqa.selenium.By;
 
 /**
  * Handles the Account List Light Page extends of the
@@ -14,6 +15,7 @@ public class AccountListPageLight extends AccountListPage {
 
     /**
      * this is method clickNewAccount
+     *
      * @return AccountFormPage , it page is a form of Light.
      */
     @Override
@@ -23,9 +25,17 @@ public class AccountListPageLight extends AccountListPage {
 
     }
 
+    /**
+     * This method Search account
+     *
+     * @param account Account
+     * @return boolean (true/false)
+     */
     @Override
     public boolean accountSearch(Account account) {
-        return false;
+        System.out.print("**********************----------*******************");
+        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'" + account.getAccountName() + "')]"));
+
     }
 
 

@@ -14,6 +14,7 @@ public class AccountListPageClassic extends AccountListPage {
 
     /**
      * this is method clickNewAccount
+     *
      * @return AccountFormPage, it page is a form of Classic.
      */
     @Override
@@ -22,9 +23,15 @@ public class AccountListPageClassic extends AccountListPage {
         return new AccountFormPageClassic();
     }
 
+    /**
+     * This method search Account
+     *
+     * @param account Account
+     * @return boolean (true/false)
+     */
     @Override
     public boolean accountSearch(Account account) {
-        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'"+account.getAccountName()+"')]"));
+        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'" + account.getAccountName() + "')]"));
         //return driverTools.isElementDisplayed(By.xpath("//th/a[text()='"+account.getAccountName()+"']"));
     }
 

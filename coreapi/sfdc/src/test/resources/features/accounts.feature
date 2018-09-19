@@ -7,15 +7,15 @@ Feature: Create "Accounts"
     Given  I navigate to Login page
     And I login as "other role user" User
     When I go to the Account page
-#
-#  @createAccount
-#  Scenario: Verify that is possible create a new Account
-#    And  I create a Account with the following information
-#      | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
-#      | katty        | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
-#
-#    Then the Account Details Page should be display with the information of the Account
-#
+
+  @createAccount
+  Scenario: Verify that is possible create a new Account
+    And  I create a Account with the following information
+      | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
+      | katty        | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
+
+    Then the Account Details Page should be display with the information of the Account
+
   @editAccount
   Scenario: Verify that is possible edit Account created
     Given  I create a Account with the following information
@@ -28,16 +28,16 @@ Feature: Create "Accounts"
 
 
     Then the Account Details Page should be display with the information of the Account
-#
-#  @deleteAccount
-#  Scenario:  Verify that is possible Delete a Account created
-#    Given I create a Account with the following information
-#
-#      | Account Name | Account Number | Phone   | Fax    | Billing  City | Billing State | Billing Country | Number of Location | Type     |
-#      | Deysi        | 222111         | 6666637 | 987621 | cbba          | tiraque       | Bolivia         | 1                  | Prospect |
-#
-#    When I delete a Account
-#    Then I should see the Account is delete
+
+  @deleteAccount
+  Scenario:  Verify that is possible Delete a Account created
+    Given I create a Account with the following information
+
+      | Account Name | Account Number | Phone   | Fax    | Billing  City | Billing State | Billing Country | Number of Location | Type     |
+      | Deysi        | 222111         | 6666637 | 987621 | cbba          | tiraque       | Bolivia         | 1                  | Prospect |
+
+    When I delete a Account
+    Then I should see the Account is delete
 
 
 

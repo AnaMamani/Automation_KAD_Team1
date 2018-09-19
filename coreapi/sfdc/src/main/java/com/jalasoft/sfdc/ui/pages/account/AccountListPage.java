@@ -1,4 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.account;
+
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.ListBasePage;
 
@@ -12,10 +13,9 @@ import com.jalasoft.sfdc.ui.ListBasePage;
 public abstract class AccountListPage extends ListBasePage {
 
 
-
-
     /**
      * this method abstract click for New Account on Light and Classic.
+     *
      * @return new AccountFormPage
      */
 
@@ -26,6 +26,11 @@ public abstract class AccountListPage extends ListBasePage {
 
     }
 
-
+    /**
+     * This method abstract search a account
+     *
+     * @param account Account
+     * @return a boolean (true,false )
+     */
     public abstract boolean accountSearch(Account account);
 }

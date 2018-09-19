@@ -13,10 +13,18 @@ import com.jalasoft.sfdc.ui.BasePage;
 public abstract class AccountFormPage extends BasePage {
     /**
      * this method abstract click for New Account on Light and Classic.
+     *
      * @return a new AccountDetailPage.
      */
 
     public abstract AccountDetailPage createAccount(Account account);
+
+    /**
+     * This method for edit an Account
+     *
+     * @param account of Account
+     * @return AccountDetailPage
+     */
 
     public abstract AccountDetailPage editAccount(Account account);
 }
