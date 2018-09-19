@@ -1,5 +1,8 @@
 package com.jalasoft.sfdc.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Contact {
     private String firstName =" ";
     private String lastName =" ";
@@ -29,6 +32,8 @@ public class Contact {
      * @param firstName contact firstName to set
      */
     public void setFirstName(String firstName) {
+        //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+       // this.firstName = firstName. concat("").concat(timeStamp);
         this.firstName = firstName;
     }
 

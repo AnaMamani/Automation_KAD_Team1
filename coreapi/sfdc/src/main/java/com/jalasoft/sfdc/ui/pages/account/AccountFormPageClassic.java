@@ -66,8 +66,25 @@ public class AccountFormPageClassic extends AccountFormPage {
         driverTools.setInputField(billingStateTxt, account.getBillingState());
         driverTools.setInputField(billingCountryTxt, account.getBillingCountry());
         //driverTools.selectListBoxByValue(customerPriorityTxt,account.getCustomerPriority());
-        driverTools.setInputField(numberLocationTxt, account.getNumberOfLocation());
 
+        driverTools.setInputField(numberLocationTxt,account.getNumberOfLocation());
+       return clickNewButton();
+    }
+    @Override
+    public AccountDetailPage editAccount(Account account) {
+        if (account.getAccountName()!=null)
+            driverTools.setInputField(accountNameTxt,account.getAccountName());
+        if (account.getAccountNumber()!=null)
+            driverTools.setInputField(accountNumberTxt,account.getAccountNumber());
+        if (account.getPhone()!=null)
+            driverTools.setInputField(phoneTxt,account.getPhone());
+        if (account.getFax()!=null)
+            driverTools.setInputField(faxTxt,account.getFax());
+        if (account.getBillingCity()!=null)
+            driverTools.setInputField(billingCityTxt,account.getBillingCity());
+        if (account.getBillingState()!=null)
+            driverTools.setInputField(billingStateTxt,account.getBillingState());
+        driverTools.setInputField(numberLocationTxt, account.getNumberOfLocation());
         driverTools.clickElement(clickBtnSave);
         return new AccountDetailPageClassic();
     }

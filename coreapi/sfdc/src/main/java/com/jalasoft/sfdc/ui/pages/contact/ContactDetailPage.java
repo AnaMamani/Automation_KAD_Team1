@@ -25,11 +25,21 @@ public abstract class ContactDetailPage extends BasePage {
      * Edit contact of contact detail.
      * @return ContactFormPage.
      */
-    public abstract ContactFormPage clickInEdit();
+    public abstract ContactFormPage clickEditOption();
 
     /**
      * Delete Contact of contact detail.
      * @return ContactListPage.
      */
     public abstract ContactListPage deleteContact();
+
+    /**
+     * For made click in Detail
+     */
+    public abstract void clickOnDetail();
+
+    /**
+     * Validate with detail.
+     */
+    public abstract void validateWithDetail(Contact contact);
 }

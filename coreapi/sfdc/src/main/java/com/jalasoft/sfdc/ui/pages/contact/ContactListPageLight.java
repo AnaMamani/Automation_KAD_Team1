@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.contact;
 
 import com.jalasoft.sfdc.entities.Contact;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -23,14 +24,14 @@ public class ContactListPageLight extends ContactListPage {
         return new ContactFormPageLight();
     }
 
-    @Override
-    public ContactDetailPage selectContact(String firstName) {
-        return null;
-    }
-
+    /**
+     * Verify contact search in page.
+     *
+     * @return a PageFactory
+     */
     @Override
     public boolean contactSearch(Contact contact) {
-        return false;
+        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'"+contact.getFirstName()+"')]"));
     }
 
     /**

@@ -23,24 +23,17 @@ public class ContactListPageClassic extends ContactListPage {
 
     }
 
-    @Override
-    public ContactDetailPage selectContact(String firstName) {
-        String locatorNameLink = "//*[contains(text(), '" + firstName + "')]";
-        driverTools.clickElement(By.xpath(locatorNameLink));
-        return new ContactDetailPageClassic();
-    }
-
+    /**
+     * Verify contact search in page.
+     *
+     * @param contact
+     * @return a PageFactory
+     */
     @Override
     public boolean contactSearch(Contact contact) {
-
-        try {
-            driver.findElement(By.xpath("//*[contains(text(), '" + contact.getFirstName() + "')]"));
-            return false;
-        } catch (Exception e) {
-            return true;
-        }
-
+        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'"+contact.getFirstName()+"')]"));
     }
+
 
     /**
      *  Waits until page object is loaded.
