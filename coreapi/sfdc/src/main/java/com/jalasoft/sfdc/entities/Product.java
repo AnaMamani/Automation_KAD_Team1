@@ -1,5 +1,8 @@
 package com.jalasoft.sfdc.entities;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Product class.
  *
@@ -10,7 +13,7 @@ public class Product {
     private String productName;
     private String productCode;
     private String productDescription;
-    private String active;
+    private boolean active;
 
     /**
      * Gets the product name.
@@ -25,7 +28,8 @@ public class Product {
      * @param productName the current product name.
      */
     public void setProductName(String productName) {
-        this.productName = productName;
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.productName = productName.concat(" ").concat(timeStamp);
     }
 
     /**
@@ -64,7 +68,7 @@ public class Product {
      * Gets the product is active.
      * @return if product is active.
      */
-    public String getActive() {
+    public boolean getActive() {
         return active;
     }
 
@@ -72,7 +76,7 @@ public class Product {
      * Sets the state product.
      * @param active or no active product.
      */
-    public void setActive(String  active) {
+    public void setActive(boolean  active) {
         this.active = active;
     }
 }

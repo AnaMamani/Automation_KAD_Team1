@@ -526,4 +526,16 @@ public class WebDriverTools {
         WebElement element = driver.findElement(selector);
         element.sendKeys(Keys.ENTER);
     }
+
+    /**
+     * Clears the ListBox.
+     * @param productChkActive web element.
+     * @param active check or uncheck.
+     */
+    public void selectChkBox(WebElement productChkActive, boolean active) {
+        if (active){
+            selectChkBox(productChkActive);
+        }
+        else {clearChkBox(productChkActive);}
+    }
 }
