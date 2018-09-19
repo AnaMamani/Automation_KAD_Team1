@@ -9,19 +9,19 @@ import static org.junit.Assert.assertEquals;
 
 public class ProductDetailPageLight extends ProductDetailPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "(//span[contains(@class,'separator is-read-only')])[8]")
+    @FindBy(xpath = "(//div[@class='slds-form-element__control slds-grid itemBody']//child::span[@class='uiOutputText'])[1]")
     private WebElement productNameTxt;
 
-    @FindBy(xpath = "((//span[contains(@class,'separator is-read-only')])[10]")
+    @FindBy(xpath = "//div[@class='slds-form-element__control slds-grid itemBody']//following::span[@class='uiOutputText']")
     private WebElement productCodeTxt;
 
-    @FindBy(xpath = "(//span[@class='uiOutputTextArea'])[2]")
+    @FindBy(xpath = "//div[@class='slds-form-element__control slds-grid itemBody']//child::span[@class='uiOutputTextArea']")
     private WebElement productDescriptionTxt;
 
     @FindBy(xpath = "(//img[contains(@class,' checked')])[2]")
     private WebElement productChkActive;
 
-    @FindBy(xpath = "(//span[contains(@class,'uiOutputText')])[5]")
+    @FindBy(xpath = "//div[@class='slds-media__body']//child::span")
     private WebElement productNameCreatedTxt;
 
     @FindBy(xpath = "//a[@title='Show 4 more actions']")

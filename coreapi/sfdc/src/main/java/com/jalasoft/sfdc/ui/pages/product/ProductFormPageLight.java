@@ -15,7 +15,7 @@ public class ProductFormPageLight extends ProductFormPage {
     @FindBy(xpath = "//textarea[@class=' textarea']")
     private WebElement productDescriptionTxt;
 
-    @FindBy(xpath = "//*[@type='checkbox']//parent::div")
+    @FindBy(xpath = "//div[@class= 'slds-form-element__control']//child::input[@type='checkbox']")
     private WebElement productActive;
 
     @FindBy(xpath = "//button[@title='Save']")

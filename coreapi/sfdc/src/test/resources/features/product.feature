@@ -21,14 +21,14 @@ Feature: Create a "Product"
       | Product Name | Product Code | Product Description | Active |
       | Computers    | 0215424      | laptops             | false  |
     Then the Product Details Page should be display with the information of the product updated
-
-  @DeleteProduct
-  Scenario: Verify that is possible Delete a Product created
-    Given I create a Product with the following information
-      | Product Name | Product Code | Product Description | Active |
-      | Computers    | 69489750     | desktop             | true   |
-     And I delete the product
-    Then the Product should be removed from the Product List
+#
+#  @DeleteProduct
+#  Scenario: Verify that is possible Delete a Product created
+#    Given I create a Product with the following information
+#      | Product Name | Product Code | Product Description | Active |
+#      | Computers    | 69489750     | desktop             | true   |
+#     And I delete the product
+#    Then the Product should be removed from the Product List
 
 
 
