@@ -96,10 +96,8 @@ public class AccountFormPageClassic extends AccountFormPage {
         return new AccountDetailPageClassic();
     }
 
-
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
-
     }
 }
