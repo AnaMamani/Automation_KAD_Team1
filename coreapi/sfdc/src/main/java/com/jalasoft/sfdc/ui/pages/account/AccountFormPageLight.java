@@ -16,13 +16,13 @@ public class AccountFormPageLight extends AccountFormPage {
 
     // it is web element locators.
 
-    @FindBy(xpath = ".//input[@class='input uiInput uiInputText uiInput--default uiInput--input']")
+    @FindBy(xpath = "//span[text()='Account Name']/parent::label/following-sibling::input")
     private WebElement accountNameTxt;
 
     @FindBy(xpath = ".//input[@title='Search Accounts']")
     private WebElement parentL;
 
-    @FindBy(xpath = "//input[contains(@data-interactive-lib-uid,'10')]")
+    @FindBy(xpath = "//span[text()='Account Number']/parent::label/following-sibling::input")
     WebElement accountNumberTxt;
 
     private @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
@@ -32,25 +32,20 @@ public class AccountFormPageLight extends AccountFormPage {
     WebElement faxTxt;
 
     @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
-    WebElement typeTxt;
-
-//    @FindBy(id="acc6")
-//    WebElement typeTxt;
+    private WebElement typeTxt;
 
     @FindBy(xpath = "//span[text()='Billing City']/parent::label/following-sibling::input")
-    WebElement billingCityTxt;
+    private WebElement billingCityTxt;
 
     @FindBy(xpath = "//span[text()='Billing State/Province']/parent::label/following-sibling::input")
-    WebElement billingStateTxt;
+    private WebElement billingStateTxt;
 
     @FindBy(xpath = "//span[text()='Billing Country']/parent::label/following-sibling::input")
-    WebElement billingCountryTxt;
-
-//    @FindBy(xpath="00N0b000007FED5")
-//    private  WebElement customerPriorityTxt;
+    private WebElement billingCountryTxt;
 
     @FindBy(xpath = "//span[text()='Number of Locations']/parent::label/following-sibling::input")
     private WebElement numberLocationTxt;
+
     @FindBy(xpath = "//span[text()='Type']/../..//a[contains(@class,'select')]")
     WebElement typeSelected;
 
@@ -58,6 +53,12 @@ public class AccountFormPageLight extends AccountFormPage {
     @FindBy(xpath = "//span[text()='Save']/parent::button[@title='Save']")
     private WebElement clickBtnSave;
 
+    /**
+     * This method setter for create an Account
+     *
+     * @param account Account
+     * @return AccountDetailpageLight.
+     */
     @Override
     public AccountDetailPage createAccount(Account account) {
         driverTools.setInputField(accountNameTxt, account.getAccountName());
@@ -76,6 +77,12 @@ public class AccountFormPageLight extends AccountFormPage {
 
     }
 
+    /**
+     * This method is edit Account
+     *
+     * @param account of Account
+     * @return AccountDetailPageLight
+     */
     @Override
     public AccountDetailPage editAccount(Account account) {
         if (account.getAccountName() != null)
@@ -91,6 +98,7 @@ public class AccountFormPageLight extends AccountFormPage {
         if (account.getBillingState() != null)
             driverTools.setInputField(billingStateTxt, account.getBillingState());
         driverTools.clickElement(clickBtnSave);
+        driverTools.sleepMilliSeconds(5000);
         return new AccountDetailPageLight();
     }
 

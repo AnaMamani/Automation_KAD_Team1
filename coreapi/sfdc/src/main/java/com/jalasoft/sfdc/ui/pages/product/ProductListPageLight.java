@@ -1,20 +1,16 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
 import com.jalasoft.sfdc.entities.Product;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/11/2018
+ */
 public class ProductListPageLight extends ProductListPage {
-    //PageFactory of selenium.
-    @FindBy(xpath = "//*[@scope=\"row\"]")
-    private WebElement productNameTxt;
-
-    @FindBy(xpath = "//*[@class=\"slds-truncate uiOutputText\"]")
-    private WebElement productCodeTxt;
-
-    @FindBy(xpath = "//*[@class=\"slds-cell-edit lockTrigger cellContainer\"]")
-    private WebElement productDescriptionTxt;
 
     /**
      * Waits until page object is loaded.
@@ -44,8 +40,6 @@ public class ProductListPageLight extends ProductListPage {
     @Override
     public boolean isSuccessDeleteProduct(Product product) {
         log.info("isSuccessDeleteProduct: ----> compare");
-        return product.getProductName().equals(productNameTxt.getText().trim()) &&
-                product.getProductCode().equals(productCodeTxt.getText().trim()) &&
-                product.getProductDescription().equals(productDescriptionTxt.getText().trim());
+        return driverTools.isElementDisplayed(By.xpath("//table[@class]//child::a[contains(@title,'" + product.getProductName() + "')]"));
     }
 }
