@@ -77,7 +77,7 @@ public class ProductFormPageLight extends ProductFormPage {
 
         driverTools.selectChkBox(productActive, product.getActive());
         driverTools.clickElement(clickBtnSave);
-        driverTools.sleepMilliSeconds(5000);
+        driverTools.invisibilityElement(clickBtnSave);
         return new ProductDetailPageLight();
     }
 }

@@ -508,7 +508,7 @@ public class WebDriverTools {
      * Sets text in input field and press Enter.
      *
      * @param element - The web element.
-     * @param text - The text value.
+     * @param text    - The text value.
      */
     public void setInputFieldAndPressEnter(WebElement element, String text) {
         setInputField(element, text);
@@ -519,7 +519,7 @@ public class WebDriverTools {
      * Sets text in input field and press Enter.
      *
      * @param selector - Selector value to find input element
-     * @param text - Value to fill in input
+     * @param text     - Value to fill in input
      */
     public void setInputFieldAndPressEnter(By selector, String text) {
         setInputField(selector, text);
@@ -529,13 +529,28 @@ public class WebDriverTools {
 
     /**
      * Clears the ListBox.
+     *
      * @param productChkActive web element.
-     * @param active check or uncheck.
+     * @param active           check or uncheck.
      */
     public void selectChkBox(WebElement productChkActive, boolean active) {
-        if (active){
+        if (active) {
             selectChkBox(productChkActive);
+        } else {
+            clearChkBox(productChkActive);
         }
-        else {clearChkBox(productChkActive);}
     }
+
+    /**
+     * wait for the invisibility.
+     *
+     * @param webElement web element.
+     */
+    public void invisibilityElement(WebElement webElement) {
+        if (isElementDisplayed(webElement))
+            wait.until(ExpectedConditions.invisibilityOf(webElement));
+        else
+            wait.until(ExpectedConditions.invisibilityOf(webElement));
+    }
+
 }
