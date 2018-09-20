@@ -23,31 +23,31 @@ public class AccountFormPageLight extends AccountFormPage {
     private WebElement parentL;
 
     @FindBy(xpath = "//span[text()='Account Number']/parent::label/following-sibling::input")
-    WebElement accountNumberTxt;
+    private WebElement accountNumberTxt;
 
-    private @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
-    WebElement phoneTxt;
-
-    @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
-    WebElement faxTxt;
+    @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
+    private WebElement accountPhoneTxt;
 
     @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
-    private WebElement typeTxt;
+    private WebElement accountFaxTxt;
+
+    @FindBy(xpath = "//span[text()='Fax']/parent::label/following-sibling::input")
+    private WebElement accountSelectTypeTxt;
 
     @FindBy(xpath = "//span[text()='Billing City']/parent::label/following-sibling::input")
-    private WebElement billingCityTxt;
+    private WebElement accountBillingCityTxt;
 
     @FindBy(xpath = "//span[text()='Billing State/Province']/parent::label/following-sibling::input")
-    private WebElement billingStateTxt;
+    private WebElement accountBillingStateTxt;
 
     @FindBy(xpath = "//span[text()='Billing Country']/parent::label/following-sibling::input")
-    private WebElement billingCountryTxt;
+    private WebElement accountBillingCountryTxt;
 
     @FindBy(xpath = "//span[text()='Number of Locations']/parent::label/following-sibling::input")
-    private WebElement numberLocationTxt;
+    private WebElement accountNumberLocationTxt;
 
     @FindBy(xpath = "//span[text()='Type']/../..//a[contains(@class,'select')]")
-    WebElement typeSelected;
+    private WebElement typeSelected;
 
 
     @FindBy(xpath = "//span[text()='Save']/parent::button[@title='Save']")
@@ -63,17 +63,17 @@ public class AccountFormPageLight extends AccountFormPage {
     public AccountDetailPage createAccount(Account account) {
         driverTools.setInputField(accountNameTxt, account.getAccountName());
         driverTools.setInputField(accountNumberTxt, account.getAccountNumber());
-        driverTools.setInputField(phoneTxt, account.getPhone());
-        driverTools.setInputField(faxTxt, account.getFax());
+        driverTools.setInputField(accountPhoneTxt, account.getPhone());
+        driverTools.setInputField(accountFaxTxt, account.getFax());
         driverTools.clickElement(typeSelected);
         driverTools.clickElement(By.xpath("//div[contains(@class,'select-options')] //li[contains(@role,'presentation')]/a[contains(@title,'" + account.getType() + "')]"));
-        driverTools.setInputField(billingCityTxt, account.getBillingCity());
-        driverTools.setInputField(billingStateTxt, account.getBillingState());
-        driverTools.setInputField(billingCountryTxt, account.getBillingCountry());
-        //driverTools.selectListBoxByValue(customerPriorityTxt,account.getCustomerPriority());
-        driverTools.setInputField(numberLocationTxt, account.getNumberOfLocation());
+        driverTools.setInputField(accountBillingCityTxt, account.getBillingCity());
+        driverTools.setInputField(accountBillingStateTxt, account.getBillingState());
+        driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
+        driverTools.setInputField(accountNumberLocationTxt, account.getNumberOfLocation());
 
-        return clickNewButtonLight();
+        driverTools.clickElement(clickBtnSave);
+        return new AccountDetailPageLight();
 
     }
 
@@ -90,27 +90,19 @@ public class AccountFormPageLight extends AccountFormPage {
         if (account.getAccountNumber() != null)
             driverTools.setInputField(accountNumberTxt, account.getAccountNumber());
         if (account.getPhone() != null)
-            driverTools.setInputField(phoneTxt, account.getPhone());
+            driverTools.setInputField(accountPhoneTxt, account.getPhone());
         if (account.getFax() != null)
-            driverTools.setInputField(faxTxt, account.getFax());
+            driverTools.setInputField(accountFaxTxt, account.getFax());
         if (account.getBillingCity() != null)
-            driverTools.setInputField(billingCityTxt, account.getBillingCity());
+            driverTools.setInputField(accountBillingCityTxt, account.getBillingCity());
         if (account.getBillingState() != null)
-            driverTools.setInputField(billingStateTxt, account.getBillingState());
+            driverTools.setInputField(accountBillingStateTxt, account.getBillingState());
         driverTools.clickElement(clickBtnSave);
         driverTools.sleepMilliSeconds(5000);
         return new AccountDetailPageLight();
     }
 
-    /**
-     * this is method  to da click button New Light.
-     *
-     * @return AccountDetailPage Account detail Page Light.
-     */
-    private AccountDetailPage clickNewButtonLight() {
-        driverTools.clickElement(clickBtnSave);
-        return new AccountDetailPageLight();
-    }
+
 
     /**
      * it method set of Phone.
@@ -118,7 +110,7 @@ public class AccountFormPageLight extends AccountFormPage {
      * @param phone number cel.
      */
     private void setPhone(String phone) {
-        driverTools.setInputField(phoneTxt, phone);
+        driverTools.setInputField(accountPhoneTxt, phone);
     }
 
     /**
@@ -145,3 +137,8 @@ public class AccountFormPageLight extends AccountFormPage {
 
     }
 }
+
+
+
+
+

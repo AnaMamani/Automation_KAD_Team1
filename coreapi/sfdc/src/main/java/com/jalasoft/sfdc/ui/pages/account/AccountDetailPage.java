@@ -1,10 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.account;
-
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
-
-import java.util.List;
-
 /**
  * Handles the Account Detail Page.
  *
@@ -17,7 +13,7 @@ public abstract class AccountDetailPage extends BasePage {
      * @return String name that was create .
      */
 
-    public abstract String validateAccountNew();
+    public abstract String isSuccessDisplayedAccountDetail();
 
     /**
      * This method abstract for validator an Account.
@@ -39,5 +35,17 @@ public abstract class AccountDetailPage extends BasePage {
      */
 
     public abstract void deleteAnAccount();
+    /**
+     * verify that a account is create.
+     * @param account information the current user.
+     * @return is successfully or not successfully.
+     */
+    public abstract boolean isSuccessCreateAccount(Account account);
+    /**
+     * verify the edit the account.
+     * @param account information the current user.
+     */
 
+    public abstract boolean isSuccessEditAccount(Account account);
 }
+

@@ -7,6 +7,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,6 +18,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertFalse;
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 /**
  * Account steps class.
@@ -65,27 +67,19 @@ public class AccountsSteps {
     /**
      * validate the information of Account.
      */
-    @Then("^the Account Details Page should be display with the information of the Account$")
+    @Then("^the Account Details Page should be display with the information of the Account created$")
     public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() {
-        accountDetailPage.validatorAccount(account);
-        System.out.println("*****************************" + account.getAccountName());
-        assertEquals(account.getAccountName(), accountDetailPage.validateAccountNew(), "the correct name user should be:");
+
+        assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
+
+        assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
+
+
+       // accountDetailPage.validatorAccount(account);
     }
 //*********************************************************************************
     //                    Edit the Account
 //*********************************************************************************
-
-    /**
-     * Craete a new Account with information .
-     *
-     * @param newAccounts List of new account
-     */
-    @Given("^I create a new Account with the following information$")
-    public void iHaveAContactWithTheFollowingInformation(List<Account> newAccounts) throws Throwable {
-        log.info("Go the account page ----> Start edit");
-        iCreateAccount(newAccounts);
-        accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated();
-    }
 
     /**
      * Edi the account information
@@ -100,6 +94,11 @@ public class AccountsSteps {
         account.setAccountName(editAccounts.get(0).getAccountName());
         accountDetailPage = accountFormPage.editAccount(account);
 
+    }
+
+    @Then("^the Account Details Page should be display with the information of the Account updated$")
+    public void theAccountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountUpdated()  {
+        assertTrue(accountDetailPage. isSuccessEditAccount(account),"the expected result:");
     }
 //*********************************************************************************
     //                    Delete the Account
@@ -120,5 +119,6 @@ public class AccountsSteps {
     public void iShouldSeeTheAccountIsDelete() {
         assertFalse(accountListPage.accountSearch(account));
     }
+
 
 }

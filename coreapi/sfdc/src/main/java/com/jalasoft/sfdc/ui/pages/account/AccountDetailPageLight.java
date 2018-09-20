@@ -3,8 +3,8 @@ package com.jalasoft.sfdc.ui.pages.account;
 import com.jalasoft.sfdc.entities.Account;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -17,11 +17,26 @@ import static org.junit.Assert.assertEquals;
 
 public class AccountDetailPageLight extends AccountDetailPage {
 
+    @FindBy(xpath = "//span[contains(text(), 'Account Name')]/parent::div/following-sibling::div/span/span")
+    private WebElement accountNameTxt;
+
+    @FindBy(xpath = "//span[contains(text(), 'Account Number')]/parent::div/following-sibling::div/span/span")
+    private WebElement accountNumberTxt;
+
+    @FindBy(xpath = "//span[contains(text(), 'Type')]/parent::div/following-sibling::div/span/span")
+    private WebElement accountSelectTypeTxt;
+
+    @FindBy(xpath = "//span[contains(text(), 'Phone')]/parent::div/following-sibling::div/span/span")
+    private WebElement accountPhoneTxt;
+
+    @FindBy(xpath = "//span[contains(text(), 'Fax')]/parent::div/following-sibling::div/span/span")
+    private WebElement accountFaxTxt;
+
     @FindBy(xpath = "//a[@title='Details']")
-    private WebElement detail;
+    private WebElement optionDetail;
 
     @FindBy(xpath = "//div[@class='slds-media__body']//following::span[@class='slds-truncate uiOutputText']")
-    private WebElement detailsName;
+    private WebElement accountNameCreatedTxt;
 
     @FindBy(xpath = "//a[(@title='Edit')]")
     private WebElement selectOptionEdit;
@@ -30,22 +45,7 @@ public class AccountDetailPageLight extends AccountDetailPage {
     private WebElement selectOptionDelete;
 
     @FindBy(xpath = "//span[(text()='Delete')]")
-    private WebElement deleteBtn;
-
-    @FindBy(xpath = "(//span[@class='uiOutputText'])[3]")
-    private WebElement validateNameTxt;
-
-    @FindBy(xpath = "(//span[contains(@class,'separator')])[7]")
-    private WebElement validateNumber;
-
-    @FindBy(xpath = "(//span[contains(@class,'separator')])[11]")
-    private WebElement validatorType;
-
-    @FindBy(xpath = "(//span[contains(@class,'separator')])[4]")
-    private WebElement validatorPhone;
-
-    @FindBy(xpath = "(//span[contains(@class,'separator')])[6]")
-    private WebElement validatorFax;
+    private WebElement selectDelete;
 
     @FindBy(xpath = "//a[(@title='Show 7 more actions')]")
     private WebElement selectBtn;
@@ -57,9 +57,9 @@ public class AccountDetailPageLight extends AccountDetailPage {
      */
 
     @Override
-    public String validateAccountNew() {
-        log.info("validateAccountNew =========> " + detailsName.getText().trim());
-        return detailsName.getText().trim();
+    public String isSuccessDisplayedAccountDetail() {
+        log.info("validateAccountNew =========> " + accountNameCreatedTxt.getText().trim());
+        return accountNameCreatedTxt.getText().trim();
 
     }
 
@@ -70,13 +70,13 @@ public class AccountDetailPageLight extends AccountDetailPage {
      */
     @Override
     public void validatorAccount(Account account) {
-        driverTools.clickElement(detail);
+        driverTools.clickElement(optionDetail);
         log.info(account.getAccountNumber() + "################detail");
-        log.info(validateNumber.getText() + "###############hola ");
-        assertEquals(account.getAccountNumber(), validateNumber.getText().trim());
-        assertEquals(account.getType(), validatorType.getText().trim());
-        assertEquals(account.getPhone(), validatorPhone.getText().trim());
-        assertEquals(account.getFax(), validatorFax.getText().trim());
+        log.info(accountNumberTxt.getText() + "###############hola ");
+        assertEquals(account.getAccountNumber(), accountNumberTxt.getText().trim());
+        assertEquals(account.getType(), accountSelectTypeTxt.getText().trim());
+        assertEquals(account.getPhone(), accountPhoneTxt.getText().trim());
+        assertEquals(account.getFax(), accountFaxTxt.getText().trim());
 
     }
 
@@ -99,12 +99,48 @@ public class AccountDetailPageLight extends AccountDetailPage {
     public void deleteAnAccount() {
         driverTools.clickElement(selectBtn);
         driverTools.clickElement(selectOptionDelete);
-        driverTools.clickElement(deleteBtn);
+        driverTools.clickElement(selectDelete);
     }
-
+    /**
+     * verify that a account is create.
+     *
+     * @param account information the current user.
+     * @return is successfully or not successfully.
+     */
+    @Override
+    public boolean isSuccessCreateAccount(Account account) {
+        driverTools.clickElement(optionDetail);
+        return account.getAccountNumber().equals(accountNumberTxt.getText()) &&
+                account.getType().equals(accountSelectTypeTxt.getText()) &&
+                account.getPhone().equals(accountPhoneTxt.getText()) && account.getFax().equals(accountFaxTxt.getText());
+    }
 
     @Override
-    public void waitUntilPageObjectIsLoaded() {
+    public boolean isSuccessEditAccount(Account account) {
+        driverTools.clickElement(optionDetail);
+        boolean result = true;
+        if (account.getAccountNumber() != null && !account.getAccountNumber().equals(accountNumberTxt.getText().trim())) {
+            log.info("product name :" + account.getAccountNumber() + " ====> " + accountNumberTxt.getText().trim());
+            return false;
+        }
 
+        if (account.getPhone() != null && !account.getPhone().equals(accountPhoneTxt.getText().trim())) {
+            log.info("product code :" + account.getPhone() + " ====> " + accountPhoneTxt.getText().trim());
+            return false;
+        }
+        if (account.getFax()!= null && !account.getFax().equals(accountFaxTxt.getText().trim())) {
+            log.info("product name :" + account.getFax() + " ====> " + accountFaxTxt.getText().trim());
+            return false;
+        }
+        return result;
+        }
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(accountNameCreatedTxt));
     }
 }
+
