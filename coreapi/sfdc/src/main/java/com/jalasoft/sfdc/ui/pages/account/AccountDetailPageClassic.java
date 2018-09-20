@@ -1,14 +1,10 @@
 package com.jalasoft.sfdc.ui.pages.account;
 
 import com.jalasoft.sfdc.entities.Account;
-import com.typesafe.config.ConfigException;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 /**
  * Handles Account Detail Page Classic extends of the
@@ -20,15 +16,20 @@ import static org.junit.Assert.*;
 public class AccountDetailPageClassic extends AccountDetailPage {
 
     @FindBy(xpath = "//h2[contains(@class,'topName')]")
-    WebElement validateAccount;
+    private WebElement accountNameCreateTxt;
+
     @FindBy(xpath = " //* [@id='acc5_ileinner']")
-    WebElement validateNumber;
+    private WebElement accountNumberTxt;
+
     @FindBy(xpath = "//td[contains(@class,'dataCol col02 inlineEditWrite')]/child::div[@id='acc6_ileinner']")
-    WebElement validatorType;
+    private WebElement accountTypeTxt;
+
     @FindBy(id = "acc10_ileinner")
-    WebElement validatorPhone;
+    private WebElement accountPhoneTxt;
+
     @FindBy(id = "acc11_ileinner")
-    WebElement validatorFax;
+    private WebElement accountFaxTxt;
+
     @FindBy(xpath = "//*[@id='topButtonRow']/input[3]")
     private WebElement editBtn;
 
@@ -41,8 +42,9 @@ public class AccountDetailPageClassic extends AccountDetailPage {
      * @return string, of validate date Account
      */
     @Override
-    public String validateAccountNew() {
-        return validateAccount.getText().trim();
+    public String isSuccessDisplayedAccountDetail() {
+
+        return accountNameCreateTxt.getText().trim();
     }
 
     /**
@@ -52,12 +54,8 @@ public class AccountDetailPageClassic extends AccountDetailPage {
      */
     @Override
     public void validatorAccount(Account account) {
-        log.info(account.getAccountNumber() + "################detail");
-        log.info(validateNumber.getText() + "###############hola ");
-        assertEquals("Account Number correctly", account.getAccountNumber(), validateNumber.getText().trim());
-        assertEquals("Type correctly", account.getType(), validatorType.getText().trim());
-        assertEquals("the number Phone correctly", account.getPhone(), validatorPhone.getText().trim());
-        assertEquals("The number Fax correctly", account.getFax(), validatorFax.getText().trim());
+
+
     }
 
     /**
@@ -71,6 +69,9 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         return new AccountFormPageClassic();
     }
 
+
+
+
     /**
      * This method delete an Account on Classic
      */
@@ -80,10 +81,49 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         acceptAlertDialog();
 
     }
+    /**
+     * verify that a account is create.
+     *
+     * @param account information the current user.
+     * @return is successfully or not successfully.
+     */
+    @Override
+    public boolean isSuccessCreateAccount(Account account) {
+        return account.getAccountNumber().equals(accountNumberTxt.getText()) &&
+                account.getType().equals(accountTypeTxt.getText()) &&
+                account.getPhone().equals(accountPhoneTxt.getText()) && account.getFax().equals(accountFaxTxt.getText());
+    }
+    /**
+     * verify the edit the account.
+     *
+     * @param account information the current user.
+     * @return is successfully or not successfully.
+     */
+    @Override
+    public boolean isSuccessEditAccount(Account account) {
 
+        boolean result = true;
+        if (account.getAccountNumber() != null && !account.getAccountNumber().equals(accountNumberTxt.getText().trim())) {
+            log.info("product name :" + account.getAccountNumber() + " ====> " + accountNumberTxt.getText().trim());
+            return false;
+        }
 
+        if (account.getPhone() != null && !account.getPhone().equals(accountPhoneTxt.getText().trim())) {
+            log.info("product code :" + account.getPhone() + " ====> " + accountPhoneTxt.getText().trim());
+            return false;
+        }
+        if (account.getFax()!= null && !account.getFax().equals(accountFaxTxt.getText().trim())) {
+            log.info("product name :" + account.getFax() + " ====> " + accountFaxTxt.getText().trim());
+            return false;
+        }
+        return result;
+    }
+
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(accountNameCreateTxt));
     }
 }

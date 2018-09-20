@@ -21,22 +21,22 @@ public class AccountFormPageClassic extends AccountFormPage {
     private WebElement accountNumberTxt;
 
     @FindBy(id = "acc10")
-    private WebElement phoneTxt;
+    private WebElement accountPhoneTxt;
 
     private @FindBy(id = "acc11")
-    WebElement faxTxt;
+    WebElement accountFaxTxt;
 
     @FindBy(id = "acc6")
-    private WebElement typeTxt;
+    private WebElement accountTypeTxt;
 
     @FindBy(id = "acc17city")
-    private WebElement billingCityTxt;
+    private WebElement accountBillingCityTxt;
 
     @FindBy(id = "acc17state")
-    private WebElement billingStateTxt;
+    private WebElement accountBillingStateTxt;
 
     @FindBy(id = "acc17country")
-    private WebElement billingCountryTxt;
+    private WebElement accountBillingCountryTxt;
 
     @FindBy(id = "00N0b000007FED5")
     private WebElement customerPriorityTxt;
@@ -57,15 +57,14 @@ public class AccountFormPageClassic extends AccountFormPage {
     public AccountDetailPage createAccount(Account account) {
         driverTools.setInputField(accountNameTxt, account.getAccountName());
         driverTools.setInputField(accountNumberTxt, account.getAccountNumber());
-        driverTools.setInputField(phoneTxt, account.getPhone());
-        driverTools.setInputField(faxTxt, account.getFax());
-        driverTools.clickElement(typeTxt);
+        driverTools.setInputField(accountPhoneTxt, account.getPhone());
+        driverTools.setInputField(accountFaxTxt, account.getFax());
+        driverTools.clickElement(accountTypeTxt);
         log.info(account.getType());
         driverTools.clickElement(By.xpath("//select[@id='acc6']/option[contains(text(),'" + account.getType() + "')]"));
-        driverTools.setInputField(billingCityTxt, account.getBillingCity());
-        driverTools.setInputField(billingStateTxt, account.getBillingState());
-        driverTools.setInputField(billingCountryTxt, account.getBillingCountry());
-        //driverTools.selectListBoxByValue(customerPriorityTxt,account.getCustomerPriority());
+        driverTools.setInputField(accountBillingCityTxt, account.getBillingCity());
+        driverTools.setInputField(accountBillingStateTxt, account.getBillingState());
+        driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
         driverTools.setInputField(numberLocationTxt, account.getNumberOfLocation());
 
         driverTools.clickElement(clickBtnSave);
@@ -85,17 +84,19 @@ public class AccountFormPageClassic extends AccountFormPage {
         if (account.getAccountNumber() != null)
             driverTools.setInputField(accountNumberTxt, account.getAccountNumber());
         if (account.getPhone() != null)
-            driverTools.setInputField(phoneTxt, account.getPhone());
+            driverTools.setInputField(accountPhoneTxt, account.getPhone());
         if (account.getFax() != null)
-            driverTools.setInputField(faxTxt, account.getFax());
+            driverTools.setInputField(accountFaxTxt, account.getFax());
         if (account.getBillingCity() != null)
-            driverTools.setInputField(billingCityTxt, account.getBillingCity());
+            driverTools.setInputField(accountBillingCityTxt, account.getBillingCity());
         if (account.getBillingState() != null)
-            driverTools.setInputField(billingStateTxt, account.getBillingState());
+            driverTools.setInputField(accountBillingStateTxt, account.getBillingState());
         driverTools.clickElement(clickBtnSave);
         return new AccountDetailPageClassic();
     }
-
+    /**
+     * Waits until page object is loaded.
+     */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(clickBtnSave));

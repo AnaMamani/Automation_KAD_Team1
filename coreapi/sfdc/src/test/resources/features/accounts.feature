@@ -14,7 +14,7 @@ Feature: Create "Accounts"
       | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
       | katty        | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
 
-    Then the Account Details Page should be display with the information of the Account
+    Then the Account Details Page should be display with the information of the Account created
 
   @editAccount
   Scenario: Verify that is possible edit Account created
@@ -27,7 +27,7 @@ Feature: Create "Accounts"
       | Felysidad    | 222333         | 1000007 | 987654321 | cbba          | Punata        | Bolivia         | 3                  | Prospect |
 
 
-    Then the Account Details Page should be display with the information of the Account
+    Then the Account Details Page should be display with the information of the Account updated
 
   @deleteAccount
   Scenario:  Verify that is possible Delete a Account created
