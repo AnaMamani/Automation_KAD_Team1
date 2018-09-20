@@ -14,10 +14,15 @@ public final class ServersConfigReader {
     private static final String SERVER = "server";
     private static final String URL = "url";
     private static final String SKIN = "skin";
+    private final String SERVICE_BASE_URI = "service base uri";
+    private final String TOKEN_BASE_URI = "token base uri";
+
 
     private String server;
     private String serverAlias;
     private String url;
+    private String serviceBaseUri;
+    private String tokenBaseUri;
 
     private static ServersConfigReader instance;
     private Skin skin;
@@ -54,6 +59,12 @@ public final class ServersConfigReader {
         url = jsonReader.getKeyValue(serverAlias, URL);
         log.info("Base URL --> " + url);
 
+        serviceBaseUri = jsonReader.getKeyValue(serverAlias, SERVICE_BASE_URI);
+        log.info("Service Base URI --> " + serviceBaseUri);
+
+        tokenBaseUri = jsonReader.getKeyValue(serverAlias, TOKEN_BASE_URI);
+        log.info("Token Base URI --> " + tokenBaseUri);
+
     }
 
     /**
@@ -65,7 +76,7 @@ public final class ServersConfigReader {
         return serverAlias;
     }
 
-   /**
+    /**
      * Gets the server host name or IP.
      *
      * @return Server.
@@ -86,5 +97,21 @@ public final class ServersConfigReader {
 
     public Skin getSkin() {
         return skin;
+    }
+
+    /**
+     * Gets..
+     * @return
+     */
+    public String getServiceBaseUri() {
+        return serviceBaseUri;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getTokenBaseUri() {
+        return tokenBaseUri;
     }
 }
