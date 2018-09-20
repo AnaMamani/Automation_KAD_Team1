@@ -19,7 +19,23 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     private WebElement clickEditOption;
     @FindBy(xpath = "(//*[@title='Delete'])[1]")
     private WebElement clickDeleteOption;
-
+    //for validate
+    @FindBy(id = "con2_ileinner")
+    private WebElement nameTxt;
+    @FindBy(id = "con5_ileinner")
+    private WebElement titleText;
+    @FindBy(id = "con10_ileinner")
+    private WebElement phoneTxt;
+    @FindBy(xpath = "con15_ileinner")
+    private WebElement emailTxt;
+    @FindBy(xpath = "")
+    private WebElement streetTxt;
+    @FindBy(xpath = "")
+    private WebElement cityTxt;
+    @FindBy(xpath = "")
+    private WebElement statetTxt;
+    @FindBy(xpath = "")
+    private WebElement countryTxt;
     /**
      * For show create contact in ContactDetail.
      *
@@ -54,24 +70,30 @@ public class ContactDetailPageClassic extends ContactDetailPage {
         return new ContactListPageClassic();
     }
 
-
-    /**
-     * For made click in Detail
-     */
-    @Override
-    public void clickOnDetail() {
-
-    }
-
     /**
      * Validate with detail.
      *
      * @param contact
      */
     @Override
-    public void validateWithDetail(Contact contact) {
+    public boolean isSuccessEditContact(Contact contact) {
+        log.info("isSuccessEditProduct:   ");
+        boolean result = true;
+        if (contact.getFirstName() != null &&contact.getLastName() != null && !contact.getFirstName()
+                .concat(" ").concat(contact.getLastName()).equals(nameTxt.getText().trim())) {
+            return false;
+        }
+        if (contact.getPhone() != null && !contact.getPhone().equals(phoneTxt.getText().trim())) {
 
+            return false;
+        }
+        if (contact.getTitle() != null && !contact.getTitle().equals(titleText.getText().trim())) {
+            return false;
+        }
+        return result;
     }
+
+
     /**
      * Waits until page object is loaded.
      */
