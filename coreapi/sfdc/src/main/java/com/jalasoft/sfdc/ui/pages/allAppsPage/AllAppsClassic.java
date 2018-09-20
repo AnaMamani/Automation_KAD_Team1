@@ -48,12 +48,8 @@ public class AllAppsClassic extends AllAppsPage {
     public ProductListPage clickProductLink() {
         log.info("clickProductLink ----> return the new ProductListPageClassic");
         driverTools.clickElement(productLink);
-        try {
+        if (driverTools.isElementDisplayed(dialogClose))
             driverTools.clickElement(dialogClose);// for the close the window popup.
-        } catch (Exception e) {
-            log.error("***************** dialogClose no found *****************************");
-        }
-
         return new ProductListPageClassic();
     }
 
@@ -66,9 +62,9 @@ public class AllAppsClassic extends AllAppsPage {
     @Override
     public ContactListPage clickContactLink() {
         driverTools.clickElement(contactsLink);
-        try{
+        try {
             driverTools.clickElement(dialogClose);// for the close the window popup.
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return new ContactListPageClassic();
@@ -93,10 +89,10 @@ public class AllAppsClassic extends AllAppsPage {
      */
     @Override
     public AccountListPage clickAccountsLink() {
-          driverTools.clickElement(accountLink);
-          try{
+        driverTools.clickElement(accountLink);
+        try {
             driverTools.clickElement(dialogClose);// for the close the window popup.
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         return new AccountListPageClassic();

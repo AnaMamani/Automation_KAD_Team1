@@ -39,6 +39,6 @@ public abstract class ProductDetailPage extends BasePage {
      * verify the edit the product.
      * @param product information the current user.
      */
-    public abstract void isSuccessEditProduct(Product product);
+    public abstract boolean isSuccessEditProduct(Product product);
 
 }

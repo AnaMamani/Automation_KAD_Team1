@@ -93,7 +93,7 @@ public class ProductSteps {
     public void theProductDetailsPageShouldBeDisplayWithTheInformationOfTheProductUpdated() {
         log.info("ProductCreated -----> " + product.getProductName() + "====>" + productDetailPage.getProductNameCreated());
         assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        productDetailPage.isSuccessEditProduct(product);
+        assertTrue(productDetailPage.isSuccessEditProduct(product),"the expected result:");
     }
 
     //*********************************************************************************************

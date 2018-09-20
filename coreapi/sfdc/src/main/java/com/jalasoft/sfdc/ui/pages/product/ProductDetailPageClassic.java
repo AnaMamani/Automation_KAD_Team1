@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static org.junit.Assert.assertEquals;
-
 /**
  * Product Steps class.
  *
@@ -63,15 +61,26 @@ public class ProductDetailPageClassic extends ProductDetailPage {
      * verify the edit the product.
      *
      * @param product information the current user.
+     * @return is successfully or not successfully.
      */
     @Override
-    public void isSuccessEditProduct(Product product) {
-        if (product.getProductName() != null)
-            assertEquals("result the product name is:", product.getProductName(),productNameTxt.getText().trim());
-        if (product.getProductCode()!=null)
-            assertEquals("result the product code is:",product.getProductCode(),productCodeTxt.getText().trim());
-        if (product.getProductDescription()!=null)
-            assertEquals("result the product description is:",product.getProductDescription(),productDescriptionTxt.getText().trim());
+    public boolean isSuccessEditProduct(Product product) {
+        log.info("isSuccessEditProduct:   ");
+        boolean result = true;
+        if (product.getProductName() != null && !product.getProductName().equals(productNameTxt.getText().trim())) {
+            log.info("product name :" + product.getProductName() + " ====> " + productNameTxt.getText().trim());
+            return false;
+        }
+
+        if (product.getProductCode() != null && !product.getProductCode().equals(productCodeTxt.getText().trim())) {
+            log.info("product code :" + product.getProductCode() + " ====> " + productCodeTxt.getText().trim());
+            return false;
+        }
+        if (product.getProductDescription() != null && !product.getProductDescription().equals(productDescriptionTxt.getText().trim())) {
+            log.info("product name :" + product.getProductDescription() + " ====> " + productDescriptionTxt.getText().trim());
+            return false;
+        }
+        return result;
     }
 
     /**
