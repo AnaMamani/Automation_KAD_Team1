@@ -11,9 +11,14 @@ public class User {
     private String password = "";
     private String firstName = "";
     private String lastName = "";
+    private String userToken = "";
+    private String grantType = "";
+    private String clientId = "";
+    private String clientSecret = "";
 
     /**
      * Sets the user name.
+     *
      * @param userName user name to set.
      */
     public void setUserName(final String userName) {
@@ -22,6 +27,7 @@ public class User {
 
     /**
      * Gets the user name.
+     *
      * @return the current user name.
      */
     public String getUserName() {
@@ -30,6 +36,7 @@ public class User {
 
     /**
      * Sets the user password.
+     *
      * @param password user password to set.
      */
     public void setPassword(final String password) {
@@ -38,6 +45,7 @@ public class User {
 
     /**
      * Gets the user password.
+     *
      * @return the current user password.
      */
     public String getPassword() {
@@ -46,6 +54,7 @@ public class User {
 
     /**
      * Sets the user first name.
+     *
      * @param firstName user first name to set.
      */
     public void setFirstName(final String firstName) {
@@ -54,6 +63,7 @@ public class User {
 
     /**
      * Gets the user first name.
+     *
      * @return the current user first name.
      */
     public String getFirstName() {
@@ -62,6 +72,7 @@ public class User {
 
     /**
      * Sets the user last name.
+     *
      * @param lastName user last name to set
      */
     public void setLastName(final String lastName) {
@@ -70,6 +81,7 @@ public class User {
 
     /**
      * Gets the user last name.
+     *
      * @return the current user last name.
      */
     public String getLastName() {
@@ -83,5 +95,72 @@ public class User {
      */
     public String getFullName() {
         return firstName.concat(" ").concat(lastName);
+    }
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    /**
+     * Set the User Token
+     *
+     * @param userToken
+     */
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
+
+    /**
+     * get the Grant Type
+     *
+     * @return String.
+     */
+    public String getGrantType() {
+        return grantType;
+    }
+
+    /**
+     * set the Grant Type
+     *
+     * @param grantType
+     */
+    public void setGrantType(String grantType) {
+        this.grantType = grantType;
+    }
+
+    /**
+     * get Client
+     *
+     * @return
+     */
+    public String getClientId() {
+        return clientId;
+    }
+
+    /**
+     * set  client id
+     *
+     * @param clientId
+     */
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    /**
+     * get clente secret
+     *
+     * @return String
+     */
+    public String getClientSecret() {
+        return clientSecret;
+    }
+
+    /**
+     * Set client Secret
+     *
+     * @param clientSecret
+     */
+    public void setClientSecret(String clientSecret) {
+        this.clientSecret = clientSecret;
     }
 }

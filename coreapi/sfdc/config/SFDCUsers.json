@@ -1,23 +1,25 @@
 {
   "admin user": {
-    "user name":"denis@deniscompany.com",
-    "user password":"QWqw12/*",
+    "user name": "denis@deniscompany.com",
+    "user password": "QWqw12/*",
     "first name": "Denis",
     "Last name": "Camacho"
 
-    },
+  },
   "local user": {
-    "user name":"fuego@lluviacompany.com",
-    "user password":"asdfghjkl1",
+    "user name": "fuego@lluviacompany.com",
+    "user password": "asdfghjkl1",
+    "first name": "Ana",
+    "Last name": "Camacho",
+    "user token": "KvgKIFJPAT35Zj6KmkQZ4XQ1",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSs4MMtORRf.vy2O.t5MkqpqjWovaODtSCdLMvrCpWXmDFmorqjuDr_K.zDG83pkYWTGc7XA",
+    "client secret": "6045813440275478135"
 
-  "first name": "Ketty",
-  "Last name": "Camacho"
-
-},
+  },
   "other role user": {
-
-    "user name":"72768163ketty@gmail.com",
-    "user password":"K0102018c",
+    "user name": "72768163ketty@gmail.com",
+    "user password": "K0102018c",
     "first name": "Ana",
     "Last name": "Camacho"
   }
