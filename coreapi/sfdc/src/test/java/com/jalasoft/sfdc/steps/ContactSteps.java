@@ -7,7 +7,6 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactFormPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -79,8 +78,7 @@ public class ContactSteps {
 
     @Then("^the Contact Details Page should be display with the information of the contact update$")
     public void theDisplayWithTheInformationOfTheContactUpdate() {
-        contactDetailPage.clickOnDetail();
-        contactDetailPage.validateWithDetail(contact);
+        assertTrue(contactDetailPage.isSuccessEditContact(contact), "the result expected");
     }
     //*********************************************************************************************
 //                                     Delete the Contact

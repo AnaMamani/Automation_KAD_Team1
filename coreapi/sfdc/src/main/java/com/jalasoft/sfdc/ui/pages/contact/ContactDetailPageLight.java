@@ -35,22 +35,21 @@ public class ContactDetailPageLight extends ContactDetailPage {
 
     //for validate
     @FindBy(xpath = "//span[contains(text(), 'Name')]/parent::div/following-sibling::div/span/span")
-    private WebElement nameDetail;
+    private WebElement nameTxt;
     @FindBy(xpath = "//span[contains(text(), 'Title')]/parent::div/following-sibling::div/span/span")
-    private WebElement titleDetail;
+    private WebElement titleText;
     @FindBy(xpath = "//span[contains(text(), 'Phone')]/parent::div/following-sibling::div/span/span")
-    private WebElement phoneDetail;
+    private WebElement phoneTxt;
     @FindBy(xpath = "//span[contains(text(), 'Email')]/parent::div/following-sibling::div/span/span/a")
-    private WebElement emailDatail;
+    private WebElement emailTxt;
     @FindBy(xpath = "")
-    private WebElement streetDetail;
+    private WebElement streetTxt;
     @FindBy(xpath = "")
-    private WebElement cityDetail ;
+    private WebElement cityTxt;
     @FindBy(xpath = "")
-    private WebElement statetDetail ;
+    private WebElement statetTxt;
     @FindBy(xpath = "")
-    private WebElement countryDetail;
-
+    private WebElement countryTxt;
 
 
     /**
@@ -91,13 +90,7 @@ public class ContactDetailPageLight extends ContactDetailPage {
     }
 
 
-    /**
-     * For made click in Detail
-     */
-    @Override
-    public void clickOnDetail() {
-        driverTools.clickElement(detailsLinkBtn);
-    }
+
 
     /**
      * Waits until page object is loaded.
@@ -107,31 +100,31 @@ public class ContactDetailPageLight extends ContactDetailPage {
         wait.until(ExpectedConditions.visibilityOf(contactCreated));
     }
 
+
     /**
      * Validate with detail.
      *
      * @param contact
      */
     @Override
-    public void validateWithDetail(Contact contact) {
-        System.out.println(contact.getEmail()+"*************");
-        System.out.println(emailDatail.getText()+"///////////////");
-        if (contact.getFirstName()!=null &&  contact.getLastName()!=null)
-        assertEquals(contact.getFirstName().concat(" ").concat(contact.getLastName()), nameDetail.getText().trim());
-        if (contact.getPhone()!=null)
-            assertEquals(contact.getPhone(), phoneDetail.getText().trim());
-        if (contact.getTitle()!=null)
-            assertEquals(contact.getTitle(), titleDetail.getText().trim());
-        if (contact.getEmail()!=null)
-           assertEquals(contact.getEmail(), emailDatail.getText().trim());
-        if (contact.getStreet()!=null)
-          assertEquals(contact.getStreet(), streetDetail.getText().trim());
-        if (contact.getCity()!=null)
-            assertEquals(contact.getCity(), cityDetail.getText().trim());
-        if (contact.getState()!=null)
-            assertEquals(contact.getState(), statetDetail.getText().trim());
-        if (contact.getCountry()!=null)
-            assertEquals(contact.getCountry(), countryDetail.getText().trim());
+    public boolean isSuccessEditContact(Contact contact) {
+        driverTools.clickElement(detailsLinkBtn);
+        boolean result = true;
+        if (contact.getFirstName() != null &&contact.getLastName() != null && !contact.getFirstName()
+                .concat(" ").concat(contact.getLastName()).equals(nameTxt.getText().trim())) {
+            return false;
+        }
+        if (contact.getPhone() != null && !contact.getPhone().equals(phoneTxt.getText().trim())) {
+
+            return false;
+        }
+        if (contact.getTitle() != null && !contact.getTitle().equals(titleText.getText().trim())) {
+            return false;
+        }
+        return result;
     }
+
+
+
 
 }

@@ -33,13 +33,11 @@ public abstract class ContactDetailPage extends BasePage {
      */
     public abstract ContactListPage deleteContact();
 
-    /**
-     * For made click in Detail
-     */
-    public abstract void clickOnDetail();
 
     /**
      * Validate with detail.
      */
-    public abstract void validateWithDetail(Contact contact);
+
+    public abstract boolean isSuccessEditContact(Contact contact);
+
 }
