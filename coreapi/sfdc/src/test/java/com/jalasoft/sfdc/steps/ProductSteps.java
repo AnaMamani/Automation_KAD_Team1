@@ -60,8 +60,7 @@ public class ProductSteps {
         product.setProductName(products.get(0).getProductName());
         productFormPage = productListPage.clickNewProduct();
         productDetailPage = productFormPage.createProduct(product);
-        apiProduct=new APIProduct(product);
-        System.out.println(apiProduct.getProductValuesByAPI().asString());
+
     }
 
     /**
@@ -71,8 +70,14 @@ public class ProductSteps {
     public void productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated() {
         log.info("ProductCreated -----> Start homePage   " + product.getProductName() + "====>"
                 + productDetailPage.getProductNameCreated());
-        assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessCreateProduct(product), "should be return :");
+        //assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
+        //assertTrue(productDetailPage.isSuccessCreateProduct(product), "should be return :");
+        apiProduct=new APIProduct(product);
+        System.out.println(apiProduct.getProductValuesByAPI().getProductName()+"**********************");
+        System.out.println(product.getProductName()+" #########------#-#-#-#-#-#-#-##-#---");
+        assertEquals(product.getProductName(),apiProduct.getProductValuesByAPI().getProductName(),"should be show the product name:");
+        assertEquals(product.getProductCode(),apiProduct.getProductValuesByAPI().getProductCode(),"should be show the product code:");
+        assertEquals(product.getProductDescription(),apiProduct.getProductValuesByAPI().getProductDescription(),"should be show the product description:");
     }
 
     //*********************************************************************************************

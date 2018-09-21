@@ -31,7 +31,8 @@ public class Product {
      */
     public void setProductName(String productName) {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        this.productName = productName.concat(" ").concat(timeStamp);
+        //.concat(" ").concat(timeStamp)
+        this.productName = productName;
     }
 
     /**

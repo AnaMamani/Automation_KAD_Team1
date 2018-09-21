@@ -10,8 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.*;
 
-import static com.jalasoft.sfdc.constants.SFDCEnums.UserType.ADMIN_USER;
-
 /**
  * user config reader class.
  *

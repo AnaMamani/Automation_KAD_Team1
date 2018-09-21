@@ -6,18 +6,19 @@ import io.restassured.response.Response;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.jalasoft.sfdc.constants.SFDCConstants.ID;
-import static com.jalasoft.sfdc.constants.SFDCConstants.PRODUCT;
+import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
 public class APIProduct {
     protected APIManager apiManager = APIManager.getInstance();
     protected Response response;
     private final Product product;
+    private Product product1;
     protected Map<String, Object> fieldsMap;
 
     public APIProduct(Product product) {
         this.product = product;
         fieldsMap = covertEntityToMap();
+        product1=new Product();
     }
 
     /**
@@ -35,8 +36,14 @@ public class APIProduct {
         return map;
     }
 
-    public Response getProductValuesByAPI() { //ToDo define what aee you going to return
-        return response = APIManager.getInstance().get("/sobjects/Product2/" + product.getId());
+    public Product getProductValuesByAPI() { //ToDo define what aee you going to return
+        response = APIManager.getInstance().get("/sobjects/Product2/" + product.getId());
+        product1.setProductName(response.jsonPath().get("Name").toString());
+        product1.setProductCode(response.jsonPath().get("ProductCode").toString());
+        product1.setProductDescription(response.jsonPath().get("Description").toString());
+        return product1;
+
+
     }
 
     public void createProductByAPI() {
