@@ -3,7 +3,11 @@
     "user name": "denis@deniscompany.com",
     "user password": "QWqw12/*",
     "first name": "Denis",
-    "Last name": "Camacho"
+    "Last name": "Camacho",
+    "user token": "nbgUZLXBowfXGoIfjXUBgHB5",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSspQ3rwNgAUJMRDD1u9RRYKQbagab9bjeT.Sx7JFn6ZdyLBXbQ382N92IYUi0bNCVhmUEGa",
+    "client secret": "7250237042137850617"
 
   },
   "local user": {
@@ -21,6 +25,10 @@
     "user name": "72768163ketty@gmail.com",
     "user password": "K0102018c",
     "first name": "Ana",
-    "Last name": "Camacho"
+    "Last name": "Camacho",
+    "user token": "nbgUZLXBowfXGoIfjXUBgHB5",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSspQ3rwNgAUJMRDD1u9RRYKQbagab9bjeT.Sx7JFn6ZdyLBXbQ382N92IYUi0bNCVhmUEGa",
+    "client secret": "7250237042137850617"
   }
 }
