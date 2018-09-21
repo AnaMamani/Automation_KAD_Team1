@@ -16,7 +16,7 @@ import static io.restassured.http.ContentType.JSON;
 public class APIManager {
     private Logger log = Logger.getLogger(getClass());
 
-    private final String ADMIN_USER = "local user";
+    private final String ADMIN_USER = "admin user";
     private final String GRANT_TYPE = "grant_type";
     private final String CLIENT_ID = "client_id";
     private final String CLIENT_SECRET = "client_secret";

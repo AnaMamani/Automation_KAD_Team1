@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIProduct;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
@@ -36,6 +37,7 @@ public class ProductSteps {
     private ProductDetailPage productDetailPage;
     //Entities
     private Product product;
+    APIProduct apiProduct;
 
     /**
      * Navigates to the Product page.
@@ -58,6 +60,8 @@ public class ProductSteps {
         product.setProductName(products.get(0).getProductName());
         productFormPage = productListPage.clickNewProduct();
         productDetailPage = productFormPage.createProduct(product);
+        apiProduct=new APIProduct(product);
+        System.out.println(apiProduct.getProductValuesByAPI().asString());
     }
 
     /**
