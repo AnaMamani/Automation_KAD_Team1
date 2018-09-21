@@ -34,6 +34,9 @@ public class ProductFormPageLight extends ProductFormPage {
     @FindBy(xpath = "//button[@title='Cancel']//span[contains(@class,'label bBody')][contains(text(),'Cancel')]")
     private WebElement clickBtnCancel;
 
+    @FindBy(xpath = "//a[@title='New Contact']")
+    private WebElement auxToProductId;
+
     /**
      * Waits until page object is loaded.
      */
@@ -56,7 +59,19 @@ public class ProductFormPageLight extends ProductFormPage {
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
         driverTools.selectChkBox(productActive, product.getActive());
         driverTools.clickElement(clickBtnSave);
+        wait.until(ExpectedConditions.visibilityOf(auxToProductId));
+        saveProductId(driver.getCurrentUrl(),product);
         return new ProductDetailPageLight();
+    }
+
+    /**
+     * @param currentUrl url.
+     * @param product product.
+     */
+    private void saveProductId(String currentUrl, Product product) {
+        String[] url=currentUrl.split("/");
+        product.setId(url[url.length-2]);
+        System.out.println("ID: "+url[url.length-2]+" THIS IS THE PRODUCT ID");
     }
 
     /**

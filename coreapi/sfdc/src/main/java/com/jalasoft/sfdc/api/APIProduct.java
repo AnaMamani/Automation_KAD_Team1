@@ -35,17 +35,17 @@ public class APIProduct {
         return map;
     }
 
-    public void getAccountValuesByAPI() { //ToDo define what aee you going to return
-        response = APIManager.getInstance().get("/sobjects/Product2/" + product.getId() + "?fields=Name");
+    public Response getProductValuesByAPI() { //ToDo define what aee you going to return
+        return response = APIManager.getInstance().get("/sobjects/Product2/" + product.getId());
     }
 
-    public void createAccountByAPI() {
+    public void createProductByAPI() {
         response = apiManager.post(PRODUCT, fieldsMap);
         System.out.println("Query response create: " + response.asString());
         product.setId(response.jsonPath().get(ID).toString());
     }
 
-    public void deleteAccountByAPI() {
+    public void deleteProductByAPI() {
         response = apiManager.delete(PRODUCT, product.getId());
         System.out.println("Query response delete: " + response.asString());
     }
