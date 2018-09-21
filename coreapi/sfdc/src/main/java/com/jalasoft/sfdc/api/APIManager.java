@@ -8,6 +8,9 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.apache.log4j.Logger;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
@@ -96,7 +99,29 @@ public class APIManager {
     }
 
     private String buildSQLQuery(String sObject, Map<String, Object> queryFields) {
-        return  "";
+        StringBuilder query = new StringBuilder();
+        query.append("SELECT ");
+
+        List<String> list = new ArrayList<>();
+        Iterator fieldsIterator = queryFields.keySet().iterator();
+
+        while (fieldsIterator.hasNext()) {
+            String key = (String) fieldsIterator.next();
+            list.add(key);
+        }
+        query.append(String.join(", ", list));
+        query.append(" from ");
+        query.append(sObject);
+        query.append(" where ");
+        Iterator valuesIterator = queryFields.keySet().iterator();
+        list.clear();
+        while (valuesIterator.hasNext()) {
+            String key = (String) valuesIterator.next();
+            list.add(key + "=" + "'" + queryFields.get(key) + "'");
+        }
+        query.append(String.join(" and ", list));
+        System.out.println("********query: " + query.toString());
+        return query.toString();
     }
 
     /**
