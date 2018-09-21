@@ -13,6 +13,8 @@ public class Product {
     private String productName;
     private String productCode;
     private String productDescription;
+    private String id;
+    private String family;
     private boolean active;
 
     /**
@@ -78,5 +80,37 @@ public class Product {
      */
     public void setActive(boolean  active) {
         this.active = active;
+    }
+
+    /**
+     * Gets the product ID.
+     * @return the ID.
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Sets the product ID.
+     * @param id ID the product.
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    /**
+     * Gets the product family.
+     * @return the family.
+     */
+    public String getFamily() {
+        return family;
+    }
+
+    /**
+     * Sets the product family.
+     * @param family family the product.
+     */
+    public void setFamily(String family) {
+        this.family = family;
     }
 }

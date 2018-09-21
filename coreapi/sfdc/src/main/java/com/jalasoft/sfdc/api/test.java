@@ -24,11 +24,11 @@ public class test {
         Response responseAccount = APIManager.getInstance().get("/sobjects/Contact/0030b0000266SNsAAM?fields=Name");
         System.out.println(responseAccount.asString());
 
-//        Map<String, Object> jsonData = new HashMap<>();
-//        jsonData.put("Name","Acccount test123");
-//
-//        Response responseAccount2 = APIManager.getInstance().post("/sobjects/Account/",jsonData);
-//        System.out.println(responseAccount2.asString());
+        Map<String, Object> jsonData = new HashMap<>();
+        jsonData.put("Name","Acccount test123");
+
+        Response responseAccount2 = APIManager.getInstance().post("/sobjects/Account/",jsonData);
+        System.out.println(responseAccount2.asString());
 
     }
 }
