@@ -2,7 +2,6 @@ package com.jalasoft.sfdc.constants;
 
 /**
  * Constants class.
- *
  */
 public final class SFDCConstants {
     //Accounts
@@ -29,12 +28,12 @@ public final class SFDCConstants {
     public final static String CONTACT_COUNTRY = "Contact Country";
 
     //Product
-    public final static String PRODUCT = "Product";
-    public final static String PRODUCT_NAME = "Product Name";
-    public final static String PRODUCT_CODE = "Product Code";
-    public final static String PRODUCT_DESCRIPTION = "Product Description";
-    public final static String PRODUCT_FAMILY = "Product Family";
-    public final static String PRODUCT_ACTIVE = "Active";
+    public final static String PRODUCT = "Product2";
+    public final static String PRODUCT_NAME = "Name";
+    public final static String PRODUCT_CODE = "ProductCode";
+    public final static String PRODUCT_DESCRIPTION = "Description";
+    public final static String PRODUCT_FAMILY = "Family";
+    public final static String PRODUCT_ACTIVE = "IsActive";
 
     //Quotes
     public final static String QUOTE = "quote";
@@ -62,5 +61,8 @@ public final class SFDCConstants {
     //General
     public final static String ID = "id";
     public final static String TOTAL_SIZE = "totalSize";
+    public final static String SOBJECTS = "sobjects";
+    public final static String SLASH = "/";
+
 
 }

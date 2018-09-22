@@ -7,18 +7,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
-
+/**
+ * API Product class.
+ *
+ * @author Denis Camacho.
+ * @since 9/21/2018
+ */
 public class APIProduct {
     protected APIManager apiManager = APIManager.getInstance();
     protected Response response;
     private final Product product;
-    private Product product1;
+    private Product productApi;
     protected Map<String, Object> fieldsMap;
 
+    /**
+     *
+     * @param product
+     */
     public APIProduct(Product product) {
         this.product = product;
         fieldsMap = covertEntityToMap();
-        product1=new Product();
+        productApi =new Product();
     }
 
     /**
@@ -28,30 +37,41 @@ public class APIProduct {
      */
     protected Map<String, Object> covertEntityToMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put("Product Name", product.getProductName());
-        map.put("Product Code", product.getProductCode());
-        map.put("Product Description", product.getProductDescription());
-        map.put("Product Family", product.getFamily());
-        map.put("Active", product.getActive());
+        map.put(PRODUCT_NAME, product.getProductName());
+        map.put(PRODUCT_CODE, product.getProductCode());
+        map.put(PRODUCT_DESCRIPTION, product.getProductDescription());
+        map.put(PRODUCT_FAMILY, product.getFamily());
+        map.put(PRODUCT_ACTIVE, product.getActive());
         return map;
     }
 
+    /**
+     *
+     * @return
+     */
     public Product getProductValuesByAPI() { //ToDo define what aee you going to return
-        response = APIManager.getInstance().get("/sobjects/Product2/" + product.getId());
-        product1.setProductName(response.jsonPath().get("Name").toString());
-        product1.setProductCode(response.jsonPath().get("ProductCode").toString());
-        product1.setProductDescription(response.jsonPath().get("Description").toString());
-        return product1;
+        response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(PRODUCT).
+                concat(SLASH).concat(product.getId()));
+        productApi.setProductName(response.jsonPath().get(PRODUCT_NAME).toString());
+        productApi.setProductCode(response.jsonPath().get(PRODUCT_CODE).toString());
+        productApi.setProductDescription(response.jsonPath().get(PRODUCT_DESCRIPTION).toString());
+        productApi.setActive(response.jsonPath().get(PRODUCT_ACTIVE));
 
-
+        return productApi;
     }
 
+    /**
+     *
+     */
     public void createProductByAPI() {
         response = apiManager.post(PRODUCT, fieldsMap);
         System.out.println("Query response create: " + response.asString());
         product.setId(response.jsonPath().get(ID).toString());
     }
 
+    /**
+     *
+     */
     public void deleteProductByAPI() {
         response = apiManager.delete(PRODUCT, product.getId());
         System.out.println("Query response delete: " + response.asString());
