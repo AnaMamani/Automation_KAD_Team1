@@ -86,11 +86,8 @@ public class AccountsSteps {
 
 
 //        assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
-//
 //        assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
 
-
-       // accountDetailPage.validatorAccount(account);
     }
 //*********************************************************************************
     //                    Edit the Account
@@ -126,7 +123,8 @@ public class AccountsSteps {
      */
     @When("^I delete a Account$")
     public void iGoDeleteAAccount() {
-        accountDetailPage.deleteAnAccount();
+        apiAccount.deleteAccountByAPI();
+        //accountDetailPage.deleteAnAccount();
     }
 
     /**

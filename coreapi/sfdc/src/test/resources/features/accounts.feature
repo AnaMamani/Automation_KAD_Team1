@@ -12,23 +12,23 @@ Feature: Create "Accounts"
   Scenario: Verify that is possible create a new Account
     And  I create a Account with the following information
       | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
-      | Keissy        | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
+      | Keissyy      | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
 
     Then the Account Details Page should be display with the information of the Account created
 
-  @editAccount
-  Scenario: Verify that is possible edit Account created
-    Given  I create a Account with the following information
-
-      | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
-      | Fely         | 222            | 3333337 | 987654321 | cbba          | Punata        | Bolivia         | 3                  | Prospect |
-    When I Edit the Account information with the following information
-      | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
-      | Felysidad    | 222333         | 1000007 | 987654321 | cbba          | Punata        | Bolivia         | 3                  | Prospect |
-
-
-    Then the Account Details Page should be display with the information of the Account updated
-
+#  @editAccount
+#  Scenario: Verify that is possible edit Account created
+#    Given  I create a Account with the following information
+#
+#      | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
+#      | Fely         | 222            | 3333337 | 987654321 | cbba          | Punata        | Bolivia         | 3                  | Prospect |
+#    When I Edit the Account information with the following information
+#      | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
+#      | Felysidad    | 222333         | 1000007 | 987654321 | cbba          | Punata        | Bolivia         | 3                  | Prospect |
+#
+#
+#    Then the Account Details Page should be display with the information of the Account updated
+#
   @deleteAccount
   Scenario:  Verify that is possible Delete a Account created
     Given I create a Account with the following information
