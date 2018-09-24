@@ -13,10 +13,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ProductFormPageLight extends ProductFormPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "(//input[contains(@class,' input')])[2]")
+    @FindBy(xpath = "//span[text()='Product Name']/parent::label/following-sibling::input")
     private WebElement productNameTxt;
 
-    @FindBy(xpath = "(//input[contains(@class,' input')])[3]")
+    @FindBy(xpath = "//span[text()='Product Code']/parent::label/following-sibling::input")
     private WebElement productCodeTxt;
 
     @FindBy(xpath = "//textarea[@class=' textarea']")

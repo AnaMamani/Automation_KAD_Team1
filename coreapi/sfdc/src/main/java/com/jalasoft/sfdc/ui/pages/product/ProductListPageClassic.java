@@ -45,4 +45,18 @@ public class ProductListPageClassic extends ProductListPage {
         return driverTools.isElementDisplayed(By.xpath("//a[contains(text(),'" + product.getProductName() + "')]"));
     }
 
+    /**
+     * Select the product Item.
+     *
+     * @param product
+     * @return a new ProductDetailPage.
+     */
+    @Override
+    public ProductDetailPage selectProductItem(Product product) {
+        log.info("selectProductItem: ----> return  ProductDetailPageClassic ");
+        driverTools.refreshPage();
+        driverTools.clickElement(By.xpath("//a[contains(text(),'"+product.getProductName()+"')]"));
+        return new ProductDetailPageClassic();
+    }
+
 }

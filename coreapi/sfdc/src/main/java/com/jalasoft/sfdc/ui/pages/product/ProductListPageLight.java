@@ -2,6 +2,8 @@ package com.jalasoft.sfdc.ui.pages.product;
 
 import com.jalasoft.sfdc.entities.Product;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
@@ -11,6 +13,12 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @since 9/11/2018
  */
 public class ProductListPageLight extends ProductListPage {
+    //PageFactory of selenium.
+    @FindBy(xpath = "//div[@class='slds-grid']//following::a[@title='Select List View']")
+    private WebElement productItems;
+
+    @FindBy(xpath = "//span[@class=' virtualAutocompleteOptionText' and contains(text(),'All Products')]")
+    private WebElement selectOptionItems;
 
     /**
      * Waits until page object is loaded.
@@ -41,5 +49,19 @@ public class ProductListPageLight extends ProductListPage {
     public boolean isSuccessDeleteProduct(Product product) {
         log.info("isSuccessDeleteProduct: ----> compare");
         return driverTools.isElementDisplayed(By.xpath("//table[@class]//child::a[contains(@title,'" + product.getProductName() + "')]"));
+    }
+
+    /**
+     * Select the product Item.
+     *
+     * @param product
+     * @return a new ProductDetailPage.
+     */
+    @Override
+    public ProductDetailPage selectProductItem(Product product) {
+        driverTools.clickElement(productItems);
+        driverTools.clickElement(selectOptionItems);
+        driverTools.clickElement(By.xpath("//a[@title='"+product.getProductName()+"']"));
+        return new ProductDetailPageLight();
     }
 }

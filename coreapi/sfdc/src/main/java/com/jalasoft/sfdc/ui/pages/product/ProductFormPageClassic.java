@@ -35,6 +35,9 @@ public class ProductFormPageClassic extends ProductFormPage {
     @FindBy(xpath = "//input[@title='Cancel']")
     private WebElement clickBtnCancel;
 
+    @FindBy(xpath = "//a[@title='New Contact']")
+    private WebElement auxToProductId;
+
     /**
      * Waits until page object is loaded.
      */
@@ -57,7 +60,19 @@ public class ProductFormPageClassic extends ProductFormPage {
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());
         driverTools.selectChkBox(productChkActive, product.getActive());
         driverTools.clickElement(clickBtnSave);
+        wait.until(ExpectedConditions.visibilityOf(auxToProductId));
+        saveProductId(driver.getCurrentUrl(),product);
         return new ProductDetailPageClassic();
+    }
+
+    /**
+     * @param currentUrl url.
+     * @param product product.
+     */
+    private void saveProductId(String currentUrl, Product product) {
+        String[] url=currentUrl.split("/");
+        product.setId(url[url.length-2]);
+        System.out.println("ID: "+url[url.length-2]+" THIS IS THE PRODUCT ID");
     }
 
     /**

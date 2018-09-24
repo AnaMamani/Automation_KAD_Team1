@@ -8,10 +8,13 @@ import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductFormPage;
+
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.response.Response;
 
 import java.util.List;
 
@@ -38,7 +41,9 @@ public class ProductSteps {
     //Entities
     private Product product;
     private Product productApi;
+    private Product productEdit;
     private APIProduct apiProduct;
+    private Response response;
 
     /**
      * Navigates to the Product page.
@@ -57,28 +62,33 @@ public class ProductSteps {
     @Given("^I create a Product with the following information$")
     public void iCreateAProductWithTheFollowingInformation(List<Product> products) {
         log.info("iGoToTheProductPage -----> Start create a Product");
-        this.product = products.get(0);
-        apiProduct=new APIProduct(product);
-        apiProduct.createProductByAPI();
-//        product.setProductName(products.get(0).getProductName());
-//        productFormPage = productListPage.clickNewProduct();
-//        productDetailPage = productFormPage.createProduct(product);
+        product = products.get(0);
+        apiProduct = new APIProduct(product);
+        product.updateProductName();
+        productFormPage = productListPage.clickNewProduct();
+        productDetailPage = productFormPage.createProduct(product);
 
     }
 
     /**
      * Verify the field.
      */
-    @Then("^the Product Details Page should be display with the information of the product created$")
+    @Then("^the Product Details Page should be displayed with the product information$")
     public void productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated() {
-        log.info("ProductCreated -----> Start homePage   " + product.getProductName());
-        productApi=apiProduct.getProductValuesByAPI();
-        assertEquals(product.getProductName(),productApi.getProductName(),"should be show the product name:");
-        assertEquals(product.getProductCode(),productApi.getProductCode(),"should be show the product code:");
-        assertEquals(product.getProductDescription(),productApi.getProductDescription(),"should be show the product description:");
-        assertEquals(product.getActive(),productApi.getActive(),"should be show the product active:");
-        //assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        //assertTrue(productDetailPage.isSuccessCreateProduct(product), "should be return :");
+        log.info("Validation for UI -----> Start homePage   " + product.getProductName());
+        assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessCreateProduct(product), "should be return :");
+
+    }
+
+    @And("^the Product should be created$")
+    public void byAPIShouldBeDisplayInformationOfTheProductCreated() {
+        log.info("Validation for API ----->    " + product.getProductName());
+        productApi = apiProduct.getProductValuesByAPI();
+        assertEquals(product.getProductName(), productApi.getProductName(), "should be show the product name:");
+        assertEquals(product.getProductCode(), productApi.getProductCode(), "should be show the product code:");
+        assertEquals(product.getProductDescription(), productApi.getProductDescription(), "should be show the product description:");
+        assertEquals(product.getActive(), productApi.getActive(), "should be show the product active:");
     }
 
     //*********************************************************************************************
@@ -86,13 +96,25 @@ public class ProductSteps {
 // ********************************************************************************************/
 
     /**
+     * @param productsApi list the Product for API.
+     */
+    @Given("^I have a Product created with the following information$")
+    public void iHaveAProductWithTheFollowingInformation(List<Product> productsApi) {
+        log.info("iGoToTheProductPage -----> Start create a Product for API");
+        product = productsApi.get(0);
+        apiProduct = new APIProduct(product);
+        apiProduct.createProductByAPI();
+    }
+
+    /**
      * @param editProduct list the Product to edit.
      */
-    @When("^I Edit the Product information with the following information$")
+    @When("^I Edit the Product with the following information$")
     public void iEditTheProductInformationWithTheFollowingInformation(List<Product> editProduct) {
-        productFormPage = productDetailPage.clickEditOption();
-        this.product = editProduct.get(0);
-        this.product.setProductName(editProduct.get(0).getProductName());
+//        productDetailPage = productListPage.selectProductItem(product);
+//        productFormPage = productDetailPage.clickEditOption();
+        product = editProduct.get(0);
+        product.updateProductName();
         productDetailPage = productFormPage.editProduct(product);
     }
 
@@ -101,9 +123,18 @@ public class ProductSteps {
      */
     @Then("^the Product Details Page should be display with the information of the product updated$")
     public void theProductDetailsPageShouldBeDisplayWithTheInformationOfTheProductUpdated() {
-        log.info("ProductCreated -----> " + product.getProductName() + "====>" + productDetailPage.getProductNameCreated());
-        assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessEditProduct(product),"the expected result:");
+        log.info("ProductCreated -----> " + productEdit.getProductName() + "====>" + productDetailPage.getProductNameCreated());
+        assertEquals(productEdit.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessEditProduct(productEdit), "the expected result:");
+    }
+
+    @And("^by API should be display information of the product edit$")
+    public void byAPIShouldBeDisplayInformationOfTheProductEdit() {
+        log.info("Validation for API to Edit Product ----->    " + product.getProductName());
+        productApi = apiProduct.getProductValuesByAPI();
+        assertEquals(productEdit.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessEditProduct(productEdit), "the expected result:");
+
     }
 
     //*********************************************************************************************
@@ -115,8 +146,9 @@ public class ProductSteps {
      */
     @And("^I delete the product$")
     public void iDeleteTheProduct() {
-        apiProduct.deleteProductByAPI();
-        //productListPage = productDetailPage.deleteProduct(product);
+        productDetailPage = productListPage.selectProductItem(product);
+        productListPage = productDetailPage.deleteProduct(product);
+        //response=apiProduct.deleteProductByAPI();
     }
 
     /**
@@ -124,7 +156,18 @@ public class ProductSteps {
      */
     @Then("^the Product should be removed from the Product List$")
     public void theProductShouldBeRemovedFromTheProductList() {
-        assertFalse(productListPage.isSuccessDeleteProduct(product), "should be return :");
+        assertTrue(productListPage.isSuccessDeleteProduct(product), "should be return :");
+        //assertTrue(response.asString().isEmpty());
+    }
+
+    //****************************************************************
+    //Hooks for @Delete Product scenarios
+    //****************************************************************
+    @After(value = "@deleteProduct", order = 999)
+    public void afterDeleteProduct() {
+        log.info("After hook @deleteProduct");
+        apiProduct.deleteProductByAPI();
+
     }
 
 }
