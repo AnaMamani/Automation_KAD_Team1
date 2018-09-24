@@ -75,18 +75,12 @@ public class AccountsSteps {
      */
     @Then("^the Account Details Page should be display with the information of the Account created$")
     public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() {
+
         accountApi=apiAccount.getAccountValuesByAPI();
-        System.out.println(account.getAccountName()+"=================");
-        System.out.println(accountApi.getAccountName()+"===============11111");
+
         assertEquals(account.getAccountName(),accountApi.getAccountName());
-        System.out.println(account.getAccountNumber()+"====Number====");
-        System.out.println(accountApi.getAccountNumber()+"=======Number====");
         assertEquals(account.getAccountNumber(),accountApi.getAccountNumber());
-        System.out.println(account.getPhone()+"-----Phone");
-        System.out.println(accountApi.getPhone()+"+++++++phone");
         assertEquals(account.getPhone(),accountApi.getPhone());
-        System.out.println(account.getType()+"======Type+++=");
-        System.out.println(accountApi.getType()+"====Type+++");
         assertEquals(account.getType(),accountApi.getType());
 
 

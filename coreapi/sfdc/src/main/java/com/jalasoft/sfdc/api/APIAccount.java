@@ -8,19 +8,21 @@ import java.util.Map;
 
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
-
+/**
+ * API Account class.
+ *
+ * @author Ketty camacho.
+ */
 public class APIAccount {
     protected APIManager apiManager = APIManager.getInstance();
     protected Response response;
     private final Account account;
     private Account accountApi;
     protected Map<String, Object> fieldsMap;
-//    protected Map<String, Object> fieldsMapRemove;
 
     public APIAccount(Account account) {
         this.account = account;
         fieldsMap = covertEntityToMap();
-//        fieldsMapRemove=removeToMap();
         accountApi=new Account();
     }
 
@@ -32,30 +34,17 @@ public class APIAccount {
     protected Map<String, Object> covertEntityToMap() {
         Map<String, Object> map = new HashMap<>();
         map.put(ACCOUNT_NAME, account.getAccountName());
-//    map.put("Website", account.getWeb());
-//    map.put("Description", account.getDescription());
       map.put(ACCOUNT_NUMBER,account.getAccountNumber());
       map.put(ACCOUNT_FAX,account.getFax());
       map.put(ACCOUNT_PHONE, account.getPhone());
       map.put(ACCOUNT_TYPE,account.getType());
-//    map.put("Industry", account.getSector());
-//    map.put("NumberOfEmployees", account.getEmployees());
         return map;
     }
 
-//    protected Map<String, Object> removeToMap() {
-//        Map<String, Object> map = new HashMap<>();
-//        map.remove(ACCOUNT_NAME, account.getAccountName());
-////    map.put("Website", account.getWeb());
-////    map.put("Description", account.getDescription());
-//        map.remove(ACCOUNT_NUMBER,account.getAccountNumber());
-//        map.remove(ACCOUNT_FAX,account.getFax());
-//        map.remove(ACCOUNT_PHONE, account.getPhone());
-//        map.remove(ACCOUNT_TYPE,account.getType());
-////    map.put("Industry", account.getSector());
-////    map.put("NumberOfEmployees", account.getEmployees());
-//        return map;
-//    }
+    /**
+     *  this method get values by Api of Account.
+     * @return
+     */
     public Account getAccountValuesByAPI() { //ToDo define what aee you going to return
        // response = APIManager.getInstance().get("/sobjects/Account/" + account.getId() + "?fields=Name");
         response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(ACCOUNT).
@@ -69,22 +58,22 @@ public class APIAccount {
         return accountApi;
     }
 
+    /**
+     * this method Create Api
+     */
     public void createAccountByAPI() {
         response = apiManager.post(ACCOUNT, fieldsMap);
         System.out.println("Query response create: " + response.asString());
         account.setId(response.jsonPath().get(ID).toString());
     }
 
+    /**
+     * this method delete Api
+     */
     public void deleteAccountByAPI() {
         account.setId(response.jsonPath().get(ID).toString());
         response = apiManager.delete(ACCOUNT, account.getId());
         System.out.println("Query response delete: " + response.asString());
     }
 
-//    public void editAccountByAPI() {
-//        response=apiManager.put(ACCOUNT,account.getId());
-//        System.out.println("Query response create: " + response.asString());
-//
-//
-//    }
 }

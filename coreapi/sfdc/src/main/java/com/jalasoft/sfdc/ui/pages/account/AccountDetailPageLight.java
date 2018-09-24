@@ -98,6 +98,11 @@ public class AccountDetailPageLight extends AccountDetailPage {
                 account.getPhone().equals(accountPhoneTxt.getText()) && account.getFax().equals(accountFaxTxt.getText());
     }
 
+    /**
+     *
+     * @param account information the current user.
+     * @return boolean
+     */
     @Override
     public boolean isSuccessEditAccount(Account account) {
         driverTools.clickElement(optionDetail);

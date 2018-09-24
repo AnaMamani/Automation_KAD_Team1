@@ -82,14 +82,15 @@ public class AccountFormPageLight extends AccountFormPage {
 
     }
     /**
-     * @param currentUrl url.
-     * @param account product.
+     *  @param currentUrl url.
+     *  @param account product.
      */
     private void saveProductId(String currentUrl, Account account) {
 
         String[] url=currentUrl.split("/");
         account.setId(url[url.length-2]);
         System.out.println("ID: "+url[url.length-2]+" THIS IS THE PRODUCT ID");
+
     }
 
     /**

@@ -16,7 +16,7 @@ public abstract class AccountDetailPage extends BasePage {
     public abstract String isSuccessDisplayedAccountDetail();
 
     /**
-     * This method abstract for event click on edit an Account.
+     * This is method abstract for event click on edit an Account.
      *
      * @return AccountFormPage.
      */

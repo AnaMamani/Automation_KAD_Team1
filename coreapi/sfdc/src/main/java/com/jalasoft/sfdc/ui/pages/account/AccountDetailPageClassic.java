@@ -68,6 +68,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
      */
     @Override
     public void deleteAnAccount() {
+
         driverTools.clickElement(deleteBtn);
         acceptAlertDialog();
 
@@ -111,7 +112,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
     }
 
     /**
-     * Waits until page object is loaded.
+     *  Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {

@@ -75,7 +75,7 @@ public class Account {
 //
 //    }
     /**
-     * Gets the Account ID.
+     * Get the Account ID.
      * @Return ID account.
      */
     public String getId() {
@@ -83,7 +83,7 @@ public class Account {
     }
 
     /**
-     * Sets the Account ID.
+     * Set the Account ID.
      * @param id ID the product.
      */
     public void setId(String id) {
