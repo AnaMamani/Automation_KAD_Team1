@@ -19,6 +19,7 @@ public class Product {
 
     /**
      * Gets the product name.
+     *
      * @return the current product name.
      */
     public String getProductName() {
@@ -27,16 +28,18 @@ public class Product {
 
     /**
      * Sets the product name.
+     *
      * @param productName the current product name.
      */
-    public void setProductName(String productName) {
+    public void updateProductName() {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
         //.concat(" ").concat(timeStamp)
-        this.productName = productName;
+        this.productName += timeStamp;
     }
 
     /**
      * Gets the product code.
+     *
      * @return the current product code.
      */
     public String getProductCode() {
@@ -45,6 +48,7 @@ public class Product {
 
     /**
      * Sets the product code.
+     *
      * @param productCode the current product code.
      */
     public void setProductCode(String productCode) {
@@ -53,6 +57,7 @@ public class Product {
 
     /**
      * Gets the product description.
+     *
      * @return the current product description.
      */
     public String getProductDescription() {
@@ -61,6 +66,7 @@ public class Product {
 
     /**
      * Sets the product description.
+     *
      * @param productDescription the current product description.
      */
     public void setProductDescription(String productDescription) {
@@ -69,6 +75,7 @@ public class Product {
 
     /**
      * Gets the product is active.
+     *
      * @return if product is active.
      */
     public boolean getActive() {
@@ -77,14 +84,16 @@ public class Product {
 
     /**
      * Sets the state product.
+     *
      * @param active or no active product.
      */
-    public void setActive(boolean  active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 
     /**
      * Gets the product ID.
+     *
      * @return the ID.
      */
     public String getId() {
@@ -93,6 +102,7 @@ public class Product {
 
     /**
      * Sets the product ID.
+     *
      * @param id ID the product.
      */
     public void setId(String id) {
@@ -101,6 +111,7 @@ public class Product {
 
     /**
      * Gets the product family.
+     *
      * @return the family.
      */
     public String getFamily() {
@@ -109,9 +120,14 @@ public class Product {
 
     /**
      * Sets the product family.
+     *
      * @param family family the product.
      */
     public void setFamily(String family) {
         this.family = family;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 }

@@ -4,6 +4,7 @@ import com.jalasoft.sfdc.entities.Product;
 import io.restassured.response.Response;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
@@ -59,6 +60,28 @@ public class APIProduct {
 
         return productApi;
     }
+    public boolean isProductSaved() {
+        String totalSize = (apiManager.getQuery(PRODUCT, removeFields(fieldsMap)).jsonPath().get(TOTAL_SIZE)).toString();
+        System.out.println("*******response of query: " + apiManager.getQuery(PRODUCT, removeFields(fieldsMap)).asString());
+        System.out.println("total size: " + totalSize);
+        if (totalSize != null) {
+            return Integer.parseInt(totalSize) > 0;
+        }
+        return false;
+    }
+    private Map<String, Object> removeFields(Map<String, Object> fieldsMap) {
+        Map<String,Object> map = new HashMap<>();
+        Iterator it =  fieldsMap.keySet().iterator();
+        while(it.hasNext()){
+            String key = it.next().toString();
+            map.put(key,fieldsMap.get(key));
+        }
+        map.remove(PRODUCT_NAME);
+        map.remove(PRODUCT_CODE);
+        map.remove(PRODUCT_DESCRIPTION);
+        map.remove(PRODUCT_ACTIVE);
+        return map;
+    }
 
     /**
      *
@@ -72,8 +95,9 @@ public class APIProduct {
     /**
      *
      */
-    public void deleteProductByAPI() {
+    public Response deleteProductByAPI() {
         response = apiManager.delete(PRODUCT, product.getId());
         System.out.println("Query response delete: " + response.asString());
+        return response;
     }
 }
