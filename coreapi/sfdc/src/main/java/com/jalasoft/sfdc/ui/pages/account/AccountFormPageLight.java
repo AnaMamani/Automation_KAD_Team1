@@ -52,6 +52,8 @@ public class AccountFormPageLight extends AccountFormPage {
 
     @FindBy(xpath = "//span[text()='Save']/parent::button[@title='Save']")
     private WebElement clickBtnSave;
+    @FindBy(xpath =   "//span[text()='Cancel'] ")
+    private WebElement auxToAccountId;
 
     /**
      * This method setter for create an Account
@@ -72,8 +74,22 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
         driverTools.setInputField(accountNumberLocationTxt, account.getNumberOfLocation());
 
+        wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
+        saveProductId(driver.getCurrentUrl(),account);
+
         driverTools.clickElement(clickBtnSave);
         return new AccountDetailPageLight();
+
+    }
+    /**
+     *  @param currentUrl url.
+     *  @param account product.
+     */
+    private void saveProductId(String currentUrl, Account account) {
+
+        String[] url=currentUrl.split("/");
+        account.setId(url[url.length-2]);
+        System.out.println("ID: "+url[url.length-2]+" THIS IS THE PRODUCT ID");
 
     }
 

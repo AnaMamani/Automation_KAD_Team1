@@ -47,16 +47,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         return accountNameCreateTxt.getText().trim();
     }
 
-    /**
-     * This method validate of details of account create
-     *
-     * @param account Account.
-     */
-    @Override
-    public void validatorAccount(Account account) {
 
-
-    }
 
     /**
      * This method to event click Edit Accout
@@ -77,6 +68,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
      */
     @Override
     public void deleteAnAccount() {
+
         driverTools.clickElement(deleteBtn);
         acceptAlertDialog();
 
@@ -120,7 +112,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
     }
 
     /**
-     * Waits until page object is loaded.
+     *  Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {

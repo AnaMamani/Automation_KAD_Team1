@@ -12,7 +12,7 @@ Feature: Create "Accounts"
   Scenario: Verify that is possible create a new Account
     And  I create a Account with the following information
       | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
-      | katty        | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
+      | Keissy        | 123            | 1234567 | 987654321 | cbba          | Tiraque       | Bolivia         | 7                  | Prospect |
 
     Then the Account Details Page should be display with the information of the Account created
 
