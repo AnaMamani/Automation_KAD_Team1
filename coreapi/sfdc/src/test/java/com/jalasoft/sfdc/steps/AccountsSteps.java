@@ -66,7 +66,6 @@ public class AccountsSteps {
         apiAccount=new APIAccount(account);
         apiAccount.createAccountByAPI();
 //        account.setAccountName(accounts.get(0).getAccountName());
-
 //        accountDetailPage = accountFormPage.createAccount(account);
     }
 
@@ -77,7 +76,6 @@ public class AccountsSteps {
     public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() {
 
         accountApi=apiAccount.getAccountValuesByAPI();
-
         assertEquals(account.getAccountName(),accountApi.getAccountName());
         assertEquals(account.getAccountNumber(),accountApi.getAccountNumber());
         assertEquals(account.getPhone(),accountApi.getPhone());

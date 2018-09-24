@@ -74,7 +74,7 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
         driverTools.setInputField(accountNumberLocationTxt, account.getNumberOfLocation());
 
-        wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
+       // wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
         saveProductId(driver.getCurrentUrl(),account);
 
         driverTools.clickElement(clickBtnSave);

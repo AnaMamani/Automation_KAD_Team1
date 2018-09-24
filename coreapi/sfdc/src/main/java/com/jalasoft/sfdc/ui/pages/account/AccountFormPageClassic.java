@@ -23,8 +23,8 @@ public class AccountFormPageClassic extends AccountFormPage {
     @FindBy(id = "acc10")
     private WebElement accountPhoneTxt;
 
-    private @FindBy(id = "acc11")
-    WebElement accountFaxTxt;
+    @FindBy(id = "acc11")
+    private WebElement accountFaxTxt;
 
     @FindBy(id = "acc6")
     private WebElement accountTypeTxt;
@@ -45,7 +45,7 @@ public class AccountFormPageClassic extends AccountFormPage {
     private WebElement numberLocationTxt;
 
     @FindBy(xpath = "//*[@id='topButtonRow']/input[1]")
-    WebElement clickBtnSave;
+    private WebElement clickBtnSave;
 
     /**
      * This method setter for create an Account
@@ -68,7 +68,18 @@ public class AccountFormPageClassic extends AccountFormPage {
         driverTools.setInputField(numberLocationTxt, account.getNumberOfLocation());
 
         driverTools.clickElement(clickBtnSave);
+        
+      saveAccountId(driver.getCurrentUrl(),account);
         return new AccountDetailPageClassic();
+    }
+    /**
+     *  @param currentUrl url.
+     *  @param account Account.
+     */
+    private void saveAccountId(String currentUrl, Account account) {
+        String[] url=currentUrl.split("/");
+        account.setId(url[url.length-1]);
+        System.out.println("ID: "+account.getId()+" THIS IS THE ACCOUNT ID");
     }
 
     /**
@@ -99,6 +110,7 @@ public class AccountFormPageClassic extends AccountFormPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+
         wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
     }
 }
