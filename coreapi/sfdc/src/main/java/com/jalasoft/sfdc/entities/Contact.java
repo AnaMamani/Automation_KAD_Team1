@@ -14,6 +14,7 @@ public class Contact {
     private String city =" ";
     private String state =" ";
     private String country =" ";
+    private String id;
 
 
 
@@ -197,5 +198,21 @@ public class Contact {
      */
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    /**
+     * get for id
+     * @return a String
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     * Set the Id
+     * @param id
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 }
