@@ -64,9 +64,9 @@ public class AccountsSteps {
         this.account = accounts.get(0);
         accountFormPage = accountListPage.clickNewAccount();
         apiAccount=new APIAccount(account);
-        apiAccount.createAccountByAPI();
-//        account.setAccountName(accounts.get(0).getAccountName());
-//        accountDetailPage = accountFormPage.createAccount(account);
+//        apiAccount.createAccountByAPI();
+        account.setAccountName(accounts.get(0).getAccountName());
+        accountDetailPage = accountFormPage.createAccount(account);
     }
 
     /**
@@ -75,17 +75,18 @@ public class AccountsSteps {
     @Then("^the Account Details Page should be display with the information of the Account created$")
     public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() {
 
+        assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
+        assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
+
+    }
+    @And("^by API should be display information of the Account created$")
+    public void byAPIShouldBeDisplayInformationOfTheAccountCreated()  {
+
         accountApi=apiAccount.getAccountValuesByAPI();
         assertEquals(account.getAccountName(),accountApi.getAccountName());
         assertEquals(account.getAccountNumber(),accountApi.getAccountNumber());
         assertEquals(account.getPhone(),accountApi.getPhone());
         assertEquals(account.getType(),accountApi.getType());
-
-
-
-//        assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
-//        assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
-
     }
 //*********************************************************************************
     //                    Edit the Account
@@ -132,6 +133,7 @@ public class AccountsSteps {
     public void iShouldSeeTheAccountIsDelete() {
         assertFalse(accountListPage.accountSearch(account));
     }
+
 
 
 }
