@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIContact;
 import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
@@ -31,6 +32,8 @@ public class ContactSteps {
     private ContactFormPage contactFormPage;
     private ContactDetailPage contactDetailPage;
     private Contact contact;
+    private Contact contactApi;
+    private APIContact apiContact;
 
     /**
      * page for Contact.
@@ -48,8 +51,10 @@ public class ContactSteps {
     public void iCreateAContactWithTheFollowingInformation(List<Contact> contacts) {
         this.contact = contacts.get(0);
         contactFormPage = contactListPage.clickContactNew();
+        apiContact=new APIContact(contact);
+        apiContact.createContactByAPI();
        // contact.setFirstName(contacts.get(0).getFirstName());
-        contactDetailPage = contactFormPage.createContact(contact);
+        //contactDetailPage = contactFormPage.createContact(contact);
     }
 
     /**
@@ -58,7 +63,13 @@ public class ContactSteps {
     @Then("^the Contact Details Page should be display with the information of the contact$")
     public void theContactDetailsPageShouldBeDisplayWithTheInformationOfTheContactCreated() {
         System.out.println(contact.getFirstName().concat(" ").concat(contact.getLastName()) + "***********************************");
-        assertEquals(contactDetailPage.isSuccessDisplayedContactDetail(), contact.getFirstName().concat(" ").concat(contact.getLastName()), "full name the Contact is showed");
+        contactApi=apiContact.getContactValuesByAPI();
+        assertEquals(contact.getFirstName(),contactApi.getFirstName(),"should be show the contact first name:");
+        assertEquals(contact.getLastName(),contactApi.getLastName(),"should be show the contact last name:");
+        assertEquals(contact.getTitle(),contactApi.getTitle(),"should be show the contact title:");
+        assertEquals(contact.getPhone(),contactApi.getPhone(),"should be show the contact phone:");
+        assertEquals(contact.getEmail(),contactApi.getEmail(),"should be show the contact email:");
+       // assertEquals(contactDetailPage.isSuccessDisplayedContactDetail(), contact.getFirstName().concat(" ").concat(contact.getLastName()), "full name the Contact is showed");
     }
     //*********************************************************************************************
 //                                     Edit the Contact
@@ -88,7 +99,8 @@ public class ContactSteps {
      */
     @When("^I delete this Contact create$")
     public void iDeleteThisContactCreate() {
-        contactListPage = contactDetailPage.deleteContact();
+        apiContact.deleteContactByAPI();
+        //contactListPage = contactDetailPage.deleteContact();
     }
 
     /**

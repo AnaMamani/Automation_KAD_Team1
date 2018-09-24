@@ -42,6 +42,8 @@ public class ContactFormPageLight extends ContactFormPage {
     @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")
     private WebElement clickBtnSave;
 
+    @FindBy(xpath = "//a[@title='New Contact']")
+    private WebElement auxToContactId;
 
     /**
      * Method for create contatc.
@@ -61,7 +63,18 @@ public class ContactFormPageLight extends ContactFormPage {
         driverTools.setInputField(stateTxt, contact.getState());
         driverTools.setInputField(countryTxt, contact.getCountry());
         driverTools.clickElement(clickBtnSave);
+        wait.until(ExpectedConditions.visibilityOf(auxToContactId));
+        saveContactId(driver.getCurrentUrl(),contact);
         return new ContactDetailPageLight();
+    }
+    /**
+     * @param currentUrl url.
+     * @param contact product.
+     */
+    private void saveContactId(String currentUrl, Contact contact) {
+        String[] url=currentUrl.split("/");
+        contact.setId(url[url.length-1]);
+        System.out.println("ID: "+contact.getId()+" THIS IS THE CONTACT ID");
     }
 
     /**

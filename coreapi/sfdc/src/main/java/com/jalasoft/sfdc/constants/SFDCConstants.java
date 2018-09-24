@@ -16,16 +16,16 @@ public final class SFDCConstants {
 
     //Contacts
     public final static String CONTACT = "Contact";
-    public final static String CONTACT_NAME = "Contact Name";
-    public final static String CONTACT_LAST_NAME = "Contact Last Name";
-    public final static String CONTACT_ACCOUNT_NAME = "Contact Account Name";
-    public final static String CONTACT_TITLE = "Contact Title";
-    public final static String CONTACT_EMAIL = "Contact Email";
-    public final static String CONTACT_PHONE = "Contact Phone";
-    public final static String CONTACT_STREET = "Contact Street";
-    public final static String CONTACT_CITY = "Contact City";
-    public final static String CONTACT_STATE = "Contact State";
-    public final static String CONTACT_COUNTRY = "Contact Country";
+    public final static String CONTACT_FIRST_NAME = "FirstName";
+    public final static String CONTACT_LAST_NAME = "LastName";
+    public final static String CONTACT_ACCOUNT_NAME = "AccountName";
+    public final static String CONTACT_TITLE = "Title";
+    public final static String CONTACT_PHONE = "Phone";
+    public final static String CONTACT_EMAIL = "Email";
+    public final static String CONTACT_STREET = "MailingStreet";
+    public final static String CONTACT_CITY = "MailingCity";
+    public final static String CONTACT_STATE = "MailingState";
+    public final static String CONTACT_COUNTRY = "MailingCountry";
 
     //Product
     public final static String PRODUCT = "Product2";
