@@ -93,9 +93,22 @@ public class AccountDetailPageLight extends AccountDetailPage {
     @Override
     public boolean isSuccessCreateAccount(Account account) {
         driverTools.clickElement(optionDetail);
+        saveAccountId(driver.getCurrentUrl(),account);
         return account.getAccountNumber().equals(accountNumberTxt.getText()) &&
                 account.getType().equals(accountSelectTypeTxt.getText()) &&
                 account.getPhone().equals(accountPhoneTxt.getText()) && account.getFax().equals(accountFaxTxt.getText());
+    }
+
+    /**
+     *  @param currentUrl url.
+     *  @param account Account.
+     */
+    private void saveAccountId(String currentUrl, Account account) {
+
+        String[] url=currentUrl.split("/");
+        account.setId(url[url.length-1]);
+        System.out.println("ID: "+url[url.length-1]+" THIS IS THE ACCOUNT ID");
+
     }
 
     /**
