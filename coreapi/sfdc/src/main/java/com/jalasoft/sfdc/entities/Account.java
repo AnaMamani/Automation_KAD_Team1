@@ -40,40 +40,6 @@ public class Account {
     private String numberOfLocation;
     private String id;
 
-
-
-//    public Account(String accountName, String parentAccount, String accountNumber, String accountSite,String fax, String phone,String type,String industry,String annualRevenue,
-//                   String ranting,String website,String tickerSymbol,String ownership,String employees,String sicCode,String billingStreet,String billingZip,String billingCity,
-//                   String billingState,String billingCountry,String shippingStreet,String shippingZip,String shippingStae,String shippingCountry,String customerPriority,String numberOfLocation,String id){
-//        this.accountName = accountName;
-//        this.parentAccount= parentAccount;
-//        this.accountNumber=accountNumber;
-//        this.accountSite=accountSite;
-//        this.fax=fax;
-//        this.phone=phone;
-//        this.type=type;
-//        this.industry=industry;
-//        this.annualRevenue=annualRevenue;
-//        this.ranting=ranting;
-//        this.website=website;
-//        this.tickerSymbol=tickerSymbol;
-//        this.ownership=ownership;
-//        this.employees=employees;
-//        this.sicCode=sicCode;
-//        this.billingStreet=billingStreet;
-//        this.billingCity=billingCity;
-//        this.billingCountry=billingCountry;
-//        this.billingZip=billingZip;
-//        this.billingState=billingState;
-//        this.shippingCountry=shippingCountry;
-//        this.shippingStae=shippingStae;
-//        this.shippingZip=shippingZip;
-//        this.shippingStreet=shippingStreet;
-//        this.customerPriority=customerPriority;
-//        this.numberOfLocation=numberOfLocation;
-//        this.id=id;
-//
-//    }
     /**
      * Get the Account ID.
      * @Return ID account.
