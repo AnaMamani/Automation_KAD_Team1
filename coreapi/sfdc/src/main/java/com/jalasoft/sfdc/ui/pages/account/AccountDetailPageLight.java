@@ -64,23 +64,6 @@ public class AccountDetailPageLight extends AccountDetailPage {
     }
 
     /**
-     * This method Validate of details that was created
-     *
-     * @param account of Account object
-     */
-    @Override
-    public void validatorAccount(Account account) {
-        driverTools.clickElement(optionDetail);
-        log.info(account.getAccountNumber() + "################detail");
-        log.info(accountNumberTxt.getText() + "###############hola ");
-        assertEquals(account.getAccountNumber(), accountNumberTxt.getText().trim());
-        assertEquals(account.getType(), accountSelectTypeTxt.getText().trim());
-        assertEquals(account.getPhone(), accountPhoneTxt.getText().trim());
-        assertEquals(account.getFax(), accountFaxTxt.getText().trim());
-
-    }
-
-    /**
      * This method a click on edit an Account
      *
      * @return AccountFormPageLight() Account Form page of Light

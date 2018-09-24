@@ -47,16 +47,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         return accountNameCreateTxt.getText().trim();
     }
 
-    /**
-     * This method validate of details of account create
-     *
-     * @param account Account.
-     */
-    @Override
-    public void validatorAccount(Account account) {
 
-
-    }
 
     /**
      * This method to event click Edit Accout

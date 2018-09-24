@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
@@ -34,7 +35,9 @@ public class AccountsSteps {
     private AccountListPage accountListPage;
     private AccountFormPage accountFormPage;
     private Account account;
+    private Account accountApi;
     private AccountDetailPage accountDetailPage;
+    private APIAccount apiAccount;
 
 
     /**
@@ -59,9 +62,12 @@ public class AccountsSteps {
         log.info("iGoToTheAccountPage -----> Start homePage");
 
         this.account = accounts.get(0);
-        account.setAccountName(accounts.get(0).getAccountName());
         accountFormPage = accountListPage.clickNewAccount();
-        accountDetailPage = accountFormPage.createAccount(account);
+        apiAccount=new APIAccount(account);
+        apiAccount.createAccountByAPI();
+//        account.setAccountName(accounts.get(0).getAccountName());
+
+//        accountDetailPage = accountFormPage.createAccount(account);
     }
 
     /**
@@ -69,10 +75,25 @@ public class AccountsSteps {
      */
     @Then("^the Account Details Page should be display with the information of the Account created$")
     public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() {
+        accountApi=apiAccount.getAccountValuesByAPI();
+        System.out.println(account.getAccountName()+"=================");
+        System.out.println(accountApi.getAccountName()+"===============11111");
+        assertEquals(account.getAccountName(),accountApi.getAccountName());
+        System.out.println(account.getAccountNumber()+"====Number====");
+        System.out.println(accountApi.getAccountNumber()+"=======Number====");
+        assertEquals(account.getAccountNumber(),accountApi.getAccountNumber());
+        System.out.println(account.getPhone()+"-----Phone");
+        System.out.println(accountApi.getPhone()+"+++++++phone");
+        assertEquals(account.getPhone(),accountApi.getPhone());
+        System.out.println(account.getType()+"======Type+++=");
+        System.out.println(accountApi.getType()+"====Type+++");
+        assertEquals(account.getType(),accountApi.getType());
 
-        assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
 
-        assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
+
+//        assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
+//
+//        assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
 
 
        // accountDetailPage.validatorAccount(account);
@@ -91,8 +112,10 @@ public class AccountsSteps {
 
         accountFormPage = accountDetailPage.clickEditAccount();
         this.account = editAccounts.get(0);
-        account.setAccountName(editAccounts.get(0).getAccountName());
-        accountDetailPage = accountFormPage.editAccount(account);
+        apiAccount=new APIAccount(account);
+//        apiAccount.editAccountByAPI();
+        //        account.setAccountName(editAccounts.get(0).getAccountName());
+//        accountDetailPage = accountFormPage.editAccount(account);
 
     }
 
