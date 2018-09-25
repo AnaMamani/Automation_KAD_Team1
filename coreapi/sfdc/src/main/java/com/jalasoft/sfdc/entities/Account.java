@@ -55,7 +55,15 @@ public class Account {
     public void setId(String id) {
         this.id = id;
     }
-
+    /**
+     * Sets the account name.
+     *
+     *
+     */
+    public void updateAccountName() {
+        Long timeStamp = new Date().getTime();
+        this.accountName += timeStamp;
+    }
     /**
      *gets the Account Names.
      * @return account names.
