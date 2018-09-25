@@ -2,7 +2,9 @@ package com.jalasoft.sfdc.ui;
 
 import com.jalasoft.selenium.WebDriverManager;
 import com.jalasoft.sfdc.config.ServersConfigReader;
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
+import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
@@ -101,4 +103,6 @@ public class PageTransporter {
         goToURL(baseURL);
         return new LoginPage();
     }
+
+
 }

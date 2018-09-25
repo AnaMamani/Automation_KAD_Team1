@@ -42,7 +42,7 @@ public class ContactFormPageLight extends ContactFormPage {
     @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")
     private WebElement clickBtnSave;
 
-    @FindBy(xpath = "//a[@title='New Contact']")
+    @FindBy(xpath = "//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon' ]//parent::span)[1]")
     private WebElement auxToContactId;
 
     /**
