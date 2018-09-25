@@ -98,7 +98,7 @@ public class ContactSteps {
 // ********************************************************************************************/
 
     /**
-     * for create by API
+     * for create by API for edit
      */
     @Given("^I have a Contact with the following information$")
     public void iHaveAContactWithTheFollowingInformation(List<Contact> contactsApi) {
@@ -110,7 +110,7 @@ public class ContactSteps {
     }
 
     /**
-     * For select the Url by recuperate
+     * For select the Url by recuperate and edit
      */
     @When("^I Select the Contact created by URL$")
     public void iSelectTheContactCreatedByURL() throws MalformedURLException {

@@ -1,10 +1,10 @@
+@Contact
 Feature: Create "Contact"
-
   Background:
     Given I navigate to Login page
     And I login as "local user" User
 
-  @CreateContact @deleteContact
+  @deleteContact
   Scenario: Verify that is possible create a new contact
     Given I go to the Contact page
     When I click New button for create
@@ -14,7 +14,7 @@ Feature: Create "Contact"
     Then the Contact Details Page should be display with the information of the contact
     And the Contact should be created
 
-  @EditContact @deleteContact
+  @deleteContact
   Scenario: Verify that is possible to edit a Contact to register
     Given I have a Contact with the following information
       | First Name | lastName    | title     | email          | phone   | street     | city    | state | country  |
@@ -27,7 +27,7 @@ Feature: Create "Contact"
     Then the Contact Details Page should be display with the information of the contact update
       And the Contact should be updated
 
-  @DeleteContact @deleteContact
+  @deleteContact
   Scenario: Verify that is possible to delete a Contact to created
     Given I have a Contact with the following information
       | First Name | Last Name   | title     | email          | phone   | street     | city    | state | country  |
