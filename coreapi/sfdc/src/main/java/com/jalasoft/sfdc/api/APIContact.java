@@ -75,14 +75,7 @@ public class APIContact {
         System.out.println("Query response create: " + response.asString());
         contact.setId(response.jsonPath().get(ID).toString());
     }
-    /**
-     *for edit
-     */
-    public void editContactByAPI() {
-        response = apiManager.post(CONTACT, fieldsMap);
-        System.out.println("Query response create: " + response.asString());
-        contact.setId(response.jsonPath().get(ID).toString());
-    }
+
     /**
      * for delete
      */
