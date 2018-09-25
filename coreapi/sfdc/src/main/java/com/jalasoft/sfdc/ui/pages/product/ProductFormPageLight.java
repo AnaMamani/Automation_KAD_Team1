@@ -53,7 +53,7 @@ public class ProductFormPageLight extends ProductFormPage {
      */
     @Override
     public ProductDetailPage createProduct(Product product) {
-        log.info("createProduct : Enter");
+        log.info("createProduct : fill the field of product");
         driverTools.setInputField(productNameTxt, product.getProductName());
         driverTools.setInputField(productCodeTxt, product.getProductCode());
         driverTools.setInputField(productDescriptionTxt, product.getProductDescription());

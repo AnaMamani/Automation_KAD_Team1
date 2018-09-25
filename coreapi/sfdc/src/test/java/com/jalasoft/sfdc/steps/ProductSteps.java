@@ -3,12 +3,14 @@ package com.jalasoft.sfdc.steps;
 import com.jalasoft.sfdc.api.APIProduct;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.PageFactory;
+import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductFormPage;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -38,6 +40,7 @@ public class ProductSteps {
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
     private ProductDetailPage productDetailPage;
+    private PageTransporter pageTransporter;
     //Entities
     private Product product;
     private Product productApi;
@@ -57,16 +60,31 @@ public class ProductSteps {
     }
 
     /**
+     * click in new button.
+     */
+    @When("^I click New button$")
+    public void iClickNewButton() {
+        log.info("iClickNewButton -----> click in new Product");
+        productFormPage = productListPage.clickNewProduct();
+    }
+
+    /**
      * @param products list the Products.
      */
     @Given("^I create a Product with the following information$")
     public void iCreateAProductWithTheFollowingInformation(List<Product> products) {
         log.info("iGoToTheProductPage -----> Start create a Product");
         product = products.get(0);
-        apiProduct = new APIProduct(product);
         product.updateProductName();
-        productFormPage = productListPage.clickNewProduct();
+        apiProduct = new APIProduct(product);
         productDetailPage = productFormPage.createProduct(product);
+    }
+
+    /**
+     * click in save button.
+     */
+    @And("^I click Save button$")
+    public void iClickSaveButton() {
 
     }
 
@@ -104,6 +122,17 @@ public class ProductSteps {
         product = productsApi.get(0);
         apiProduct = new APIProduct(product);
         apiProduct.createProductByAPI();
+    }
+
+    /**
+     *
+     */
+    @When("^I select the Product created by URL$")
+    public void iSelectTheProductCreatedByURL() {
+        homePage = PageFactory.getHomePage();
+        pageTransporter=PageTransporter.getInstance();
+        productDetailPage=homePage.goToProductEdit(product);
+
     }
 
     /**

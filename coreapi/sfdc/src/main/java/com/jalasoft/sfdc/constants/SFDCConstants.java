@@ -36,6 +36,8 @@ public final class SFDCConstants {
     public final static String PRODUCT_DESCRIPTION = "Description";
     public final static String PRODUCT_FAMILY = "Family";
     public final static String PRODUCT_ACTIVE = "IsActive";
+    public final static String URL_PRODUCT = "https://na57.lightning.force.com/lightning/r/Product2/";
+    public final static String VIEW ="/view";
 
     //Quotes
     public final static String QUOTE = "quote";
