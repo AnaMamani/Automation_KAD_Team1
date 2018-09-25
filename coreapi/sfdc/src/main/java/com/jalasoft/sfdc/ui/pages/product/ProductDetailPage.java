@@ -1,4 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.product;
+
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.BasePage;
 import org.apache.log4j.Logger;
@@ -11,8 +12,10 @@ import org.apache.log4j.Logger;
  */
 public abstract class ProductDetailPage extends BasePage {
     protected Logger log = Logger.getLogger(getClass());
+
     /**
      * verify that a product is create.
+     *
      * @param product information the current user.
      * @return is successfully or not successfully.
      */
@@ -25,20 +28,48 @@ public abstract class ProductDetailPage extends BasePage {
 
     /**
      * select the product to edit.
+     *
      * @return ProductFormPage.
      */
     public abstract ProductFormPage clickEditOption();
 
     /**
      * select the product to delete.
+     *
      * @return ProductListPage.
      */
     public abstract ProductListPage deleteProduct(Product product);
 
     /**
      * verify the edit the product.
+     *
      * @param product information the current user.
      */
     public abstract boolean isSuccessEditProduct(Product product);
 
+    /**
+     * verify the edit the product.
+     *
+     * @param productApi  information the current user by API.
+     * @param productEdit information the current user.
+     */
+    public boolean isSuccessEditProductByAPI(Product productApi, Product productEdit) {
+        log.info("isSuccessEditProductByAPI:   ");
+        boolean result = true;
+        if (productEdit.getProductName() != null && !productEdit.getProductName().equals(productApi.getProductName())) {
+            log.info("product name :" + productEdit.getProductName() + " ====> " + productApi.getProductName());
+            return false;
+        }
+
+        if (productEdit.getProductCode() != null && !productEdit.getProductCode().equals(productApi.getProductCode())) {
+            log.info("product code :" + productEdit.getProductCode() + " ====> " + productApi.getProductCode());
+            return false;
+        }
+        if (productEdit.getProductDescription() != null && !productEdit.getProductDescription().equals(productApi.getProductDescription())) {
+            log.info("product name :" + productEdit.getProductDescription() + " ====> " + productApi.getProductDescription());
+            return false;
+        }
+        return result;
+
+    }
 }

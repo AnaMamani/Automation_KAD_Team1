@@ -30,6 +30,9 @@ public final class SFDCConstants {
     public final static String CONTACT_CITY = "MailingCity";
     public final static String CONTACT_STATE = "MailingState";
     public final static String CONTACT_COUNTRY = "MailingCountry";
+    public final static String URL_CONTACT_LIGHT = "https://na57.lightning.force.com/lightning/o/Contact/";
+    public final static String URL_CONTACT_CLASSIC = "https://na57.salesforce.com/";
+
 
     //Product
     public final static String PRODUCT = "Product2";
@@ -38,9 +41,11 @@ public final class SFDCConstants {
     public final static String PRODUCT_DESCRIPTION = "Description";
     public final static String PRODUCT_FAMILY = "Family";
     public final static String PRODUCT_ACTIVE = "IsActive";
+
     public final static String URL_PRODUCT_LIGHT = "https://na57.lightning.force.com/lightning/r/Product2/";
     public final static String URL_PRODUCT_CLASSIC = "https://na57.salesforce.com/";
-    public final static String VIEW = "/view";
+
+
 
     //Quotes
     public final static String QUOTE = "quote";
@@ -70,6 +75,7 @@ public final class SFDCConstants {
     public final static String TOTAL_SIZE = "totalSize";
     public final static String SOBJECTS = "sobjects";
     public final static String SLASH = "/";
+    public final static String VIEW = "/view";
 
 
 }

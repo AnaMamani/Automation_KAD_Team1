@@ -215,4 +215,12 @@ public class Contact {
     public void setId(String id) {
         this.id = id;
     }
+
+    /**
+     * Sets the product name.
+     */
+    public void updateContactName() {
+        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        this.lastName += timeStamp;
+    }
 }

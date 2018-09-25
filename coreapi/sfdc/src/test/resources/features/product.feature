@@ -8,7 +8,7 @@ Feature: Create a "Product"
   @CreateProduct @deleteProduct
   Scenario: Verify that is possible to Create a new Product
     Given I go to the Product page
-    When I click New button
+    When I click New button Product
       And I create a Product with the following information
       | Product Name   | Product Code | Product Description | Active |
       | Computers Dell | hp and dell  | desktop and laptops | true   |
@@ -21,7 +21,7 @@ Feature: Create a "Product"
       | Product Name  | Product Code | Product Description | Active |
       | Computers IOs | 69489750     | desktop             | true   |
     When I select the Product created by URL
-      And I click Edit button
+      And I click Edit button Product
       And I Edit the Product with the following information
       | Product Name     | Product Code | Product Description | Active |
       | Computers Gamers | 0215424      | laptops             | false  |
@@ -34,6 +34,6 @@ Feature: Create a "Product"
       | Product Name | Product Code | Product Description | Active |
       | Computers HP | 69489750     | desktop full        | true   |
     When I select the Product created by URL
-      And I click Delete button
+      And I click Delete button Product
     Then the Product should be removed from the Product List
       And the Product should be deleted

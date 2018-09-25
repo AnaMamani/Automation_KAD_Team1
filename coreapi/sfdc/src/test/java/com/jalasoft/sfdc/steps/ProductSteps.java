@@ -43,9 +43,9 @@ public class ProductSteps {
     //Entities
     private Product product;
     private Product productApi;
+    private Product productEdit;
     private APIProduct apiProduct;
     private Response response;
-
     /**
      * Navigates to the Product page.
      */
@@ -60,7 +60,7 @@ public class ProductSteps {
     /**
      * click in new button.
      */
-    @When("^I click New button$")
+    @When("^I click New button Product$")
     public void iClickNewButton() {
         log.info("iClickNewButton -----> click in new Product");
         productFormPage = productListPage.clickNewProduct();
@@ -130,7 +130,7 @@ public class ProductSteps {
     /**
      * click in edit button.
      */
-    @And("^I click Edit button$")
+    @And("^I click Edit button Product$")
     public void iClickEditButton() {
         productFormPage = productDetailPage.clickEditOption();
     }
@@ -141,9 +141,9 @@ public class ProductSteps {
     @When("^I Edit the Product with the following information$")
     public void iEditTheProductInformationWithTheFollowingInformation(List<Product> editProduct) {
 //        productDetailPage = productListPage.selectProductItem(product);
-        product = editProduct.get(0);
-        product.updateProductName();
-        productDetailPage = productFormPage.editProduct(product);
+        productEdit = editProduct.get(0);
+        productEdit.updateProductName();
+        productDetailPage = productFormPage.editProduct(productEdit);
     }
 
     /**
@@ -151,17 +151,17 @@ public class ProductSteps {
      */
     @Then("^the Product Details Page should be displayed with the edited information$")
     public void theProductDetailsPageShouldBeDisplayWithTheInformationOfTheProductUpdated() {
-        log.info("ProductCreated -----> " + product.getProductName() + "====>" + productDetailPage.getProductNameCreated());
-        assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessEditProduct(product), "the expected result:");
+        log.info("ProductCreated -----> " + productEdit.getProductName() + "====>" + productDetailPage.getProductNameCreated());
+        assertEquals(productEdit.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessEditProduct(productEdit), "the expected result:");
     }
 
     @And("^the Product should be updated$")
     public void byAPIShouldBeDisplayInformationOfTheProductEdit() {
-        log.info("Validation for API to Edit Product ----->    " + product.getProductName());
+        log.info("Validation for API to Edit Product ----->    " + productEdit.getProductName());
         productApi = apiProduct.getProductValuesByAPI();
-        assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessEditProduct(product), "the expected result:");
+        assertEquals(productEdit.getProductName(), productApi.getProductName(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessEditProductByAPI(productApi,productEdit), "the expected result:");
 
     }
 
@@ -172,7 +172,7 @@ public class ProductSteps {
     /**
      * Delete the Product.
      */
-    @And("^I click Delete button$")
+    @And("^I click Delete button Product$")
     public void iDeleteTheProduct() {
         // productDetailPage = productListPage.selectProductItem(product);
         productListPage = productDetailPage.deleteProduct(product);

@@ -11,6 +11,7 @@ import com.jalasoft.sfdc.ui.pages.account.AccountDetailPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
+import com.jalasoft.sfdc.ui.pages.contact.*;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.home.HomePageClassic;
 import com.jalasoft.sfdc.ui.pages.home.HomePageLight;
@@ -84,12 +85,23 @@ public class PageFactory {
         }
     }
 
+
     public static AccountDetailPage getAccountDetailPage() {
         switch (skin) {
             case CLASSIC:
                 return new AccountDetailPageClassic();
             default:
                 return new AccountDetailPageLight();
+        }
+}
+
+    public static ContactDetailPage getContactDetailPage() {
+        switch (skin) {
+            case CLASSIC:
+                return new ContactDetailPageClassic();
+            default:
+                return new ContactDetailPageLight();
+
         }
     }
 }
