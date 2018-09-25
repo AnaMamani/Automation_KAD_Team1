@@ -55,15 +55,15 @@ public class APIContact {
     public Contact getContactValuesByAPI() { //ToDo define what aee you going to return
         response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(CONTACT).
                 concat(SLASH).concat(contact.getId()));
-        //contactApi.setTitle(response.jsonPath().get(CONTACT_FIRST_NAME).toString());
-        //contactApi.setTitle(response.jsonPath().get(CONTACT_LAST_NAME).toString());
+        contactApi.setFirstName(response.jsonPath().get(CONTACT_FIRST_NAME).toString());
+        contactApi.setLastName(response.jsonPath().get(CONTACT_LAST_NAME).toString());
         contactApi.setTitle(response.jsonPath().get(CONTACT_TITLE).toString());
-        contactApi.setTitle(response.jsonPath().get(CONTACT_EMAIL).toString());
+        contactApi.setEmail(response.jsonPath().get(CONTACT_EMAIL).toString());
         contactApi.setPhone(response.jsonPath().get(CONTACT_PHONE).toString());
-        contactApi.setCity(response.jsonPath().get(CONTACT_STREET).toString());
-        contactApi.setTitle(response.jsonPath().get(CONTACT_CITY).toString());
-        contactApi.setTitle(response.jsonPath().get(CONTACT_STATE).toString());
-        contactApi.setTitle(response.jsonPath().get(CONTACT_COUNTRY).toString());
+        contactApi.setStreet(response.jsonPath().get(CONTACT_STREET).toString());
+        contactApi.setCity(response.jsonPath().get(CONTACT_CITY).toString());
+        contactApi.setState(response.jsonPath().get(CONTACT_STATE).toString());
+        contactApi.setCountry(response.jsonPath().get(CONTACT_COUNTRY).toString());
         return contactApi;
     }
 

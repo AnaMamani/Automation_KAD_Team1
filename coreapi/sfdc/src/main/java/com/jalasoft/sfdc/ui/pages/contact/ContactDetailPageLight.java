@@ -60,7 +60,9 @@ public class ContactDetailPageLight extends ContactDetailPage {
     @Override
     public String isSuccessDisplayedContactDetail() {
         System.out.print(contactCreated.getText() + "#####################################################");
+        //driverTools.clickElement(detailsLinkBtn);
         return contactCreated.getText().trim();
+
     }
 
     /**
@@ -88,9 +90,6 @@ public class ContactDetailPageLight extends ContactDetailPage {
         driverTools.clickElement(messageVerifyDelete);
         return new ContactListPageLight();
     }
-
-
-
 
     /**
      * Waits until page object is loaded.
