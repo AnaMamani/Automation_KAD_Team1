@@ -15,6 +15,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.net.MalformedURLException;
 import java.util.List;
 
 import static org.junit.Assert.assertFalse;
@@ -106,19 +107,19 @@ public class ContactSteps {
     /**
      * For select the Url by recuperate
      */
-    @When("^I Select the Contact created by URL$")
-    public void iSelectTheContactCreatedByURL()  {
-        homePage = PageFactory.getHomePage();
-        contactDetailPage = PageTransporter.getInstance().navigateToContactPage(contact);
-    }
+//    @When("^I Select the Contact created by URL$")
+//    public void iSelectTheContactCreatedByURL() throws MalformedURLException {
+//        homePage = PageFactory.getHomePage();
+//        contactDetailPage = PageTransporter.getInstance().navigateToContactPage(contact);
+//    }
 
     /**
      * Edit contact
      */
-    @And("^I click Edit button$")
-    public void iClickEditButton()  {
-        contactFormPage = contactDetailPage.clickEditOption();
-    }
+//    @And("^I click Edit button$")
+//    public void iClickEditButton()  {
+//        contactFormPage = contactDetailPage.clickEditOption();
+//    }
     /**
      * contact for edit the data
      *
