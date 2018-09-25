@@ -1,6 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
-public class OpportunitiesFormClassic extends OpportunitiesForm {
+public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
     /**
      * Waits until page object is loaded.
      */

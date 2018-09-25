@@ -1,11 +1,12 @@
-package com.jalasoft.sfdc.ui.pages.opportunities;
+package com.jalasoft.sfdc.ui.pages.quotes;
 
-public class OpportunitiesFormClassic extends OpportunitiesForm {
+public class QuotesAddItemsPageClassic extends QuotesAddItemsPage {
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
+
 
     }
 }
