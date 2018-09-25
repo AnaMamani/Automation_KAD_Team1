@@ -12,7 +12,6 @@ Feature: Create a "Product"
       And I create a Product with the following information
       | Product Name   | Product Code | Product Description | Active |
       | Computers Dell | hp and dell  | desktop and laptops | true   |
-      And I click Save button
     Then the Product Details Page should be displayed with the product information
       And the Product should be created
 
@@ -21,7 +20,6 @@ Feature: Create a "Product"
     Given I have a Product created with the following information
       | Product Name  | Product Code | Product Description | Active |
       | Computers IOs | 69489750     | desktop             | true   |
-    //And I go to the Product page
     When I select the Product created by URL
       And I click Edit button
       And I Edit the Product with the following information

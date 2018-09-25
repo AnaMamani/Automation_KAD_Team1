@@ -2,14 +2,19 @@ package com.jalasoft.sfdc.ui;
 
 import com.jalasoft.selenium.WebDriverManager;
 import com.jalasoft.sfdc.config.ServersConfigReader;
-import com.jalasoft.sfdc.entities.Contact;
+import com.jalasoft.sfdc.constants.SFDCEnums;
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
-import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
+import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+
+import static com.jalasoft.sfdc.constants.SFDCConstants.URL_PRODUCT_CLASSIC;
+import static com.jalasoft.sfdc.constants.SFDCConstants.URL_PRODUCT_LIGHT;
+import static com.jalasoft.sfdc.constants.SFDCConstants.VIEW;
 
 /**
  * PageTransporter class.
@@ -21,7 +26,7 @@ public class PageTransporter {
     private Logger log = Logger.getLogger(getClass());
     private String baseURL = ServersConfigReader.getInstance().getURL();
     private WebDriver webDriver = WebDriverManager.getInstance().getWebDriver();
-
+    private static SFDCEnums.Skin skin = ServersConfigReader.getInstance().getSkin();
     private static PageTransporter instance;
 
     /**
@@ -104,5 +109,25 @@ public class PageTransporter {
         return new LoginPage();
     }
 
+    /**
+     * Navigates to ProductDetail Page.
+     * @param product product.
+     * @return new page of ProductDetail.
+     * @throws MalformedURLException
+     */
+    public ProductDetailPage navigateToProductPage(Product product) throws MalformedURLException {
+        log.info("navigateToProductPage ====> go to page details");
+        System.out.println(product.getId());
+        switch (skin) {
+            case CLASSIC:
+                log.debug("navigateToProductClassic ====> go to page details");
+                goToURL(URL_PRODUCT_CLASSIC.concat(product.getId()));
+                return PageFactory.getProductDetailPage();
+            default:
+                log.debug("navigateToProductPageLight ====> go to page details");
+                goToURL(URL_PRODUCT_LIGHT.concat(product.getId()).concat(VIEW));
+                return PageFactory.getProductDetailPage();
+        }
 
+    }
 }

@@ -3,6 +3,7 @@ package com.jalasoft.sfdc.steps;
 import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.PageFactory;
+import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
@@ -53,45 +54,76 @@ public class AccountsSteps {
     }
 
     /**
+     * click new button account
+     */
+    @When("^I click New button$")
+    public void iClickNewButton() {
+        accountFormPage = accountListPage.clickNewAccount();
+
+    }
+    /**
      * Create a account with a information.
      *
      * @param accounts of Account
      */
     @And("^I create a Account with the following information$")
-    public void iCreateAccount(List<Account> accounts) throws Throwable {
+    public void iCreateAccount(List<Account> accounts)  {
         log.info("iGoToTheAccountPage -----> Start homePage");
 
         this.account = accounts.get(0);
-        accountFormPage = accountListPage.clickNewAccount();
+     // accountFormPage = accountListPage.clickNewAccount();
         apiAccount=new APIAccount(account);
 //        apiAccount.createAccountByAPI();
         account.setAccountName(accounts.get(0).getAccountName());
         accountDetailPage = accountFormPage.createAccount(account);
+       // apiAccount=new APIAccount(account);
     }
 
     /**
      * validate the information of Account.
      */
-    @Then("^the Account Details Page should be display with the information of the Account created$")
-    public void accountDetailsPageShouldBeDisplayWithTheInformationOfTheAccountCreated() {
-
+    @Then("^the Account Details Page should be displayed with the Account information$")
+    public void theAccountDetailsPageShouldBeDisplayedWithTheAccountInformation()  {
         assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
         assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
-
     }
-    @And("^by API should be display information of the Account created$")
-    public void byAPIShouldBeDisplayInformationOfTheAccountCreated()  {
 
+
+    @And("^the Product Account be created$")
+    public void theProductAccountBeCreated()  {
         accountApi=apiAccount.getAccountValuesByAPI();
+        System.out.println(account.getAccountName()+"++++++++Name+++++Normal ");
+        System.out.println(accountApi.getAccountName()+"++++++++Name+++++Api ");
         assertEquals(account.getAccountName(),accountApi.getAccountName());
         assertEquals(account.getAccountNumber(),accountApi.getAccountNumber());
         assertEquals(account.getPhone(),accountApi.getPhone());
         assertEquals(account.getType(),accountApi.getType());
     }
+
 //*********************************************************************************
     //                    Edit the Account
 //*********************************************************************************
 
+    /**
+     *Edit the account information
+     * @param accountApi
+     */
+    @Given("^I have a Account created with the following information$")
+    public void iHaveAAccountCreatedWithTheFollowingInformation(List<Account> accountApi)  {
+        account=accountApi.get(0);
+        apiAccount=new APIAccount(account);
+        apiAccount.createAccountByAPI();
+
+    }
+
+
+    @When("^I select the Account created by URL$")
+    public void iSelectTheAccountCreatedByURL() throws MalformedURLException  {
+        homePage = PageFactory.getHomePage();
+        PageTransporter.getInstance();
+        accountDetailPage = PageTransporter.getInstance().navigateToAcountPage(account);
+
+    }
     /**
      * Edi the account information
      *
