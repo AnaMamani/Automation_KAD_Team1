@@ -32,8 +32,7 @@ public class Product {
      * @param productName the current product name.
      */
     public void updateProductName() {
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-        //.concat(" ").concat(timeStamp)
+        Long timeStamp = new Date().getTime();
         this.productName += timeStamp;
     }
 
