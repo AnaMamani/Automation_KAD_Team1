@@ -160,11 +160,11 @@ public class PageTransporter {
     public ContactDetailPage navigateToContactPage(Contact contact) throws MalformedURLException {
         switch (skin) {
             case CLASSIC:
-                log.debug("navigateToProductClassic ====> go to page details");
+                log.debug("navigateToContactPage ====> go to page details");
                 goToURL(URL_CONTACT_CLASSIC.concat(contact.getId()));
                 return PageFactory.getContactDetailPage();
             default:
-                log.debug("navigateToProductPageLight ====> go to page details");
+                log.debug("navigateToContactPage ====> go to page details");
                 goToURL(URL_CONTACT_LIGHT.concat(contact.getId()).concat(VIEW));
                 return PageFactory.getContactDetailPage();
 

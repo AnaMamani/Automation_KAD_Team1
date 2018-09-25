@@ -40,4 +40,6 @@ public abstract class ContactDetailPage extends BasePage {
 
     public abstract boolean isSuccessEditContact(Contact contact);
 
+
+
 }

@@ -10,10 +10,12 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.response.Response;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -38,6 +40,7 @@ public class ContactSteps {
     private Contact contact;
     private Contact contactApi;
     private APIContact apiContact;
+    private Response response;
 
     /**
      * page for Contact.
@@ -83,6 +86,7 @@ public class ContactSteps {
     @And("^the Contact should be created$")
     public void theContactShouldBeCreated() {
         contactApi = apiContact.getContactValuesByAPI();
+        System.out.println(apiContact.getContactValuesByAPI().getId());
         assertEquals(contact.getFirstName(), contactApi.getFirstName(), "should be show the contact first name:");
         assertEquals(contact.getLastName(), contactApi.getLastName(), "should be show the contact last name:");
         assertEquals(contact.getTitle(), contactApi.getTitle(), "should be show the contact title:");
@@ -97,29 +101,31 @@ public class ContactSteps {
      * for create by API
      */
     @Given("^I have a Contact with the following information$")
-    public void iHaveAContactWithTheFollowingInformation(List<Contact> contacts) {
-        contact = contacts.get(0);
+    public void iHaveAContactWithTheFollowingInformation(List<Contact> contactsApi) {
+        contact = contactsApi.get(0);
+        contact.updateContactName();
         apiContact=new APIContact(contact);
         apiContact.createContactByAPI();
-        System.out.println(apiContact.getContactValuesByAPI().getId());
+        System.out.println(apiContact.getContactValuesByAPI().getId()+"**************************");
     }
 
     /**
      * For select the Url by recuperate
      */
-//    @When("^I Select the Contact created by URL$")
-//    public void iSelectTheContactCreatedByURL() throws MalformedURLException {
-//        homePage = PageFactory.getHomePage();
-//        contactDetailPage = PageTransporter.getInstance().navigateToContactPage(contact);
-//    }
+    @When("^I Select the Contact created by URL$")
+    public void iSelectTheContactCreatedByURL() throws MalformedURLException {
+        homePage = PageFactory.getHomePage();
+        contactDetailPage = PageTransporter.getInstance().navigateToContactPage(contact);
+    }
 
     /**
      * Edit contact
      */
-//    @And("^I click Edit button$")
-//    public void iClickEditButton()  {
-//        contactFormPage = contactDetailPage.clickEditOption();
-//    }
+    @And("^I click Edit button contact$")
+    public void iClickEditButtonContact() {
+
+        contactFormPage = contactDetailPage.clickEditOption();
+    }
     /**
      * contact for edit the data
      *
@@ -128,8 +134,7 @@ public class ContactSteps {
     @And("^I edit this Contact with the following information$")
     public void iEditThisContactWithTheFollowingInformation(List<Contact> editContacts) {
         this.contact = editContacts.get(0);
-
-        //contact.setFirstName(editContacts.get(0).getFirstName());
+        contact.updateContactName();
         contactDetailPage = contactFormPage.editContact(this.contact);
     }
 
@@ -137,27 +142,45 @@ public class ContactSteps {
     public void theDisplayWithTheInformationOfTheContactUpdate() {
         assertTrue(contactDetailPage.isSuccessEditContact(contact), "the result expected");
     }
+
+    @And("^the Contact should be updated$")
+    public void theContactShouldBeUpdated()  {
+        contactApi = apiContact.getContactValuesByAPI();
+        assertEquals(contact.getFirstName(), contactApi.getFirstName(), "should be show the contact first name:");
+        assertEquals(contact.getLastName(), contactApi.getLastName(), "should be show the contact last name:");
+        assertEquals(contact.getTitle(), contactApi.getTitle(), "should be show the contact title:");
+        assertEquals(contact.getPhone(), contactApi.getPhone(), "should be show the contact phone:");
+        assertEquals(contact.getEmail(), contactApi.getEmail(), "should be show the contact email:");
+    }
     //*********************************************************************************************
 //                                     Delete the Contact
 // ********************************************************************************************/
 
-    /**
-     * delete contact selection.
-     */
-    @When("^I delete this Contact create$")
-    public void iDeleteThisContactCreate() {
-        apiContact.deleteContactByAPI();
-        //contactListPage = contactDetailPage.deleteContact();
+    @And("^I click Delete button contact$")
+    public void iClickDeleteButtonContact() {
+        contactListPage = contactDetailPage.deleteContact();
     }
-
     /**
      * verify that the contact is delete
      */
+
     @Then("^I should see the Contact is delete$")
     public void iShouldSeeTheContactIsDelete() {
         assertFalse(contactListPage.contactSearch(contact));
     }
 
 
+    @And("^the Contact should be deleted$")
+    public void theContactShouldBeDeleted() {
+        assertTrue(response.asString().isEmpty(), "should be return :");
 
+    }
+    //****************************************************************
+    //Hooks for @Delete Product scenarios
+    //****************************************************************
+    @After(value = "@deleteContact", order = 999)
+    public void afterDeleteContact() {
+        apiContact.deleteContactByAPI();
+
+    }
 }
