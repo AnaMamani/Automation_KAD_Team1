@@ -27,7 +27,7 @@ public abstract class AccountDetailPage extends BasePage {
      * this class is abstract for delete a Account
      */
 
-    public abstract void deleteAnAccount();
+    public abstract AccountListPage deleteAnAccount();
     /**
      * verify that a account is create.
      * @param account information the current user.
@@ -40,5 +40,33 @@ public abstract class AccountDetailPage extends BasePage {
      */
 
     public abstract boolean isSuccessEditAccount(Account account);
+    /**
+     * verify the edit the Account.
+     *
+     * @param accountApi  information the current user by API.
+     * @param accountEdit information the current user.
+     */
+    public boolean isSuccessEditAccountByAPI(Account accountApi, Account accountEdit) {
+        log.info("isSuccessEditAccountByAPI:   ");
+        boolean result = true;
+        if (accountEdit.getAccountName() != null && !accountEdit.getAccountName().equals(accountApi.getAccountName())) {
+            log.info("Account name :" + accountEdit.getAccountName() + " ====> " + accountApi.getAccountName());
+            return false;
+        }
+
+        if (accountEdit.getAccountNumber()!= null && !(accountEdit.getAccountNumber().equals(accountApi.getAccountNumber()))) {
+            log.info("product code :" + accountEdit.getAccountNumber() + " ====> " + accountApi.getAccountNumber());
+            return false;
+        }
+        if (accountEdit.getPhone() != null && !accountEdit.getPhone() .equals(accountApi.getPhone())) {
+            log.info("product Phone :" + accountEdit.getPhone()  + " ====> " + accountApi.getPhone());
+            return false;
+        }
+        if (accountEdit.getFax() != null && !accountEdit.getFax() .equals(accountApi.getFax())) {
+            log.info("product fax :" + accountEdit.getFax()  + " ====> " + accountApi.getFax());
+            return false;
+        }
+        return result;
+    }
 }
 

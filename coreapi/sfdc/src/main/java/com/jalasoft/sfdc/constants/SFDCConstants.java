@@ -10,13 +10,9 @@ public final class SFDCConstants {
     public final static String ACCOUNT_NUMBER = "AccountNumber";
     public final static String ACCOUNT_FAX = "Fax";
     public final static String ACCOUNT_TYPE = "Type";
-    public final static String ACCOUNT_WEB = "Account Web";
-    public final static String ACCOUNT_DESCRIPTION = "Account Description";
     public final static String ACCOUNT_PHONE = "Phone";
     public final static String URL_ACCOUNT_LIGHT ="https://na57.lightning.force.com/lightning/r/Account/";
     public final static String URL_ACCOUNT_CLASSIC= "https://na57.salesforce.com/";
-    public final static String ACCOUNT_SECTOR = "Account Sector";
-    public final static String ACCOUNT_EMPLOYEES = "Account Employees";
 
     //Contacts
     public final static String CONTACT = "Contact";

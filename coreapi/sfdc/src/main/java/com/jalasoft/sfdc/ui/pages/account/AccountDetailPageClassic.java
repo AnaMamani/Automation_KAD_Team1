@@ -67,10 +67,11 @@ public class AccountDetailPageClassic extends AccountDetailPage {
      * This method delete an Account on Classic
      */
     @Override
-    public void deleteAnAccount() {
+    public AccountListPage deleteAnAccount() {
 
         driverTools.clickElement(deleteBtn);
         acceptAlertDialog();
+        return new AccountListPageClassic();
 
     }
     /**
