@@ -1,0 +1,34 @@
+{
+  "admin user": {
+    "user name": "denis@deniscompany.com",
+    "user password": "QWqw12/*",
+    "first name": "Denis",
+    "Last name": "Camacho",
+    "user token": "nbgUZLXBowfXGoIfjXUBgHB5",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSspQ3rwNgAUJMRDD1u9RRYKQbagab9bjeT.Sx7JFn6ZdyLBXbQ382N92IYUi0bNCVhmUEGa",
+    "client secret": "7250237042137850617"
+
+  },
+  "local user": {
+    "user name": "fuego@lluviacompany.com",
+    "user password": "asdfghjkl1",
+    "first name": "Ana",
+    "Last name": "Camacho",
+    "user token": "KvgKIFJPAT35Zj6KmkQZ4XQ1",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSs4MMtORRf.vy2O.t5MkqpqjWovaODtSCdLMvrCpWXmDFmorqjuDr_K.zDG83pkYWTGc7XA",
+    "client secret": "6045813440275478135"
+
+  },
+  "other role user": {
+    "user name": "72768163ketty@gmail.com",
+    "user password": "K0102018c",
+    "first name": "Ketty",
+    "Last name": "Camacho",
+    "user token": "gHMMRD5y1x3roluNPLVLojQk",
+    "grant type": "password",
+    "client id": "3MVG9dZJodJWITSvHQBRwYyQ4mTaSa._w3pjGFv5MCo4GeJRzaxxW5SVPhSLwAsjha.GL_G.rEe4_qiqrbbXU",
+    "client secret": "5597074021992256698"
+  }
+}
