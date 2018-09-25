@@ -49,10 +49,10 @@ public class AccountFormPageLight extends AccountFormPage {
     @FindBy(xpath = "//span[text()='Type']/../..//a[contains(@class,'select')]")
     private WebElement typeSelected;
 
-
     @FindBy(xpath = "//span[text()='Save']/parent::button[@title='Save']")
     private WebElement clickBtnSave;
-    @FindBy(xpath =   "//span[text()='Cancel'] ")
+
+    @FindBy(xpath =   "//p[@title='Website']")
     private WebElement auxToAccountId;
 
     /**
@@ -74,10 +74,13 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
         driverTools.setInputField(accountNumberLocationTxt, account.getNumberOfLocation());
 
-       // wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
-        saveProductId(driver.getCurrentUrl(),account);
 
         driverTools.clickElement(clickBtnSave);
+        wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
+
+
+        saveProductId(driver.getCurrentUrl(),account);
+
         return new AccountDetailPageLight();
 
     }
