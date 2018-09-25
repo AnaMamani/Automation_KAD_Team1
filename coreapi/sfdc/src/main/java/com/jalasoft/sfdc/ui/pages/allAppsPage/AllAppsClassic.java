@@ -4,6 +4,8 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesListPage;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesListPageClassic;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPageClassic;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
@@ -29,7 +31,8 @@ public class AllAppsClassic extends AllAppsPage {
     @FindBy(xpath = "//img[@title='Accounts']")
     private WebElement accountLink;
 
-
+    @FindBy(xpath = "//img[@title='Opportunities']")
+    private WebElement oportunitiestLink;
     /**
      * Waits until page object is loaded.
      */
@@ -96,6 +99,17 @@ public class AllAppsClassic extends AllAppsPage {
 
         }
         return new AccountListPageClassic();
+    }
+
+    @Override
+    public OpportunitiesListPage clickOpportunities() {
+        driverTools.clickElement(oportunitiestLink);
+        try{
+        driverTools.clickElement(dialogClose);// for the close the window popup.
+    } catch (Exception e) {
+
+    }
+        return new OpportunitiesListPageClassic();
     }
 
 
