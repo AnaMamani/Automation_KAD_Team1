@@ -56,7 +56,7 @@ public class AccountsSteps {
     /**
      * click new button account
      */
-    @When("^I click New button$")
+    @When("^I click New button Account$")
     public void iClickNewButton() {
         accountFormPage = accountListPage.clickNewAccount();
 
@@ -120,9 +120,13 @@ public class AccountsSteps {
     @When("^I select the Account created by URL$")
     public void iSelectTheAccountCreatedByURL() throws MalformedURLException  {
         homePage = PageFactory.getHomePage();
-        PageTransporter.getInstance();
+        //PageTransporter.getInstance();
         accountDetailPage = PageTransporter.getInstance().navigateToAcountPage(account);
 
+    }
+    @And("^I go click Edit button$")
+    public void iGoClickEditButton()  {
+        accountFormPage = accountDetailPage.clickEditAccount();
     }
     /**
      * Edi the account information
@@ -132,12 +136,13 @@ public class AccountsSteps {
     @When("^I Edit the Account information with the following information$")
     public void iEditThisAccountWithTheFollowingInformation(List<Account> editAccounts) {
 
-        accountFormPage = accountDetailPage.clickEditAccount();
+//        accountFormPage = accountDetailPage.clickEditAccount();
         this.account = editAccounts.get(0);
-        apiAccount=new APIAccount(account);
+        account.updateAccountName();
+        accountDetailPage = accountFormPage.editAccount(account);
+        //apiAccount=new APIAccount(account);
 //        apiAccount.editAccountByAPI();
         //        account.setAccountName(editAccounts.get(0).getAccountName());
-//        accountDetailPage = accountFormPage.editAccount(account);
 
     }
 

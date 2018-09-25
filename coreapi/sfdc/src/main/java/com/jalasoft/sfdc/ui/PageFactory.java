@@ -5,6 +5,9 @@ import com.jalasoft.sfdc.constants.SFDCEnums.Skin;
 import com.jalasoft.sfdc.ui.components.TopMenu;
 import com.jalasoft.sfdc.ui.components.TopMenuClassic;
 import com.jalasoft.sfdc.ui.components.TopMenuLight;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailPageClassic;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageClassic;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
@@ -78,6 +81,15 @@ public class PageFactory {
                 return new ProductDetailPageClassic();
             default:
                 return new ProductDetailPageLight();
+        }
+    }
+
+    public static AccountDetailPage getAccountDetailPage() {
+        switch (skin) {
+            case CLASSIC:
+                return new AccountDetailPageClassic();
+            default:
+                return new AccountDetailPageLight();
         }
     }
 }

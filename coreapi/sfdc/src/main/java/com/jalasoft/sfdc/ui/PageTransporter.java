@@ -3,18 +3,19 @@ package com.jalasoft.sfdc.ui;
 import com.jalasoft.selenium.WebDriverManager;
 import com.jalasoft.sfdc.config.ServersConfigReader;
 import com.jalasoft.sfdc.constants.SFDCEnums;
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
+import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import org.apache.log4j.Logger;
+import org.apache.regexp.RE;
 import org.openqa.selenium.WebDriver;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.jalasoft.sfdc.constants.SFDCConstants.URL_PRODUCT_CLASSIC;
-import static com.jalasoft.sfdc.constants.SFDCConstants.URL_PRODUCT_LIGHT;
-import static com.jalasoft.sfdc.constants.SFDCConstants.VIEW;
+import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
 /**
  * PageTransporter class.
@@ -129,5 +130,18 @@ public class PageTransporter {
                 return PageFactory.getProductDetailPage();
         }
 
+    }
+
+    public AccountDetailPage navigateToAcountPage(Account account) throws MalformedURLException{
+        System.out.println(account.getId());
+        switch (skin) {
+            case CLASSIC:
+                goToURL(URL_ACCOUNT_CLASSIC.concat(account.getId()));
+                return PageFactory.getAccountDetailPage();
+
+            default:
+                goToURL(URL_ACCOUNT_LIGHT.concat(account.getId()).concat(VIEW));
+                return PageFactory.getAccountDetailPage();
+        }
     }
 }
