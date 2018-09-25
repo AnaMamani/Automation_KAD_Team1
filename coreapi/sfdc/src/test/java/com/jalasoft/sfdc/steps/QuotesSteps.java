@@ -1,0 +1,50 @@
+package com.jalasoft.sfdc.steps;
+
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.apache.log4j.Logger;
+
+public class QuotesSteps {
+    //Logger
+    private Logger log = org.apache.log4j.Logger.getLogger(getClass());
+    //Pages
+//    private HomePage homePage;
+//    private AllAppsPage allAppsPage;
+//    private OpportunitiesListPage oppotunitiesListPage;
+
+    @When("^I go to Opportunities Page$")
+    public void iGoToOpportunitiesListPage() {
+//        log.info("iGoToTheProductPage -----> Start homePage");
+//        homePage = PageFactory.getHomePage();
+//        allAppsPage = homePage.topMenu.goToAllAppsPage();
+//        oppotunitiesListPage=allAppsPage.clickOppotunities();
+
+    }
+
+    @And("^I click on New Opportunities$")
+    public void iClickOnNewOpportunities() {
+
+    }
+
+    @Given("^I created opportunity with the following information$")
+    public void iCreatedOpportunityWithTheFollowingInformation() {
+
+    }
+
+    @Then("^The opportunity should be displayed in details page$")
+    public void theOpportunityShouldBeDisplayedInDetailsPage() {
+
+    }
+
+    @When("^I create a new Quote with \"([^\"]*)\" Name$")
+    public void iCreateANewQuoteWithName(String test) {
+
+    }
+
+    @And("^The following line item$")
+    public void theFollowingLineItem(){
+
+    }
+}

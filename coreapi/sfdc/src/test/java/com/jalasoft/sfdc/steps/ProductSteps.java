@@ -16,6 +16,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
+import org.apache.log4j.Logger;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -33,7 +34,7 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductSteps {
     //Logger
-    private org.apache.log4j.Logger log = org.apache.log4j.Logger.getLogger(getClass());
+    private Logger log = org.apache.log4j.Logger.getLogger(getClass());
     //Pages
     private HomePage homePage;
     private AllAppsPage allAppsPage;
@@ -46,6 +47,7 @@ public class ProductSteps {
     private Product productEdit;
     private APIProduct apiProduct;
     private Response response;
+
     /**
      * Navigates to the Product page.
      */
@@ -90,7 +92,7 @@ public class ProductSteps {
     }
 
     /**
-     *Verify the field with API.
+     * Verify the field with API.
      */
     @And("^the Product should be created$")
     public void byAPIShouldBeDisplayInformationOfTheProductCreated() {
@@ -161,7 +163,7 @@ public class ProductSteps {
         log.info("Validation for API to Edit Product ----->    " + productEdit.getProductName());
         productApi = apiProduct.getProductValuesByAPI();
         assertEquals(productEdit.getProductName(), productApi.getProductName(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessEditProductByAPI(productApi,productEdit), "the expected result:");
+        assertTrue(productDetailPage.isSuccessEditProductByAPI(productApi, productEdit), "the expected result:");
 
     }
 
@@ -193,6 +195,7 @@ public class ProductSteps {
      */
     @And("^the Product should be deleted$")
     public void theProductShouldBeDeleted() {
+        log.info("Validation delete for API ===>" + product.getProductName()+" ====>"+product.getId());
         response = apiProduct.deleteProductByAPI();
         assertTrue(response.asString().isEmpty(), "should be return :");
     }

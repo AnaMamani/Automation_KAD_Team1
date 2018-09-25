@@ -35,7 +35,7 @@ public class ProductFormPageClassic extends ProductFormPage {
     @FindBy(xpath = "//input[@title='Cancel']")
     private WebElement clickBtnCancel;
 
-    @FindBy(xpath = "//a[@title='New Contact']")
+    @FindBy(id = "topButtonRow")
     private WebElement auxToProductId;
 
     /**
@@ -71,8 +71,8 @@ public class ProductFormPageClassic extends ProductFormPage {
      */
     private void saveProductId(String currentUrl, Product product) {
         String[] url=currentUrl.split("/");
-        product.setId(url[url.length-2]);
-        System.out.println("ID: "+url[url.length-2]+" THIS IS THE PRODUCT ID");
+        product.setId(url[url.length-1]);
+        System.out.println("ID: "+url[url.length-1]+" THIS IS THE PRODUCT ID");
     }
 
     /**
