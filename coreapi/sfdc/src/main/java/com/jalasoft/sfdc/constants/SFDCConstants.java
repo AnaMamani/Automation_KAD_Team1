@@ -42,7 +42,7 @@ public final class SFDCConstants {
 
     public final static String URL_PRODUCT_LIGHT = "https://na57.lightning.force.com/lightning/r/Product2/";
     public final static String URL_PRODUCT_CLASSIC = "https://na57.salesforce.com/";
-    public final static String VIEW = "/view";
+
 
 
     //Quotes

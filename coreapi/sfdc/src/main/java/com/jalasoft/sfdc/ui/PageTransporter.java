@@ -3,8 +3,10 @@ package com.jalasoft.sfdc.ui;
 import com.jalasoft.selenium.WebDriverManager;
 import com.jalasoft.sfdc.config.ServersConfigReader;
 import com.jalasoft.sfdc.constants.SFDCEnums;
+import com.jalasoft.sfdc.entities.Contact;
 import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.ui.pages.LoginPage;
+import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
@@ -12,9 +14,7 @@ import org.openqa.selenium.WebDriver;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import static com.jalasoft.sfdc.constants.SFDCConstants.URL_PRODUCT_CLASSIC;
-import static com.jalasoft.sfdc.constants.SFDCConstants.URL_PRODUCT_LIGHT;
-import static com.jalasoft.sfdc.constants.SFDCConstants.VIEW;
+import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
 /**
  * PageTransporter class.
@@ -129,5 +129,23 @@ public class PageTransporter {
                 return PageFactory.getProductDetailPage();
         }
 
+    }
+
+    /**
+     * For Navigate by contact list page
+     * @param contact
+     * @return
+     */
+    public ContactDetailPage navigateToContactPage(Contact contact) throws MalformedURLException {
+        switch (skin) {
+            case CLASSIC:
+                log.debug("navigateToProductClassic ====> go to page details");
+                goToURL(URL_CONTACT_CLASSIC.concat(contact.getId()));
+                return PageFactory.getContactDetailPage();
+            default:
+                log.debug("navigateToProductPageLight ====> go to page details");
+                goToURL(URL_CONTACT_LIGHT.concat(contact.getId()).concat(VIEW));
+                return PageFactory.getContactDetailPage();
+        }
     }
 }
