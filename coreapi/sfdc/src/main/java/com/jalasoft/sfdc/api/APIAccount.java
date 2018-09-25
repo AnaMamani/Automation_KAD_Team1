@@ -29,7 +29,7 @@ public class APIAccount {
     /**
      * <p>This method converts the </p>
      *
-     * @return
+     * @return map
      */
     protected Map<String, Object> covertEntityToMap() {
         Map<String, Object> map = new HashMap<>();
@@ -43,10 +43,9 @@ public class APIAccount {
 
     /**
      *  this method get values by Api of Account.
-     * @return
+     * @return accountApi
      */
     public Account getAccountValuesByAPI() { //ToDo define what aee you going to return
-       // response = APIManager.getInstance().get("/sobjects/Account/" + account.getId() + "?fields=Name");
         response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(ACCOUNT).
                 concat(SLASH).concat(account.getId()));
         accountApi.setAccountName(response.jsonPath().get(ACCOUNT_NAME).toString());

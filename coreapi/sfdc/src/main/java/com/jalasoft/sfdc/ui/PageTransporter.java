@@ -139,15 +139,23 @@ public class PageTransporter {
 
     }
 
-
-    public AccountDetailPage navigateToAcountPage(Account account) throws MalformedURLException{
+    /**
+     * Navigate to AccountDetail page
+     * @param account Account
+     * @return new page of AccountDetail
+     * @throws MalformedURLException
+     */
+    public AccountDetailPage navigateToAccountPage(Account account) throws MalformedURLException{
+        log.info("navigateToAccountPage ====> go to page details");
         System.out.println(account.getId());
         switch (skin) {
             case CLASSIC:
+                log.debug("navigateToAccountClassic ====> go to page details");
                 goToURL(URL_ACCOUNT_CLASSIC.concat(account.getId()));
                 return PageFactory.getAccountDetailPage();
 
             default:
+                log.debug("navigateToAccountPageLight ====> go to page details");
                 goToURL(URL_ACCOUNT_LIGHT.concat(account.getId()).concat(VIEW));
                 return PageFactory.getAccountDetailPage();
         }

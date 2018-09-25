@@ -79,10 +79,11 @@ public class AccountDetailPageLight extends AccountDetailPage {
      * This method delete an Account of page Light
      */
     @Override
-    public void deleteAnAccount() {
+    public AccountListPage deleteAnAccount() {
         driverTools.clickElement(selectBtn);
         driverTools.clickElement(selectOptionDelete);
         driverTools.clickElement(selectDelete);
+        return new AccountListPageLight();
     }
     /**
      * verify that a account is create.
