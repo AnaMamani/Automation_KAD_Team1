@@ -69,7 +69,7 @@ public class AccountFormPageClassic extends AccountFormPage {
 
         driverTools.clickElement(clickBtnSave);
         
-      saveAccountId(driver.getCurrentUrl(),account);
+        saveAccountId(driver.getCurrentUrl(),account);
         return new AccountDetailPageClassic();
     }
     /**
