@@ -4,6 +4,8 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountListPageLight;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPageLight;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesListPage;
+import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesListPageLight;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPageLigth;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
@@ -38,6 +40,9 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @FindBy(css = "a[title|='Contacts']")
     private WebElement contactLink;
+
+    @FindBy(css = "a[title|='Opportunities']")
+    private WebElement oportunitiesLink;
     /**
      * Waits until page object is loaded.
      */
@@ -95,6 +100,14 @@ public class AllAppsPageLight extends AllAppsPage {
         wait.until(ExpectedConditions.visibilityOf(accountLink));
         driverTools.clickElement(accountLink);
         return  new AccountListPageLight();
+    }
+
+    @Override
+    public OpportunitiesListPage clickOpportunities() {
+        driverTools.setInputField(searchText,"Opportunities");
+        wait.until(ExpectedConditions.visibilityOf(oportunitiesLink));
+        driverTools.clickElement(oportunitiesLink);
+        return new OpportunitiesListPageLight();
     }
 
 
