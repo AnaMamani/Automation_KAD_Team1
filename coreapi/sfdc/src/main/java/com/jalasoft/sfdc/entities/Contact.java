@@ -33,8 +33,6 @@ public class Contact {
      * @param firstName contact firstName to set
      */
     public void setFirstName(String firstName) {
-        //String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-       // this.firstName = firstName. concat("").concat(timeStamp);
         this.firstName = firstName;
     }
 
@@ -217,7 +215,7 @@ public class Contact {
     }
 
     /**
-     * Sets the product name.
+     * Update the product name.
      */
     public void updateContactName() {
         String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
