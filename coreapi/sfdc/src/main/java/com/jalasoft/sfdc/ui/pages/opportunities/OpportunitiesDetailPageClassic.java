@@ -1,18 +1,9 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
 
+import com.jalasoft.sfdc.entities.Opportunities;
 import com.jalasoft.sfdc.ui.pages.quotes.QuotesFormPage;
 import com.jalasoft.sfdc.ui.pages.quotes.QuotesFormPageClassic;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
-
-    @FindBy(xpath = "//input[@value='New Quote']")
-    private WebElement clickNewBtnQuotes;
-
-
-import com.jalasoft.sfdc.entities.Opportunities;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,7 +15,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Ketty Camacho Vasquez
  */
 public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
-
+    @FindBy(xpath = "//input[@value='New Quote']")
+    private WebElement clickNewBtnQuotes;
     //PageFactory of selenium.
    @FindBy(xpath = "//h2[@class='pageDescription']")
     private WebElement  opportunityNameCreatedTxt;

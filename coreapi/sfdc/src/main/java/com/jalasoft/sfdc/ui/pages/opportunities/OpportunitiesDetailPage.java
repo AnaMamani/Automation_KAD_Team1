@@ -17,7 +17,7 @@ public abstract class OpportunitiesDetailPage extends BasePage {
      */
     public abstract QuotesFormPage clickQuotesNew();
 
-     * verify that an opportunities is create
+     /** verify that an opportunities is create
      * @param opportunities information.
      * @return is successfully or not successfully
      */

@@ -1,12 +1,12 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
-
+import com.jalasoft.sfdc.entities.Opportunities;
 import com.jalasoft.sfdc.ui.pages.quotes.QuotesFormPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-import com.jalasoft.sfdc.entities.Opportunities;
+
 /**
  * Handles OpportunitiesDetailPageLight extends of the
  * {@Link OpportunitiesDetailPage} class.
@@ -21,26 +21,22 @@ public class OpportunitiesDetailPageLight extends OpportunitiesDetailPage {
     @FindBy(xpath = "//a[@title='New Quote']")
     private WebElement clickNewBtnQuotes;
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
 
     /**
-
      * Click of Button quotes for fill
      *
      * @return QuotesFormPage
      */
     @Override
     public QuotesFormPage clickQuotesNew() {
+        return null;
+    }
 
+    /**
+     * verify that an opportunities is create
      *
      * @param opportunities information.
-     * @return
+     * @return is successfully or not successfully
      */
     @Override
     public boolean isSuccessCreateOpportunity(Opportunities opportunities) {
@@ -48,12 +44,18 @@ public class OpportunitiesDetailPageLight extends OpportunitiesDetailPage {
     }
 
     /**
-     * verify that an opportunities is create
-     * @return Opportunity name created
+     * @return Opportunity name created.
      */
     @Override
     public String getOpportunityCreated() {
-
         return null;
+    }
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+
     }
 }
