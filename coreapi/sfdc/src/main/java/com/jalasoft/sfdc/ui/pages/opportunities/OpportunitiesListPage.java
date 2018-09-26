@@ -1,8 +1,4 @@
-package com.jalasoft.sfdc.ui.pages.opportunities;
+package com.jalasoft.sfdc.ui.pages.Opportunities;
 
-
-import com.jalasoft.sfdc.ui.ListBasePage;
-
-public abstract class OpportunitiesListPage extends ListBasePage {
-    public abstract OpportunitiesForm clickNewOpportunities();
+public class OpportunitiesListPage {
 }
