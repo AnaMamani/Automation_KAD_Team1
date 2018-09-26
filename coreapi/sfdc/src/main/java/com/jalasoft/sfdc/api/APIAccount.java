@@ -69,11 +69,10 @@ public class APIAccount {
     /**
      * this method delete Api
      */
-    public void deleteAccountByAPI() {
-
+    public Response deleteAccountByAPI() {
         response = apiManager.delete(ACCOUNT, account.getId());
         System.out.println("Query response delete: ***************************" + response.asString());
-
+        return response;
     }
 
 }

@@ -15,6 +15,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.restassured.response.Response;
 
 import java.net.MalformedURLException;
 import java.util.List;
@@ -41,6 +42,7 @@ public class AccountsSteps {
     private Account accountEdit;
     private AccountDetailPage accountDetailPage;
     private APIAccount apiAccount;
+    private Response response;
 
 
     /**
@@ -58,7 +60,7 @@ public class AccountsSteps {
     /**
      * click new button account
      */
-    @When("^I click New button Account$")
+    @When("^I click New Account button$")
     public void iClickNewButton() {
         accountFormPage = accountListPage.clickNewAccount();
 
@@ -68,7 +70,7 @@ public class AccountsSteps {
      *
      * @param accounts of Account
      */
-    @And("^I create a Account with the following information$")
+    @And("^I create an Account with the following information$")
     public void iCreateAccount(List<Account> accounts)  {
 
         log.info("iGoToTheAccountPage -----> Start homePage");
@@ -83,7 +85,7 @@ public class AccountsSteps {
     /**
      * validate the information of Account.
      */
-    @Then("^the Account Details Page should be displayed with the Account information$")
+    @Then("^the Account should be displayed in Account Details page$")
     public void theAccountDetailsPageShouldBeDisplayedWithTheAccountInformation()  {
         assertEquals(account.getAccountName(), accountDetailPage.isSuccessDisplayedAccountDetail(), "the correct name user should be:");
         assertTrue(accountDetailPage.isSuccessCreateAccount(account),"create");
@@ -111,7 +113,7 @@ public class AccountsSteps {
      *Edit the account information
      * @param accountApi
      */
-    @Given("^I have a Account created with the following information$")
+    @Given("^I have an Account created with the following information$")
     public void iHaveAAccountCreatedWithTheFollowingInformation(List<Account> accountApi)  {
         account=accountApi.get(0);
         apiAccount=new APIAccount(account);
@@ -123,8 +125,8 @@ public class AccountsSteps {
      *  select URL Created
      * @throws MalformedURLException
      */
-    @When("^I select the Account created by URL$")
-    public void iSelectTheAccountCreatedByURL() throws MalformedURLException  {
+    @When("^I go by URL to the Account created$")
+    public void iGoByURLTheAccountCreated() throws MalformedURLException  {
         homePage = PageFactory.getHomePage();
         //PageTransporter.getInstance();
         accountDetailPage = PageTransporter.getInstance().navigateToAccountPage(account);
@@ -134,7 +136,7 @@ public class AccountsSteps {
     /**
      * click Button the edit on Account
      */
-    @And("^I go click Edit button$")
+    @And("^I click Edit Account button$")
     public void iGoClickEditButton()  {
         accountFormPage = accountDetailPage.clickEditAccount();
     }
@@ -143,8 +145,8 @@ public class AccountsSteps {
      *
      * @param editAccounts list for edit
      */
-    @When("^I Edit the Account information with the following information$")
-    public void iEditThisAccountWithTheFollowingInformation(List<Account> editAccounts) {
+    @When("^I Edit the Account with the following information$")
+    public void iEditTheAccountWithTheFollowingInformation(List<Account> editAccounts) {
 
 
         accountEdit = editAccounts.get(0);
@@ -166,8 +168,8 @@ public class AccountsSteps {
     /**
      * validate on Api
      */
-    @And("^The  Account should be updated$")
-    public void theProductAccountBeUpdated()  {
+    @And("^the Account should be updated$")
+    public void theAccountShouldBeUpdated()  {
         log.info("Validation for API to Edit Account ----->    " + accountEdit.getAccountName());
         accountApi = apiAccount.getAccountValuesByAPI();
         assertEquals(accountEdit.getAccountName(),accountApi.getAccountName(), "should be show the Account name:");
@@ -181,7 +183,7 @@ public class AccountsSteps {
     /**
      * Delete a Account
      */
-    @When("^I click delete a Account$")
+    @When("^I click Delete Account button$")
     public void iGoDeleteAAccount() {
         //apiAccount.deleteAccountByAPI();
       accountListPage = accountDetailPage.deleteAnAccount();
@@ -192,8 +194,21 @@ public class AccountsSteps {
      */
     @Then("^the Account should be removed from the Account List$")
     public void iShouldSeeTheAccountIsDelete() {
+
         assertFalse(accountListPage.accountSearch(account));
     }
+
+    /**
+     * should remove Api
+     */
+    @And("^the Account should be removed$")
+    public void theAccountShouldBeRemoved()  {
+        log.info("Validation delete for API ===>" + account.getAccountName()+" ====>"+account.getId());
+        response = apiAccount.deleteAccountByAPI();
+        assertTrue(response.asString().isEmpty(), "should be return :");
+
+    }
+
     //****************************************************************
     //Hooks for @Delete Account scenarios
     //****************************************************************
@@ -203,6 +218,7 @@ public class AccountsSteps {
         apiAccount.deleteAccountByAPI();
 
     }
+
 
 
 }
