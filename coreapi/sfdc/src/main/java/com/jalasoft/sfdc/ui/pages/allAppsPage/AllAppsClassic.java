@@ -31,7 +31,7 @@ public class AllAppsClassic extends AllAppsPage {
     @FindBy(xpath = "//img[@title='Accounts']")
     private WebElement accountLink;
 
-    @FindBy(xpath = "//img[@title='opportunities']")
+    @FindBy(xpath = "//img[@title='Opportunities']")
     private WebElement oportunitiestLink;
     /**
      * Waits until page object is loaded.

@@ -13,6 +13,25 @@ public class Opportunities {
     private String opportunityName;
     private String closeDate;
     private String stage;
+    private String id;
+
+    /**
+     *
+     * @return
+     */
+    public String getAccount() {
+        return account;
+    }
+
+    /**
+     *
+     * @param account
+     */
+    public void setAccount(String account) {
+        this.account = account;
+    }
+
+    private String account;
     /**
      * get  opportunities Name.
      * @return opportunityName.
@@ -68,6 +87,22 @@ public class Opportunities {
         long timeStamp = new Date().getTime();
         this.opportunityName += timeStamp;
 
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
+     *
+     * @param id
+     */
+    public void setId(String id) {
+        this.id = id;
     }
 
 }

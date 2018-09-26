@@ -42,9 +42,8 @@ public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
         System.out.println(cloceDateTxt.getText()+"+++++++++++++++++date");
 
         return opportunities.getOpportunityName().equals(oppotunityNameTxt.getText()) &&
-                opportunities.getStage().equals(opportunityStageTxt.getText());
-                //&&
-                //opportunities.getCloseDate().equals(cloceDateTxt.getText());
+                opportunities.getStage().equals(opportunityStageTxt.getText())&&
+                opportunities.getCloseDate().equals(cloceDateTxt.getText());
     }
 
     /**

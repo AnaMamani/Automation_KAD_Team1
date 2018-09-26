@@ -1,5 +1,6 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
+import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Opportunities;
 /**
  * Handles the opportunities form Page Light extends of the

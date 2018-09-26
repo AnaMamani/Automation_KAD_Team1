@@ -116,6 +116,7 @@ public class AccountsSteps {
     @Given("^I have an Account created with the following information$")
     public void iHaveAAccountCreatedWithTheFollowingInformation(List<Account> accountApi)  {
         account=accountApi.get(0);
+        accountEdit.updateAccountName();
         apiAccount=new APIAccount(account);
         apiAccount.createAccountByAPI();
 
@@ -147,7 +148,6 @@ public class AccountsSteps {
      */
     @When("^I Edit the Account with the following information$")
     public void iEditTheAccountWithTheFollowingInformation(List<Account> editAccounts) {
-
 
         accountEdit = editAccounts.get(0);
         accountEdit.updateAccountName();
