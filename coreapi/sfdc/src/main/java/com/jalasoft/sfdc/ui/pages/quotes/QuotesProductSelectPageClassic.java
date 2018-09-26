@@ -5,13 +5,12 @@ package com.jalasoft.sfdc.ui.pages.quotes;
  * @author Ana Maria Mamani Zenteno
  * @since 9/24/2018
  */
-public class QuotesAddItemsPageClassic extends QuotesAddItemsPage {
+public class QuotesProductSelectPageClassic extends QuotesProductSelectPage {
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
 
     }
 }

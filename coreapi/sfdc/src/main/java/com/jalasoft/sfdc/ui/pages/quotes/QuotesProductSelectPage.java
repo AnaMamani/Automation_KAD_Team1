@@ -7,5 +7,5 @@ import com.jalasoft.sfdc.ui.BasePage;
  * @author Ana Maria Mamani Zenteno
  * @since 9/24/2018
  */
-public abstract class QuotesAddItemsPage extends BasePage {
+public abstract class QuotesProductSelectPage extends BasePage {
 }
