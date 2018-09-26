@@ -63,7 +63,7 @@ public class QuotesSteps {
     }
 
     /**
-     * Verify the field.
+     * Verify the field
      */
     @Then("^The opportunity should be displayed in details page$")
     public void theOpportunityShouldBeDisplayedInDetailsPage() {
@@ -74,7 +74,7 @@ public class QuotesSteps {
     }
 
     /**
-     * click the button for create a new quotes.
+     * click the button for create a new quotes all
      */
     @When("^I create a new Quote with Test Quote Name$")
     public void iCreateANewQuoteWithTestQuoteName() {
