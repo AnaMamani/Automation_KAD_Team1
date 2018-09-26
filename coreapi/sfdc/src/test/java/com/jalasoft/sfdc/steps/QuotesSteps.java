@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 
 public class QuotesSteps {
     //Logger
-    private Logger log = org.apache.log4j.Logger.getLogger(getClass());
+    private Logger log = Logger.getLogger(getClass());
     //Pages
     private HomePage homePage;
     private AllAppsPage allAppsPage;
@@ -31,7 +31,7 @@ public class QuotesSteps {
 
     @And("^I click on New Opportunities$")
     public void iClickOnNewOpportunities() {
-        opportunitiesForm=opportunitiesListPage.clickNewOpportunities();
+        //opportunitiesForm=opportunitiesListPage.clickNewOpportunities();
     }
 
     @Given("^I created opportunity with the following information$")

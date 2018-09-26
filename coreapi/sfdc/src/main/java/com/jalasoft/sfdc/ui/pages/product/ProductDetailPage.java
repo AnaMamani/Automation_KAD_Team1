@@ -72,4 +72,18 @@ public abstract class ProductDetailPage extends BasePage {
         return result;
 
     }
+
+    /**
+     * add the price book at product.
+     *
+     * @return new page of ProductPriceBookPage.
+     */
+    public abstract ProductPriceBookPage clickAddPriceBook();
+
+    /**
+     * add the price book at product.
+     *
+     * @return new page of ProductStandardPrice.
+     */
+    public abstract ProductStandardPrice clickAddPrice();
 }
