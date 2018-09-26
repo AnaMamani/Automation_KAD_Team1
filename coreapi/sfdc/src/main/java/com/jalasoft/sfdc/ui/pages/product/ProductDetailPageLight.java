@@ -45,6 +45,9 @@ public class ProductDetailPageLight extends ProductDetailPage {
     @FindBy(xpath = "//span[contains(text(),'Delete')]")
     private WebElement deleteProduct;
 
+    @FindBy(xpath = "//*[@title='Add to Price Book']")
+    private WebElement addPriceBookBtn;
+
     /**
      * Waits until page object is loaded.
      */
@@ -91,6 +94,27 @@ public class ProductDetailPageLight extends ProductDetailPage {
             return false;
         }
         return result;
+    }
+
+    /**
+     * add the price book at product.
+     * @return new page of ProductPriceBookPage.
+     */
+    @Override
+    public ProductPriceBookPage clickAddPriceBook() {
+        log.info("clickAddPriceBook -----> return new page of ProductPriceBookPageClassic");
+        driverTools.clickElement(addPriceBookBtn);
+        return new ProductPriceBookPageLight();
+    }
+
+    /**
+     * add the price at product.
+     *
+     * @return new page of ProductStandardPrice.
+     */
+    @Override
+    public ProductStandardPrice clickAddPrice() {
+        return null;
     }
 
     /**

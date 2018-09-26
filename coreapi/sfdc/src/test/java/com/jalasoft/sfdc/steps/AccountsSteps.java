@@ -117,11 +117,11 @@ public class AccountsSteps {
      */
     @Given("^I have an Account created with the following information$")
     public void iHaveAAccountCreatedWithTheFollowingInformation(List<Account> accountApi) {
-        account = accountApi.get(0);
+  log.info("create the account by API ===================");      
+  account = accountApi.get(0);
         accountEdit.updateAccountName();
         apiAccount = new APIAccount(account);
         apiAccount.createAccountByAPI();
-
     }
 
     /**

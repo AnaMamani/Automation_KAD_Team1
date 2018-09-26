@@ -22,7 +22,7 @@ import static org.junit.Assert.assertTrue;
 
 public class QuotesSteps {
     //Logger
-    private Logger log = org.apache.log4j.Logger.getLogger(getClass());
+    private Logger log = Logger.getLogger(getClass());
     //Pages
     private HomePage homePage;
     private AllAppsPage allAppsPage;

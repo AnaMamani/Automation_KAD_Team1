@@ -10,6 +10,10 @@ import com.jalasoft.sfdc.ui.pages.product.ProductDetailPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductFormPage;
 
+import com.jalasoft.sfdc.ui.pages.product.ProductListPriceBook;
+import com.jalasoft.sfdc.ui.pages.product.ProductPriceBookPage;
+import com.jalasoft.sfdc.ui.pages.product.ProductStandardPrice;
+import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -34,13 +38,16 @@ import static org.testng.Assert.assertTrue;
 
 public class ProductSteps {
     //Logger
-    private Logger log = org.apache.log4j.Logger.getLogger(getClass());
+    private Logger log = Logger.getLogger(getClass());
     //Pages
     private HomePage homePage;
     private AllAppsPage allAppsPage;
     private ProductListPage productListPage;
     private ProductFormPage productFormPage;
     private ProductDetailPage productDetailPage;
+    private ProductPriceBookPage productPriceBookPage;
+    private ProductListPriceBook productListPriceBook;
+    private ProductStandardPrice productStandardPrice;
     //Entities
     private Product product;
     private Product productApi;
@@ -81,9 +88,25 @@ public class ProductSteps {
     }
 
     /**
+     * add the price books.
+     *
+     * @param price    price.
+     * @param standard category.
+     */
+    @And("^I add the Product to the \"([^\"]*)\" Price Book and Price \"([^\"]*)\"$")
+    public void iAddTheProductToThePriceBook(String standard, String price) {
+        log.info("create to price book for a product =============");
+        productStandardPrice = productDetailPage.clickAddPrice();
+        productDetailPage = productStandardPrice.addPrice(price);
+        productPriceBookPage = productDetailPage.clickAddPriceBook();
+        productListPriceBook = productPriceBookPage.selectPriceBook(standard);
+        productDetailPage = productListPriceBook.addPriceBook(price);
+    }
+
+    /**
      * Verify the field.
      */
-    @Then("^the Product Details Page should be displayed with the product information$")
+    @Then("^the Product should be displayed in Product Details page$")
     public void productDetailsPageShouldBeDisplayWithTheInformationOfTheProductCreated() {
         log.info("Validation for UI -----> Start homePage   " + product.getProductName());
         assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
@@ -123,7 +146,7 @@ public class ProductSteps {
     /**
      * go to the url the product created.
      */
-    @When("^I select the Product created by URL$")
+    @When("^I go by URL to the Product created$")
     public void iSelectTheProductCreatedByURL() throws MalformedURLException {
         homePage = PageFactory.getHomePage();
         productDetailPage = PageTransporter.getInstance().navigateToProductPage(product);
@@ -132,7 +155,7 @@ public class ProductSteps {
     /**
      * click in edit button.
      */
-    @And("^I click Edit button Product$")
+    @And("^I click Edit Product button$")
     public void iClickEditButton() {
         productFormPage = productDetailPage.clickEditOption();
     }
@@ -174,7 +197,7 @@ public class ProductSteps {
     /**
      * Delete the Product.
      */
-    @And("^I click Delete button Product$")
+    @And("^I click Delete Product button$")
     public void iDeleteTheProduct() {
         // productDetailPage = productListPage.selectProductItem(product);
         productListPage = productDetailPage.deleteProduct(product);
@@ -195,7 +218,7 @@ public class ProductSteps {
      */
     @And("^the Product should be deleted$")
     public void theProductShouldBeDeleted() {
-        log.info("Validation delete for API ===>" + product.getProductName()+" ====>"+product.getId());
+        log.info("Validation delete for API ===>" + product.getProductName() + " ====>" + product.getId());
         response = apiProduct.deleteProductByAPI();
         assertTrue(response.asString().isEmpty(), "should be return :");
     }
@@ -209,5 +232,4 @@ public class ProductSteps {
         apiProduct.deleteProductByAPI();
 
     }
-
 }
