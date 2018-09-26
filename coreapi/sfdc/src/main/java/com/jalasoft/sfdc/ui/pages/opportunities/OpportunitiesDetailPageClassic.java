@@ -1,6 +1,17 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
 
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesFormPage;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesFormPageClassic;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
+
+    @FindBy(xpath = "//input[@value='New Quote']")
+    private WebElement clickNewBtnQuotes;
+
+
 import com.jalasoft.sfdc.entities.Opportunities;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -54,11 +65,23 @@ public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
 
         return opportunityNameCreatedTxt.getText().trim();
     }
+
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
         wait.until(ExpectedConditions.visibilityOf(opportunityNameCreatedTxt));
+    }
+
+    /**
+     * Click of Button quotes for fill
+     *
+     * @return QuotesFormPage
+     */
+    @Override
+    public QuotesFormPage clickQuotesNew() {
+        driverTools.clickElement(clickNewBtnQuotes);
+        return new QuotesFormPageClassic();
     }
 }

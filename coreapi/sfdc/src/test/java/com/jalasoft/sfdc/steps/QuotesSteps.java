@@ -7,6 +7,8 @@ import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesFormPage;
 import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesListPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
+import com.jalasoft.sfdc.ui.pages.quotes.QuotesFormPage;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,10 +27,12 @@ public class QuotesSteps {
     private HomePage homePage;
     private AllAppsPage allAppsPage;
     private OpportunitiesListPage opportunitiesListPage;
+    private QuotesFormPage quotesFormPage;
     private OpportunitiesFormPage opportunitiesFormPage;
     private OpportunitiesDetailPage opportunitiesDetailPage;
     private Opportunities opportunities;
     private Opportunities opportunity;
+
 
     @When("^I go to Opportunities Page$")
     public void iGoToOpportunitiesListPage() {
@@ -69,13 +73,18 @@ public class QuotesSteps {
 
     }
 
-    @When("^I create a new Quote with \"([^\"]*)\" Name$")
-    public void iCreateANewQuoteWithName(String test) {
-
+    /**
+     * click the button for create a new quotes.
+     */
+    @When("^I create a new Quote with Test Quote Name$")
+    public void iCreateANewQuoteWithTestQuoteName() {
+        quotesFormPage=opportunitiesDetailPage.clickQuotesNew();
     }
 
     @And("^The following line item$")
     public void theFollowingLineItem(){
 
     }
+
+
 }
