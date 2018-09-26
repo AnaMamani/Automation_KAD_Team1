@@ -13,13 +13,13 @@ Feature:Create a new Quote
         | Computers IOs | 69489750     | desktop             | true   |
       And I go by URL to the Product created
       And  I add the Product to the "Standard" Price Book and Price "50"
-#    When I go to Opportunities Page
-#    And I click on New Opportunities
-#    Given I created opportunity with the following information
-#      | Opportunity Name | Account Name | Close Date | Stage       |
-#      | Naomi            | Fely         | 09/27/2018 | Prospecting |
-#    Then The opportunity should be displayed in details page
-#    When I create a new Quote with "Test Quote" Name
-#    And The following line item
-#      | Product Name | price | quantity |
-#      | test quote   | 0     | 50       |
+    When I go to Opportunities Page
+    And I click on New Opportunities
+    Given I created opportunity with the following information
+      | Opportunity Name | Account Name | Close Date | Stage       |
+      | Naomi            | Fely         | 09/27/2018 | Prospecting |
+    Then The opportunity should be displayed in details page
+    When I create a new Quote with Test Quote Name
+    And I add the following line item
+      | Product Name    | price | quantity |
+      | Computers IDs   | 0     | 50       |

@@ -57,7 +57,7 @@ public final class SFDCConstants {
     public final static String PRICE_BOOK_NAME = "Price Book Name";
     public final static String PRICE_BOOK_ACTIVE = "Price Book Active";
 
-    //Opportunities
+    //opportunities
     public final static String OPPORTUNITY = "opportunity";
     public final static String OPPY_NAME = "Oppy Name";
     public final static String OPPY_CLOSE_DATE = "Close Date";
