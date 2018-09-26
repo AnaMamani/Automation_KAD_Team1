@@ -4,10 +4,15 @@ Feature:Create a new Quote
     Given I navigate to Login page
     And I login as "admin user" User
 
-  Scenario: Verify that is possible created a new Quote
-    Given I have a Account created with the following information
+  Scenario: Verify that it is possible to create a new Opportunity with Quote
+    Given I have an Account created with the following information
       | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
       | Fely         | 222            | 3333337 | 987654321 | cbba          | Punata        | Bolivia         | 3                  | Prospect |
+      And I have a Product created with the following information
+        | Product Name  | Product Code | Product Description | Active |
+        | Computers IOs | 69489750     | desktop             | true   |
+      And I go by URL to the Product created
+      And  I add the Product to the "Standard" Price Book and Price "50"
     When I go to Opportunities Page
     And I click on New Opportunities
     Given I created opportunity with the following information

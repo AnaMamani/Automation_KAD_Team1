@@ -35,6 +35,15 @@ public class ProductDetailPageClassic extends ProductDetailPage {
     @FindBy(xpath = "//*[@title='Delete']")
     private WebElement deleteBtn;
 
+    @FindBy(xpath = "//*[@title='Add to Price Book']")
+    private WebElement addPriceBookBtn;
+
+    @FindBy(xpath = "//input[@title='Add']")
+    private WebElement addPriceBtn;
+
+    @FindBy(id = "tryLexDialogX")
+    private WebElement dialogClose;
+
     /**
      * Waits until page object is loaded.
      */
@@ -82,6 +91,31 @@ public class ProductDetailPageClassic extends ProductDetailPage {
             return false;
         }
         return result;
+    }
+
+    /**
+     * add the price book at product.
+     * @return new page of ProductPriceBookPage.
+     */
+    @Override
+    public ProductPriceBookPage clickAddPriceBook() {
+        log.info("clickAddPriceBook -----> return new page of ProductPriceBookPageClassic");
+        driverTools.clickElement(addPriceBookBtn);
+        return new ProductPriceBookPageClassic();
+    }
+
+    /**
+     * add the price at product.
+     *
+     * @return new page of ProductStandardPrice.
+     */
+    @Override
+    public ProductStandardPrice clickAddPrice() {
+        log.info("clickAddPrice -----> return new page of ProductStandardPriceClassic");
+        if (driverTools.isElementDisplayed(dialogClose))
+            driverTools.clickElement(dialogClose);// for the close the window popup.
+        driverTools.clickElement(addPriceBtn);
+        return new ProductStandardPriceClassic();
     }
 
     /**

@@ -115,6 +115,7 @@ public class AccountsSteps {
      */
     @Given("^I have an Account created with the following information$")
     public void iHaveAAccountCreatedWithTheFollowingInformation(List<Account> accountApi)  {
+        log.info("create the account by API ===================");
         account=accountApi.get(0);
         apiAccount=new APIAccount(account);
         apiAccount.createAccountByAPI();
