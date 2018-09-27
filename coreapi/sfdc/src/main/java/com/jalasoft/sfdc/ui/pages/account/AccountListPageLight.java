@@ -42,7 +42,7 @@ public class AccountListPageLight extends AccountListPage {
      */
     @Override
     public boolean accountSearch(Account account) {
-        System.out.print("**********************----------*******************");
+
         return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'" + account.getAccountName() + "')]"));
 
     }

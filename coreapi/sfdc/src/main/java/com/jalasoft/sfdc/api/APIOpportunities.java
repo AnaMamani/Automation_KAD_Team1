@@ -64,7 +64,7 @@ public class APIOpportunities {
     /**
      * this method delete Api
      */
-    public Response deleteAccountByAPI() {
+    public Response deleteOpportunitiesByAPI() {
         response = apiManager.delete(OPPORTUNITY, opportunities.getId());
         System.out.println("Query response delete: ***************************" + response.asString());
         return response;
