@@ -65,7 +65,8 @@ public class QuotesSteps {
     }
 
     /**
-     * @param
+     *  created opportunity information
+     * @param opportunities1 list opportunity.
      */
     @Given("^I created opportunity with the following information$")
     public void iCreatedOpportunityWithTheFollowingInformation(List<Opportunities> opportunities1) {

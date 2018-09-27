@@ -17,9 +17,12 @@ public class OpportunitiesDetailPageLight extends OpportunitiesDetailPage {
 
     @FindBy(xpath = "//a[@title='Show one more action']")
     private WebElement showMoreActionQuotes;
+
     @FindBy(xpath = "//a[@title='New Quote']")
     private WebElement clickNewBtnQuotes;
 
+    @FindBy(xpath = "//span[@class='uiOutputText']/parent::h1")
+    private WebElement opportunityNameCreatedTxt;
 
     /**
      * Waits until page object is loaded.
@@ -55,7 +58,8 @@ public class OpportunitiesDetailPageLight extends OpportunitiesDetailPage {
      */
     @Override
     public String getOpportunityCreated() {
-        return null;
+        log.info("getOpportunityCreated: =====>" + opportunityNameCreatedTxt.getText());
+        return opportunityNameCreatedTxt.getText().trim();
     }
 
 }

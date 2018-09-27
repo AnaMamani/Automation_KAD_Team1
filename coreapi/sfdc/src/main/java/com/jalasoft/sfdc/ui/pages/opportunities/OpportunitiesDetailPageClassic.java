@@ -51,9 +51,6 @@ public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
     @Override
     public boolean isSuccessCreateOpportunity(Opportunities opportunities) {
 
-        System.out.println(opportunities.getCloseDate() + "+++++++++++DAte");
-        System.out.println(cloceDateTxt.getText() + "+++++++++++++++++date");
-
         return opportunities.getOpportunityName().equals(oppotunityNameTxt.getText()) &&
                 opportunities.getStage().equals(opportunityStageTxt.getText()) &&
                 opportunities.getCloseDate().equals(cloceDateTxt.getText());
