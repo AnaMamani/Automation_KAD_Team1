@@ -30,6 +30,9 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
     @FindBy(id = "opp4")
     private WebElement accountNameOpportunityTxt;
 
+    @FindBy(xpath = "//*[@value='Share']")
+    private WebElement auxToOpportunityId;
+
    // private static final String STAGE_LBL = "//select[@id='opp11']/option[contains(text(),'%s')]";
 
     /**
@@ -48,7 +51,6 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
      */
     @Override
     public OpportunitiesDetailPage createOpportunity(Opportunities opportunity) {
-
         log.info("createOpportunity : set the field");
         driverTools.setInputField(opportunityNameTxt, opportunity.getOpportunityName());
         driverTools.clickElement(clickStage);
@@ -57,7 +59,18 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
         driverTools.setInputField(closeDateTxt, opportunity.getCloseDate());
         driverTools.setInputField(accountNameOpportunityTxt, opportunity.getAccountName());
         driverTools.clickElement(btnSave);
+        wait.until(ExpectedConditions.visibilityOf(auxToOpportunityId));
+        saveOpportunityId(driver.getCurrentUrl(),opportunity);
         return new OpportunitiesDetailPageClassic();
+    }
+    /**
+     * @param currentUrl url.
+     * @param opportunity opportunity.
+     */
+    private void saveOpportunityId(String currentUrl, Opportunities opportunity) {
+        String[] url=currentUrl.split("/");
+        opportunity.setId(url[url.length-1]);
+        System.out.println("ID: "+url[url.length-1]+" THIS IS THE OPPORTUNITY ID");
     }
 
 }

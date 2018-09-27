@@ -4,9 +4,10 @@ import com.jalasoft.sfdc.entities.Quote;
 import com.jalasoft.sfdc.entities.QuotesLineItem;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- *  class.
+ * class.
  *
  * @author Ana Maria Mamani Zenteno
  * @since 9/24/2018
@@ -19,12 +20,13 @@ public class QuotesAddItemsPageClassic extends QuotesAddItemsPage {
     private WebElement quoteQuantity;
     @FindBy(xpath = "(//input[@value=' Save '])[1]")
     private WebElement saveBtn;
+
     /**
      * Waits until page object is loaded.
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(saveBtn));
     }
 
     /**

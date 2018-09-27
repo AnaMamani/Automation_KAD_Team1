@@ -44,12 +44,12 @@ public final class SFDCConstants {
 
 
     //Quotes
-    public final static String QUOTE = "quote";
-    public final static String QUOTE_NAME = "Quote Name";
-    public final static String QUOTE_EXPIRATION_DATE = "Quote Expiration Date";
-    public final static String QUOTE_STATUS = "Quote Status";
-    public final static String QUOTE_DESCRIPTION = "Quote Description";
-    public final static String QUOTE_TAX = "Quote Tax";
+    public final static String QUOTE = "Quote";
+    public final static String QUOTE_NAME = "Name";
+    public final static String QUOTE_ACCOUNT_NAME = "BillingName";
+    public final static String QUOTE_GRAND_TOTAL = "GrandTotal";
+    public final static String QUOTE_TOTAL_PRICE = "TotalPrice";
+    public final static String QUOTE_OPPORTUNITY_ID = "OpportunityId";
     public final static String QUOTE_SHIPPING_AND_HANDLING = "Quote Shipping And Handling";
 
     //Price Books
@@ -58,11 +58,11 @@ public final class SFDCConstants {
     public final static String PRICE_BOOK_ACTIVE = "Price Book Active";
 
     //opportunities
-    public final static String OPPORTUNITY = "opportunity";
-    public final static String OPPY_NAME = "Oppy Name";
-    public final static String OPPY_CLOSE_DATE = "Close Date";
-    public final static String OPPY_STAGE = "Stage";
-    public final static String OPPY_ACCOUNT_NAME = "Account Name";
+    public final static String OPPORTUNITY = "Opportunity";
+    public final static String OPPY_NAME = "Name";
+    public final static String OPPY_CLOSE_DATE = "CloseDate";
+    public final static String OPPY_STAGE = "StageName";
+    public final static String OPPY_ACCOUNT_ID = "AccountId";
     public final static String OPPY_PRIVATE = "Private";
     public final static String OPPY_AMOUNT = "Amount";
 

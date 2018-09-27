@@ -7,7 +7,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
-import static com.jalasoft.sfdc.constants.SFDCConstants.ACCOUNT;
 
 public class APIOpportunities {
     protected APIManager apiManager = APIManager.getInstance();
@@ -19,7 +18,7 @@ public class APIOpportunities {
     public APIOpportunities(Opportunities opportunities) {
         this.opportunities = opportunities;
         fieldsMap = covertEntityToMap();
-//        accountApi=new Account();
+        opportunitiesApi=new Opportunities();
     }
 
     /**
@@ -32,7 +31,7 @@ public class APIOpportunities {
         map.put(OPPY_NAME, opportunities.getOpportunityName());
         map.put(OPPY_CLOSE_DATE,opportunities.getCloseDate());
         map.put(OPPY_STAGE,opportunities.getStage());
-        map.put(OPPY_ACCOUNT_NAME,opportunities.getAccountName());
+        map.put(OPPY_ACCOUNT_ID,opportunities.getAccountName());
 
         return map;
     }
@@ -42,12 +41,12 @@ public class APIOpportunities {
      * @return accountApi
      */
     public Opportunities getOpportunitiesValuesByAPI() { //ToDo define what aee you going to return
-        response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(ACCOUNT).
+        response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(OPPORTUNITY).
                 concat(SLASH).concat(opportunities.getId()));
-        opportunities.setOpportunityName(response.jsonPath().get(OPPY_NAME).toString());
-        opportunities.setCloseDate(response.jsonPath().get(OPPY_CLOSE_DATE).toString());
-        opportunities.setStage(response.jsonPath().get(OPPY_STAGE).toString());
-        opportunities.setAccountName(response.jsonPath().get(OPPY_ACCOUNT_NAME).toString());
+        opportunitiesApi.setOpportunityName(response.jsonPath().get(OPPY_NAME).toString());
+        opportunitiesApi.setCloseDate(response.jsonPath().get(OPPY_CLOSE_DATE).toString());
+        opportunitiesApi.setStage(response.jsonPath().get(OPPY_STAGE).toString());
+        opportunitiesApi.setAccountName(response.jsonPath().get(OPPY_ACCOUNT_ID).toString());
          return opportunitiesApi;
 
     }
@@ -64,7 +63,7 @@ public class APIOpportunities {
     /**
      * this method delete Api
      */
-    public Response deleteAccountByAPI() {
+    public Response deleteOpportinitiesByAPI() {
         response = apiManager.delete(OPPORTUNITY, opportunities.getId());
         System.out.println("Query response delete: ***************************" + response.asString());
         return response;
