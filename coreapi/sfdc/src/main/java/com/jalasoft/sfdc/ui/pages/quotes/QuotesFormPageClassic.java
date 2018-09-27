@@ -1,13 +1,12 @@
 package com.jalasoft.sfdc.ui.pages.quotes;
 
 import com.jalasoft.sfdc.entities.Quote;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
- *  class.
+ * class.
  *
  * @author Ana Maria Mamani Zenteno
  * @since 9/24/2018
@@ -15,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class QuotesFormPageClassic extends QuotesFormPage {
 
     @FindBy(xpath = "//input[@id='Name']")
-    private WebElement quoteNameTxt ;
+    private WebElement quoteNameTxt;
 
     @FindBy(id = "ExpirationDate")
     private WebElement quoteExpirationDate;
@@ -30,11 +29,13 @@ public class QuotesFormPageClassic extends QuotesFormPage {
     private WebElement quoteTaxTxt;
 
     @FindBy(id = "ShippingHandling")
-    private WebElement quoteShippingAndHandlingTxt ;
+    private WebElement quoteShippingAndHandlingTxt;
 
     @FindBy(xpath = "//td[@id='topButtonRow']/input[@value=' Save ']")
     private WebElement saveBtn;
 
+    @FindBy(xpath = "//*[@title='Edit']")
+    private WebElement auxToQuoteId;
 
     /**
      * for create a Quote
@@ -46,7 +47,19 @@ public class QuotesFormPageClassic extends QuotesFormPage {
     public QuotesDetailPage createQuote(Quote quote) {
         driverTools.setInputField(quoteNameTxt, quote.getQuoteName());
         driverTools.clickElement(saveBtn);
+        wait.until(ExpectedConditions.visibilityOf(auxToQuoteId));
+        saveQuoteId(driver.getCurrentUrl(), quote);
         return new QuotesDetailPageClassic();
+    }
+
+    /**
+     * @param currentUrl url.
+     * @param quote      quote.
+     */
+    private void saveQuoteId(String currentUrl, Quote quote) {
+        String[] url = currentUrl.split("/");
+        quote.setId(url[url.length - 1]);
+        System.out.println("ID: " + url[url.length - 1] + " THIS IS THE QUOTE ID");
     }
 
     /**

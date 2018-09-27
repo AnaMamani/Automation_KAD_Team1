@@ -11,6 +11,7 @@ public class Opportunities {
 
     private String opportunityName;
     private String closeDate;
+    private String closeDateFormat;
     private String stage;
     private String id;
     private String accountName;
@@ -105,4 +106,11 @@ public class Opportunities {
         this.id = id;
     }
 
+    public String getCloseDateFormat() {
+        return closeDateFormat;
+    }
+
+    public void setCloseDateFormat(String closeDateFormat) {
+        this.closeDateFormat = closeDateFormat;
+    }
 }

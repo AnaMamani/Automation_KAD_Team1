@@ -31,13 +31,12 @@ public abstract class BasePage {
      * Initializes the web driver, wait, web driver tools and web elements.
      */
     public BasePage() {
-        log.info("BasePage initialized --> "+WebDriverManager.getInstance().getWait().toString());
         this.driver = WebDriverManager.getInstance().getWebDriver();
         this.wait = WebDriverManager.getInstance().getWait();
         this.driverTools = new WebDriverTools();
         PageFactory.initElements(driver, this);
         waitUntilPageObjectIsLoaded();
-        log.info("BasePage end --> "+WebDriverManager.getInstance().getWait().toString());
+
     }
 
     /**
