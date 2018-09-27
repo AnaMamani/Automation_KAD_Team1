@@ -13,4 +13,10 @@ public abstract class QuotesDetailPage extends BasePage {
      * @return QuoteLineItemPage
      */
     public abstract QuoteLineItemsPage clickAddLineItem();
+
+    /**
+     * validate data of Quotes
+     * @return String
+     */
+    public abstract String isSuccessDisplayedQuoteDetail();
 }

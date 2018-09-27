@@ -13,4 +13,15 @@ public class QuotesProductSelectPageLight extends QuotesProductSelectPage {
     public void waitUntilPageObjectIsLoaded() {
 
     }
+
+    /**
+     * for select of product in quotes
+     *
+     * @param productName String
+     * @return QuotesAddItemsPage
+     */
+    @Override
+    public QuotesAddItemsPage selectProductQuote(String productName) {
+        return null;
+    }
 }

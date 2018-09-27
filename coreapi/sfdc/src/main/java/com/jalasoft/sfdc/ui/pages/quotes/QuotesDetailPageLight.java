@@ -23,4 +23,14 @@ public class QuotesDetailPageLight extends QuotesDetailPage {
     public QuoteLineItemsPage clickAddLineItem() {
         return null;
     }
+
+    /**
+     * validate data of Quotes
+     *
+     * @return String
+     */
+    @Override
+    public String isSuccessDisplayedQuoteDetail() {
+        return null;
+    }
 }

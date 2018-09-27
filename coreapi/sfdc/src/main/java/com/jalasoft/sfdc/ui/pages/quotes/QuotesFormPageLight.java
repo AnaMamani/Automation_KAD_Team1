@@ -19,11 +19,11 @@ public class QuotesFormPageLight extends QuotesFormPage {
     /**
      * for create a Quote
      *
-     * @param quoteName
+     * @param quote
      * @return QuotesDetailPage
      */
     @Override
-    public QuotesDetailPage createQuote(String quoteName) {
+    public QuotesDetailPage createQuote(Quote quote) {
         return null;
     }
 }

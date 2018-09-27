@@ -4,6 +4,8 @@ import com.jalasoft.sfdc.entities.Quote;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 /**
  *  class.
  *
@@ -37,12 +39,12 @@ public class QuotesFormPageClassic extends QuotesFormPage {
     /**
      * for create a Quote
      *
-     * @param quoteName
+     * @param quote
      * @return QuotesDetailPage
      */
     @Override
-    public QuotesDetailPage createQuote(String quoteName) {
-        driverTools.setInputField(quoteNameTxt, quoteName);
+    public QuotesDetailPage createQuote(Quote quote) {
+        driverTools.setInputField(quoteNameTxt, quote.getName());
         driverTools.clickElement(saveBtn);
         return new QuotesDetailPageClassic();
     }
@@ -52,6 +54,6 @@ public class QuotesFormPageClassic extends QuotesFormPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(saveBtn));
     }
 }
