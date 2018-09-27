@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.quotes;
 
 import com.jalasoft.sfdc.entities.Quote;
+import com.jalasoft.sfdc.entities.QuotesLineItem;
 
 /**
  *  class.
@@ -24,7 +25,7 @@ public class QuotesAddItemsPageLight extends QuotesAddItemsPage {
      * @return
      */
     @Override
-    public QuotesDetailPage addPriceBook(Quote quote) {
+    public QuotesDetailPage addPriceBook(QuotesLineItem quote) {
         return null;
     }
 }
