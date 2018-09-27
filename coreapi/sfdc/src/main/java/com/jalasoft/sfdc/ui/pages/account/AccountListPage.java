@@ -21,10 +21,6 @@ public abstract class AccountListPage extends ListBasePage {
 
     public abstract AccountFormPage clickNewAccount();
 
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
 
     /**
      * This method abstract search a account

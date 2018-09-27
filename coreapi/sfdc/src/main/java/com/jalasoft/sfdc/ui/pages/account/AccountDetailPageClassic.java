@@ -36,6 +36,15 @@ public class AccountDetailPageClassic extends AccountDetailPage {
     @FindBy(xpath = "//input[contains(@value,'Delete')]")
     private WebElement deleteBtn;
 
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(accountNameCreateTxt));
+    }
+
     /**
      * This method validate Account
      *
@@ -46,7 +55,6 @@ public class AccountDetailPageClassic extends AccountDetailPage {
 
         return accountNameCreateTxt.getText().trim();
     }
-
 
 
     /**
@@ -61,8 +69,6 @@ public class AccountDetailPageClassic extends AccountDetailPage {
     }
 
 
-
-
     /**
      * This method delete an Account on Classic
      */
@@ -74,6 +80,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         return new AccountListPageClassic();
 
     }
+
     /**
      * verify that a account is create.
      *
@@ -86,6 +93,7 @@ public class AccountDetailPageClassic extends AccountDetailPage {
                 account.getType().equals(accountTypeTxt.getText()) &&
                 account.getPhone().equals(accountPhoneTxt.getText()) && account.getFax().equals(accountFaxTxt.getText());
     }
+
     /**
      * verify the edit the account.
      *
@@ -105,18 +113,11 @@ public class AccountDetailPageClassic extends AccountDetailPage {
             log.info("product code :" + account.getPhone() + " ====> " + accountPhoneTxt.getText().trim());
             return false;
         }
-        if (account.getFax()!= null && !account.getFax().equals(accountFaxTxt.getText().trim())) {
+        if (account.getFax() != null && !account.getFax().equals(accountFaxTxt.getText().trim())) {
             log.info("product name :" + account.getFax() + " ====> " + accountFaxTxt.getText().trim());
             return false;
         }
         return result;
     }
 
-    /**
-     *  Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountNameCreateTxt));
-    }
 }

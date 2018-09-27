@@ -15,39 +15,53 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Ketty Camacho Vasquez
  */
 public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
+
+    //PageFactory of selenium.
+
     @FindBy(xpath = "//input[@value='New Quote']")
     private WebElement clickNewBtnQuotes;
-    //PageFactory of selenium.
-   @FindBy(xpath = "//h2[@class='pageDescription']")
-    private WebElement  opportunityNameCreatedTxt;
 
-   @FindBy(id="opp3_ileinner")
-   private WebElement oppotunityNameTxt;
+    @FindBy(xpath = "//h2[@class='pageDescription']")
+    private WebElement opportunityNameCreatedTxt;
 
-   @FindBy(id="opp11_ileinner")
-   private WebElement opportunityStageTxt;
+    @FindBy(id = "opp3_ileinner")
+    private WebElement oppotunityNameTxt;
 
-   @FindBy(xpath = "//td[@class='dataCol inlineEditWrite']/div[@id='opp9_ileinner']")
-   private  WebElement cloceDateTxt;
+    @FindBy(id = "opp11_ileinner")
+    private WebElement opportunityStageTxt;
+
+    @FindBy(xpath = "//td[@class='dataCol inlineEditWrite']/div[@id='opp9_ileinner']")
+    private WebElement cloceDateTxt;
+
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(opportunityNameCreatedTxt));
+    }
 
     /**
      * verify that an opportunities is create
+     *
      * @param opportunities information.
      * @return is successfully or not successfully
      */
     @Override
     public boolean isSuccessCreateOpportunity(Opportunities opportunities) {
 
-        System.out.println(opportunities.getCloseDate()+"+++++++++++DAte");
-        System.out.println(cloceDateTxt.getText()+"+++++++++++++++++date");
+        System.out.println(opportunities.getCloseDate() + "+++++++++++DAte");
+        System.out.println(cloceDateTxt.getText() + "+++++++++++++++++date");
 
         return opportunities.getOpportunityName().equals(oppotunityNameTxt.getText()) &&
-                opportunities.getStage().equals(opportunityStageTxt.getText())&&
+                opportunities.getStage().equals(opportunityStageTxt.getText()) &&
                 opportunities.getCloseDate().equals(cloceDateTxt.getText());
     }
 
     /**
      * method get opportunity Created validator.
+     *
      * @return string opportunity name.
      */
     @Override
@@ -57,13 +71,6 @@ public class OpportunitiesDetailPageClassic extends OpportunitiesDetailPage {
         return opportunityNameCreatedTxt.getText().trim();
     }
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(opportunityNameCreatedTxt));
-    }
 
     /**
      * Click of Button quotes for fill

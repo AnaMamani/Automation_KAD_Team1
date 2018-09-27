@@ -1,6 +1,8 @@
 
 package com.jalasoft.sfdc.ui.pages.opportunities;
+
 import com.jalasoft.sfdc.ui.ListBasePage;
+
 /**
  * Handles the opportunities List Page extends of the
  * {@Link ListBasePage} class.

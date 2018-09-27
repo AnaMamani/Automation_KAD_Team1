@@ -50,6 +50,15 @@ public class AccountDetailPageLight extends AccountDetailPage {
     @FindBy(xpath = "//a[(@title='Show 7 more actions')]")
     private WebElement selectBtn;
 
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(accountNameCreatedTxt));
+    }
+
     /**
      * This method validate the Account New.
      *
@@ -85,6 +94,7 @@ public class AccountDetailPageLight extends AccountDetailPage {
         driverTools.clickElement(selectDelete);
         return new AccountListPageLight();
     }
+
     /**
      * verify that a account is create.
      *
@@ -100,7 +110,6 @@ public class AccountDetailPageLight extends AccountDetailPage {
     }
 
     /**
-     *
      * @param account information the current user.
      * @return boolean
      */
@@ -117,19 +126,12 @@ public class AccountDetailPageLight extends AccountDetailPage {
             log.info("product code :" + account.getPhone() + " ====> " + accountPhoneTxt.getText().trim());
             return false;
         }
-        if (account.getFax()!= null && !account.getFax().equals(accountFaxTxt.getText().trim())) {
+        if (account.getFax() != null && !account.getFax().equals(accountFaxTxt.getText().trim())) {
             log.info("product name :" + account.getFax() + " ====> " + accountFaxTxt.getText().trim());
             return false;
         }
         return result;
-        }
-
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(accountNameCreatedTxt));
     }
+
 }
 

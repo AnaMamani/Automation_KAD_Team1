@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.ui.pages.opportunities;
 
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Opportunities;
+
 /**
  * Handles the opportunities form Page Light extends of the
  * {@Link OpportunitiesFormPage} class.
@@ -19,6 +20,7 @@ public class OpportunitiesFormPageLight extends OpportunitiesFormPage {
 
     /**
      * setting and create a new OpportunitiesDetailPage.
+     *
      * @param opportunity all information
      * @return OpportunitiesDetailPageLight
      */

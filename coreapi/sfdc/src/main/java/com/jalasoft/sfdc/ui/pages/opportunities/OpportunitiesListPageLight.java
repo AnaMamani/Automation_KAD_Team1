@@ -1,4 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
+
 /**
  * Handles the OpportunitiesListPageLight extends of the
  * {@Link OpportunitiesListPage} class.
@@ -7,6 +8,15 @@ package com.jalasoft.sfdc.ui.pages.opportunities;
  */
 
 public class OpportunitiesListPageLight extends OpportunitiesListPage {
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+
+    }
+
     /**
      * This method perform an action and create a new OpportunitiesFormPage.
      *
@@ -18,11 +28,5 @@ public class OpportunitiesListPageLight extends OpportunitiesListPage {
         return new OpportunitiesFormPageLight();
     }
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
 
-    }
 }
