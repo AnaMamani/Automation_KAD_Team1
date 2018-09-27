@@ -1,7 +1,5 @@
 package com.jalasoft.sfdc.entities;
 
-import java.util.List;
-
 /**
  * Quote class.
  *
@@ -11,9 +9,9 @@ import java.util.List;
 public class Quote {
     private String id;
     private String quoteName;
-    private String expirationDate;
-    private String status;
-    private String description;
+    private String quoteSubtotal;
+    private String quoteAccountName;
+    private String quoteGranTotal;
 
 
     public String getQuoteName() {
@@ -24,28 +22,28 @@ public class Quote {
         this.quoteName = quoteName;
     }
 
-    public String getExpirationDate() {
-        return expirationDate;
+    public String getQuoteSubtotal() {
+        return quoteSubtotal;
     }
 
-    public void setExpirationDate(String expirationDate) {
-        this.expirationDate = expirationDate;
+    public void setQuoteSubtotal(String quoteSubtotal) {
+        this.quoteSubtotal = quoteSubtotal;
     }
 
-    public String getStatus() {
-        return status;
+    public String getQuoteAccountName() {
+        return quoteAccountName;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setQuoteAccountName(String quoteAccountName) {
+        this.quoteAccountName = quoteAccountName;
     }
 
-    public String getDescription() {
-        return description;
+    public String getQuoteGranTotal() {
+        return quoteGranTotal;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setQuoteGranTotal(String quoteGranTotal) {
+        this.quoteGranTotal = quoteGranTotal;
     }
 
     public String getId() {

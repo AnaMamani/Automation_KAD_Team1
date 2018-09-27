@@ -8,7 +8,6 @@ public abstract class HomePage extends BasePage {
     public TopMenu topMenu;
 
     public HomePage() {
-        log.info("topMenu is create -------->");
         this.topMenu = PageFactory.getTopMenu();
         waitUntilPageObjectIsLoaded();
     }

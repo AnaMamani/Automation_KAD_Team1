@@ -2,7 +2,7 @@ Feature:Create a new Quote
 
   Background:
     Given I navigate to Login page
-    And I login as "local user" User
+    And I login as "admin user" User
 
   Scenario: Verify that it is possible to create a new Opportunity with Quote
     Given I have an Account created with the following information
@@ -16,9 +16,10 @@ Feature:Create a new Quote
     When I go to Opportunities Page
     And I click on New Opportunities
     Given I created opportunity with the following information
-      | Opportunity Name |  Close Date | Stage       |
-      | Naomi            |  26/09/2018 | Prospecting |
+      | Opportunity Name |  Close Date | Stage       |Close Date Format|
+      | Naomi            |  27/09/2018 | Prospecting |   2018-09-27    |
     Then The opportunity should be displayed in details page
+      And the opportunity should be created
     And I click on New quotes button
     When I create a new Quote with
       | Quote Name |
@@ -29,4 +30,4 @@ Feature:Create a new Quote
        | Sales Price | quantity |
        | 80          | 50       |
     Then the Quotes should be displayed in Quotes Details page
-#     And the Quotes should be created
+     And the Quotes should be created
