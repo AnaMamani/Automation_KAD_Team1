@@ -58,8 +58,8 @@ public class ProductSteps {
     private Response response;
     private World world;
 
-    public ProductSteps(World world){
-        this.world=world;
+    public ProductSteps(World world) {
+        this.world = world;
     }
 
     /**
@@ -217,8 +217,8 @@ public class ProductSteps {
      */
     @Then("^the Product should be removed from the Product List$")
     public void theProductShouldBeRemovedFromTheProductList() {
+        log.info("Validation delete for UI ===>" + product.getProductName() + " ====>" + product.getId());
         assertFalse(productListPage.isSuccessDeleteProduct(product), "should be return :");
-
     }
 
     /**
@@ -227,8 +227,9 @@ public class ProductSteps {
     @And("^the Product should be deleted$")
     public void theProductShouldBeDeleted() {
         log.info("Validation delete for API ===>" + product.getProductName() + " ====>" + product.getId());
+        final String deleteEntity = "entity is deleted";
         response = apiProduct.deleteProductByAPI();
-        assertTrue(response.asString().isEmpty(), "should be return :");
+        assertTrue(response.asString().contains(deleteEntity), "should be return :");
     }
 
     //****************************************************************
