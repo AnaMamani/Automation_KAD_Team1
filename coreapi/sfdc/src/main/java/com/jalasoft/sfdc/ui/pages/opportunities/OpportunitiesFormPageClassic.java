@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
     //PageFactory of selenium.
-    @FindBy(id="opp3")
+    @FindBy(id = "opp3")
     WebElement opportunityNameTxt;
 
     //@FindBy(xpath = "//span[@class='dateFormat']")
@@ -25,16 +25,10 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
     WebElement clickStage;
 
     @FindBy(xpath = "//input[@title='Save']")
-    WebElement clickBtnSave;
+    WebElement btnSave;
 
-    @FindBy(id = "opp4_lkwgt")
+    @FindBy(id = "opp4")
     private WebElement accountNameOpportunityTxt;
-
-    @FindBy(xpath = "//img[@class='lookupIcon']")
-    private WebElement iconShearchAccount;
-
-    @FindBy(xpath = "//*[@value=' New ']")
-    private WebElement searchAccount;
 
 
     /**
@@ -42,11 +36,12 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(opportunityNameTxt));
+        wait.until(ExpectedConditions.visibilityOf(btnSave));
     }
 
     /**
-     *setting and create a new OpportunitiesDetailPage.
+     * setting and create a new OpportunitiesDetailPage.
+     *
      * @param opportunity all information
      * @return OpportunitiesDetailPageClassic
      */
@@ -54,16 +49,13 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
     public OpportunitiesDetailPage createOpportunity(Opportunities opportunity) {
         log.info("createOpportunity : set the field");
         System.out.println(opportunity.getAccountName() + "==============*******************");
-        driverTools.setInputField(opportunityNameTxt,opportunity.getOpportunityName());
+        driverTools.setInputField(opportunityNameTxt, opportunity.getOpportunityName());
         driverTools.clickElement(clickStage);
-        driverTools.clickElement(By.xpath(" //select[@id='opp11']/option[contains(text(),'"+opportunity.getStage()+"')]"));
-        driverTools.setInputField(closeDateTxt,opportunity.getCloseDate());
-        driverTools.clickElement(accountNameOpportunityTxt);
-        //wait.until(ExpectedConditions.visibilityOf(searchAccount));
-        driverTools.clickElement(By.xpath("//a[contains(.,'"+opportunity.getAccountName()+"')]"));
-        driverTools.clickElement(clickBtnSave);
+        driverTools.clickElement(By.xpath(" //select[@id='opp11']/option[contains(text(),'" + opportunity.getStage() + "')]"));
+        driverTools.setInputField(closeDateTxt, opportunity.getCloseDate());
+        driverTools.setInputField(accountNameOpportunityTxt, opportunity.getAccountName());
+        driverTools.clickElement(btnSave);
         return new OpportunitiesDetailPageClassic();
-        //a[contains(.,'mendez')]
     }
 
 }

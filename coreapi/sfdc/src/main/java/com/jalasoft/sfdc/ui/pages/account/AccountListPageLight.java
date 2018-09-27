@@ -3,6 +3,7 @@ package com.jalasoft.sfdc.ui.pages.account;
 
 import com.jalasoft.sfdc.entities.Account;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 /**
  * Handles the Account List Light Page extends of the
@@ -12,6 +13,14 @@ import org.openqa.selenium.By;
  */
 
 public class AccountListPageLight extends AccountListPage {
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(newBtn));
+    }
 
     /**
      * this is method clickNewAccount

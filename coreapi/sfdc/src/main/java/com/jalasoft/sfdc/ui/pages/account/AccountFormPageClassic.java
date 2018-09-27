@@ -48,6 +48,15 @@ public class AccountFormPageClassic extends AccountFormPage {
     private WebElement clickBtnSave;
 
     /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+
+        wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
+    }
+
+    /**
      * This method setter for create an Account
      *
      * @param account Account
@@ -66,20 +75,19 @@ public class AccountFormPageClassic extends AccountFormPage {
         driverTools.setInputField(accountBillingStateTxt, account.getBillingState());
         driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
         driverTools.setInputField(numberLocationTxt, account.getNumberOfLocation());
-
         driverTools.clickElement(clickBtnSave);
-        
-        saveAccountId(driver.getCurrentUrl(),account);
+        saveAccountId(driver.getCurrentUrl(), account);
         return new AccountDetailPageClassic();
     }
+
     /**
-     *  @param currentUrl url.
-     *  @param account Account.
+     * @param currentUrl url.
+     * @param account    Account.
      */
     private void saveAccountId(String currentUrl, Account account) {
-        String[] url=currentUrl.split("/");
-        account.setId(url[url.length-1]);
-        System.out.println("ID: "+account.getId()+" THIS IS THE ACCOUNT ID");
+        String[] url = currentUrl.split("/");
+        account.setId(url[url.length - 1]);
+        System.out.println("ID: " + account.getId() + " THIS IS THE ACCOUNT ID");
     }
 
     /**
@@ -105,12 +113,5 @@ public class AccountFormPageClassic extends AccountFormPage {
         driverTools.clickElement(clickBtnSave);
         return new AccountDetailPageClassic();
     }
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
 
-        wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
-    }
 }

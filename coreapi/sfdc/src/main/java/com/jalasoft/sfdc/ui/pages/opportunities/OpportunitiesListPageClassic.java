@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
+
 /**
  * Handles the OpportunitiesListPageClassic extends of the
  * {@Link OpportunitiesListPage} class.
@@ -8,6 +9,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Ketty Camacho Vasquez
  */
 public class OpportunitiesListPageClassic extends OpportunitiesListPage {
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(newBtn));
+    }
 
     /**
      * This method perform an action and create a new OpportunitiesFormPage.
@@ -20,11 +29,5 @@ public class OpportunitiesListPageClassic extends OpportunitiesListPage {
         return new OpportunitiesFormPageClassic();
     }
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newBtn));
-    }
+
 }

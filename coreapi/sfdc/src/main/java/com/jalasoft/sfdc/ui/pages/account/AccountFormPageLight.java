@@ -52,8 +52,17 @@ public class AccountFormPageLight extends AccountFormPage {
     @FindBy(xpath = "//span[text()='Save']/parent::button[@title='Save']")
     private WebElement clickBtnSave;
 
-    @FindBy(xpath =   "//p[@title='Website']")
+    @FindBy(xpath = "//p[@title='Website']")
     private WebElement auxToAccountId;
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
+
+    }
 
     /**
      * This method setter for create an Account
@@ -79,20 +88,21 @@ public class AccountFormPageLight extends AccountFormPage {
         wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
 
 
-        saveProductId(driver.getCurrentUrl(),account);
+        saveProductId(driver.getCurrentUrl(), account);
 
         return new AccountDetailPageLight();
 
     }
+
     /**
-     *  @param currentUrl url.
-     *  @param account product.
+     * @param currentUrl url.
+     * @param account    product.
      */
     private void saveProductId(String currentUrl, Account account) {
 
-        String[] url=currentUrl.split("/");
-        account.setId(url[url.length-2]);
-        System.out.println("ID: "+url[url.length-2]+" THIS IS THE PRODUCT ID");
+        String[] url = currentUrl.split("/");
+        account.setId(url[url.length - 2]);
+        System.out.println("ID: " + url[url.length - 2] + " THIS IS THE PRODUCT ID");
 
     }
 
@@ -122,39 +132,33 @@ public class AccountFormPageLight extends AccountFormPage {
     }
 
 
-
     /**
      * it method set of Phone.
      *
      * @param phone number cel.
      */
-    private void setPhone(String phone) {
-        driverTools.setInputField(accountPhoneTxt, phone);
-    }
+//    private void setPhone(String phone) {
+//        driverTools.setInputField(accountPhoneTxt, phone);
+//    }
 
     /**
      * this method setter of account Number.
      *
      * @param accountNumber number of Account.
      */
-    private void setAccountNumber(String accountNumber) {
-        driverTools.setInputField(accountNumberTxt, accountNumber);
-    }
+//    private void setAccountNumber(String accountNumber) {
+//        driverTools.setInputField(accountNumberTxt, accountNumber);
+//    }
 
     /**
      * this method setter Name of account.
      *
      * @param accountName name of account.
      */
-    private void setAccountName(String accountName) {
-        driverTools.setInputField(accountNameTxt, accountName);
-    }
+//    private void setAccountName(String accountName) {
+//        driverTools.setInputField(accountNameTxt, accountName);
+//    }
 
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
-
-    }
 }
 
 

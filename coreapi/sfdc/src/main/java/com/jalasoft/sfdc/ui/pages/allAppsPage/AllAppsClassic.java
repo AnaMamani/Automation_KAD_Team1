@@ -33,6 +33,7 @@ public class AllAppsClassic extends AllAppsPage {
 
     @FindBy(xpath = "//img[@title='Opportunities']")
     private WebElement oportunitiestLink;
+
     /**
      * Waits until page object is loaded.
      */
@@ -103,12 +104,8 @@ public class AllAppsClassic extends AllAppsPage {
 
     @Override
     public OpportunitiesListPage clickOpportunities() {
-        driverTools.clickElement(oportunitiestLink);
-        try{
-        driverTools.clickElement(dialogClose);// for the close the window popup.
-    } catch (Exception e) {
 
-    }
+        driverTools.clickElement(oportunitiestLink);
         return new OpportunitiesListPageClassic();
     }
 

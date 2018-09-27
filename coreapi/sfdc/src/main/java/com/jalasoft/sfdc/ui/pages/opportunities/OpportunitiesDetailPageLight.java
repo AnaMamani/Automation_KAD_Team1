@@ -6,7 +6,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 
-
 /**
  * Handles OpportunitiesDetailPageLight extends of the
  * {@Link OpportunitiesDetailPage} class.
@@ -21,6 +20,14 @@ public class OpportunitiesDetailPageLight extends OpportunitiesDetailPage {
     @FindBy(xpath = "//a[@title='New Quote']")
     private WebElement clickNewBtnQuotes;
 
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+
+    }
 
     /**
      * Click of Button quotes for fill
@@ -51,11 +58,4 @@ public class OpportunitiesDetailPageLight extends OpportunitiesDetailPage {
         return null;
     }
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-
-    }
 }

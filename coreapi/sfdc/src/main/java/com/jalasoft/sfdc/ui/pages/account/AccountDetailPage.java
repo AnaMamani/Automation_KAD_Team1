@@ -1,6 +1,8 @@
 package com.jalasoft.sfdc.ui.pages.account;
+
 import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.ui.BasePage;
+
 /**
  * Handles the Account Detail Page.
  *
@@ -28,18 +30,23 @@ public abstract class AccountDetailPage extends BasePage {
      */
 
     public abstract AccountListPage deleteAnAccount();
+
     /**
      * verify that a account is create.
+     *
      * @param account information the current user.
      * @return is successfully or not successfully.
      */
     public abstract boolean isSuccessCreateAccount(Account account);
+
     /**
      * verify the edit the account.
+     *
      * @param account information the current user.
      */
 
     public abstract boolean isSuccessEditAccount(Account account);
+
     /**
      * verify the edit the Account.
      *
@@ -54,16 +61,16 @@ public abstract class AccountDetailPage extends BasePage {
             return false;
         }
 
-        if (accountEdit.getAccountNumber()!= null && !(accountEdit.getAccountNumber().equals(accountApi.getAccountNumber()))) {
+        if (accountEdit.getAccountNumber() != null && !(accountEdit.getAccountNumber().equals(accountApi.getAccountNumber()))) {
             log.info("product code :" + accountEdit.getAccountNumber() + " ====> " + accountApi.getAccountNumber());
             return false;
         }
-        if (accountEdit.getPhone() != null && !accountEdit.getPhone() .equals(accountApi.getPhone())) {
-            log.info("product Phone :" + accountEdit.getPhone()  + " ====> " + accountApi.getPhone());
+        if (accountEdit.getPhone() != null && !accountEdit.getPhone().equals(accountApi.getPhone())) {
+            log.info("product Phone :" + accountEdit.getPhone() + " ====> " + accountApi.getPhone());
             return false;
         }
-        if (accountEdit.getFax() != null && !accountEdit.getFax() .equals(accountApi.getFax())) {
-            log.info("product fax :" + accountEdit.getFax()  + " ====> " + accountApi.getFax());
+        if (accountEdit.getFax() != null && !accountEdit.getFax().equals(accountApi.getFax())) {
+            log.info("product fax :" + accountEdit.getFax() + " ====> " + accountApi.getFax());
             return false;
         }
         return result;
