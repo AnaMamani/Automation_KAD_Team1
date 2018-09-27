@@ -1,6 +1,5 @@
 package com.jalasoft.sfdc.api;
 
-import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Opportunities;
 import io.restassured.response.Response;
 
@@ -33,7 +32,7 @@ public class APIOpportunities {
         map.put(OPPY_NAME, opportunities.getOpportunityName());
         map.put(OPPY_CLOSE_DATE,opportunities.getCloseDate());
         map.put(OPPY_STAGE,opportunities.getStage());
-        map.put(OPPY_ACCOUNT_NAME,opportunities.getAccount());
+        map.put(OPPY_ACCOUNT_NAME,opportunities.getAccountName());
 
         return map;
     }
@@ -48,7 +47,7 @@ public class APIOpportunities {
         opportunities.setOpportunityName(response.jsonPath().get(OPPY_NAME).toString());
         opportunities.setCloseDate(response.jsonPath().get(OPPY_CLOSE_DATE).toString());
         opportunities.setStage(response.jsonPath().get(OPPY_STAGE).toString());
-        opportunities.setAccount(response.jsonPath().get(OPPY_ACCOUNT_NAME).toString());
+        opportunities.setAccountName(response.jsonPath().get(OPPY_ACCOUNT_NAME).toString());
          return opportunitiesApi;
 
     }

@@ -2,6 +2,8 @@ package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
+import com.jalasoft.sfdc.entities.Opportunities;
+import com.jalasoft.sfdc.entities.World;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.account.AccountDetailPage;
@@ -42,8 +44,12 @@ public class AccountsSteps {
     private Account accountEdit;
     private AccountDetailPage accountDetailPage;
     private APIAccount apiAccount;
+    private World world;
     private Response response;
 
+    public AccountsSteps(World world) {
+        this.world=world;
+    }
 
     /**
      * Go a page account on classic o light .
@@ -117,9 +123,10 @@ public class AccountsSteps {
      */
     @Given("^I have an Account created with the following information$")
     public void iHaveAAccountCreatedWithTheFollowingInformation(List<Account> accountApi) {
-  log.info("create the account by API ===================");      
-  account = accountApi.get(0);
-        accountEdit.updateAccountName();
+        log.info("create the account by API ===================");
+        account = accountApi.get(0);
+        account.updateAccountName();
+        world.setAccount(account);
         apiAccount = new APIAccount(account);
         apiAccount.createAccountByAPI();
     }

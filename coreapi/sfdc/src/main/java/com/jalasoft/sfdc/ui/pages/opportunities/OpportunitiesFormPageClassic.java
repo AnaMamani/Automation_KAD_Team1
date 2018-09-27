@@ -1,6 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
-import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Opportunities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -28,11 +27,23 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
     @FindBy(xpath = "//input[@title='Save']")
     WebElement clickBtnSave;
 
-    @FindBy(id = "opp4")
+    @FindBy(id = "opp4_lkwgt")
     private WebElement accountNameOpportunityTxt;
 
     @FindBy(xpath = "//img[@class='lookupIcon']")
     private WebElement iconShearchAccount;
+
+    @FindBy(xpath = "//*[@value=' New ']")
+    private WebElement searchAccount;
+
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(opportunityNameTxt));
+    }
 
     /**
      *setting and create a new OpportunitiesDetailPage.
@@ -41,28 +52,18 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
      */
     @Override
     public OpportunitiesDetailPage createOpportunity(Opportunities opportunity) {
-        log.info("createOpportunity : Enter");
+        log.info("createOpportunity : set the field");
+        System.out.println(opportunity.getAccountName() + "==============*******************");
         driverTools.setInputField(opportunityNameTxt,opportunity.getOpportunityName());
         driverTools.clickElement(clickStage);
         driverTools.clickElement(By.xpath(" //select[@id='opp11']/option[contains(text(),'"+opportunity.getStage()+"')]"));
         driverTools.setInputField(closeDateTxt,opportunity.getCloseDate());
-
-
-
-        //driverTools.setInputField(accountNameOpportunityTxt,);
-        //driverTools.clickElement(iconShearchAccount);
-
+        driverTools.clickElement(accountNameOpportunityTxt);
+        //wait.until(ExpectedConditions.visibilityOf(searchAccount));
+        driverTools.clickElement(By.xpath("//a[contains(.,'"+opportunity.getAccountName()+"')]"));
         driverTools.clickElement(clickBtnSave);
-
-
-
         return new OpportunitiesDetailPageClassic();
+        //a[contains(.,'mendez')]
     }
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(opportunityNameTxt));
-    }
+
 }

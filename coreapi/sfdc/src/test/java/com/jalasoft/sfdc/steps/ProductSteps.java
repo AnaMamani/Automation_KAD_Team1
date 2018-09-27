@@ -1,7 +1,9 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIProduct;
+import com.jalasoft.sfdc.entities.Opportunities;
 import com.jalasoft.sfdc.entities.Product;
+import com.jalasoft.sfdc.entities.World;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.PageTransporter;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
@@ -54,6 +56,11 @@ public class ProductSteps {
     private Product productEdit;
     private APIProduct apiProduct;
     private Response response;
+    private World world;
+
+    public ProductSteps(World world){
+        this.world=world;
+    }
 
     /**
      * Navigates to the Product page.
@@ -139,6 +146,7 @@ public class ProductSteps {
         log.info("iGoToTheProductPage -----> Start create a Product for API");
         product = productsApi.get(0);
         product.updateProductName();
+        world.setProduct(product);
         apiProduct = new APIProduct(product);
         apiProduct.createProductByAPI();
     }
