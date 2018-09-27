@@ -2,7 +2,7 @@ Feature:Create a new Quote
 
   Background:
     Given I navigate to Login page
-    And I login as "admin user" User
+    And I login as "other role user" User
 
   Scenario: Verify that it is possible to create a new Opportunity with Quote
     Given I have an Account created with the following information
@@ -17,8 +17,9 @@ Feature:Create a new Quote
     And I click on New Opportunities
     Given I created opportunity with the following information
       | Opportunity Name | Account Name | Close Date | Stage       |
-      | Naomi            | Fely         | 09/27/2018 | Prospecting |
+      | Naomi            | Fely         | 26/09/2018 | Prospecting |
     Then The opportunity should be displayed in details page
+
     When I create a new Quote with
       | Quote Name |
       | quotes     |

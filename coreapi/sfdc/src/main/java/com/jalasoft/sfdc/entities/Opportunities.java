@@ -6,7 +6,6 @@ import java.util.Date;
  * User class opportunities the information.
  *
  * @author Ketty Camacho Vasquez
- *
  */
 public class Opportunities {
 
@@ -14,26 +13,25 @@ public class Opportunities {
     private String closeDate;
     private String stage;
     private String id;
+    private String accountName;
 
     /**
-     *
      * @return
      */
-    public String getAccount() {
-        return account;
+    public String getAccountName() {
+        return accountName;
     }
 
     /**
-     *
-     * @param account
+     * @param accountName
      */
-    public void setAccount(String account) {
-        this.account = account;
+    public void setAccountName(String accountName) {
+        this.accountName = accountName;
     }
 
-    private String account;
     /**
      * get  opportunities Name.
+     *
      * @return opportunityName.
      */
     public String getOpportunityName() {
@@ -42,6 +40,7 @@ public class Opportunities {
 
     /**
      * set opportunities Name
+     *
      * @param opportunityName
      */
     public void setOpportunityName(String opportunityName) {
@@ -50,14 +49,16 @@ public class Opportunities {
 
     /**
      * get Close Date .
-     * @return  closeDate.
+     *
+     * @return closeDate.
      */
     public String getCloseDate() {
         return closeDate;
     }
 
     /**
-     *set Close Date.
+     * set Close Date.
+     *
      * @param closeDate close date.
      */
     public void setCloseDate(String closeDate) {
@@ -66,6 +67,7 @@ public class Opportunities {
 
     /**
      * get of stage.
+     *
      * @return stage.
      */
     public String getStage() {
@@ -73,7 +75,8 @@ public class Opportunities {
     }
 
     /**
-     *set of Stage.
+     * set of Stage.
+     *
      * @param stage stage.
      */
     public void setStage(String stage) {
@@ -86,11 +89,9 @@ public class Opportunities {
     public void updateOpportunityName() {
         long timeStamp = new Date().getTime();
         this.opportunityName += timeStamp;
-
     }
 
     /**
-     *
      * @return
      */
     public String getId() {
@@ -98,7 +99,6 @@ public class Opportunities {
     }
 
     /**
-     *
      * @param id
      */
     public void setId(String id) {
