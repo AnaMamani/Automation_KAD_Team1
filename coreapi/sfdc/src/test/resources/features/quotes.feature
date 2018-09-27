@@ -19,9 +19,13 @@ Feature:Create a new Quote
       | Opportunity Name | Account Name | Close Date | Stage       |
       | Naomi            | Fely         | 09/27/2018 | Prospecting |
     Then The opportunity should be displayed in details page
-    When I create a new Quote with "quotes" Name
-    When Select a price book "Standard"
-    When the product is
-    And I add the following line item
-      | Product Name    | price | quantity |
-      | Computers IDs   | 0     | 50       |
+    When I create a new Quote with
+      | Quote Name |
+      | quotes     |
+      And Select a price book "Standard"
+    When select the name of product create
+      And I add the following line item
+       | Sales Price | quantity |
+       | 78          | 50       |
+    Then the Quotes should be displayed in Quotes Details page
+     And the Quotes should be created

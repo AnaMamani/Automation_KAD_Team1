@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.entities.Opportunities;
+import com.jalasoft.sfdc.entities.Product;
 import com.jalasoft.sfdc.entities.Quote;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesDetailPage;
@@ -38,6 +39,7 @@ public class QuotesSteps {
     private QuoteLineItemsPage quoteLineItemsPage;
     private QuotesProductSelectPage quotesProductSelectPage;
     private QuotesAddItemsPage quotesAddItemsPage;
+    private Product product;
 
 
     @When("^I go to Opportunities Page$")
@@ -85,21 +87,31 @@ public class QuotesSteps {
     /**
      * click the button for create a new quotes all
      */
-    @When("^I create a new Quote with \"([^\"]*)\" Name$")
-    public void iCreateANewQuoteWithName(String quoteName)  {
+    @When("^I create a new Quote with$")
+    public void iCreateANewQuoteWith(List<Quote> listQuote) {
         quotesFormPage = opportunitiesDetailPage.clickQuotesNew();
-        quotesDetailPage = quotesFormPage.createQuote(quoteName);
-        quoteLineItemsPage=quotesDetailPage.clickAddLineItem();
+        this.quote = listQuote.get(0);
+        quotesDetailPage = quotesFormPage.createQuote(quote);
+        quoteLineItemsPage = quotesDetailPage.clickAddLineItem();
     }
 
     /**
      * for select option Standard
+     *
      * @param selectStandard
      */
-    @When("^Select a price book \"([^\"]*)\"$")
-    public void selectAPriceBook(String selectStandard)  {
-        quotesProductSelectPage=quoteLineItemsPage.selectPriceBook(selectStandard);
-        //quotesAddItemsPage=quotesProductSelectPage.selectProductQuote();
+    @And("^Select a price book \"([^\"]*)\"$")
+    public void selectAPriceBook(String selectStandard) {
+        quotesProductSelectPage = quoteLineItemsPage.selectPriceBook(selectStandard);
+
+    }
+
+    /**
+     * get the name of product for select
+     */
+    @When("^select the name of product create$")
+    public void selectTheNameOfProductCreate() {
+        quotesAddItemsPage = quotesProductSelectPage.selectProductQuote(product.getProductName());
     }
 
     /**
@@ -110,6 +122,17 @@ public class QuotesSteps {
     @And("^I add the following line item$")
     public void iAddTheFollowingLineItem(List<Quote> listQuote) {
         this.quote = listQuote.get(0);
-
+        quotesDetailPage = quotesAddItemsPage.addPriceBook(quote);
     }
+
+    /**
+     * show in quotes detail page
+     */
+    @Then("^the Quotes should be displayed in Quotes Details page$")
+    public void theQuotesShouldBeDisplayedInQuotesDetailsPage()  {
+        System.out.println(quote.getName()+"hereeeeeeeeeeeeeeeeeeeeeee");
+        assertEquals(quote.getName(),quotesDetailPage.isSuccessDisplayedQuoteDetail());
+    }
+
+
 }

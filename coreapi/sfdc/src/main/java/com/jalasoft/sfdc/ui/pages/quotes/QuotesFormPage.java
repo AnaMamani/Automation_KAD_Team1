@@ -14,5 +14,5 @@ public abstract class QuotesFormPage extends BasePage {
      * for create a Quote
      * @return  QuotesDetailPage
      */
-     public abstract QuotesDetailPage createQuote(String quoteName);
+     public abstract QuotesDetailPage createQuote(Quote quote);
 }

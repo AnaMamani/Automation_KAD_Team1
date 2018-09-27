@@ -3,6 +3,8 @@ package com.jalasoft.sfdc.ui.pages.quotes;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 /**
  *  class.
  *
@@ -24,7 +26,7 @@ public class QuoteLineItemsPageClassic extends QuoteLineItemsPage {
      */
     @Override
     public void waitUntilPageObjectIsLoaded() {
-
+        wait.until(ExpectedConditions.visibilityOf(saveBtnItem));
     }
 
     /**
