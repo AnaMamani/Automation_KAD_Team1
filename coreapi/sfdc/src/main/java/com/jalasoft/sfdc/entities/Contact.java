@@ -3,20 +3,24 @@ package com.jalasoft.sfdc.entities;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Contact class.
+ *
+ * @author Ana Maria Mamani Zenteno
+ * @since 8/06/2018
+ */
 public class Contact {
-    private String firstName =" ";
-    private String lastName =" ";
-    private String accountName =" ";
-    private String title =" ";
-    private String email =" ";
-    private String phone =" ";
-    private String street =" ";
-    private String city =" ";
-    private String state =" ";
-    private String country =" ";
+    private String firstName;
+    private String lastName;
+    private String accountName;
+    private String title;
+    private String email;
+    private String phone;
+    private String street;
+    private String city;
+    private String state;
+    private String country;
     private String id;
-
-
 
     /**
      * Gets the Contact firstName.
@@ -200,6 +204,7 @@ public class Contact {
 
     /**
      * get for id
+     *
      * @return a String
      */
     public String getId() {
@@ -208,6 +213,7 @@ public class Contact {
 
     /**
      * Set the Id
+     *
      * @param id
      */
     public void setId(String id) {
@@ -218,7 +224,7 @@ public class Contact {
      * Update the product name.
      */
     public void updateContactName() {
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+        Long timeStamp = new Date().getTime();
         this.lastName += timeStamp;
     }
 }

@@ -8,4 +8,10 @@ import com.jalasoft.sfdc.ui.BasePage;
  * @since 9/24/2018
  */
 public abstract class QuotesProductSelectPage extends BasePage {
+    /**
+     * for select of product in quotes
+     * @param productName String
+     * @return QuotesAddItemsPage
+     */
+    public abstract QuotesAddItemsPage selectProductQuote(String productName);
 }
