@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.quotes;
 
 import com.jalasoft.sfdc.entities.Quote;
+import com.jalasoft.sfdc.entities.QuotesLineItem;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -12,9 +13,9 @@ import org.openqa.selenium.support.FindBy;
  */
 public class QuotesAddItemsPageClassic extends QuotesAddItemsPage {
 
-    @FindBy(xpath = "//input[@id='UnitPrice01u0b00001qyiMQ']")
+    @FindBy(xpath = "//input[contains(@id,'UnitPrice')]")
     private WebElement quoteSalesPrice;
-    @FindBy(xpath = "//input[@id='Quantity01u0b00001qyiMQ']")
+    @FindBy(xpath = "//input[contains(@id,'Quantity')]")
     private WebElement quoteQuantity;
     @FindBy(xpath = "(//input[@value=' Save '])[1]")
     private WebElement saveBtn;
@@ -29,13 +30,13 @@ public class QuotesAddItemsPageClassic extends QuotesAddItemsPage {
     /**
      * for calculate for data
      *
-     * @param quote
+     * @param quotesLineItem
      * @return
      */
     @Override
-    public QuotesDetailPage addPriceBook(Quote quote) {
-        driverTools.setInputField(quoteSalesPrice, quote.getSalesPrice());
-        driverTools.setInputField(quoteQuantity, quote.getQuantity());
+    public QuotesDetailPage addPriceBook(QuotesLineItem quotesLineItem) {
+        driverTools.setInputField(quoteSalesPrice, quotesLineItem.getSalesPrice());
+        driverTools.setInputField(quoteQuantity, quotesLineItem.getQuantity());
         driverTools.clickElement(saveBtn);
         return new QuotesDetailPageClassic();
     }
