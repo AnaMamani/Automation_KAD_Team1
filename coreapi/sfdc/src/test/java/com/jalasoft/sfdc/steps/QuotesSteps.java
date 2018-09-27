@@ -176,7 +176,7 @@ public class QuotesSteps {
     @And("^the Quotes should be created$")
     public void theQuotesShouldBeCreated() {
         log.info("verify the created quote by API =================>");
-        quoteApi = apiQuote.getContactValuesByAPI();
+        quoteApi = apiQuote.getQuoteValuesByAPI();
         final double total = Integer.parseInt(quotesLineItem.getQuantity()) * Integer.parseInt(quotesLineItem.getSalesPrice());
         assertEquals("should be: ", quoteApi.getQuoteName(), quote.getQuoteName());
         assertEquals("should be :", String.valueOf(total), quoteApi.getQuoteGranTotal());

@@ -45,7 +45,7 @@ public class APIQuote {
      *
      * @return a contact
      */
-    public Quote getContactValuesByAPI() { //ToDo define what aee you going to return
+    public Quote getQuoteValuesByAPI() { //ToDo define what aee you going to return
         response = APIManager.getInstance().get(SLASH.concat(SOBJECTS).concat(SLASH).concat(QUOTE).
                 concat(SLASH).concat(quote.getId()));
         quoteApi.setQuoteName(response.jsonPath().get(QUOTE_NAME).toString());
