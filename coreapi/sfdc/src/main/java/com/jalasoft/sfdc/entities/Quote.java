@@ -10,19 +10,18 @@ import java.util.List;
  */
 public class Quote {
     private String id;
-    private String name;
+    private String quoteName;
     private String expirationDate;
     private String status;
     private String description;
-    private String salesPrice;
-    private String quantity;
 
-    public String getName() {
-        return name;
+
+    public String getQuoteName() {
+        return quoteName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setQuoteName(String quoteName) {
+        this.quoteName = quoteName;
     }
 
     public String getExpirationDate() {
@@ -47,22 +46,6 @@ public class Quote {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public String getSalesPrice() {
-        return salesPrice;
-    }
-
-    public void setSalesPrice(String salesPrice) {
-        this.salesPrice = salesPrice;
-    }
-
-    public String getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(String quantity) {
-        this.quantity = quantity;
     }
 
     public String getId() {

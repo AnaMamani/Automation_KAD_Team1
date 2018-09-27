@@ -14,7 +14,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class QuotesFormPageClassic extends QuotesFormPage {
 
-    @FindBy(id = "Name")
+    @FindBy(xpath = "//input[@id='Name']")
     private WebElement quoteNameTxt ;
 
     @FindBy(id = "ExpirationDate")
@@ -44,7 +44,7 @@ public class QuotesFormPageClassic extends QuotesFormPage {
      */
     @Override
     public QuotesDetailPage createQuote(Quote quote) {
-        driverTools.setInputField(quoteNameTxt, quote.getName());
+        driverTools.setInputField(quoteNameTxt, quote.getQuoteName());
         driverTools.clickElement(saveBtn);
         return new QuotesDetailPageClassic();
     }

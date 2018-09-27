@@ -35,7 +35,7 @@ public class APIQuote {
      */
     protected Map<String, Object> covertEntityToMap() {
         Map<String, Object> map = new HashMap<>();
-        map.put(QUOTE_NAME, quote.getName());
+        //map.put(QUOTE_NAME, quote.getName());
         return map;
     }
 

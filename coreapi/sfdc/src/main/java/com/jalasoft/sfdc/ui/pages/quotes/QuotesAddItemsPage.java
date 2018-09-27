@@ -1,6 +1,7 @@
 package com.jalasoft.sfdc.ui.pages.quotes;
 
 import com.jalasoft.sfdc.entities.Quote;
+import com.jalasoft.sfdc.entities.QuotesLineItem;
 import com.jalasoft.sfdc.ui.BasePage;
 
 /**
@@ -17,5 +18,5 @@ public abstract class QuotesAddItemsPage extends BasePage {
      * @param quote
      * @return
      */
-    public abstract QuotesDetailPage addPriceBook(Quote quote);
+    public abstract QuotesDetailPage addPriceBook(QuotesLineItem quote);
 }

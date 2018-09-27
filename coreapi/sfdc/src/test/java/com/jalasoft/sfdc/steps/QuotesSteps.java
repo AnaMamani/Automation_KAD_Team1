@@ -34,6 +34,7 @@ public class QuotesSteps {
     private Opportunities opportunity;
     private World world;
     private Quote quote;
+    private QuotesLineItem quotesLineItem;
     private QuotesDetailPage quotesDetailPage;
     private QuoteLineItemsPage quoteLineItemsPage;
     private QuotesProductSelectPage quotesProductSelectPage;
@@ -64,7 +65,7 @@ public class QuotesSteps {
     }
 
     /**
-     * @param opportunities of Opportunity
+     * @param
      */
     @Given("^I created opportunity with the following information$")
     public void iCreatedOpportunityWithTheFollowingInformation(List<Opportunities> opportunities1) {
@@ -88,6 +89,10 @@ public class QuotesSteps {
     //*********************************************************************************************
 //                                     Quotes
 // ********************************************************************************************/
+    @And("^I click on New quotes button$")
+    public void iClickOnNewQuotesButton() {
+        quotesFormPage = opportunitiesDetailPage.clickQuotesNew();
+    }
 
     /**
      * click the button for create a new quotes all
@@ -95,7 +100,6 @@ public class QuotesSteps {
 
     @When("^I create a new Quote with$")
     public void iCreateANewQuoteWith(List<Quote> listQuote) {
-        quotesFormPage = opportunitiesDetailPage.clickQuotesNew();
         this.quote = listQuote.get(0);
         quotesDetailPage = quotesFormPage.createQuote(quote);
         quoteLineItemsPage = quotesDetailPage.clickAddLineItem();
@@ -110,7 +114,6 @@ public class QuotesSteps {
     @And("^Select a price book \"([^\"]*)\"$")
     public void selectAPriceBook(String selectStandard) {
         quotesProductSelectPage = quoteLineItemsPage.selectPriceBook(selectStandard);
-
     }
 
     /**
@@ -118,7 +121,8 @@ public class QuotesSteps {
      */
     @When("^select the name of product create$")
     public void selectTheNameOfProductCreate() {
-        quotesAddItemsPage = quotesProductSelectPage.selectProductQuote(product.getProductName());
+        System.out.println(world.getProduct().getProductName()+"*************ketty************");
+        quotesAddItemsPage = quotesProductSelectPage.selectProductQuote( world.getProduct().getProductName());
     }
 
     /**
@@ -127,19 +131,16 @@ public class QuotesSteps {
      * @throws Throwable
      */
     @And("^I add the following line item$")
-    public void iAddTheFollowingLineItem(List<Quote> listQuote) {
-        this.quote = listQuote.get(0);
-        quotesDetailPage = quotesAddItemsPage.addPriceBook(quote);
+    public void iAddTheFollowingLineItem(List<QuotesLineItem> listQuote) {
+        quotesLineItem = listQuote.get(0);
+        quotesDetailPage = quotesAddItemsPage.addPriceBook(quotesLineItem);
     }
-
     /**
      * show in quotes detail page
      */
     @Then("^the Quotes should be displayed in Quotes Details page$")
     public void theQuotesShouldBeDisplayedInQuotesDetailsPage()  {
-        System.out.println(quote.getName()+"hereeeeeeeeeeeeeeeeeeeeeee");
-        assertEquals(quote.getName(),quotesDetailPage.isSuccessDisplayedQuoteDetail());
+        System.out.println(quote.getQuoteName()+"hereeeeeeeeeeeeeeeeeeeeeee");
+        assertEquals(quote.getQuoteName(),quotesDetailPage.isSuccessDisplayedQuoteDetail());
     }
-
-
 }
