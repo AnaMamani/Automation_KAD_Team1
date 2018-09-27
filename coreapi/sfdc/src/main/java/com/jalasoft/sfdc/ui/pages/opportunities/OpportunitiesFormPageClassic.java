@@ -30,6 +30,7 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
     @FindBy(id = "opp4")
     private WebElement accountNameOpportunityTxt;
 
+   // private static final String STAGE_LBL = "//select[@id='opp11']/option[contains(text(),'%s')]";
 
     /**
      * Waits until page object is loaded.
@@ -47,10 +48,11 @@ public class OpportunitiesFormPageClassic extends OpportunitiesFormPage {
      */
     @Override
     public OpportunitiesDetailPage createOpportunity(Opportunities opportunity) {
+
         log.info("createOpportunity : set the field");
-        System.out.println(opportunity.getAccountName() + "==============*******************");
         driverTools.setInputField(opportunityNameTxt, opportunity.getOpportunityName());
         driverTools.clickElement(clickStage);
+       // driverTools.isElementDisplayed(By.xpath(String.format(STAGE_LBL,opportunity.getStage())));
         driverTools.clickElement(By.xpath(" //select[@id='opp11']/option[contains(text(),'" + opportunity.getStage() + "')]"));
         driverTools.setInputField(closeDateTxt, opportunity.getCloseDate());
         driverTools.setInputField(accountNameOpportunityTxt, opportunity.getAccountName());

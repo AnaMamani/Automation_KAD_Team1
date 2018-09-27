@@ -2,7 +2,6 @@ package com.jalasoft.sfdc.steps;
 
 import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.entities.Account;
-import com.jalasoft.sfdc.entities.Opportunities;
 import com.jalasoft.sfdc.entities.World;
 import com.jalasoft.sfdc.ui.PageFactory;
 import com.jalasoft.sfdc.ui.PageTransporter;
@@ -11,7 +10,6 @@ import com.jalasoft.sfdc.ui.pages.account.AccountListPage;
 import com.jalasoft.sfdc.ui.pages.account.AccountFormPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -48,7 +46,7 @@ public class AccountsSteps {
     private Response response;
 
     public AccountsSteps(World world) {
-        this.world=world;
+        this.world = world;
     }
 
     /**
@@ -79,10 +77,9 @@ public class AccountsSteps {
      */
     @And("^I create an Account with the following information$")
     public void iCreateAccount(List<Account> accounts) {
-
         log.info("iGoToTheAccountPage -----> Start homePage");
-
         this.account = accounts.get(0);
+        account.updateAccountName();
         apiAccount = new APIAccount(account);
         account.setAccountName(accounts.get(0).getAccountName());
         accountDetailPage = accountFormPage.createAccount(account);
@@ -101,15 +98,15 @@ public class AccountsSteps {
     /**
      * The Account was Create
      */
-    @And("^The Account should be created$")
-    public void theProductAccountBeCreated() {
+    @And("^the Account should be created$")
+    public void theAccountsShouldBeCreated() {
+        log.info("Validation for API----->    " + account.getAccountName());
         accountApi = apiAccount.getAccountValuesByAPI();
-        System.out.println(account.getAccountName() + "++++++++Name+++++Normal ");
-        System.out.println(accountApi.getAccountName() + "++++++++Name+++++Api ");
         assertEquals(account.getAccountName(), accountApi.getAccountName());
         assertEquals(account.getAccountNumber(), accountApi.getAccountNumber());
         assertEquals(account.getPhone(), accountApi.getPhone());
         assertEquals(account.getType(), accountApi.getType());
+
     }
 
 //*********************************************************************************
@@ -195,8 +192,7 @@ public class AccountsSteps {
      * Delete a Account
      */
     @When("^I click Delete Account button$")
-    public void iGoDeleteAAccount() {
-        //apiAccount.deleteAccountByAPI();
+    public void iGoDeleteAccount() {
         accountListPage = accountDetailPage.deleteAnAccount();
     }
 
@@ -215,9 +211,10 @@ public class AccountsSteps {
     @And("^the Account should be removed$")
     public void theAccountShouldBeRemoved() {
         log.info("Validation delete for API ===>" + account.getAccountName() + " ====>" + account.getId());
-        response = apiAccount.deleteAccountByAPI();
-        assertTrue(response.asString().isEmpty(), "should be return :");
 
+        final String deleteEntity = "entity is deleted";
+        response = apiAccount.deleteAccountByAPI();
+        assertTrue(response.asString().contains(deleteEntity), "should be return :");
     }
 
     //****************************************************************
@@ -229,6 +226,5 @@ public class AccountsSteps {
         apiAccount.deleteAccountByAPI();
 
     }
-
 
 }

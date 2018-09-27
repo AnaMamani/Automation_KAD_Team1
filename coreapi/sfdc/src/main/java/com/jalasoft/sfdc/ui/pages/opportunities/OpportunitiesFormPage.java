@@ -1,6 +1,5 @@
 package com.jalasoft.sfdc.ui.pages.opportunities;
 
-import com.jalasoft.sfdc.entities.Account;
 import com.jalasoft.sfdc.entities.Opportunities;
 import com.jalasoft.sfdc.ui.BasePage;
 

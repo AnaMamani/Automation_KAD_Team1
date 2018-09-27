@@ -10,6 +10,7 @@ import com.jalasoft.sfdc.ui.ListBasePage;
  * @author Ketty Camacho Vasquez
  */
 public abstract class OpportunitiesListPage extends ListBasePage {
+
     /**
      * This method perform an action and create a new OpportunitiesFormPage.
      *
