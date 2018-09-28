@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class ContactListPageClassic extends ContactListPage {
 
     /**
-     * Methos for the button new.
+     * Method for the button new.
      * @return ContactFormPage.
      */
     @Override
@@ -30,7 +30,7 @@ public class ContactListPageClassic extends ContactListPage {
      * @return a PageFactory
      */
     @Override
-    public boolean contactSearch(Contact contact) {
+    public boolean isSuccessDeleteContact(Contact contact) {
         return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'"+contact.getFirstName()+"')]"));
     }
 

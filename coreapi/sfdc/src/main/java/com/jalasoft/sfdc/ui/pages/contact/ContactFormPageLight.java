@@ -21,22 +21,22 @@ public class ContactFormPageLight extends ContactFormPage {
     @FindBy(xpath = "//span[text()='Title']/parent::label/following-sibling::input")
     private WebElement titleTxt;
 
-    @FindBy(xpath = "//span[text()='Email']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//*[@type='email']")
     private WebElement emailTxt;
-
+    //span[text()='Email']/parent::label/following-sibling::input
     @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
     private WebElement phoneTxt;
 
-    @FindBy(xpath = "//span[text()='Other Street']/parent::label/following-sibling::TextArea")
+    @FindBy(xpath = "//span[text()='Mailing Street']/parent::label/following-sibling::TextArea")
     private WebElement streetTxt;
 
-    @FindBy(xpath = "//span[text()='Other City']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//span[text()='Mailing City']/parent::label/following-sibling::input")
     private WebElement cityTxt;
 
-    @FindBy(xpath = "//span[text()='Other State/Province']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//span[text()='Mailing State/Province']/parent::label/following-sibling::input")
     private WebElement stateTxt;
 
-    @FindBy(xpath = "//span[text()='Other Country']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//span[text()='Mailing Country']/parent::label/following-sibling::input")
     private WebElement countryTxt;
 
     @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")

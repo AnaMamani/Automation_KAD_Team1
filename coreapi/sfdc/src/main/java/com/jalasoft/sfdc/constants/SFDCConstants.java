@@ -16,10 +16,8 @@ public final class SFDCConstants {
 
     //Contacts
     public final static String CONTACT = "Contact";
-    public final static String CONTACT_NAME = "Name";
     public final static String CONTACT_FIRST_NAME = "FirstName";
     public final static String CONTACT_LAST_NAME = "LastName";
-    public final static String CONTACT_ACCOUNT_NAME = "AccountName";
     public final static String CONTACT_TITLE = "Title";
     public final static String CONTACT_PHONE = "Phone";
     public final static String CONTACT_EMAIL = "Email";
@@ -27,7 +25,7 @@ public final class SFDCConstants {
     public final static String CONTACT_CITY = "MailingCity";
     public final static String CONTACT_STATE = "MailingState";
     public final static String CONTACT_COUNTRY = "MailingCountry";
-    public final static String URL_CONTACT_LIGHT = "https://na57.lightning.force.com/lightning/o/Contact/";
+    public final static String URL_CONTACT_LIGHT = "https://na57.lightning.force.com/lightning/r/Contact/";
     public final static String URL_CONTACT_CLASSIC = "https://na57.salesforce.com/";
 
 

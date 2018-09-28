@@ -27,6 +27,9 @@ public abstract class ListBasePage extends BasePage {
         driverTools.clickElement(getItemLinkBy(linkText));
     }
 
+    /**
+     *  A button of new
+     */
     protected void clickNewBtn() {
         driverTools.clickElement(newBtn);
     }
