@@ -15,6 +15,7 @@ public class User {
     private String grantType = "";
     private String clientId = "";
     private String clientSecret = "";
+    private String alias = "";
 
     /**
      * Sets the user name.
@@ -162,5 +163,13 @@ public class User {
      */
     public void setClientSecret(String clientSecret) {
         this.clientSecret = clientSecret;
+    }
+
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 }

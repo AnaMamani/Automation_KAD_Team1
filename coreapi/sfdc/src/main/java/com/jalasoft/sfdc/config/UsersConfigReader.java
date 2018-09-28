@@ -79,6 +79,7 @@ public final class UsersConfigReader {
                 user.setClientSecret(usersReader.getKeyValue(alias[0].substring(1, alias[0].length() - 1), CLIENT_SECRET));
                 user.setFirstName(usersReader.getKeyValue(alias[0].substring(1, alias[0].length() - 1), FIRST_NAME));
                 user.setLastName(usersReader.getKeyValue(alias[0].substring(1, alias[0].length() - 1), LAST_NAME));
+                user.setAlias(alias[0].substring(1, alias[0].length() - 1));
 
                 users.put(alias[0].substring(1, alias[0].length() - 1), user);
             }
@@ -103,5 +104,12 @@ public final class UsersConfigReader {
         return user;
     }
 
-
+    /**
+     * Gets the user given the alias.
+     *
+     * @return User.
+     */
+    public User getUser() {
+        return user;
+    }
 }

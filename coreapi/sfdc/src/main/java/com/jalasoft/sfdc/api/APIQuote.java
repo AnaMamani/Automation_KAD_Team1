@@ -9,6 +9,12 @@ import java.util.Map;
 
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
+/**
+ * API Quote class.
+ *
+ * @author Denis Camacho.
+ * @since 9/21/2018
+ */
 public class APIQuote {
 
     protected APIManager apiManager = APIManager.getInstance();
@@ -68,7 +74,7 @@ public class APIQuote {
      * this method delete Api
      */
     public Response deleteQuoteByAPI() {
-        response = apiManager.delete(OPPORTUNITY, quote.getId());
+        response = apiManager.delete(QUOTE, quote.getId());
         System.out.println("Query response delete: ***************************" + response.asString());
         return response;
     }

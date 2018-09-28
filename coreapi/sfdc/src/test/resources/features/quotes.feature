@@ -1,9 +1,11 @@
+@Quotes
 Feature:Create a new Quote
 
   Background:
     Given I navigate to Login page
-    And I login as "admin user" User
+      And I login as "local user" User
 
+  @deleteEntities
   Scenario: Verify that it is possible to create a new Opportunity with Quote
     Given I have an Account created with the following information
       | Account Name | Account Number | Phone   | Fax       | Billing  City | Billing State | Billing Country | Number of Location | Type     |
@@ -30,4 +32,4 @@ Feature:Create a new Quote
        | Sales Price | quantity |
        | 80          | 50       |
     Then the Quote should be displayed in Quotes Details page
-     And the Quote should be created
+      And the Quote should be created

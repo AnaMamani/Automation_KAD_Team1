@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  * @author Denis Camacho.
  * @since 9/11/2018
  */
-
 public class ProductListPageClassic extends ProductListPage {
 
     /**

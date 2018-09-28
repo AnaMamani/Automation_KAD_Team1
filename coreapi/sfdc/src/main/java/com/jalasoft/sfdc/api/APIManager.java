@@ -2,6 +2,7 @@ package com.jalasoft.sfdc.api;
 
 import com.jalasoft.sfdc.config.ServersConfigReader;
 import com.jalasoft.sfdc.config.UsersConfigReader;
+import com.jalasoft.sfdc.entities.User;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
@@ -18,8 +19,9 @@ import static io.restassured.http.ContentType.JSON;
 
 public class APIManager {
     private Logger log = Logger.getLogger(getClass());
-
-    private final String ADMIN_USER = "admin user";
+    //entity.
+    private User user = UsersConfigReader.getInstance().getUser();
+    private final String CURRENT_USER = user.getAlias();
     private final String GRANT_TYPE = "grant_type";
     private final String CLIENT_ID = "client_id";
     private final String CLIENT_SECRET = "client_secret";
@@ -57,18 +59,18 @@ public class APIManager {
      * @return String.
      */
     private String getAccessTokenHeader() {
-        System.out.println(usersConfigReader.getUserByAlias(ADMIN_USER).getPassword());
-       // System.out.println(usersConfigReader.getUserByAlias(ADMIN_USER).getUserToken());
+        System.out.println(usersConfigReader.getUserByAlias(CURRENT_USER).getPassword());
+        // System.out.println(usersConfigReader.getUserByAlias(CURRENT_USER).getUserToken());
         Response authenticationResponse = RestAssured.given()
                 .relaxedHTTPSValidation()
                 .baseUri(serversConfigReader.getTokenBaseUri())
-                .param(GRANT_TYPE, usersConfigReader.getUserByAlias(ADMIN_USER).getGrantType())
-                .param(CLIENT_ID, usersConfigReader.getUserByAlias(ADMIN_USER).getClientId())
-                .param(CLIENT_SECRET, usersConfigReader.getUserByAlias(ADMIN_USER).getClientSecret())
-                .param(USERNAME, usersConfigReader.getUserByAlias(ADMIN_USER).getUserName())
-                .param(PASSWORD, usersConfigReader.getUserByAlias(ADMIN_USER).getPassword().concat(usersConfigReader.getUserByAlias(ADMIN_USER).getUserToken()))
+                .param(GRANT_TYPE, usersConfigReader.getUserByAlias(CURRENT_USER).getGrantType())
+                .param(CLIENT_ID, usersConfigReader.getUserByAlias(CURRENT_USER).getClientId())
+                .param(CLIENT_SECRET, usersConfigReader.getUserByAlias(CURRENT_USER).getClientSecret())
+                .param(USERNAME, usersConfigReader.getUserByAlias(CURRENT_USER).getUserName())
+                .param(PASSWORD, usersConfigReader.getUserByAlias(CURRENT_USER).getPassword().concat(usersConfigReader.getUserByAlias(CURRENT_USER).getUserToken()))
                 .post();
-        String ret=authenticationResponse.jsonPath().get(ACCESS_TOKEN);
+        String ret = authenticationResponse.jsonPath().get(ACCESS_TOKEN);
         System.out.println(ret);
         return authenticationResponse.jsonPath().get(ACCESS_TOKEN);
     }

@@ -14,20 +14,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-
+/**
+ * Product All Apps Light class.
+ * @author Denis Camacho.
+ * @author Ketty Camacho.
+ * @author Ana Mamani.
+ * @since 9/18/2018
+ */
 public class AllAppsPageLight extends AllAppsPage {
     //PageFactory of selenium.
-
     @FindBy(xpath = "//span[text()='Products' and @class]")
     private WebElement productLink;
 
-
     @FindBy(xpath = "//span[contains(text(),'Price Books')]")
     private WebElement priceBookLink;
-
-//    @FindBy(xpath = "//*[@class='label slds-truncate slds-text-link'][contains(text(),'Accounts')]" )
-//    private WebElement accountLink;
-
     //this find element is to auxiliary for verify the menu the features.
     @FindBy(xpath = "//*[@class='slds-input input']")
     private WebElement productSearchTxt;
@@ -51,7 +51,6 @@ public class AllAppsPageLight extends AllAppsPage {
         log.info("waitUntilPageObjectIsLoaded ----> wait for productSearchTxt");
         wait.until(ExpectedConditions.visibilityOf(productSearchTxt));
     }
-
 
     /**
      * Click ProductList Link.

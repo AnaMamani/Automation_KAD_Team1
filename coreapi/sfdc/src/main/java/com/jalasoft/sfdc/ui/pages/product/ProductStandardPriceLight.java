@@ -1,5 +1,11 @@
 package com.jalasoft.sfdc.ui.pages.product;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/18/2018
+ */
 public class ProductStandardPriceLight extends ProductStandardPrice {
     /**
      * Waits until page object is loaded.

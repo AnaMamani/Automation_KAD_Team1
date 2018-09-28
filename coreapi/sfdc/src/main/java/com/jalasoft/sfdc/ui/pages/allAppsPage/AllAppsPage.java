@@ -7,6 +7,13 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.priceBooks.PriceBookListPage;
 import com.jalasoft.sfdc.ui.pages.product.ProductListPage;
 
+/**
+ * Product All Apps Page class.
+ * @author Denis Camacho.
+ * @author Ketty Camacho.
+ * @author Ana Mamani.
+ * @since 9/18/2018
+ */
 public abstract class AllAppsPage extends BasePage {
 
     /**
