@@ -4,6 +4,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/18/2018
+ */
 public class ProductListPriceBookClassic extends ProductListPriceBook {
     //PageFactory of selenium.
     @FindBy(id = "td0_8")

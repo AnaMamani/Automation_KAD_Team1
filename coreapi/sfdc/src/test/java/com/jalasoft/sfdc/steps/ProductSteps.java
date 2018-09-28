@@ -53,11 +53,19 @@ public class ProductSteps {
     //Entities
     private Product product;
     private Product productApi;
-    private Product productEdit;
-    private APIProduct apiProduct;
-    private Response response;
     private World world;
+    //API
+    private APIProduct apiProduct;
+    // response for API
+    private Response response;
+    //message of delete the entity.
+    private final static String DELETE_ENTITY = "entity is deleted";
 
+    /**
+     * builder of product steps.
+     *
+     * @param world entities.
+     */
     public ProductSteps(World world) {
         this.world = world;
     }
@@ -156,6 +164,7 @@ public class ProductSteps {
      */
     @When("^I go by URL to the Product created$")
     public void iSelectTheProductCreatedByURL() throws MalformedURLException {
+        log.info("PageTransporter -----> transporter at product detail page");
         homePage = PageFactory.getHomePage();
         productDetailPage = PageTransporter.getInstance().navigateToProductPage(product);
     }
@@ -173,10 +182,10 @@ public class ProductSteps {
      */
     @When("^I Edit the Product with the following information$")
     public void iEditTheProductInformationWithTheFollowingInformation(List<Product> editProduct) {
-//        productDetailPage = productListPage.selectProductItem(product);
-        productEdit = editProduct.get(0);
-        productEdit.updateProductName();
-        productDetailPage = productFormPage.editProduct(productEdit);
+        log.info("==================== start of edit product  ====================");
+        product = editProduct.get(0);
+        product.updateProductName();
+        productDetailPage = productFormPage.editProduct(product);
     }
 
     /**
@@ -184,17 +193,17 @@ public class ProductSteps {
      */
     @Then("^the Product Details Page should be displayed with the edited information$")
     public void theProductDetailsPageShouldBeDisplayWithTheInformationOfTheProductUpdated() {
-        log.info("ProductCreated -----> " + productEdit.getProductName() + "====>" + productDetailPage.getProductNameCreated());
-        assertEquals(productEdit.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessEditProduct(productEdit), "the expected result:");
+        log.info("ProductCreated -----> " + product.getProductName() + "====>" + productDetailPage.getProductNameCreated());
+        assertEquals(product.getProductName(), productDetailPage.getProductNameCreated(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessEditProduct(product), "the expected result:");
     }
 
     @And("^the Product should be updated$")
     public void byAPIShouldBeDisplayInformationOfTheProductEdit() {
-        log.info("Validation for API to Edit Product ----->    " + productEdit.getProductName());
+        log.info("Validation for API to Edit Product ----->    " + product.getProductName());
         productApi = apiProduct.getProductValuesByAPI();
-        assertEquals(productEdit.getProductName(), productApi.getProductName(), "should be show the product name:");
-        assertTrue(productDetailPage.isSuccessEditProductByAPI(productApi, productEdit), "the expected result:");
+        assertEquals(product.getProductName(), productApi.getProductName(), "should be show the product name:");
+        assertTrue(productDetailPage.isSuccessEditProductByAPI(productApi, product), "the expected result:");
 
     }
 
@@ -207,9 +216,8 @@ public class ProductSteps {
      */
     @And("^I click Delete Product button$")
     public void iDeleteTheProduct() {
-        // productDetailPage = productListPage.selectProductItem(product);
+        log.info("==================== delete the product by UA ====================");
         productListPage = productDetailPage.deleteProduct(product);
-        //response=apiProduct.deleteProductByAPI();
     }
 
     /**
@@ -222,14 +230,13 @@ public class ProductSteps {
     }
 
     /**
-     *
+     * verify that product delete by API.
      */
     @And("^the Product should be deleted$")
     public void theProductShouldBeDeleted() {
         log.info("Validation delete for API ===>" + product.getProductName() + " ====>" + product.getId());
-        final String deleteEntity = "entity is deleted";
         response = apiProduct.deleteProductByAPI();
-        assertTrue(response.asString().contains(deleteEntity), "should be return :");
+        assertTrue(response.asString().contains(DELETE_ENTITY), "should be return :");
     }
 
     //****************************************************************

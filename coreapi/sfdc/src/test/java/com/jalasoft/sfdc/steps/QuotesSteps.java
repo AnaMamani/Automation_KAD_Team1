@@ -1,6 +1,8 @@
 package com.jalasoft.sfdc.steps;
 
+import com.jalasoft.sfdc.api.APIAccount;
 import com.jalasoft.sfdc.api.APIOpportunities;
+import com.jalasoft.sfdc.api.APIProduct;
 import com.jalasoft.sfdc.api.APIQuote;
 import com.jalasoft.sfdc.entities.*;
 
@@ -11,6 +13,7 @@ import com.jalasoft.sfdc.ui.pages.opportunities.OpportunitiesListPage;
 import com.jalasoft.sfdc.ui.pages.allAppsPage.AllAppsPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
 import com.jalasoft.sfdc.ui.pages.quotes.*;
+import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -22,6 +25,13 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+/**
+ * Quotes Steps class.
+ * @author Denis Camacho.
+ * @author Ketty Camacho.
+ * @author Ana Mamani.
+ * @since 9/18/2018
+ */
 public class QuotesSteps {
     //Logger
     private Logger log = Logger.getLogger(getClass());
@@ -42,9 +52,13 @@ public class QuotesSteps {
     private World world;
     private Quote quote;
     private Quote quoteApi;
+    private QuotesLineItem quotesLineItem;
+    // API
     private APIOpportunities apiOpportunities;
     private APIQuote apiQuote;
-    private QuotesLineItem quotesLineItem;
+    private APIProduct apiProduct;
+    private APIAccount apiAccount;
+
 
     /**
      * builder of QuotesSteps.
@@ -60,10 +74,12 @@ public class QuotesSteps {
 // ********************************************************************************************/
     @When("^I go to Opportunities Page$")
     public void iGoToOpportunitiesListPage() {
-        log.info("iGoToTheProductPage -----> go to opportunities");
+        log.info("iGoToOpportunitiesListPage -----> go to opportunities");
         homePage = PageFactory.getHomePage();
         allAppsPage = homePage.topMenu.goToAllAppsPage();
         opportunitiesListPage = allAppsPage.clickOpportunities();
+        apiProduct = new APIProduct(world.getProduct());
+        apiAccount = new APIAccount(world.getAccount());
     }
 
     /**
@@ -78,12 +94,12 @@ public class QuotesSteps {
     /**
      * created opportunity information
      *
-     * @param opportunities1 list opportunity.
+     * @param listOpportunities list opportunity.
      */
     @Given("^I created opportunity with the following information$")
-    public void iCreatedOpportunityWithTheFollowingInformation(List<Opportunities> opportunities1) {
+    public void iCreatedOpportunityWithTheFollowingInformation(List<Opportunities> listOpportunities) {
         log.info("clickNewOpportunities -----> create an opportunity");
-        opportunity = opportunities1.get(0);
+        opportunity = listOpportunities.get(0);
         opportunity.updateOpportunityName();
         apiOpportunities = new APIOpportunities(opportunity);
         opportunity.setAccountName(world.getAccount().getAccountName());
@@ -170,17 +186,34 @@ public class QuotesSteps {
      */
     @Then("^the Quote should be displayed in Quotes Details page$")
     public void theQuotesShouldBeDisplayedInQuotesDetailsPage() {
-        assertEquals("", quote.getQuoteName(), quotesDetailPage.isSuccessDisplayedQuoteDetail());
+        log.info("verify the created quote by UA =================>");
+        assertEquals("should be :", quote.getQuoteName(), quotesDetailPage.isSuccessDisplayedQuoteDetail());
     }
 
     @And("^the Quote should be created$")
     public void theQuotesShouldBeCreated() {
         log.info("verify the created quote by API =================>");
         quoteApi = apiQuote.getQuoteValuesByAPI();
-        final double total = Integer.parseInt(quotesLineItem.getQuantity()) * Integer.parseInt(quotesLineItem.getSalesPrice());
         assertEquals("should be: ", quoteApi.getQuoteName(), quote.getQuoteName());
-        assertEquals("should be :", String.valueOf(total), quoteApi.getQuoteGranTotal());
-        assertEquals("should be :",world.getAccount().getAccountName(),quoteApi.getQuoteAccountName());
+        assertEquals("should be :", quotesLineItem.getTotalPrice(), quoteApi.getQuoteGranTotal());
+        assertEquals("should be :", world.getAccount().getAccountName(), quoteApi.getQuoteAccountName());
     }
+
+    //****************************************************************
+    //Hooks for @Delete Entities scenarios
+    //****************************************************************
+    @After(value = "@deleteEntities", order = 999)
+    public void afterDeleteEntities() {
+        log.info("After hook @deleteEntities");
+        log.info("=============== delete quote =============== id:" + quote.getId());
+        apiQuote.deleteQuoteByAPI();
+        log.info("=============== delete opportunity =============== id:" + opportunity.getId());
+        apiOpportunities.deleteOpportinitiesByAPI();
+        log.info("=============== delete product =============== id:" + world.getProduct().getId());
+        apiProduct.deleteProductByAPI();
+        log.info("=============== delete account =============== id:" + world.getAccount().getId());
+        apiAccount.deleteAccountByAPI();
+    }
+
 
 }

@@ -5,6 +5,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product Steps class.
+ *
+ * @author Denis Camacho.
+ * @since 9/18/2018
+ */
 public class ProductPriceBookPageClassic extends ProductPriceBookPage {
     //PageFactory of selenium.
     @FindBy(xpath = "//input[@title = 'Select']")

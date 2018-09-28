@@ -5,7 +5,12 @@ import io.restassured.response.Response;
 
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * API Opportunity class.
+ *
+ * @author Denis Camacho.
+ * @since 9/21/2018
+ */
 import static com.jalasoft.sfdc.constants.SFDCConstants.*;
 
 public class APIOpportunities {
@@ -18,7 +23,7 @@ public class APIOpportunities {
     public APIOpportunities(Opportunities opportunities) {
         this.opportunities = opportunities;
         fieldsMap = covertEntityToMap();
-        opportunitiesApi=new Opportunities();
+        opportunitiesApi = new Opportunities();
     }
 
     /**
@@ -29,15 +34,16 @@ public class APIOpportunities {
     protected Map<String, Object> covertEntityToMap() {
         Map<String, Object> map = new HashMap<>();
         map.put(OPPY_NAME, opportunities.getOpportunityName());
-        map.put(OPPY_CLOSE_DATE,opportunities.getCloseDate());
-        map.put(OPPY_STAGE,opportunities.getStage());
-        map.put(OPPY_ACCOUNT_ID,opportunities.getAccountName());
+        map.put(OPPY_CLOSE_DATE, opportunities.getCloseDate());
+        map.put(OPPY_STAGE, opportunities.getStage());
+        map.put(OPPY_ACCOUNT_ID, opportunities.getAccountName());
 
         return map;
     }
 
     /**
-     *  this method get values by Api of Account.
+     * this method get values by Api of Account.
+     *
      * @return accountApi
      */
     public Opportunities getOpportunitiesValuesByAPI() { //ToDo define what aee you going to return
@@ -47,7 +53,7 @@ public class APIOpportunities {
         opportunitiesApi.setCloseDate(response.jsonPath().get(OPPY_CLOSE_DATE).toString());
         opportunitiesApi.setStage(response.jsonPath().get(OPPY_STAGE).toString());
         opportunitiesApi.setAccountName(response.jsonPath().get(OPPY_ACCOUNT_ID).toString());
-         return opportunitiesApi;
+        return opportunitiesApi;
 
     }
 

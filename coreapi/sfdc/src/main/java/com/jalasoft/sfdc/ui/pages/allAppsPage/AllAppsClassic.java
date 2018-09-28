@@ -14,6 +14,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+/**
+ * Product All Apps Classic class.
+ * @author Denis Camacho.
+ * @author Ketty Camacho.
+ * @author Ana Mamani.
+ * @since 9/18/2018
+ */
 public class AllAppsClassic extends AllAppsPage {
     //PageFactory of selenium.
     @FindBy(xpath = "//img[@title='Contacts']")
@@ -104,10 +111,8 @@ public class AllAppsClassic extends AllAppsPage {
 
     @Override
     public OpportunitiesListPage clickOpportunities() {
-
         driverTools.clickElement(oportunitiestLink);
         return new OpportunitiesListPageClassic();
     }
-
 
 }
