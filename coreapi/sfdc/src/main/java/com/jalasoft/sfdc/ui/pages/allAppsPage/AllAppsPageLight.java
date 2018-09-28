@@ -43,6 +43,7 @@ public class AllAppsPageLight extends AllAppsPage {
 
     @FindBy(css = "a[title|='opportunities']")
     private WebElement oportunitiesLink;
+
     /**
      * Waits until page object is loaded.
      */
@@ -71,7 +72,7 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public ContactListPage clickContactLink() {
-        driverTools.setInputField(searchText,"contacts");
+        driverTools.setInputField(searchText, "contacts");
         wait.until(ExpectedConditions.visibilityOf(contactLink));
         driverTools.clickElement(contactLink);
         return new ContactListPageLight();
@@ -95,15 +96,20 @@ public class AllAppsPageLight extends AllAppsPage {
      */
     @Override
     public AccountListPage clickAccountsLink() {
-        driverTools.setInputField(searchText,"accounts");
+        driverTools.setInputField(searchText, "accounts");
         wait.until(ExpectedConditions.visibilityOf(accountLink));
         driverTools.clickElement(accountLink);
-        return  new AccountListPageLight();
+        return new AccountListPageLight();
     }
 
+    /**
+     * click opportunities List PAge
+     *
+     * @return OpportunitiesListPage
+     */
     @Override
     public OpportunitiesListPage clickOpportunities() {
-        driverTools.setInputField(searchText,"opportunities");
+        driverTools.setInputField(searchText, "opportunities");
         wait.until(ExpectedConditions.visibilityOf(oportunitiesLink));
         driverTools.clickElement(oportunitiesLink);
         return new OpportunitiesListPageLight();
