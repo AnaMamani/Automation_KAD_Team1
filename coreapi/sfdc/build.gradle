@@ -95,8 +95,8 @@ task executeFeatures(type: Test) {
     }
 
     doLast {
-        generateReport("build/cucumber/cucumberMerged.json", "build/cucumber/reports")
         //generateReport(project.firstRunJsonPath, project.firstRunReportFolder)
+        generateReport("build/cucumber/cucumberMerged.json", "build/cucumber/reports")
     }
 }
 
