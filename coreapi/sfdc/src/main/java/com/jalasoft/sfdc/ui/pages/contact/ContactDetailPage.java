@@ -40,6 +40,31 @@ public abstract class ContactDetailPage extends BasePage {
 
     public abstract boolean isSuccessEditContact(Contact contact);
 
+    /**
+     * Validate with detail edit for API.
+     */
+    public  boolean isSuccessEditAccountByAPI(Contact contactApi, Contact contact){
+        log.info("isSuccessEditContact:   ");
+        boolean result = true;
+        System.out.println(contact.getFirstName()+"////");
+        System.out.println(contactApi.getFirstName()+"****");
+        System.out.println(contact.getLastName()+"////");
+        System.out.println(contactApi.getLastName()+"****");
+        System.out.println(contact.getPhone()+"////");
+        System.out.println(contactApi.getPhone()+"***");
+        if (contact.getFirstName() != null && contact.getLastName() != null && !contact.getFirstName()
+                .concat(" ").concat(contact.getLastName()).equals(contactApi.getFirstName().concat(" ").concat(contactApi.getLastName()))) {
+            System.out.println("hola");
+            return false;
+        }
+        if (contact.getPhone() != null && !contact.getPhone().equals(contactApi.getPhone())) {
 
+            return false;
+        }
+        if (contact.getTitle() != null && !contact.getTitle().equals(contactApi.getTitle())) {
+            return false;
+        }
+        return result;
+    }
 
 }

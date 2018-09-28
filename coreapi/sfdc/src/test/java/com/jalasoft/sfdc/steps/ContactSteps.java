@@ -9,7 +9,6 @@ import com.jalasoft.sfdc.ui.pages.contact.ContactFormPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactListPage;
 import com.jalasoft.sfdc.ui.pages.contact.ContactDetailPage;
 import com.jalasoft.sfdc.ui.pages.home.HomePage;
-import cucumber.api.PendingException;
 import cucumber.api.java.After;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -76,7 +75,6 @@ public class ContactSteps {
      */
     @Then("^the Contact Details Page should be display with the information of the contact$")
     public void theContactDetailsPageShouldBeDisplayWithTheInformationOfTheContactCreated() {
-        System.out.println(contact.getFirstName().concat(" ").concat(contact.getLastName()) + "***********************************");
         assertEquals(contactDetailPage.isSuccessDisplayedContactDetail(), contact.getFirstName().concat(" ").concat(contact.getLastName()), "full name the Contact is showed");
     }
 
@@ -86,7 +84,7 @@ public class ContactSteps {
     @And("^the Contact should be created$")
     public void theContactShouldBeCreated() {
         contactApi = apiContact.getContactValuesByAPI();
-        System.out.println(apiContact.getContactValuesByAPI().getId());
+        System.out.println(apiContact.getContactValuesByAPI().getPhone() + "**********here*********************");
         assertEquals(contact.getFirstName(), contactApi.getFirstName(), "should be show the contact first name:");
         assertEquals(contact.getLastName(), contactApi.getLastName(), "should be show the contact last name:");
         assertEquals(contact.getTitle(), contactApi.getTitle(), "should be show the contact title:");
@@ -104,9 +102,8 @@ public class ContactSteps {
     public void iHaveAContactWithTheFollowingInformation(List<Contact> contactsApi) {
         contact = contactsApi.get(0);
         contact.updateContactName();
-        apiContact=new APIContact(contact);
+        apiContact = new APIContact(contact);
         apiContact.createContactByAPI();
-        System.out.println(apiContact.getContactValuesByAPI().getId()+"**************************");
     }
 
     /**
@@ -123,9 +120,9 @@ public class ContactSteps {
      */
     @And("^I click Edit button contact$")
     public void iClickEditButtonContact() {
-
         contactFormPage = contactDetailPage.clickEditOption();
     }
+
     /**
      * contact for edit the data
      *
@@ -133,48 +130,61 @@ public class ContactSteps {
      */
     @And("^I edit this Contact with the following information$")
     public void iEditThisContactWithTheFollowingInformation(List<Contact> editContacts) {
-        this.contact = editContacts.get(0);
+        contact = editContacts.get(0);
         contact.updateContactName();
-        contactDetailPage = contactFormPage.editContact(this.contact);
+        contactDetailPage = contactFormPage.editContact(contact);
     }
 
+    /**
+     * Validate by UI with data edit
+     */
     @Then("^the Contact Details Page should be display with the information of the contact update$")
     public void theDisplayWithTheInformationOfTheContactUpdate() {
+        System.out.println("============== Validation for UI ==============");
         assertTrue(contactDetailPage.isSuccessEditContact(contact), "the result expected");
     }
 
+    /**
+     * validate by API with data update
+     */
     @And("^the Contact should be updated$")
-    public void theContactShouldBeUpdated()  {
+    public void theContactShouldBeUpdated() {
+        System.out.println("============== Validation for API ==============");
         contactApi = apiContact.getContactValuesByAPI();
-        assertEquals(contact.getFirstName(), contactApi.getFirstName(), "should be show the contact first name:");
-        assertEquals(contact.getLastName(), contactApi.getLastName(), "should be show the contact last name:");
-        assertEquals(contact.getTitle(), contactApi.getTitle(), "should be show the contact title:");
-        assertEquals(contact.getPhone(), contactApi.getPhone(), "should be show the contact phone:");
-        assertEquals(contact.getEmail(), contactApi.getEmail(), "should be show the contact email:");
+        assertTrue(contactDetailPage.isSuccessEditAccountByAPI(contactApi, contact), "the expected result:");
     }
     //*********************************************************************************************
 //                                     Delete the Contact
 // ********************************************************************************************/
 
+    /**
+     * For delete with Button
+     */
     @And("^I click Delete button contact$")
     public void iClickDeleteButtonContact() {
         contactListPage = contactDetailPage.deleteContact();
     }
+
     /**
-     * verify that the contact is delete
+     * verify that the contact is delete with UI
      */
 
     @Then("^I should see the Contact is delete$")
     public void iShouldSeeTheContactIsDelete() {
-        assertFalse(contactListPage.contactSearch(contact));
+        assertFalse(contactListPage.isSuccessDeleteContact(contact));
     }
 
-
+    /**
+     * validate by API with data dalete
+     */
     @And("^the Contact should be deleted$")
     public void theContactShouldBeDeleted() {
-        assertTrue(response.asString().isEmpty(), "should be return :");
+        final String deleteEntity = "entity is deleted";
+        response = apiContact.deleteContactByAPI();
+        assertTrue(response.asString().contains(deleteEntity), "should be return :");
 
     }
+
     //****************************************************************
     //Hooks for @Delete Product scenarios
     //****************************************************************

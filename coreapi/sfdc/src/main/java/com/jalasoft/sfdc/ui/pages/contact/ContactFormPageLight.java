@@ -21,32 +21,40 @@ public class ContactFormPageLight extends ContactFormPage {
     @FindBy(xpath = "//span[text()='Title']/parent::label/following-sibling::input")
     private WebElement titleTxt;
 
-    @FindBy(xpath = "//span[text()='Email']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//*[@type='email']")
     private WebElement emailTxt;
-
+    //span[text()='Email']/parent::label/following-sibling::input
     @FindBy(xpath = "//span[text()='Phone']/parent::label/following-sibling::input")
     private WebElement phoneTxt;
 
-    @FindBy(xpath = "//span[text()='Other Street']/parent::label/following-sibling::TextArea")
+    @FindBy(xpath = "//span[text()='Mailing Street']/parent::label/following-sibling::TextArea")
     private WebElement streetTxt;
 
-    @FindBy(xpath = "//span[text()='Other City']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//span[text()='Mailing City']/parent::label/following-sibling::input")
     private WebElement cityTxt;
 
-    @FindBy(xpath = "//span[text()='Other State/Province']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//span[text()='Mailing State/Province']/parent::label/following-sibling::input")
     private WebElement stateTxt;
 
-    @FindBy(xpath = "//span[text()='Other Country']/parent::label/following-sibling::input")
+    @FindBy(xpath = "//span[text()='Mailing Country']/parent::label/following-sibling::input")
     private WebElement countryTxt;
 
     @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")
     private WebElement clickBtnSave;
 
-    @FindBy(xpath = "//div[@class='testonly-outputNameWithHierarchyIcon sfaOutputNameWithHierarchyIcon' ]//parent::span)[1]")
+    @FindBy(xpath = "//*[@title='Title']")
     private WebElement auxToContactId;
 
     /**
-     * Method for create contatc.
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
+    }
+
+    /**
+     * Method for create contact.
      *
      * @param contact of into.
      * @return button of save.
@@ -64,17 +72,18 @@ public class ContactFormPageLight extends ContactFormPage {
         driverTools.setInputField(countryTxt, contact.getCountry());
         driverTools.clickElement(clickBtnSave);
         wait.until(ExpectedConditions.visibilityOf(auxToContactId));
-        saveContactId(driver.getCurrentUrl(),contact);
+        saveContactId(driver.getCurrentUrl(), contact);
         return new ContactDetailPageLight();
     }
+
     /**
      * @param currentUrl url.
-     * @param contact product.
+     * @param contact    product.
      */
     private void saveContactId(String currentUrl, Contact contact) {
-        String[] url=currentUrl.split("/");
-        contact.setId(url[url.length-1]);
-        System.out.println("ID: "+contact.getId()+" THIS IS THE CONTACT ID");
+        String[] url = currentUrl.split("/");
+        contact.setId(url[url.length - 2]);
+        System.out.println("ID: " + url[url.length - 2] + " THIS IS THE CONTACT ID");
     }
 
     /**
@@ -108,11 +117,4 @@ public class ContactFormPageLight extends ContactFormPage {
         return new ContactDetailPageLight();
     }
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(clickBtnSave));
-    }
 }

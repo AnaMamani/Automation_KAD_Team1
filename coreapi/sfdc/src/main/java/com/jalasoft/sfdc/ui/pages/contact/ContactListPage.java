@@ -24,5 +24,5 @@ public abstract class ContactListPage extends ListBasePage {
      *
      * @return a PageFactory
      */
-    public abstract boolean contactSearch(Contact contact);
+    public abstract boolean isSuccessDeleteContact(Contact contact);
 }

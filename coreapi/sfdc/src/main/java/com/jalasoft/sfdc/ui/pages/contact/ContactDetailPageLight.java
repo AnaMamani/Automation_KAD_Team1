@@ -27,12 +27,8 @@ public class ContactDetailPageLight extends ContactDetailPage {
     private WebElement clickOptionDelete;
     @FindBy(xpath = "//span[contains(text(),'Delete')]")
     private WebElement messageVerifyDelete;
-
-
     @FindBy(css = "[title='Details']")
-    @CacheLookup
     protected WebElement detailsLinkBtn;
-
     //for validate
     @FindBy(xpath = "//span[contains(text(), 'Name')]/parent::div/following-sibling::div/span/span")
     private WebElement nameTxt;
@@ -42,15 +38,14 @@ public class ContactDetailPageLight extends ContactDetailPage {
     private WebElement phoneTxt;
     @FindBy(xpath = "//span[contains(text(), 'Email')]/parent::div/following-sibling::div/span/span/a")
     private WebElement emailTxt;
-    @FindBy(xpath = "")
-    private WebElement streetTxt;
-    @FindBy(xpath = "")
-    private WebElement cityTxt;
-    @FindBy(xpath = "")
-    private WebElement statetTxt;
-    @FindBy(xpath = "")
-    private WebElement countryTxt;
 
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(detailsLinkBtn));
+    }
 
     /**
      * For show create contact in ContactDetail.
@@ -59,10 +54,7 @@ public class ContactDetailPageLight extends ContactDetailPage {
      */
     @Override
     public String isSuccessDisplayedContactDetail() {
-        System.out.print(contactCreated.getText() + "#####################################################");
-        //driverTools.clickElement(detailsLinkBtn);
         return contactCreated.getText().trim();
-
     }
 
     /**
@@ -76,7 +68,6 @@ public class ContactDetailPageLight extends ContactDetailPage {
         driverTools.clickElement(clickOptionEdit);
         return new ContactFormPageLight();
     }
-
 
     /**
      * Delete Contact of contact detail.
@@ -92,15 +83,6 @@ public class ContactDetailPageLight extends ContactDetailPage {
     }
 
     /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(contactCreated));
-    }
-
-
-    /**
      * Validate with detail.
      *
      * @param contact
@@ -108,8 +90,10 @@ public class ContactDetailPageLight extends ContactDetailPage {
     @Override
     public boolean isSuccessEditContact(Contact contact) {
         driverTools.clickElement(detailsLinkBtn);
+        wait.until(ExpectedConditions.visibilityOf(nameTxt));
+        System.out.println(nameTxt.getText().trim()+"herrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
         boolean result = true;
-        if (contact.getFirstName() != null &&contact.getLastName() != null && !contact.getFirstName()
+        if (contact.getFirstName() != null && contact.getLastName() != null && !contact.getFirstName()
                 .concat(" ").concat(contact.getLastName()).equals(nameTxt.getText().trim())) {
             return false;
         }
@@ -122,8 +106,5 @@ public class ContactDetailPageLight extends ContactDetailPage {
         }
         return result;
     }
-
-
-
 
 }

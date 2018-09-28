@@ -12,10 +12,18 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
  */
 public class ContactListPageLight extends ContactListPage {
 
-
+    /**
+     * Waits until page object is loaded.
+     * {@inheritDoc}
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(newBtn));
+    }
 
     /**
      * Method for the button new.
+     *
      * @return ContactFormPage.
      */
     @Override
@@ -30,16 +38,8 @@ public class ContactListPageLight extends ContactListPage {
      * @return a PageFactory
      */
     @Override
-    public boolean contactSearch(Contact contact) {
-        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'"+contact.getFirstName()+"')]"));
+    public boolean isSuccessDeleteContact(Contact contact) {
+        return driverTools.isElementDisplayed(By.xpath("//*[contains(text(),'" + contact.getFirstName() + "')]"));
     }
 
-    /**
-     *  Waits until page object is loaded.
-     * {@inheritDoc}
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(newBtn));
-    }
 }
