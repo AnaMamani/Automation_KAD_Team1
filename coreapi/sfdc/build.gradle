@@ -95,7 +95,8 @@ task executeFeatures(type: Test) {
     }
 
     doLast {
-        generateReport(project.firstRunJsonPath, project.firstRunReportFolder)
+        generateReport("build/cucumber/cucumberMerged.json", "build/cucumber/reports")
+        //generateReport(project.firstRunJsonPath, project.firstRunReportFolder)
     }
 }
 
@@ -210,9 +211,9 @@ def generateReport(String pathCucumber, String pathReport) {
         List<String> jsonReportFiles = new ArrayList<>()
         jsonReportFiles.add(pathCucumber)
         String buildProjectName = 'SFDC Automation'
-//        Configuration configuration = new Configuration(reportOutputDirectory, buildProjectName)
-//        ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, configuration)
-//        reportBuilder.generateReports()
+        Configuration configuration = new Configuration(reportOutputDirectory, buildProjectName)
+        ReportBuilder reportBuilder = new ReportBuilder(jsonReportFiles, configuration)
+        reportBuilder.generateReports()
     }
 }
 

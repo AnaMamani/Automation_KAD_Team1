@@ -93,7 +93,7 @@ public class QuotesSteps {
     /**
      * Verify the field
      */
-    @Then("^The opportunity should be displayed in details page$")
+    @Then("^the opportunity should be displayed in details page$")
     public void theOpportunityShouldBeDisplayedInDetailsPage() {
         assertEquals(opportunity.getOpportunityName(), opportunitiesDetailPage.getOpportunityCreated());
         assertTrue("create opportunity", opportunitiesDetailPage.isSuccessCreateOpportunity(opportunity));
@@ -114,7 +114,7 @@ public class QuotesSteps {
     //*********************************************************************************************
 //                                     Quotes
 // ********************************************************************************************/
-    @And("^I click on New quotes button$")
+    @And("^I click on New quote button$")
     public void iClickOnNewQuotesButton() {
         log.info("clickQuotesNew -----> return quotesFormPage");
         quotesFormPage = opportunitiesDetailPage.clickQuotesNew();
@@ -123,7 +123,7 @@ public class QuotesSteps {
     /**
      * click the button for create a new quotes all
      */
-    @When("^I create a new Quote with$")
+    @When("^I create a new Quote with the following information$")
     public void iCreateANewQuoteWith(List<Quote> listQuote) {
         log.info("createQuote -----> create a Quote");
         this.quote = listQuote.get(0);
@@ -138,7 +138,7 @@ public class QuotesSteps {
      * @param selectStandard s.
      */
 
-    @And("^Select a price book \"([^\"]*)\"$")
+    @And("^I select a price book \"([^\"]*)\"$")
     public void selectAPriceBook(String selectStandard) {
         log.info("selectPriceBook -----> " + selectStandard);
         quotesProductSelectPage = quoteLineItemsPage.selectPriceBook(selectStandard);
@@ -168,12 +168,12 @@ public class QuotesSteps {
     /**
      * show in quotes detail page
      */
-    @Then("^the Quotes should be displayed in Quotes Details page$")
+    @Then("^the Quote should be displayed in Quotes Details page$")
     public void theQuotesShouldBeDisplayedInQuotesDetailsPage() {
         assertEquals("", quote.getQuoteName(), quotesDetailPage.isSuccessDisplayedQuoteDetail());
     }
 
-    @And("^the Quotes should be created$")
+    @And("^the Quote should be created$")
     public void theQuotesShouldBeCreated() {
         log.info("verify the created quote by API =================>");
         quoteApi = apiQuote.getQuoteValuesByAPI();
