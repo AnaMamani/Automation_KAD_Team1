@@ -56,7 +56,6 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         return accountNameCreateTxt.getText().trim();
     }
 
-
     /**
      * This method to event click Edit Accout
      *
@@ -67,7 +66,6 @@ public class AccountDetailPageClassic extends AccountDetailPage {
         driverTools.clickElement(editBtn);
         return new AccountFormPageClassic();
     }
-
 
     /**
      * This method delete an Account on Classic

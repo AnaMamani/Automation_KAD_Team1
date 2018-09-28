@@ -16,7 +16,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.restassured.response.Response;
-
 import java.net.MalformedURLException;
 import java.util.List;
 
@@ -100,7 +99,7 @@ public class AccountsSteps {
      */
     @And("^the Account should be created$")
     public void theAccountsShouldBeCreated() {
-        log.info("Validation for API----->    " + account.getAccountName());
+        log.info("Validation for API-****************************---->    " + account.getAccountName());
         accountApi = apiAccount.getAccountValuesByAPI();
         assertEquals(account.getAccountName(), accountApi.getAccountName());
         assertEquals(account.getAccountNumber(), accountApi.getAccountNumber());

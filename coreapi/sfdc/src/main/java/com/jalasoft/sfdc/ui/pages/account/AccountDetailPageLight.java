@@ -17,6 +17,7 @@ import static org.junit.Assert.assertEquals;
 
 public class AccountDetailPageLight extends AccountDetailPage {
 
+    //
     @FindBy(xpath = "//span[contains(text(), 'Account Name')]/parent::div/following-sibling::div/span/span")
     private WebElement accountNameTxt;
 

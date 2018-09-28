@@ -82,8 +82,6 @@ public class AccountFormPageLight extends AccountFormPage {
         driverTools.setInputField(accountBillingStateTxt, account.getBillingState());
         driverTools.setInputField(accountBillingCountryTxt, account.getBillingCountry());
         driverTools.setInputField(accountNumberLocationTxt, account.getNumberOfLocation());
-
-
         driverTools.clickElement(clickBtnSave);
         wait.until(ExpectedConditions.visibilityOf(auxToAccountId));
 
@@ -131,33 +129,6 @@ public class AccountFormPageLight extends AccountFormPage {
         return new AccountDetailPageLight();
     }
 
-
-    /**
-     * it method set of Phone.
-     *
-     * @param phone number cel.
-     */
-//    private void setPhone(String phone) {
-//        driverTools.setInputField(accountPhoneTxt, phone);
-//    }
-
-    /**
-     * this method setter of account Number.
-     *
-     * @param accountNumber number of Account.
-     */
-//    private void setAccountNumber(String accountNumber) {
-//        driverTools.setInputField(accountNumberTxt, accountNumber);
-//    }
-
-    /**
-     * this method setter Name of account.
-     *
-     * @param accountName name of account.
-     */
-//    private void setAccountName(String accountName) {
-//        driverTools.setInputField(accountNameTxt, accountName);
-//    }
 
 }
 
