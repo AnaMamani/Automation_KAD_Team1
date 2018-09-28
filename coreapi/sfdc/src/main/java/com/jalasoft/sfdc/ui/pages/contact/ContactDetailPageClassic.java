@@ -36,6 +36,15 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     private WebElement statetTxt;
     @FindBy(xpath = "")
     private WebElement countryTxt;
+
+    /**
+     * Waits until page object is loaded.
+     */
+    @Override
+    public void waitUntilPageObjectIsLoaded() {
+        wait.until(ExpectedConditions.visibilityOf(clickDeleteOption));
+    }
+
     /**
      * For show create contact in ContactDetail.
      *
@@ -43,7 +52,6 @@ public class ContactDetailPageClassic extends ContactDetailPage {
      */
     @Override
     public String isSuccessDisplayedContactDetail() {
-        System.out.print(contactCreated.getText()+ "#####################################################");
         return contactCreated.getText().trim();
     }
 
@@ -77,9 +85,9 @@ public class ContactDetailPageClassic extends ContactDetailPage {
      */
     @Override
     public boolean isSuccessEditContact(Contact contact) {
-        log.info("isSuccessEditProduct:   ");
+        log.info("isSuccessEditContact:   ");
         boolean result = true;
-        if (contact.getFirstName() != null &&contact.getLastName() != null && !contact.getFirstName()
+        if (contact.getFirstName() != null && contact.getLastName() != null && !contact.getFirstName()
                 .concat(" ").concat(contact.getLastName()).equals(nameTxt.getText().trim())) {
             return false;
         }
@@ -94,11 +102,4 @@ public class ContactDetailPageClassic extends ContactDetailPage {
     }
 
 
-    /**
-     * Waits until page object is loaded.
-     */
-    @Override
-    public void waitUntilPageObjectIsLoaded() {
-        wait.until(ExpectedConditions.visibilityOf(clickDeleteOption));
-    }
 }

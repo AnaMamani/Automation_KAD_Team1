@@ -31,8 +31,8 @@ Feature: Create "Contact"
   Scenario: Verify that is possible to delete a Contact to created
     Given I have a Contact with the following information
       | First Name | Last Name   | title     | email          | phone   | street     | city    | state | country  |
-      | Jhon       | corona luna | Woldsseda | mundo@mail.com | 784545  | hello      | word    | rain  |          |
+      | Jhon       | corona luna | Woldsseda | mundo@mail.com | 784545  | hello      | word    | rain  | La Paz   |
     When I Select the Contact created by URL
-      And I click Delete button contact
-    Then I should see the Contact is delete
-      And the Contact should be deleted
+     And I click Delete button contact
+   Then I should see the Contact is delete
+     And the Contact should be deleted

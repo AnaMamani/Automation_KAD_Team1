@@ -59,10 +59,7 @@ public class ContactDetailPageLight extends ContactDetailPage {
      */
     @Override
     public String isSuccessDisplayedContactDetail() {
-        System.out.print(contactCreated.getText() + "#####################################################");
-        //driverTools.clickElement(detailsLinkBtn);
         return contactCreated.getText().trim();
-
     }
 
     /**
@@ -109,7 +106,7 @@ public class ContactDetailPageLight extends ContactDetailPage {
     public boolean isSuccessEditContact(Contact contact) {
         driverTools.clickElement(detailsLinkBtn);
         boolean result = true;
-        if (contact.getFirstName() != null &&contact.getLastName() != null && !contact.getFirstName()
+        if (contact.getFirstName() != null && contact.getLastName() != null && !contact.getFirstName()
                 .concat(" ").concat(contact.getLastName()).equals(nameTxt.getText().trim())) {
             return false;
         }
@@ -122,8 +119,6 @@ public class ContactDetailPageLight extends ContactDetailPage {
         }
         return result;
     }
-
-
 
 
 }

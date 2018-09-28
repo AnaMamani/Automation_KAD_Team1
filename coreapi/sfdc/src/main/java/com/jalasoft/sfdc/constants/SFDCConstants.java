@@ -16,6 +16,7 @@ public final class SFDCConstants {
 
     //Contacts
     public final static String CONTACT = "Contact";
+    public final static String CONTACT_NAME = "Name";
     public final static String CONTACT_FIRST_NAME = "FirstName";
     public final static String CONTACT_LAST_NAME = "LastName";
     public final static String CONTACT_ACCOUNT_NAME = "AccountName";

@@ -79,8 +79,9 @@ public class APIContact {
     /**
      * for delete
      */
-    public void deleteContactByAPI() {
+    public Response deleteContactByAPI() {
         response = apiManager.delete(CONTACT, contact.getId());
         System.out.println("Query response delete: " + response.asString());
+        return response;
     }
 }
