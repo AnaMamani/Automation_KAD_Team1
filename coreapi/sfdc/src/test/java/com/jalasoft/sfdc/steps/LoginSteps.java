@@ -123,7 +123,7 @@ public class LoginSteps {
     //****************************************************************
     //Hooks for @Login scenarios
     //****************************************************************
-    @After(value = "@Login, @CrudOppy, @Stages, @Account", order = 999)
+    @After(value = "@Login, @CrudOppy, @Stages", order = 999)
     public void afterLoginScenario() {
         log.info("After hook @Login");
         Skin skin = ServersConfigReader.getInstance().getSkin();

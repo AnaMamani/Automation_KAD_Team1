@@ -102,6 +102,11 @@ public class AllAppsClassic extends AllAppsPage {
         return new AccountListPageClassic();
     }
 
+    /**
+     * click opportunities List PAge
+     *
+     * @return OpportunitiesListPage
+     */
     @Override
     public OpportunitiesListPage clickOpportunities() {
 
