@@ -3,7 +3,7 @@ Feature:Create a new Quote
 
   Background:
     Given I navigate to Login page
-      And I login as "local user" User
+      And I login as "admin user" User
 
   @deleteEntities
   Scenario: Verify that it is possible to create a new Opportunity with Quote

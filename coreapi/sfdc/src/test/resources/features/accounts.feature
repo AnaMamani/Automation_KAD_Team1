@@ -3,7 +3,7 @@ Feature: Create "Accounts"
 
   Background:
     Given  I navigate to Login page
-    And I login as "other role user" User
+    And I login as "admin user" User
 
 
   @deleteAccount

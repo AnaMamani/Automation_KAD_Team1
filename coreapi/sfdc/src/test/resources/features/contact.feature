@@ -3,7 +3,7 @@ Feature: Create "Contact"
 
   Background:
     Given I navigate to Login page
-    And I login as "local user" User
+    And I login as "admin user" User
 
   @deleteContact
   Scenario: Verify that is possible create a new contact
