@@ -38,13 +38,10 @@ public class AccountFormPageClassic extends AccountFormPage {
     @FindBy(id = "acc17country")
     private WebElement accountBillingCountryTxt;
 
-    @FindBy(id = "00N0b000007FED5")
-    private WebElement customerPriorityTxt;
-
-    @FindBy(id = "00N0b000007FED6")
+    @FindBy(xpath = "//*[contains(text(),'Number of Locations')]/following :: td/input[@id]")
     private WebElement numberLocationTxt;
 
-    @FindBy(xpath = "//*[@id='topButtonRow']/input[1]")
+    @FindBy(xpath = "//*[@value=' Save ']")
     private WebElement clickBtnSave;
 
     /**
