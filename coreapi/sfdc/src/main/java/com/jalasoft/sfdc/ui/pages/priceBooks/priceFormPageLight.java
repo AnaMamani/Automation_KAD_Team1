@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class priceFormPageLight extends PriceFormPage {
     //PageFactory of selenium.
-    @FindBy(xpath = "//input[@id='7:1554;a']")
+    @FindBy(xpath = "(//div[@class='slds-form-element__control']//child::input[@class=' input'])[1]")
     WebElement priceBookNameText;
 
-    @FindBy(xpath = "//input[@id='43:1519;a']")
+    @FindBy(xpath = "(//div[@class='slds-form-element__control']//child::input[@class=' input'])[2]")
     WebElement priceBookDescriptionText;
 
     @FindBy(xpath = "//button[@title='Save']//span[contains(@class,'label bBody')][contains(text(),'Save')]")
